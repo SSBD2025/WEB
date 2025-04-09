@@ -1,11 +1,11 @@
-import { create } from 'zustand'
+//import { create } from 'zustand'
 
-const useStore = create((set) => ({
+//const useStore = create((set) => ({
   /**
    * Tu dodajemy zmienne, które chcemy przechowywać w stanie
    * oraz funkcje, które będą je modyfikować
    */
-}))
+//}))
 
 /**
  * By użyć naszego stanu w komponencie, musimy go zaimportować

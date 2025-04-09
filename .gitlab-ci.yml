@@ -1,0 +1,33 @@
+stages:
+  - build
+  - deploy
+
+# Budowanie frontu w kontenerze Node
+build_frontend:
+  stage: build
+  image: node:22
+  script:
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+  tags:
+    - frontend
+  only:
+    - main
+
+# Wgrywanie plików do kontenera nginx
+deploy_frontend:
+  stage: deploy
+  script:
+    - echo "Deploying frontend..."
+    - docker exec ssbd02-nginx rm -rf /usr/share/nginx/html/*
+    - docker cp dist/. ssbd02-nginx:/usr/share/nginx/html
+    - docker exec ssbd02-nginx nginx -s reload || true
+  tags:
+    - frontend-shell
+  dependencies:
+    - build_frontend
+  only:
+    - main
