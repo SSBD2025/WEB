@@ -7,10 +7,10 @@ const Layout = () => {
   return (
     <>
       <Routes>
-        <Route path={ROUTES.HOME} element={<Home/>} />
+        <Route path={ROUTES.HOME} element={<Home />} />
         <Route path="*" element={<div>404 Not Found</div>} />
-        <Toaster/>
       </Routes>
+      <Toaster />
     </>
   );
 };
