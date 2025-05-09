@@ -1,10 +1,11 @@
 import axios from 'axios';
 
 export const authClient = axios.create({
-    baseURL: `${import.meta.env.VITE_API_URL}/auth`,
+    baseURL: `/api/auth`,
     headers: {
         'Content-Type': 'application/json',
-    }
+    },
+    withCredentials: true,
 })
 
 export default authClient;
