@@ -9,6 +9,8 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } 
 import {useEffect, useState} from "react";
 import {useRegisterUser} from "@/hooks/useRegisterUser"
 import { RequiredFormLabel } from "@/components/ui/requiredLabel"
+import { Link } from "react-router"
+import ROUTES from "@/constants/routes"
 
 const formSchema = z
     .object({
@@ -189,9 +191,9 @@ export function RegistrationForm() {
             <CardFooter className="flex justify-center border-t p-6">
                 <p className="text-sm text-gray-600">
                     Already have an account?
-                    <a href="/login" className="text-blue-600 hover:text-blue-800 font-medium ml-1">
+                    <Link to={ROUTES.LOGIN} className="text-blue-600 hover:text-blue-800 font-medium ml-1">
                         Sign in
-                    </a>
+                    </Link>
                 </p>
             </CardFooter>
         </Card>
