@@ -7,7 +7,8 @@ build_frontend:
   stage: build
   image: node:22
   script:
-    - npm ci
+    - rm -rf node_modules package-lock.json 
+    - npm i
     - npm run build
   artifacts:
     paths:
