@@ -6,9 +6,16 @@ import { toast } from "sonner";
 export const useRegisterUser = () => {
     return useMutation({
         mutationFn: registerUser,
-        onError: (error) => axiosErrorHandler(error, "Failed to register user"),
         onSuccess: () => {
-            toast.success("User registered successfully");
-        }
-    })
-}
+            toast.success(
+                "User registered successfully. Please check your email to verify your account."
+            );
+        },
+        onError: (error: unknown) => {
+            return axiosErrorHandler(
+                error,
+                "An error occurred while registering the user."
+            );
+        },
+    });
+};
