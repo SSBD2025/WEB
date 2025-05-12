@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import {useEffect, useState} from "react";
 import {useRegisterUser} from "@/hooks/useRegisterUser"
-import { RequiredFormLabel } from "@/components/ui/RequiredLabel"
+import { RequiredFormLabel } from "@/components/ui/requiredLabel"
 
 const formSchema = z
     .object({
