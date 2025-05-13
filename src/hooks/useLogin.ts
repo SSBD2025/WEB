@@ -7,7 +7,8 @@ export const useLogin = () => {
     return useMutation({
         mutationFn: loginUser,
         onError: (error) => axiosErrorHandler(error, "Failed to login"),
-        onSuccess: () => {
+        onSuccess: (data) => {
+            localStorage.setItem("token", data.accessToken);
             toast.success("User login successfully");
         }
     })
