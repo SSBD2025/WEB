@@ -11,6 +11,7 @@ import {useRegisterUser} from "@/hooks/useRegisterUser"
 import { RequiredFormLabel } from "@/components/ui/requiredLabel"
 import { Link } from "react-router"
 import ROUTES from "@/constants/routes"
+import {RegisterUserRequest} from "@/types/register_user";
 
 const formSchema = z
     .object({
@@ -26,9 +27,14 @@ const formSchema = z
         path: ["confirmPassword"],
     })
 
+type UserType = "client" | "dietician"
 
-export function RegistrationForm() {
-    const registerMutation = useRegisterUser()
+interface RegistrationFormProps {
+    userType: UserType
+}
+
+export function RegistrationForm({ userType }: RegistrationFormProps) {
+    const registerMutation = useRegisterUser(userType)
     const [browserLanguage, setBrowserLanguage] = useState("en_EN")
 
     const form = useForm<z.infer<typeof formSchema>>({
@@ -56,19 +62,21 @@ export function RegistrationForm() {
     }, [])
 
     function onSubmit(values: z.infer<typeof formSchema>) {
-        const payload = {
-            account: {
-                login: values.login,
-                password: values.password,
-                email: values.email,
-                firstName: values.firstName,
-                lastName: values.lastName,
-                language: browserLanguage,
-            },
-            client: {},
+        const account = {
+            login: values.login,
+            password: values.password,
+            email: values.email,
+            firstName: values.firstName,
+            lastName: values.lastName,
+            language: browserLanguage,
         }
 
-        registerMutation.mutate(payload)
+        const payload = {
+            account,
+            [userType]: {},
+        }
+
+        registerMutation.mutate(payload as RegisterUserRequest)
     }
 
     return (

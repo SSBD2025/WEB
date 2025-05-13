@@ -1,6 +1,7 @@
 import Home from "./Home";
 import Login from "./Login";
-import Register from "./Register";
+import ClientRegister from "./ClientRegister.tsx";
+import DieticianRegister from "./DieticianRegister.tsx";
 import NotFound from "./NotFound";
 
-export { Home, Login, Register, NotFound };
+export { Home, Login, ClientRegister, DieticianRegister, NotFound };
