@@ -1,0 +1,20 @@
+{
+  "login": {
+    "sign_in": "Sign In",
+    "info": "Log in to your account to start using the application",
+    "sign_up_info": "Don’t have an account?",
+    "sign_up": "Sign Up",
+    "error": {
+      "password_error": "Incorrect password",
+      "login_error": "User does not exist",
+      "login_failed": "Login failed: ",
+      "login_required": "Login is required",
+      "login_too_short": "Login must be at least 4 characters",
+      "login_too_long": "Login must be at most 50 characters",
+      "password_required": "Password is required",
+      "password_too_short": "Password must be at least 8 characters",
+      "password_too_long": "Password must be at most 60 characters"
+    },
+    "password": "Password"
+  }
+}

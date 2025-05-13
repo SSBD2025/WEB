@@ -1,0 +1,20 @@
+{
+  "login": {
+    "sign_in": "Zaloguj się",
+    "info": "Zaloguj się na swoje konto, aby zacząć korzystać z aplikacji",
+    "sign_up_info": "Nie masz konta?",
+    "sign_up": "Zarejestruj się",
+    "error": {
+      "password_error": "Złe hasło",
+      "login_error": "Użytkownik nie istnieje",
+      "login_failed": "Logowanie nieudane: ",
+      "login_required": "Login jest wymagany",
+      "login_too_short": "Login musi mieć co najmniej 4 znaki",
+      "login_too_long": "Login musi być maksymalnie 50 znakowy",
+      "password_required": "Hasło jest wymagane",
+      "password_too_short": "Hasło musi mieć co najmniej 8 znaków",
+      "password_too_long": "Hasło musi mieć maksymalnie 60 znaków"
+    },
+    "password": "Hasło"
+  }
+}

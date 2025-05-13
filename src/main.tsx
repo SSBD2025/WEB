@@ -5,6 +5,7 @@ import "./index.css";
 import Layout from "./layout.tsx";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient.ts";
+import "./i18n.ts"
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

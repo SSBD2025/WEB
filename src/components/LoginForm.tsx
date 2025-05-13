@@ -8,8 +8,10 @@ import { useForm } from "react-hook-form";
 import {Form, FormControl, FormField, FormItem, FormMessage} from "@/components/ui/form.tsx";
 import {AxiosError} from "axios";
 import { RequiredFormLabel } from "@/components/ui/requiredLabel"
+import {useTranslation} from "react-i18next";
 
 const LoginForm = () => {
+    const {t} = useTranslation();
     const navigate = useNavigate();
     const loginMutation = useLogin();
 
@@ -30,15 +32,15 @@ const LoginForm = () => {
                 const status = err.response?.status;
                 if (status === 401) {
                     form.setError("password", {
-                        message: "Incorrect password"
+                        message: t("login.error.password_error")
                     })
                 } else if (status === 404) {
                     form.setError("login", {
-                        message: "User does not exist"
+                        message: t("login.error.login_error")
                     })
                 } else {
                     form.setError("root", {
-                        message: `Login failed: ${error.message}`,
+                        message: t('login.error.login_failed', { message: error.message }),
                     })
                 }
             },
@@ -53,9 +55,9 @@ const LoginForm = () => {
                         control={form.control}
                         name="login"
                         rules={{
-                            required: "Login is required",
-                            minLength: { value: 4, message: "Login must be at least 4 characters" },
-                            maxLength: { value: 50, message: "Login must be at most 50 characters" },
+                            required: t("login.error.login_required"),
+                            minLength: { value: 4, message: t("login.error.login_too_short") },
+                            maxLength: { value: 50, message: t("login.error.login_too_long") },
                         }}
                         render={({ field }) => (
                             <FormItem>
@@ -72,13 +74,13 @@ const LoginForm = () => {
                         control={form.control}
                         name="password"
                         rules={{
-                            required: "Password is required",
-                            minLength: { value: 8, message: "Password must be at least 8 characters" },
-                            maxLength: { value: 60, message: "Password must be at most 60 characters" },
+                            required: t("login.error.password_required"),
+                            minLength: { value: 8, message: t("login.error.password_too_short") },
+                            maxLength: { value: 60, message: t("login.error.password_too_long") },
                         }}
                         render={({ field }) => (
                             <FormItem>
-                                <RequiredFormLabel>Password</RequiredFormLabel>
+                                <RequiredFormLabel>{t("login.password")}</RequiredFormLabel>
                                 <FormControl>
                                     <Input type="password" {...field} />
                                 </FormControl>
@@ -93,7 +95,7 @@ const LoginForm = () => {
 
                     <div className="flex justify-center">
                         <Button type="submit" className="w-1/2">
-                            Sign In
+                            {t("login.sign_in")}
                         </Button>
                     </div>
                 </form>
