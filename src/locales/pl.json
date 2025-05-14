@@ -16,5 +16,121 @@
       "password_too_long": "Hasło musi mieć maksymalnie 60 znaków"
     },
     "password": "Hasło"
+  },
+  "admin": {
+    "api": {
+      "errors": {
+        "fetch_user_data": "Nie udało się pobrać danych użytkownika",
+        "block_user": "Nie udało się zablokować użytkownika",
+        "unblock_user": "Nie udało się odblokować użytkownika",
+        "change_email": "Nie udało się zmienić adresu email",
+        "update_user_data": "Nie udało się zaktualizować danych użytkownika",
+        "reset_password": "Nie udało się zainicjować resetowania hasła",
+        "add_role": "Nie udało się dodać roli {{role}}",
+        "remove_role": "Nie udało się usunąć roli {{role}}"
+      }
+    },
+    "validation": {
+      "name_format": "Imię może zawierać tylko litery, spacje i myślniki",
+      "email_too_long": "Email nie może mieć więcej niż 50 znaków"
+    },
+    "user_account": {
+      "title": "Zarządzanie kontem użytkownika",
+      "subtitle": "Przeglądaj i edytuj informacje o użytkowniku, zarządzaj rolami i uprawnieniami.",
+      "user_data": {
+        "title": "Dane użytkownika",
+        "description": "Szczegóły konta użytkownika",
+        "id": "ID",
+        "email": "Email",
+        "first_name": "Imię",
+        "last_name": "Nazwisko",
+        "status": "Status",
+        "active": "Aktywny",
+        "blocked": "Zablokowany",
+        "roles": "Role",
+        "no_roles": "Brak przypisanych ról"
+      },
+      "profile": {
+        "no_name": "Brak imienia",
+        "no_last_name": "Brak nazwiska",
+        "status": "Status",
+        "verification": "Weryfikacja",
+        "verified": "Zweryfikowany",
+        "not_verified": "Niezweryfikowany",
+        "email": "Email",
+        "user_id": "ID użytkownika",
+        "no_id": "Brak ID",
+        "last_login": "Ostatnie logowanie",
+        "no_data": "Brak danych"
+      },
+      "actions": {
+        "title": "Akcje administracyjne",
+        "description": "Zarządzaj statusem konta i bezpieczeństwem użytkownika",
+        "block_account": "Zablokuj konto",
+        "unblock_account": "Odblokuj konto",
+        "reset_password": "Resetuj hasło",
+        "block_confirm_title": "Czy na pewno chcesz zablokować to konto?",
+        "block_confirm_description": "Użytkownik nie będzie mógł zalogować się do systemu. Tę akcję można cofnąć później.",
+        "unblock_confirm_title": "Czy na pewno chcesz odblokować to konto?",
+        "unblock_confirm_description": "Użytkownik będzie mógł ponownie zalogować się do systemu i korzystać z aplikacji.",
+        "reset_confirm_title": "Resetowanie hasła",
+        "reset_confirm_description": "Link do resetowania hasła zostanie wysłany na adres email użytkownika. Czy chcesz kontynuować?",
+        "cancel": "Anuluj",
+        "block": "Zablokuj",
+        "unblock": "Odblokuj",
+        "send_link": "Wyślij link"
+      },
+      "roles": {
+        "title": "Role użytkownika",
+        "description": "Zarządzaj uprawnieniami użytkownika poprzez przypisywanie ról",
+        "active_roles": "Aktywne role:",
+        "add_role": "Dodaj rolę",
+        "remove_role": "Usuń rolę",
+        "add_role_confirm": "Dodać rolę {{role}}?",
+        "remove_role_confirm": "Usunąć rolę {{role}}?",
+        "add_role_description": "Czy na pewno chcesz dodać rolę {{role}} dla tego użytkownika? Spowoduje to przyznanie dodatkowych uprawnień.",
+        "remove_role_description": "Czy na pewno chcesz usunąć rolę {{role}} dla tego użytkownika? Spowoduje to odebranie niektórych uprawnień."
+      },
+      "forms": {
+        "personal_data": "Dane osobowe",
+        "email_address": "Adres email",
+        "new_email": "Nowy adres email",
+        "current": "Aktualny:",
+        "first_name": "Imię",
+        "last_name": "Nazwisko",
+        "first_name_required": "Imię jest wymagane",
+        "first_name_min": "Imię musi mieć co najmniej 2 znaki",
+        "first_name_max": "Imię nie może mieć więcej niż 30 znaków",
+        "last_name_required": "Nazwisko jest wymagane",
+        "last_name_min": "Nazwisko musi mieć co najmniej 2 znaki",
+        "last_name_max": "Nazwisko nie może mieć więcej niż 30 znaków",
+        "email_required": "Email jest wymagany",
+        "email_invalid": "Niepoprawny format emaila",
+        "save_personal_data": "Zapisz dane osobowe",
+        "change_email": "Zmień adres email",
+        "confirm_data_change_title": "Potwierdź zmianę danych osobowych",
+        "confirm_data_change_description": "Czy na pewno chcesz zmienić dane osobowe użytkownika? Ta operacja zaktualizuje imię i nazwisko w systemie.",
+        "confirm_email_change_title": "Potwierdź zmianę adresu email",
+        "confirm_email_change_description": "Czy na pewno chcesz zmienić adres email użytkownika na {{email}}? Użytkownik będzie musiał używać nowego adresu email do logowania.",
+        "cancel": "Anuluj",
+        "save_changes": "Zapisz zmiany",
+        "change_email_button": "Zmień email"
+      },
+      "toasts": {
+        "account_blocked": "Konto zostało zablokowane.",
+        "account_unblocked": "Konto zostało odblokowane.",
+        "password_reset_link": "Link do resetowania hasła został wysłany.",
+        "email_changed": "Email został zmieniony.",
+        "email_in_use": "Ten adres email jest już używany przez innego użytkownika. Proszę wybrać inny adres email.",
+        "email_change_error": "Wystąpił błąd podczas zmiany adresu email. Spróbuj ponownie później.",
+        "data_updated": "Dane zostały zaktualizowane.",
+        "role_added": "Rola {{role}} została dodana.",
+        "role_removed": "Rola {{role}} została usunięta.",
+        "user_has_role": "Użytkownik już ma rolę {{role}}.",
+        "user_no_role": "Użytkownik nie ma roli {{role}}.",
+        "role_add_error": "Nie udało się dodać roli {{role}}.",
+        "role_remove_error": "Nie udało się usunąć roli {{role}}."
+      }
+    }
   }
 }

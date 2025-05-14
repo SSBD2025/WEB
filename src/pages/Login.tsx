@@ -27,7 +27,7 @@ const Login = () => {
           <p className="text-sm text-gray-600">
             {t("login.sign_up_info")}
             <Link
-              to={ROUTES.REGISTER}
+              to={ROUTES.USER_REGISTER}
               className="text-blue-600 hover:text-blue-800 font-medium ml-1"
             >
               {t("login.sign_up")}
