@@ -16,6 +16,45 @@
       "password_too_long": "Hasło musi mieć maksymalnie 60 znaków"
     },
     "password": "Hasło"
+  }, 
+  "profile": {
+    "title": "Twój profil",
+    "tabs": {
+      "details": "Dane",
+      "changeData": "Zmień dane",
+      "changeEmail": "Zmień e-mail",
+      "changePassword": "Zmień hasło"
+    },
+    "fields": {
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "login": "Login",
+      "email": "Email",
+      "verified": "Zweryfikowany",
+      "active": "Aktywny",
+      "oldPassword": "Stare hasło",
+      "newPassword": "Nowe hasło",
+      "confirmPassword": "Potwierdź hasło",
+      "confirm_email_change_description": "Czy na pewno chcesz zmienić adres email na {{email}}?",
+      "confirm_data_change_description": "Czy na pewno chcesz zmienić dane osobowe? Ta operacja zaktualizuje imię i nazwisko w systemie.",
+      "confirm_password_change_description": "Czy na pewno chcesz zmienić hasło? Ta operacja zaktualizuje hasło w systemie.",
+      "confirm_password_change_title": "Potwierdź zmianę hasła",
+      "change_password_button": "Zmień hasło"
+    },
+    "error": {
+    "firstName_too_short": "Imię musi mieć co najmniej 2 znaki",
+    "firstName_too_long": "Imię może mieć maksymalnie 50 znaków",
+    "lastName_too_short": "Nazwisko musi mieć co najmniej 2 znaki",
+    "lastName_too_long": "Nazwisko może mieć maksymalnie 50 znaków",
+    "email_too_long": "Email może mieć maksymalnie 50 znaków",
+    "email_invalid": "Email jest nieprawidłowy",
+    "password_dont_match": "Hasła nie pasują do siebie"
+  }
+  },
+  "common": {
+    "yes": "Tak",
+    "no": "Nie",
+    "save": "Zapisz"
   },
   "admin": {
     "api": {

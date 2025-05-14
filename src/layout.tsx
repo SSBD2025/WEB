@@ -12,6 +12,7 @@ import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
 import { AccessLevel, ThemeWrapper } from "./components/shared/ThemeWrapper";
 import { useCurrentUser } from "./hooks/useCurrentUser";
+import MeProfile from "./pages/MeProfile";
 import Footer from "./components/shared/Footer";
 
 const Layout = () => {
@@ -26,6 +27,7 @@ const Layout = () => {
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.LOGIN} element={<Login />} />
+          <Route path={ROUTES.ME} element={<MeProfile />} />
           <Route path={ROUTES.USER_REGISTER} element={<ClientRegister />} />
           <Route
             path={ROUTES.DIETICIAN_REGISTER}

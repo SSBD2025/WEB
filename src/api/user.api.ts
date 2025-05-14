@@ -4,3 +4,27 @@ export const getCurrentUser = async () => {
   const res = await apiClient.get("/account/me");
   return res.data;
 };
+
+export const changeUserData = async (data: {
+  firstName: string;
+  lastName: string;
+  lockToken: string;
+} ) => {
+  const res = await apiClient.put("/account/me", data);
+  return res.data;
+};
+
+export const changeUserPassword = async (data: {
+  oldPassword: string;
+  newPassword: string;
+}) => {
+  const res = await apiClient.post("/account/changePassword", data);
+  return res.data;
+};
+
+export const changeUserEmail = async (data: {
+  email: string;
+}) => {
+  const res = await apiClient.post("/account/change-email", data);
+  return res.data;
+}
