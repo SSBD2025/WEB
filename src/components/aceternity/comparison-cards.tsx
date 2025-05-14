@@ -23,6 +23,9 @@ import {
 } from "@/components/ui/card";
 
 import { motion } from "motion/react";
+import {Button} from "@/components/ui/button.tsx";
+import {Link} from "react-router";
+import ROUTES from "@/constants/routes.ts";
 
 interface FeatureItemProps {
   icon: React.ReactNode;
@@ -102,6 +105,11 @@ export default function ClientDieticianComparison() {
                 title="Otrzymywanie przypomnień"
                 description="Nie zapomnij o badaniach i kolejnych ankietach"
               />
+              <Link to={ROUTES.USER_REGISTER} className="w-full block">
+                <Button className="w-full cursor-pointer transform rounded-lg px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+                  Zostań klientem
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </motion.div>
@@ -150,6 +158,11 @@ export default function ClientDieticianComparison() {
                 title="Wysyłanie przypomnień"
                 description="Zachęcaj klientów do regularnych pomiarów i aktualizacji"
               />
+              <Link to={ROUTES.DIETICIAN_REGISTER} className="w-full block">
+                <Button className="w-full cursor-pointer transform rounded-lg px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+                  Zostań dietetykiem
+                </Button>
+              </Link>
             </CardContent>
           </Card>
         </motion.div>
