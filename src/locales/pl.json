@@ -174,5 +174,43 @@
         "message": "Wygląda na to, że coś poszło nie tak. Proszę spróbować ponownie później."
       }
     }
+  },
+  "register": {
+    "register": "Zarejestruj się",
+    "creating": "Tworzenie konta...",
+    "create_account": "Stwórz konto",
+    "info": "Wprowadź swoje dane by zacząć",
+    "have_account": "Masz już konto?",
+    "firstname": {
+      "too_short": "Imię musi mieć co najmniej 2 znaki",
+      "too_long": "Imię może mieć maksymalnie 50 znaków",
+      "field": "Imię"
+    },
+    "lastname": {
+      "too_short": "Nazwisko musi mieć co najmniej 2 znaki",
+      "too_long": "Nazwisko może mieć maksymalnie 50 znaków",
+      "field": "Nazwisko"
+    },
+    "login": {
+      "too_short": "Nazwa użytkownika musi mieć co najmniej 4 znaki",
+      "too_long": "Nazwa użytkownika może mieć maksymalnie 50 znaków",
+      "already_exist": "",
+      "field": "Nazwa użytkownika"
+    },
+    "email": {
+      "invalid": "Proszę podać poprawny adres e-mail",
+      "too_long": "Adres e-mail może mieć maksymalnie 50 znaków",
+      "field": "Adres Email"
+    },
+    "password": {
+      "too_short": "Hasło musi mieć co najmniej 8 znaków",
+      "too_long": "Hasło może mieć maksymalnie 60 znaków",
+      "not_match": "Hasła nie są zgodne",
+      "field": "Hasło",
+      "info": "Przynajmniej 8 znaków"
+    },
+    "confirm_password": {
+      "field": "Potwierdź hasło"
+    }
   }
 }
