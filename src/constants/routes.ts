@@ -1,6 +1,7 @@
 const ROUTES = {
     HOME: "/",
     LOGIN: "/login",
+    ME: "/me",
     USER_REGISTER: "/user/register",
     DIETICIAN_REGISTER: "/dietician/register",
     ADMIN_USER_DETAILS: "/admin/dashboard/users/:id",

@@ -17,6 +17,45 @@
     },
     "password": "Password"
   },
+  "profile": {
+    "title": "Your profile",
+    "tabs": {
+      "details": "Details",
+      "changeData": "Change details",
+      "changeEmail": "Change email",
+      "changePassword": "Change password"
+    },
+    "fields": {
+      "firstName": "Name",
+      "lastName": "Surname",
+      "login": "Login",
+      "email": "Email",
+      "verified": "Verified",
+      "active": "Active",
+      "oldPassword": "Old password",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "confirm_email_change_description": "Are you sure you want to change your email address to {{email}}?",
+      "confirm_data_change_description": "Are you sure you want to change personal data? This operation will update the first and last name in the system.",
+      "confirm_password_change_description": "Are you sure you want to change your password? This operation will update the password in the system.",
+      "confirm_password_change_title": "Confirm password change",
+      "change_password_button": "Change password"
+    },
+    "error": {
+      "firstName_too_short": "Name must be at least 2 characters",
+      "firstName_too_long": "Name can be at most 50 characters",
+      "lastName_too_short": "Surname must be at least 2 characters",
+      "lastName_too_long": "Surname can be at most 50 characters",
+      "email_too_long": "Email can be at most 50 characters",
+      "email_invalid": "Email is invalid",
+      "password_dont_match": "Passwords do not match"
+    }
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "save": "Save"
+  },
   "admin": {
     "api": {
       "errors": {
