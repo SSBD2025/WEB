@@ -16,7 +16,7 @@
       "password_too_long": "Hasło musi mieć maksymalnie 60 znaków"
     },
     "password": "Hasło"
-  }, 
+  },
   "profile": {
     "title": "Twój profil",
     "tabs": {
@@ -42,19 +42,20 @@
       "change_password_button": "Zmień hasło"
     },
     "error": {
-    "firstName_too_short": "Imię musi mieć co najmniej 2 znaki",
-    "firstName_too_long": "Imię może mieć maksymalnie 50 znaków",
-    "lastName_too_short": "Nazwisko musi mieć co najmniej 2 znaki",
-    "lastName_too_long": "Nazwisko może mieć maksymalnie 50 znaków",
-    "email_too_long": "Email może mieć maksymalnie 50 znaków",
-    "email_invalid": "Email jest nieprawidłowy",
-    "password_dont_match": "Hasła nie pasują do siebie"
-  }
+      "firstName_too_short": "Imię musi mieć co najmniej 2 znaki",
+      "firstName_too_long": "Imię może mieć maksymalnie 50 znaków",
+      "lastName_too_short": "Nazwisko musi mieć co najmniej 2 znaki",
+      "lastName_too_long": "Nazwisko może mieć maksymalnie 50 znaków",
+      "email_too_long": "Email może mieć maksymalnie 50 znaków",
+      "email_invalid": "Email jest nieprawidłowy",
+      "password_dont_match": "Hasła nie pasują do siebie"
+    }
   },
   "common": {
     "yes": "Tak",
     "no": "Nie",
-    "save": "Zapisz"
+    "save": "Zapisz",
+    "loading": "Ładowanie"
   },
   "admin": {
     "api": {
@@ -251,5 +252,12 @@
     "confirm_password": {
       "field": "Potwierdź hasło"
     }
+  },
+  "unauthorized": {
+    "cardTitle": "Dostęp ograniczony",
+    "cardDescription": "Musisz być zalogowany, aby uzyskać dostęp do tej części serwisu Dietetycy XXI wieku.",
+    "paragraph": "Śledź swoje posiłki, monitoruj składniki odżywcze i osiągaj cele zdrowotne dzięki spersonalizowanym planom dietetycznym.",
+    "loginButton": "Zaloguj się, aby kontynuować",
+    "registerButton": "Utwórz konto"
   }
 }

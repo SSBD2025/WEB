@@ -54,7 +54,8 @@
   "common": {
     "yes": "Yes",
     "no": "No",
-    "save": "Save"
+    "save": "Save",
+    "loading": "Loading"
   },
   "admin": {
     "api": {
@@ -251,5 +252,12 @@
     "confirm_password": {
       "field": "Confirm Password"
     }
+  },
+  "unauthorized": {
+    "cardTitle": "Access Restricted",
+    "cardDescription": "You need to be logged in to access this part of Dietetycy XXI wieku.",
+    "paragrapth": "Track your meals, monitor nutrition, and achieve your health goals with personalized diet plans.",
+    "loginButton": "Log in to continue",
+    "registerButton": "Create an account"
   }
 }
