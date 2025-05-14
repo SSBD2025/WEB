@@ -16,12 +16,16 @@ export type Account = {
 
 export type Role = {
   active: boolean;
-  login: string;
   roleName: string;
-}
+};
 
 export type User = {
   account: Account;
   lockToken: string;
   roles: Role[];
+};
+
+export type AccountWithRoles = {
+  accountDTO: Account;
+  userRoleDTOS: Role[];
 };

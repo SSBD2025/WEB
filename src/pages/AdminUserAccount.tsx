@@ -69,14 +69,14 @@ export default function AdminUserAccount() {
   }
 
   return (
-    <>
+    <div className="flex-grow justify-center items-center flex">
       <DataRenderer
         status={isLoading ? "loading" : isError ? "error" : "success"}
         data={user ? [user] : []}
         render={([user]) => {
           console.log("User data:", user)
           return (
-            <motion.div className="max-w-7xl mx-auto p-4 md:p-8" variants={container} initial="hidden" animate="show">
+            <motion.div className="max-w-7xl mx-auto" variants={container} initial="hidden" animate="show">
               <motion.div variants={item} className="mb-8">
                 <h1 className="text-3xl font-bold tracking-tight">{t("admin.user_account.title")}</h1>
                 <p className="text-muted-foreground mt-2">{t("admin.user_account.subtitle")}</p>
@@ -130,6 +130,6 @@ export default function AdminUserAccount() {
           )
         }}
       />
-    </>
+    </div>
   )
 }

@@ -132,5 +132,47 @@
         "role_remove_error": "Nie udało się usunąć roli {{role}}."
       }
     }
+  },
+  "accountsTable": {
+    "tableRow": {
+      "name": "Imię",
+      "roles": "Role",
+      "status": "Status",
+      "lastLoggedIn": "Ostatnie logowanie",
+      "lastLoggedInIp": "Ostatnie logowanie IP"
+    },
+    "tableData": {
+      "neverLoggedIn": "Nigdy się nie logował"
+    },
+    "buttons": {
+      "editAccount": "Edytuj konto"
+    },
+    "badges": {
+      "active": "Aktywny",
+      "blocked": "Zablokowany",
+      "inactive": "Nieaktywny"
+    }
+  },
+  "footer": {
+    "home": "Strona główna",
+    "rights": "Wszystkie prawa zastrzeżone"
+  },
+  "states": {
+    "empty": {
+      "default": {
+        "title": "Brak danych",
+        "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie żadnych danych."
+      },
+      "accounts": {
+        "title": "Brak kont",
+        "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie żadnych kont."
+      }
+    },
+    "error": {
+      "default": {
+        "title": "Wystąpił błąd",
+        "message": "Wygląda na to, że coś poszło nie tak. Proszę spróbować ponownie później."
+      }
+    }
   }
 }

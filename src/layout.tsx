@@ -6,6 +6,7 @@ import {
   ClientRegister,
   DieticianRegister,
   AdminUserAccount,
+  AdminDashboard,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -34,6 +35,7 @@ const Layout = () => {
             path={ROUTES.ADMIN_USER_DETAILS}
             element={<AdminUserAccount />}
           />
+          <Route path={ROUTES.ADMIN_DASHBOARD} element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

@@ -3,8 +3,9 @@ const ROUTES = {
     LOGIN: "/login",
     USER_REGISTER: "/user/register",
     DIETICIAN_REGISTER: "/dietician/register",
-    ADMIN_USER_DETAILS: "/admin/users/:id",
-    getAdminUserDetails: (id: string) => `/admin/users/${id}`,
+    ADMIN_USER_DETAILS: "/admin/dashboard/users/:id",
+    getAdminUserDetails: (id: string) => `/admin/dashboard/users/${id}`,
+    ADMIN_DASHBOARD: "/admin/dashboard",
 }
 
 export default ROUTES;

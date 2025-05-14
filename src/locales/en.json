@@ -132,5 +132,47 @@
         "role_remove_error": "Failed to remove role {{role}}."
       }
     }
+  },
+  "accountsTable": {
+    "tableRow": {
+      "name": "Name",
+      "roles": "Roles",
+      "status": "Status",
+      "lastLoggedIn": "Last Logged In",
+      "lastLoggedInIp": "Last Login IP"
+    },
+    "tableData": {
+      "neverLoggedIn": "Never logged in"
+    },
+    "buttons": {
+      "editAccount": "Edit Account"
+    },
+    "badges": {
+      "active": "Active",
+      "blocked": "Blocked",
+      "inactive": "Inactive"
+    }
+  },
+  "footer": {
+    "home": "Home",
+    "rights": "All rights reserved"
+  },
+  "states": {
+    "empty": {
+      "default": {
+        "title": "No Data Found",
+        "message": "Looks like we couldn't find any data for you."
+      },
+      "accounts": {
+        "title": "No Accounts Found",
+        "message": "Looks like we couldn't find any accounts for you."
+      }
+    },
+    "error": {
+      "default": {
+        "title": "An Error Occured",
+        "message": "Looks like something went wrong. Please try again later."
+      }
+    }
   }
 }

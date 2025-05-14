@@ -9,6 +9,7 @@ import {
 import ROUTES from "@/constants/routes";
 import React from "react";
 import { useLocation } from "react-router";
+import { t } from "i18next";
 
 const Footer = () => {
   const location = useLocation();
@@ -28,12 +29,14 @@ const Footer = () => {
           <BreadcrumbList>
             {isHome ? (
               <BreadcrumbItem>
-                <BreadcrumbPage>Home</BreadcrumbPage>
+                <BreadcrumbPage>{t("footer.home")}</BreadcrumbPage>
               </BreadcrumbItem>
             ) : (
               <>
                 <BreadcrumbItem>
-                  <BreadcrumbLink to={ROUTES.HOME}>Home</BreadcrumbLink>
+                  <BreadcrumbLink to={ROUTES.HOME}>
+                    {t("footer.home")}
+                  </BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 {breadcrumbItems.map((item, index) => {
@@ -64,8 +67,8 @@ const Footer = () => {
         <div>
           <div className="container flex flex-col items-center justify-between gap-4 py-6 md:h-16 md:flex-row md:py-0">
             <p className="text-center text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Bartosz Podemski. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} Bartosz Podemski.{" "}
+              {t("footer.rights")}
             </p>
           </div>
         </div>

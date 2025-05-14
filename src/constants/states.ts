@@ -1,9 +1,16 @@
+import { t } from "i18next";
+
 export const DEFAULT_EMPTY = {
-    title: "No Data Found",
-    message: "Looks like we couldn't find any data for you.",
-}
+  title: t("states.empty.default.title"),
+  message: t("states.empty.default.message"),
+};
 
 export const DEFAULT_ERROR = {
-    title: "An Error Occurred",
-    message: "Looks like something went wrong. Please try again later.",
-}
+  title: t("states.error.default.title"),
+  message: t("states.error.default.message"),
+};
+
+export const ACCOUNTS_EMPTY = {
+  title: t("states.empty.accounts.title"),
+  message: t("states.empty.accounts.message"),
+};
