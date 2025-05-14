@@ -16,5 +16,121 @@
       "password_too_long": "Password must be at most 60 characters"
     },
     "password": "Password"
+  },
+  "admin": {
+    "api": {
+      "errors": {
+        "fetch_user_data": "Failed to fetch user data",
+        "block_user": "Failed to block user",
+        "unblock_user": "Failed to unblock user",
+        "change_email": "Failed to change email",
+        "update_user_data": "Failed to update user data",
+        "reset_password": "Failed to initiate password reset",
+        "add_role": "Failed to add role {{role}}",
+        "remove_role": "Failed to remove role {{role}}"
+      }
+    },
+    "validation": {
+      "name_format": "Name can only contain letters, spaces, and hyphens",
+      "email_too_long": "Email must be at most 50 characters"
+    },
+    "user_account": {
+      "title": "User Account Management",
+      "subtitle": "View and edit user information, manage roles and permissions.",
+      "user_data": {
+        "title": "User Data",
+        "description": "User account details",
+        "id": "ID",
+        "email": "Email",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "status": "Status",
+        "active": "Active",
+        "blocked": "Blocked",
+        "roles": "Roles",
+        "no_roles": "No assigned roles"
+      },
+      "profile": {
+        "no_name": "No name",
+        "no_last_name": "No last name",
+        "status": "Status",
+        "verification": "Verification",
+        "verified": "Verified",
+        "not_verified": "Not verified",
+        "email": "Email",
+        "user_id": "User ID",
+        "no_id": "No ID",
+        "last_login": "Last login",
+        "no_data": "No data"
+      },
+      "actions": {
+        "title": "Administrative Actions",
+        "description": "Manage account status and user security",
+        "block_account": "Block Account",
+        "unblock_account": "Unblock Account",
+        "reset_password": "Reset Password",
+        "block_confirm_title": "Are you sure you want to block this account?",
+        "block_confirm_description": "The user will not be able to log in to the system. This action can be reversed later.",
+        "unblock_confirm_title": "Are you sure you want to unblock this account?",
+        "unblock_confirm_description": "The user will be able to log in to the system again and use the application.",
+        "reset_confirm_title": "Reset Password",
+        "reset_confirm_description": "A password reset link will be sent to the user's email address. Do you want to continue?",
+        "cancel": "Cancel",
+        "block": "Block",
+        "unblock": "Unblock",
+        "send_link": "Send Link"
+      },
+      "roles": {
+        "title": "User Roles",
+        "description": "Manage user permissions by assigning roles",
+        "active_roles": "Active roles:",
+        "add_role": "Add role",
+        "remove_role": "Remove role",
+        "add_role_confirm": "Add role {{role}}?",
+        "remove_role_confirm": "Remove role {{role}}?",
+        "add_role_description": "Are you sure you want to add the {{role}} role for this user? This will grant additional permissions.",
+        "remove_role_description": "Are you sure you want to remove the {{role}} role for this user? This will revoke some permissions."
+      },
+      "forms": {
+        "personal_data": "Personal Data",
+        "email_address": "Email Address",
+        "new_email": "New email address",
+        "current": "Current:",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "first_name_required": "First name is required",
+        "first_name_min": "First name must have at least 2 characters",
+        "first_name_max": "First name cannot have more than 30 characters",
+        "last_name_required": "Last name is required",
+        "last_name_min": "Last name must have at least 2 characters",
+        "last_name_max": "Last name cannot have more than 30 characters",
+        "email_required": "Email is required",
+        "email_invalid": "Invalid email format",
+        "save_personal_data": "Save personal data",
+        "change_email": "Change email address",
+        "confirm_data_change_title": "Confirm personal data change",
+        "confirm_data_change_description": "Are you sure you want to change the user's personal data? This operation will update the first and last name in the system.",
+        "confirm_email_change_title": "Confirm email address change",
+        "confirm_email_change_description": "Are you sure you want to change the user's email address to {{email}}? The user will need to use the new email address to log in.",
+        "cancel": "Cancel",
+        "save_changes": "Save changes",
+        "change_email_button": "Change email"
+      },
+      "toasts": {
+        "account_blocked": "Account has been blocked.",
+        "account_unblocked": "Account has been unblocked.",
+        "password_reset_link": "Password reset link has been sent.",
+        "email_changed": "Email has been changed.",
+        "email_in_use": "This email address is already in use by another user. Please choose a different email address.",
+        "email_change_error": "An error occurred while changing the email address. Please try again later.",
+        "data_updated": "Data has been updated.",
+        "role_added": "Role {{role}} has been added.",
+        "role_removed": "Role {{role}} has been removed.",
+        "user_has_role": "User already has the role {{role}}.",
+        "user_no_role": "User does not have the role {{role}}.",
+        "role_add_error": "Failed to add role {{role}}.",
+        "role_remove_error": "Failed to remove role {{role}}."
+      }
+    }
   }
 }
