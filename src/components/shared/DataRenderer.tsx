@@ -1,7 +1,7 @@
 import { DEFAULT_EMPTY, DEFAULT_ERROR } from "@/constants/states";
 
 interface Props<T> {
-  status: "loading" | "success" | "error";
+  status: "loading" | "success" | "error" | "pending";
   error?: {
     title: string;
     details: string;

@@ -20,11 +20,11 @@ const Home = () => {
   };
 
   return (
-    <>
+    <main>
       <HeroSectionOne onClick={scrollToWhy} />
       <ClientDieticianComparison />
       <GlowingEffectDemoSecond ref={whyRef} />
-    </>
+    </main>
   );
 };
 
