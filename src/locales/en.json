@@ -174,5 +174,43 @@
         "message": "Looks like something went wrong. Please try again later."
       }
     }
+  },
+  "register": {
+    "register": "Register",
+    "creating": "Creating account...",
+    "create_account": "Create an account",
+    "info": "Enter your information to get started",
+    "have_account": "Already have an account?",
+    "firstname": {
+      "too_short": "First name must be at least 2 characters",
+      "too_long": "First name must be at most 50 characters",
+      "field": "First Name"
+    },
+    "lastname": {
+      "too_short": "Last name must be at least 2 characters",
+      "too_long": "Last name must be at most 50 characters",
+      "field": "Last Name"
+    },
+    "login": {
+      "too_short": "Username must be at least 4 characters",
+      "too_long": "Username must be at most 50 characters",
+      "already_exist": "Username already exist",
+      "field": "Username"
+    },
+    "email": {
+      "invalid": "Please enter a valid email address",
+      "too_long": "Email must be at most 50 characters",
+      "field": "Email address"
+    },
+    "password": {
+      "too_short": "Password must be at least 8 characters",
+      "too_long": "Password must be at most 60 characters",
+      "not_match": "Passwords don't match",
+      "field": "Password",
+      "info": "At least 8 characters"
+    },
+    "confirm_password": {
+      "field": "Confirm Password"
+    }
   }
 }

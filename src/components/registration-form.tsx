@@ -12,20 +12,9 @@ import { RequiredFormLabel } from "@/components/ui/requiredLabel"
 import { Link } from "react-router"
 import ROUTES from "@/constants/routes"
 import {RegisterUserRequest} from "@/types/register_user";
+import {useTranslation} from "react-i18next";
 
-const formSchema = z
-    .object({
-        firstName: z.string().min(2, "First name must be at least 2 characters").max(50, "First name must be at most 50 characters"),
-        lastName: z.string().min(2, "Last name must be at least 2 characters").max(50, "Last name must be at most 50 characters"),
-        login: z.string().min(4, "Username must be at least 4 characters").max(50, "Username must be at most 50 characters"),
-        email: z.string().email("Please enter a valid email address").max(50, "Email must be at most 50 characters"),
-        password: z.string().min(8, "Password must be at least 8 characters").max(60, "Password must be at most 60 characters"),
-        confirmPassword: z.string(),
-    })
-    .refine((data) => data.password === data.confirmPassword, {
-        message: "Passwords don't match",
-        path: ["confirmPassword"],
-    })
+
 
 type UserType = "client" | "dietician"
 
@@ -36,6 +25,21 @@ interface RegistrationFormProps {
 export function RegistrationForm({ userType }: RegistrationFormProps) {
     const registerMutation = useRegisterUser(userType)
     const [browserLanguage, setBrowserLanguage] = useState("en_EN")
+    const {t} = useTranslation()
+
+    const formSchema = z
+        .object({
+            firstName: z.string().min(2, t("register.firstname.too_short")).max(50, t("register.firstname.too_long")),
+            lastName: z.string().min(2, t("register.lastname.too_short")).max(50, t("register.lastname.too_long")),
+            login: z.string().min(4, t("register.login.too_short")).max(50, t("register.login.too_long")),
+            email: z.string().email(t("register.email.invalid")).max(50, t("register.email.too_long")),
+            password: z.string().min(8, t("register.password.too_short")).max(60, t("register.password.too_long")),
+            confirmPassword: z.string(),
+        })
+        .refine((data) => data.password === data.confirmPassword, {
+            message: t("register.password.not_match"),
+            path: ["confirmPassword"],
+        })
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -83,8 +87,8 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
         <Card >
             {/* Header */}
             <CardHeader className="space-y-1">
-                <h2 className="text-2xl font-bold text-center">Create an account</h2>
-                <p className="text-center">Enter your information to get started</p>
+                <h2 className="text-2xl font-bold text-center">{t("register.create_account")}</h2>
+                <p className="text-center">{t("register.info")}</p>
             </CardHeader>
 
             {/* Form */}
@@ -98,9 +102,9 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
                                 name="firstName"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <RequiredFormLabel>First Name</RequiredFormLabel>
+                                        <RequiredFormLabel>{t("register.firstname.field")}</RequiredFormLabel>
                                         <FormControl>
-                                            <Input placeholder="First name" {...field} />
+                                            <Input placeholder={t("register.firstname.field")} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -112,9 +116,9 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
                                 name="lastName"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <RequiredFormLabel>Last Name</RequiredFormLabel>
+                                        <RequiredFormLabel>{t("register.lastname.field")}</RequiredFormLabel>
                                         <FormControl>
-                                            <Input placeholder="Last name" {...field} />
+                                            <Input placeholder={t("register.lastname.field")} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -128,9 +132,9 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
                             name="login"
                             render={({ field }) => (
                                 <FormItem>
-                                    <RequiredFormLabel>Username</RequiredFormLabel>
+                                    <RequiredFormLabel>{t("register.login.field")}</RequiredFormLabel>
                                     <FormControl>
-                                        <Input placeholder="Username" {...field} />
+                                        <Input placeholder={t("register.login.field")} {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -143,9 +147,9 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <RequiredFormLabel>Email</RequiredFormLabel>
+                                    <RequiredFormLabel>{t("register.email.field")}</RequiredFormLabel>
                                     <FormControl>
-                                        <Input placeholder="Email address" type="email" {...field} />
+                                        <Input placeholder={t("register.email.field")} type="email" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -158,11 +162,11 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
                             name="password"
                             render={({ field }) => (
                                 <FormItem>
-                                    <RequiredFormLabel>Password</RequiredFormLabel>
+                                    <RequiredFormLabel>{t("register.password.field")}</RequiredFormLabel>
                                     <FormControl>
-                                        <Input placeholder="Password" type="password" {...field} />
+                                        <Input placeholder={t("register.password.field")} type="password" {...field} />
                                     </FormControl>
-                                    <FormDescription>At least 8 characters</FormDescription>
+                                    <FormDescription>{t("register.password.info")}</FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
@@ -174,9 +178,9 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
                             name="confirmPassword"
                             render={({ field }) => (
                                 <FormItem>
-                                    <RequiredFormLabel>Confirm Password</RequiredFormLabel>
+                                    <RequiredFormLabel>{t("register.confirm_password.field")}</RequiredFormLabel>
                                     <FormControl>
-                                        <Input placeholder="Confirm Password" type="password" {...field} />
+                                        <Input placeholder={t("register.confirm_password.field")} type="password" {...field} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -189,7 +193,7 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
                             disabled={registerMutation.isPending}
                             className="w-full cursor-pointer"
                         >
-                            {registerMutation.isPending ? "Creating account..." : "Register"}
+                            {registerMutation.isPending ? t("register.creating") : t("register.register")}
                         </Button>
                     </form>
                 </Form>
@@ -198,9 +202,9 @@ export function RegistrationForm({ userType }: RegistrationFormProps) {
             {/* Footer */}
             <CardFooter className="flex justify-center border-t p-6">
                 <p className="text-sm text-gray-600">
-                    Already have an account?
+                    {t("register.have_account")}
                     <Link to={ROUTES.LOGIN} className="text-blue-600 hover:text-blue-800 font-medium ml-1">
-                        Sign in
+                        {t("login.sign_in")}
                     </Link>
                 </p>
             </CardFooter>
