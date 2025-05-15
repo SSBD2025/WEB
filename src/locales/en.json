@@ -13,9 +13,11 @@
       "login_too_long": "Login must be at most 50 characters",
       "password_required": "Password is required",
       "password_too_short": "Password must be at least 8 characters",
-      "password_too_long": "Password must be at most 60 characters"
+      "password_too_long": "Password must be at most 60 characters",
+      "failed_to_login": "Failed to login"
     },
-    "password": "Password"
+    "password": "Password",
+    "login_successful": "You have logged in successfully"
   },
   "profile": {
     "title": "Your profile",
@@ -214,6 +216,62 @@
         "message": "Looks like something went wrong. Please try again later."
       }
     }
+  },
+  "2fa": {
+    "enter_code": "Enter two-factor authentication code",
+    "submit": "Submit",
+    "error": {
+      "code_required": "Code is required",
+      "code_length": "Code should be 8 characters long"
+    }
+  },
+  "home": {
+    "title": "Your personalized path to better health",
+    "info": "In the Dietetycy XXI wieku application, we connect you with professional\n          dietitians who will prepare an individual nutrition plan for you\n          tailored to your needs, goals and lifestyle.",
+    "sign_in": "Sign In",
+    "why_us": "Why us?",
+    "role_info": "What can a client do and what can a dietitian do?",
+    "client": "Client",
+    "client_description": "For those looking for nutritional advice and meal\n                planning",
+    "client_survey": "Completing health surveys",
+    "client_survey_info": "Provide your parameters and habits to receive a personalized diet",
+    "client_stats": "Progress and stats preview",
+    "client_stats_info": "Monitor changes in your weight, body composition and diet effects",
+    "client_review": "Evaluation of the received dietary profile",
+    "client_review_info": "Express your opinion about the diet and help improve it",
+    "client_access_plans": "Access to assigned diet plans",
+    "client_access_plans_info": "Use dietary profiles prepared especially for you",
+    "client_view_results": "View test results",
+    "client_view_results_info": "Check what your test results say and how they affect your diet",
+    "client_notifications": "Receiving reminders",
+    "client_notifications_info": "Don’t forget about tests and upcoming surveys",
+    "client_register": "Become a client",
+    "dietitian": "Dietitian",
+    "dietitian_description": "For nutrition specialists managing clients and providing guidance",
+    "dietitian_manage_clients": "Managing client list",
+    "dietitian_manage_clients_info": "Browse, filter, and choose the people you work with",
+    "dietitian_analyze_surveys": "Analyzing surveys and parameters",
+    "dietitian_analyze_surveys_info": "Assess client responses and build their dietary profile",
+    "dietitian_assign_plans": "Creating and assigning dietary profiles",
+    "dietitian_assign_plans_info": "Design personalized plans tailored to client needs",
+    "dietitian_lab_analysis": "Ordering and analyzing lab tests",
+    "dietitian_lab_analysis_info": "Help clients understand their results and implement proper changes",
+    "dietitian_feedback": "Reviewing client feedback",
+    "dietitian_feedback_info": "Collect feedback and improve your approach",
+    "dietitian_reminders": "Sending reminders",
+    "dietitian_reminders_info": "Encourage clients to take regular measurements and update their data",
+    "dietitian_register": "Become a dietitian",
+    "why_benefits_title": "Why is it worth it?",
+    "why_1_title": "A personalized diet tailored to you",
+    "why_1_desc": "Your needs are unique — your meal plan should be too. A dietitian analyzes your lifestyle, goals, and preferences to create a plan that truly works.",
+    "why_2_title": "Improved health results",
+    "why_2_desc": "Cholesterol, blood sugar, blood pressure — a well-matched diet can support your body in addressing common health issues.",
+    "why_3_title": "Learn to eat consciously",
+    "why_3_desc": "With the help of a dietitian, you'll learn how to compose meals, read labels, and avoid nutritional traps.",
+    "why_4_title": "A diet aligned with your values",
+    "why_4_desc": "Vegan? Keto? Gluten-free? Or a diet for Hashimoto’s? Dietitians consider both your medical needs and personal beliefs.",
+    "why_5_title": "Better mood and concentration",
+    "why_5_desc": "The right nutrients benefit not just your body, but also your mind. Feel the difference just days after switching to healthy eating."
   },
   "register": {
     "register": "Register",

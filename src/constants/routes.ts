@@ -7,6 +7,7 @@ const ROUTES = {
     ADMIN_USER_DETAILS: "/admin/dashboard/users/:id",
     getAdminUserDetails: (id: string) => `/admin/dashboard/users/${id}`,
     ADMIN_DASHBOARD: "/admin/dashboard",
+    TWO_FACTOR: "/2fa-login"
 }
 
 export default ROUTES;

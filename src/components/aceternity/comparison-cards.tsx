@@ -1,4 +1,5 @@
 import type React from "react";
+import {t} from "i18next";
 
 import {
   Apple,
@@ -56,7 +57,7 @@ export default function ClientDieticianComparison() {
       className="max-w-7xl mx-auto py-8"
     >
       <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-primary">
-        Co może klient, a co dietetyk?
+        {t("home.role_info")}
       </h2>
 
       <div className="grid gap-6 md:grid-cols-2">
@@ -68,46 +69,45 @@ export default function ClientDieticianComparison() {
         >
           <Card className="overflow-hidden border-2 border-primary/20 transition-all hover:shadow-md">
             <CardHeader className="bg-primary/5 pb-4">
-              <CardTitle className="text-center text-2xl">Klient</CardTitle>
+              <CardTitle className="text-center text-2xl">{t("home.client")}</CardTitle>
               <CardDescription className="text-center">
-                Dla osób poszukujących wskazówek żywieniowych i planowania
-                posiłków
+                {t("home.client_description")}
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4 p-6">
               <FeatureItem
                 icon={<Apple className="h-5 w-5" />}
-                title="Wypełnianie ankiet zdrowotnych"
-                description="Podaj swoje parametry i nawyki, by otrzymać spersonalizowaną dietę"
+                title={t("home.client_survey")}
+                description={t("home.client_survey_info")}
               />
               <FeatureItem
                 icon={<ChartLine className="h-5 w-5" />}
-                title="Podgląd postępów i statystyk"
-                description="Obserwuj zmiany w swojej wadze, składzie ciała i efektach diety"
+                title={t("home.client_stats")}
+                description={t("home.client_stats_info")}
               />
               <FeatureItem
                 icon={<Calendar className="h-5 w-5" />}
-                title="Ocena otrzymanego profilu dietetycznego"
-                description="Wyraź swoją opinię o diecie i pomóż ją doskonalić"
+                title={t("home.client_review")}
+                description={t("home.client_review_info")}
               />
               <FeatureItem
                 icon={<MessageSquare className="h-5 w-5" />}
-                title="Dostęp do przypisanych planów dietetycznych"
-                description="Korzystaj z profili dietetycznych przygotowanych specjalnie dla Ciebie"
+                title={t("home.client_access_plans")}
+                description={t("home.client_access_plans_info")}
               />
               <FeatureItem
                 icon={<ClipboardList className="h-5 w-5" />}
-                title="Podgląd wyników badań"
-                description="Sprawdź, co mówią Twoje wyniki i jakie mają znaczenie dla diety"
+                title={t("home.client_view_results")}
+                description={t("home.client_view_results_info")}
               />
               <FeatureItem
                 icon={<Bell className="h-5 w-5" />}
-                title="Otrzymywanie przypomnień"
-                description="Nie zapomnij o badaniach i kolejnych ankietach"
+                title={t("home.client_notifications")}
+                description={t("home.client_notifications_info")}
               />
               <Link to={ROUTES.USER_REGISTER} className="w-full block">
                 <Button className="w-full cursor-pointer transform rounded-lg px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-                  Zostań klientem
+                  {t("home.client_register")}
                 </Button>
               </Link>
             </CardContent>
@@ -121,46 +121,45 @@ export default function ClientDieticianComparison() {
         >
           <Card className="overflow-hidden border-2 border-primary/20 transition-all hover:shadow-md">
             <CardHeader className="bg-primary/5 pb-4">
-              <CardTitle className="text-center text-2xl">Dietetyk</CardTitle>
+              <CardTitle className="text-center text-2xl">{t("home.dietitian")}</CardTitle>
               <CardDescription className="text-center">
-                Dla specjalistów ds. żywienia zarządzających klientami i
-                udzielających wskazówek
+                {t("home.dietitian_description")}
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-4 p-6">
               <FeatureItem
                 icon={<Users className="h-5 w-5" />}
-                title="Zarządzanie listą klientów"
-                description="Przeglądaj, filtruj i wybieraj osoby, z którymi współpracujesz"
+                title={t("home.dietitian_manage_clients")}
+                description={t("home.dietitian_manage_clients_info")}
               />
               <FeatureItem
                 icon={<Utensils className="h-5 w-5" />}
-                title="Analiza ankiet i parametrów"
-                description="Oceniaj odpowiedzi klientów i buduj ich profil żywieniowy"
+                title={t("home.dietitian_analyze_surveys")}
+                description={t("home.dietitian_analyze_surveys_info")}
               />
               <FeatureItem
                 icon={<BarChart className="h-5 w-5" />}
-                title="Tworzenie i przypisywanie profili dietetycznych"
-                description="Projektuj indywidualne plany dostosowane do potrzeb klientów"
+                title={t("home.dietitian_assign_plans")}
+                description={t("home.dietitian_assign_plans_info")}
               />
               <FeatureItem
                 icon={<FileText className="h-5 w-5" />}
-                title="Zlecanie i analizowanie badań"
-                description="Pomagaj klientom zrozumieć ich wyniki i wdrażaj odpowiednie zmiany"
+                title={t("home.dietitian_lab_analysis")}
+                description={t("home.dietitian_lab_analysis_info")}
               />
               <FeatureItem
                 icon={<Calendar className="h-5 w-5" />}
-                title="Przegląd opinii klientów"
-                description="Zbieraj informacje zwrotne i ulepszaj swoje podejście"
+                title={t("home.dietitian_feedback")}
+                description={t("home.dietitian_feedback_info")}
               />
               <FeatureItem
                 icon={<UserCog className="h-5 w-5" />}
-                title="Wysyłanie przypomnień"
-                description="Zachęcaj klientów do regularnych pomiarów i aktualizacji"
+                title={t("home.dietitian_reminders")}
+                description={t("home.dietitian_reminders_info")}
               />
               <Link to={ROUTES.DIETICIAN_REGISTER} className="w-full block">
                 <Button className="w-full cursor-pointer transform rounded-lg px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-                  Zostań dietetykiem
+                  {t("home.dietitian_register")}
                 </Button>
               </Link>
             </CardContent>

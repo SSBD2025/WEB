@@ -1,4 +1,4 @@
-import LoginForm from "@/components/LoginForm";
+import LoginForm from "@/components/loginForm.tsx";
 import {
   Card,
   CardContent,
@@ -7,10 +7,9 @@ import {
 } from "@/components/ui/card";
 import ROUTES from "@/constants/routes";
 import { Link } from "react-router";
-import {useTranslation} from "react-i18next";
+import {t} from "i18next"
 
 const Login = () => {
-  const { t } = useTranslation();
   return (
     <div className="flex items-center justify-center w-full flex-grow">
       <Card className="w-full max-w-md shadow-lg">
