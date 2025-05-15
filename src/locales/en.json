@@ -131,7 +131,9 @@
         "add_role_confirm": "Add role {{role}}?",
         "remove_role_confirm": "Remove role {{role}}?",
         "add_role_description": "Are you sure you want to add the {{role}} role for this user? This will grant additional permissions.",
-        "remove_role_description": "Are you sure you want to remove the {{role}} role for this user? This will revoke some permissions."
+        "remove_role_description": "Are you sure you want to remove the {{role}} role for this user? This will revoke some permissions.",
+        "client_dietician_conflict": "A user cannot be both a Client and a Dietician. Remove the Dietician role first.",
+        "dietician_client_conflict": "A user cannot be both a Dietician and a Client. Remove the Client role first."
       },
       "forms": {
         "personal_data": "Personal Data",

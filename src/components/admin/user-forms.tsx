@@ -201,7 +201,6 @@ export default function UserForms({
         </Tabs>
       </Card>
 
-      {/* Confirmation Dialog for Name Change */}
       <AlertDialog open={isNameDialogOpen} onOpenChange={setIsNameDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
@@ -219,7 +218,6 @@ export default function UserForms({
         </AlertDialogContent>
       </AlertDialog>
 
-      {/* Confirmation Dialog for Email Change */}
       <AlertDialog open={isEmailDialogOpen} onOpenChange={setIsEmailDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>

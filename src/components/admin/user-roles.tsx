@@ -17,6 +17,8 @@ import {
 import type { User } from "@/types/user"
 import { useTranslation } from "react-i18next"
 
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+
 const AVAILABLE_ROLES = ["ADMIN", "CLIENT", "DIETICIAN"]
 
 interface UserRolesProps {
@@ -71,6 +73,31 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
     return colors[role] || "bg-gray-100 text-gray-800 hover:bg-gray-200"
   }
 
+  const isRoleDisabled = (role: string, hasRole: boolean) => {
+    if (isLoading) return true
+
+    if (!hasRole) {
+      if (role === "CLIENT" && selectedRoles.includes("DIETICIAN")) {
+        return true
+      }
+      if (role === "DIETICIAN" && selectedRoles.includes("CLIENT")) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  const getDisabledTooltip = (role: string) => {
+    if (role === "CLIENT" && selectedRoles.includes("DIETICIAN")) {
+      return t("admin.user_account.roles.client_dietician_conflict")
+    }
+    if (role === "DIETICIAN" && selectedRoles.includes("CLIENT")) {
+      return t("admin.user_account.roles.dietician_client_conflict")
+    }
+    return ""
+  }
+
   return (
     <>
       <Card>
@@ -100,30 +127,47 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-4">
             {AVAILABLE_ROLES.map((role) => {
               const hasRole = selectedRoles.includes(role)
+              const isDisabled = isRoleDisabled(role, hasRole)
+              const tooltipMessage = getDisabledTooltip(role)
 
               return (
-                <motion.div key={role} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                  <Button
-                    variant="outline"
-                    className={`w-full justify-between h-auto py-3 px-4 ${hasRole ? getRoleColor(role) : ""}`}
-                    onClick={() => handleRoleAction(role, !hasRole)}
-                    disabled={isLoading}
-                  >
-                    <span>{role}</span>
-                    <AnimatePresence mode="wait">
-                      {isLoading ? (
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                      ) : hasRole ? (
-                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                          <Minus className="h-4 w-4" />
-                        </motion.div>
-                      ) : (
-                        <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                          <Plus className="h-4 w-4" />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </Button>
+                <motion.div
+                  key={role}
+                  whileHover={{ scale: isDisabled ? 1 : 1.02 }}
+                  whileTap={{ scale: isDisabled ? 1 : 0.98 }}
+                >
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <div className="w-full">
+                          <Button
+                            variant="outline"
+                            className={`w-full justify-between h-auto py-3 px-4 ${hasRole ? getRoleColor(role) : ""} ${
+                              isDisabled && !hasRole ? "opacity-50 cursor-not-allowed" : ""
+                            }`}
+                            onClick={() => !isDisabled && handleRoleAction(role, !hasRole)}
+                            disabled={isLoading || isDisabled}
+                          >
+                            <span>{role}</span>
+                            <AnimatePresence mode="wait">
+                              {isLoading ? (
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                              ) : hasRole ? (
+                                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                                  <Minus className="h-4 w-4" />
+                                </motion.div>
+                              ) : (
+                                <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                                  <Plus className="h-4 w-4" />
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </Button>
+                        </div>
+                      </TooltipTrigger>
+                      {tooltipMessage && <TooltipContent>{tooltipMessage}</TooltipContent>}
+                    </Tooltip>
+                  </TooltipProvider>
                 </motion.div>
               )
             })}

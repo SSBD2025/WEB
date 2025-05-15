@@ -131,7 +131,9 @@
         "add_role_confirm": "Dodać rolę {{role}}?",
         "remove_role_confirm": "Usunąć rolę {{role}}?",
         "add_role_description": "Czy na pewno chcesz dodać rolę {{role}} dla tego użytkownika? Spowoduje to przyznanie dodatkowych uprawnień.",
-        "remove_role_description": "Czy na pewno chcesz usunąć rolę {{role}} dla tego użytkownika? Spowoduje to odebranie niektórych uprawnień."
+        "remove_role_description": "Czy na pewno chcesz usunąć rolę {{role}} dla tego użytkownika? Spowoduje to odebranie niektórych uprawnień.",
+        "client_dietician_conflict": "Użytkownik nie może być jednocześnie Klientem i Dietetykiem. Najpierw usuń rolę Dietetyka.",
+        "dietician_client_conflict": "Użytkownik nie może być jednocześnie Dietetykiem i Klientem. Najpierw usuń rolę Klienta."
       },
       "forms": {
         "personal_data": "Dane osobowe",
