@@ -120,7 +120,9 @@
         "cancel": "Cancel",
         "block": "Block",
         "unblock": "Unblock",
-        "send_link": "Send Link"
+        "send_link": "Send Link",
+        "cannot_block_self": "You cannot block your own account",
+        "self_edit_description": "You are viewing your own account. For security reasons, some actions are restricted."
       },
       "roles": {
         "title": "User Roles",
@@ -133,7 +135,9 @@
         "add_role_description": "Are you sure you want to add the {{role}} role for this user? This will grant additional permissions.",
         "remove_role_description": "Are you sure you want to remove the {{role}} role for this user? This will revoke some permissions.",
         "client_dietician_conflict": "A user cannot be both a Client and a Dietician. Remove the Dietician role first.",
-        "dietician_client_conflict": "A user cannot be both a Dietician and a Client. Remove the Client role first."
+        "dietician_client_conflict": "A user cannot be both a Dietician and a Client. Remove the Client role first.",
+        "cannot_modify_own_roles": "You cannot modify your own roles",
+        "self_edit_description": "You are viewing your own account. For security reasons, you cannot modify your own roles."
       },
       "forms": {
         "personal_data": "Personal Data",

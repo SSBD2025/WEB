@@ -99,6 +99,7 @@ export default function AdminUserAccount() {
                         unblock: unblockMutation.isPending,
                         resetPassword: passwordMutation.isPending,
                       }}
+                      userId={user.account.id}
                     />
                   </motion.div>
 
