@@ -7,6 +7,7 @@ import {
   DieticianRegister,
   AdminUserAccount,
   AdminDashboard,
+  TwoFactorLogin
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -47,6 +48,7 @@ const Layout = () => {
               path={ROUTES.DIETICIAN_REGISTER}
               element={<DieticianRegister />}
             />
+            <Route path={ROUTES.TWO_FACTOR} element={<TwoFactorLogin/>}/>
           </Route>
           <Route
             element={

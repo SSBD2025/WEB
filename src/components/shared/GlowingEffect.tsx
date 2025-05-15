@@ -8,6 +8,7 @@ import {
 import { GlowingEffect } from "@/components/aceternity/glowing-effect";
 import { motion } from "motion/react";
 import { forwardRef } from "react";
+import {t} from "i18next";
 
 const GlowingEffectDemoSecond = forwardRef<HTMLElement, object>((_, ref) => {
   return (
@@ -20,42 +21,42 @@ const GlowingEffectDemoSecond = forwardRef<HTMLElement, object>((_, ref) => {
       ref={ref}
     >
       <h2 className="mb-8 text-center text-3xl font-bold tracking-tight text-primary">
-        Dlaczego warto?
+        {t("home.why_benefits_title")}
       </h2>
       <ul className="grid grid-cols-1 grid-rows-none max-w-7xl mx-auto gap-4 md:grid-cols-12 md:grid-rows-3 lg:gap-4 xl:max-h-[34rem] xl:grid-rows-2 p-1">
         <GridItem
           area="md:[grid-area:1/1/2/7] xl:[grid-area:1/1/2/5]"
           icon={<Apple className="h-4 w-4" />}
-          title="Spersonalizowana dieta, dopasowana do Ciebie"
-          description="Twoje potrzeby są unikalne – Twój plan żywieniowy również. Dietetyk analizuje Twój tryb życia, cele i preferencje, by stworzyć jadłospis, który naprawdę działa."
+          title={t("home.why_1_title")}
+          description={t("home.why_1_desc")}
         />
 
         <GridItem
           area="md:[grid-area:1/7/2/13] xl:[grid-area:2/1/3/5]"
           icon={<BriefcaseMedical className="h-4 w-4" />}
-          title="Poprawa wyników zdrowotnych"
-          description="Cholesterol, cukier, ciśnienie – dzięki dobrze dobranej diecie możesz wspomóc organizm w walce z powszechnymi problemami zdrowotnymi."
+          title={t("home.why_2_title")}
+          description={t("home.why_2_desc")}
         />
 
         <GridItem
           area="md:[grid-area:2/1/3/7] xl:[grid-area:1/5/3/8]"
           icon={<Utensils className="h-4 w-4" />}
-          title="Naucz się jeść świadomie"
-          description="Z pomocą dietetyka zrozumiesz, jak komponować posiłki, jak czytać etykiety i unikać żywieniowych pułapek."
+          title={t("home.why_3_title")}
+          description={t("home.why_3_desc")}
         />
 
         <GridItem
           area="md:[grid-area:2/7/3/13] xl:[grid-area:1/8/2/13]"
           icon={<Wheat className="h-4 w-4" />}
-          title="Dieta zgodna z Twoimi wartościami"
-          description="Wege? Keto? Bezglutenowa? A może dieta przy Hashimoto? Dietetycy biorą pod uwagę Twoje potrzeby medyczne i światopoglądowe"
+          title={t("home.why_4_title")}
+          description={t("home.why_4_desc")}
         />
 
         <GridItem
           area="md:[grid-area:3/1/4/13] xl:[grid-area:2/8/3/13]"
           icon={<Brain className="h-4 w-4" />}
-          title="Lepsze samopoczucie i koncentracja"
-          description="Odpowiednio dobrane składniki wpływają nie tylko na ciało, ale i na umysł. Poczuj różnicę już po kilku dniach zdrowego odżywiania."
+          title={t("home.why_5_title")}
+          description={t("home.why_5_desc")}
         />
       </ul>
     </motion.section>

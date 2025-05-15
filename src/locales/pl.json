@@ -13,9 +13,11 @@
       "login_too_long": "Login musi być maksymalnie 50 znakowy",
       "password_required": "Hasło jest wymagane",
       "password_too_short": "Hasło musi mieć co najmniej 8 znaków",
-      "password_too_long": "Hasło musi mieć maksymalnie 60 znaków"
+      "password_too_long": "Hasło musi mieć maksymalnie 60 znaków",
+      "failed_to_login": "Nie udało się zalogować"
     },
-    "password": "Hasło"
+    "password": "Hasło",
+    "login_successful": "Zalogowano się pomyślnie"
   },
   "profile": {
     "title": "Twój profil",
@@ -214,6 +216,62 @@
         "message": "Wygląda na to, że coś poszło nie tak. Proszę spróbować ponownie później."
       }
     }
+  },
+  "2fa": {
+    "enter_code": "Podaj kod do dwufazowego uwierzytelniania",
+    "submit": "Potwierdź",
+    "error": {
+      "code_required": "Kod jest wymagany",
+      "code_length": "Kod powinien być 8 znakowy"
+    }
+  },
+  "home": {
+    "title": "Twoja spersonalizowana droga do lepszego zdrowia",
+    "info": "W aplikacji Dietetycy XXI wieku łączymy Cię z profesjonalnymi\n          dietetykami, którzy przygotują dla Ciebie indywidualny plan żywieniowy\n          dopasowany do Twoich potrzeb, celów i stylu życia.",
+    "sign_in": "Zaloguj się",
+    "why_us": "Dlaczego my?",
+    "role_info": "Co może klient, a co dietetyk?",
+    "client": "Klient",
+    "client_description": "Dla osób poszukujących wskazówek żywieniowych i planowania\n                posiłków",
+    "client_survey": "Wypełnianie ankiet zdrowotnych",
+    "client_survey_info": "Podaj swoje parametry i nawyki, by otrzymać spersonalizowaną dietę",
+    "client_stats": "Podgląd postępów i statystyk",
+    "client_stats_info": "Obserwuj zmiany w swojej wadze, składzie ciała i efektach diety",
+    "client_review": "Ocena otrzymanego profilu dietetycznego",
+    "client_review_info": "Wyraź swoją opinię o diecie i pomóż ją doskonalić",
+    "client_access_plans": "Dostęp do przypisanych planów dietetycznych",
+    "client_access_plans_info": "Korzystaj z profili dietetycznych przygotowanych specjalnie dla Ciebie",
+    "client_view_results": "Podgląd wyników badań",
+    "client_view_results_info": "Sprawdź, co mówią Twoje wyniki i jakie mają znaczenie dla diety",
+    "client_notifications": "Otrzymywanie przypomnień",
+    "client_notifications_info": "Nie zapomnij o badaniach i kolejnych ankietach",
+    "client_register": "Zostań klientem",
+    "dietitian": "Dietetyk",
+    "dietitian_description": "Dla specjalistów ds. żywienia zarządzających klientami i udzielających wskazówek",
+    "dietitian_manage_clients": "Zarządzanie listą klientów",
+    "dietitian_manage_clients_info": "Przeglądaj, filtruj i wybieraj osoby, z którymi współpracujesz",
+    "dietitian_analyze_surveys": "Analiza ankiet i parametrów",
+    "dietitian_analyze_surveys_info": "Oceniaj odpowiedzi klientów i buduj ich profil żywieniowy",
+    "dietitian_assign_plans": "Tworzenie i przypisywanie profili dietetycznych",
+    "dietitian_assign_plans_info": "Projektuj indywidualne plany dostosowane do potrzeb klientów",
+    "dietitian_lab_analysis": "Zlecanie i analizowanie badań",
+    "dietitian_lab_analysis_info": "Pomagaj klientom zrozumieć ich wyniki i wdrażaj odpowiednie zmiany",
+    "dietitian_feedback": "Przegląd opinii klientów",
+    "dietitian_feedback_info": "Zbieraj informacje zwrotne i ulepszaj swoje podejście",
+    "dietitian_reminders": "Wysyłanie przypomnień",
+    "dietitian_reminders_info": "Zachęcaj klientów do regularnych pomiarów i aktualizacji",
+    "dietitian_register": "Zostań dietetykiem",
+    "why_benefits_title": "Dlaczego warto?",
+    "why_1_title": "Spersonalizowana dieta, dopasowana do Ciebie",
+    "why_1_desc": "Twoje potrzeby są unikalne – Twój plan żywieniowy również. Dietetyk analizuje Twój tryb życia, cele i preferencje, by stworzyć jadłospis, który naprawdę działa.",
+    "why_2_title": "Poprawa wyników zdrowotnych",
+    "why_2_desc": "Cholesterol, cukier, ciśnienie – dzięki dobrze dobranej diecie możesz wspomóc organizm w walce z powszechnymi problemami zdrowotnymi.",
+    "why_3_title": "Naucz się jeść świadomie",
+    "why_3_desc": "Z pomocą dietetyka zrozumiesz, jak komponować posiłki, jak czytać etykiety i unikać żywieniowych pułapek.",
+    "why_4_title": "Dieta zgodna z Twoimi wartościami",
+    "why_4_desc": "Wege? Keto? Bezglutenowa? A może dieta przy Hashimoto? Dietetycy biorą pod uwagę Twoje potrzeby medyczne i światopoglądowe.",
+    "why_5_title": "Lepsze samopoczucie i koncentracja",
+    "why_5_desc": "Odpowiednio dobrane składniki wpływają nie tylko na ciało, ale i na umysł. Poczuj różnicę już po kilku dniach zdrowego odżywiania."
   },
   "register": {
     "register": "Zarejestruj się",
