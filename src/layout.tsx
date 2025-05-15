@@ -18,25 +18,26 @@ import useRole from "./store";
 import { useEffect } from "react";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 import GuestRoute from "./components/shared/GuestRole";
+import { Navbar } from "./components/shared/Navbar";
 
 const Layout = () => {
   const { data: user } = useCurrentUser();
   const { currentRole, setCurrentRole } = useRole();
 
   useEffect(() => {
-    if (user?.roles?.[0]?.roleName) {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+
+    if (!currentRole && user?.roles?.[0]?.roleName) {
       const role = user.roles[0].roleName.toLowerCase() as AccessLevel;
-      if (role !== currentRole) {
-        setCurrentRole(role);
-      }
-    } else {
-      setCurrentRole(null);
+      setCurrentRole(role);
     }
   }, [user, currentRole, setCurrentRole]);
 
   return (
     <div className="min-h-screen flex flex-col">
       <ThemeWrapper role={currentRole || "client"} prefersDark={false}>
+        <Navbar />
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route element={<GuestRoute />}>
