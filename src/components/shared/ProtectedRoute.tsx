@@ -11,8 +11,6 @@ const ProtectedRoute = ({ allowedRoles }: { allowedRoles?: string[] }) => {
   const { currentRole } = useRole();
   const { t } = useTranslation();
 
-  console.log(isLoading, user, !user && !currentRole);
-
   if (isLoading) {
     return (
       <div className="w-screen h-screen flex items-center justify-center flex-col">
@@ -36,7 +34,7 @@ const ProtectedRoute = ({ allowedRoles }: { allowedRoles?: string[] }) => {
   }
 
   if (allowedRoles && !allowedRoles.includes(currentRole)) {
-    return <Navigate to={ROUTES.HOME} replace />;
+    return <Unauthorized />;
   }
   return <Outlet />;
 };
