@@ -11,8 +11,8 @@ export const useLogin = () => {
     mutationFn: loginUser,
     onError: (error) => axiosErrorHandler(error, t("login.failed_to_login")),
     onSuccess: (data) => {
-      if (!data.is2fa && data.accessToken) {
-        localStorage.setItem("token", data.accessToken);
+      if (!data.is2fa && data.value) {
+        localStorage.setItem("token", data.value);
         toast.success(t("login.login_successful"));
 
         refetch();
@@ -27,7 +27,7 @@ export const use2faLogin = () => {
     mutationFn: twoFactorLogin,
     onError: (error) => axiosErrorHandler(error, t("login.failed_to_login")),
     onSuccess: (data) => {
-      localStorage.setItem("token", data.accessToken);
+      localStorage.setItem("token", data.value);
       toast.success(t("login.login_successful"));
 
       refetch();
