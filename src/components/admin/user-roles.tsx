@@ -19,6 +19,8 @@ import { useTranslation } from "react-i18next"
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
+import { useCurrentUser } from "@/hooks/useCurrentUser"
+
 const AVAILABLE_ROLES = ["ADMIN", "CLIENT", "DIETICIAN"]
 
 interface UserRolesProps {
@@ -34,6 +36,9 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
   const [roleToModify, setRoleToModify] = useState<string | null>(null)
   const [isAddingRole, setIsAddingRole] = useState(false)
   const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const { data: currentUser } = useCurrentUser()
+
+  const isSelfEditing = currentUser?.account?.id === user.account.id
 
   useEffect(() => {
     const activeRoles = user.roles.filter((role) => role.active).map((role) => role.roleName)
@@ -41,7 +46,7 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
   }, [user.roles])
 
   const handleRoleAction = (role: string, isAdding: boolean) => {
-    if (isLoading) return
+    if (isLoading || isSelfEditing) return
 
     setRoleToModify(role)
     setIsAddingRole(isAdding)
@@ -76,6 +81,8 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
   const isRoleDisabled = (role: string, hasRole: boolean) => {
     if (isLoading) return true
 
+    if (isSelfEditing) return true
+
     if (!hasRole) {
       if (role === "CLIENT" && selectedRoles.includes("DIETICIAN")) {
         return true
@@ -89,6 +96,10 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
   }
 
   const getDisabledTooltip = (role: string) => {
+    if (isSelfEditing) {
+      return t("admin.user_account.roles.cannot_modify_own_roles")
+    }
+
     if (role === "CLIENT" && selectedRoles.includes("DIETICIAN")) {
       return t("admin.user_account.roles.client_dietician_conflict")
     }
@@ -106,7 +117,11 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
             <Shield className="h-5 w-5" />
             {t("admin.user_account.roles.title")}
           </CardTitle>
-          <CardDescription>{t("admin.user_account.roles.description")}</CardDescription>
+          <CardDescription>
+            {isSelfEditing
+              ? t("admin.user_account.roles.self_edit_description")
+              : t("admin.user_account.roles.description")}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="mb-4">
@@ -128,7 +143,7 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
             {AVAILABLE_ROLES.map((role) => {
               const hasRole = selectedRoles.includes(role)
               const isDisabled = isRoleDisabled(role, hasRole)
-              const tooltipMessage = getDisabledTooltip(role)
+              const tooltipMessage = getDisabledTooltip(role, hasRole)
 
               return (
                 <motion.div

@@ -120,7 +120,9 @@
         "cancel": "Anuluj",
         "block": "Zablokuj",
         "unblock": "Odblokuj",
-        "send_link": "Wyślij link"
+        "send_link": "Wyślij link",
+        "cannot_block_self": "Nie możesz zablokować swojego własnego konta",
+        "self_edit_description": "Przeglądasz swoje własne konto. Ze względów bezpieczeństwa niektóre akcje są ograniczone."
       },
       "roles": {
         "title": "Role użytkownika",
@@ -133,7 +135,9 @@
         "add_role_description": "Czy na pewno chcesz dodać rolę {{role}} dla tego użytkownika? Spowoduje to przyznanie dodatkowych uprawnień.",
         "remove_role_description": "Czy na pewno chcesz usunąć rolę {{role}} dla tego użytkownika? Spowoduje to odebranie niektórych uprawnień.",
         "client_dietician_conflict": "Użytkownik nie może być jednocześnie Klientem i Dietetykiem. Najpierw usuń rolę Dietetyka.",
-        "dietician_client_conflict": "Użytkownik nie może być jednocześnie Dietetykiem i Klientem. Najpierw usuń rolę Klienta."
+        "dietician_client_conflict": "Użytkownik nie może być jednocześnie Dietetykiem i Klientem. Najpierw usuń rolę Klienta.",
+        "cannot_modify_own_roles": "Nie możesz modyfikować swoich własnych ról",
+        "self_edit_description": "Przeglądasz swoje własne konto. Ze względów bezpieczeństwa nie możesz modyfikować swoich ról."
       },
       "forms": {
         "personal_data": "Dane osobowe",

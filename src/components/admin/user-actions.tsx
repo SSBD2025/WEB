@@ -14,6 +14,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
 import { useTranslation } from "react-i18next"
+import { useCurrentUser } from "@/hooks/useCurrentUser"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 
 interface UserActionsProps {
   isBlocked: boolean
@@ -25,13 +27,24 @@ interface UserActionsProps {
     unblock: boolean
     resetPassword: boolean
   }
+  userId: string
 }
 
-export default function UserActions({ isBlocked, onBlock, onUnblock, onResetPassword, isLoading }: UserActionsProps) {
+export default function UserActions({
+  isBlocked,
+  onBlock,
+  onUnblock,
+  onResetPassword,
+  isLoading,
+  userId,
+}: UserActionsProps) {
   const { t } = useTranslation()
   const [isBlockDialogOpen, setIsBlockDialogOpen] = useState(false)
   const [isUnblockDialogOpen, setIsUnblockDialogOpen] = useState(false)
   const [isPasswordDialogOpen, setIsPasswordDialogOpen] = useState(false)
+  const { data: currentUser } = useCurrentUser()
+
+  const isSelfEditing = currentUser?.account?.id === userId
 
   const handleBlock = () => {
     setIsBlockDialogOpen(true)
@@ -56,17 +69,24 @@ export default function UserActions({ isBlocked, onBlock, onUnblock, onResetPass
       <Card>
         <CardHeader>
           <CardTitle>{t("admin.user_account.actions.title")}</CardTitle>
-          <CardDescription>{t("admin.user_account.actions.description")}</CardDescription>
+          <CardDescription>
+            {isSelfEditing
+              ? t("admin.user_account.actions.self_edit_description")
+              : t("admin.user_account.actions.description")}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {isBlocked ? (
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+              <motion.div
+                whileHover={{ scale: isSelfEditing ? 1 : 1.02 }}
+                whileTap={{ scale: isSelfEditing ? 1 : 0.98 }}
+              >
                 <Button
                   onClick={handleUnblock}
                   variant="outline"
                   className="w-full h-auto py-6 flex flex-col items-center justify-center gap-3"
-                  disabled={isLoading.unblock}
+                  disabled={isLoading.unblock || isSelfEditing}
                 >
                   {isLoading.unblock ? (
                     <Loader2 className="h-6 w-6 animate-spin" />
@@ -77,20 +97,37 @@ export default function UserActions({ isBlocked, onBlock, onUnblock, onResetPass
                 </Button>
               </motion.div>
             ) : (
-              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full">
-                <Button
-                  onClick={handleBlock}
-                  variant="outline"
-                  className="w-full h-auto py-6 flex flex-col items-center justify-center gap-3 border-destructive/20 hover:border-destructive/30 hover:bg-destructive/10"
-                  disabled={isLoading.block}
-                >
-                  {isLoading.block ? (
-                    <Loader2 className="h-6 w-6 animate-spin" />
-                  ) : (
-                    <Lock className="h-6 w-6 text-destructive" />
-                  )}
-                  <span className="font-medium text-destructive">{t("admin.user_account.actions.block_account")}</span>
-                </Button>
+              <motion.div
+                whileHover={{ scale: isSelfEditing ? 1 : 1.02 }}
+                whileTap={{ scale: isSelfEditing ? 1 : 0.98 }}
+                className="w-full"
+              >
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="w-full">
+                        <Button
+                          onClick={handleBlock}
+                          variant="outline"
+                          className="w-full h-auto py-6 flex flex-col items-center justify-center gap-3 border-destructive/20 hover:border-destructive/30 hover:bg-destructive/10"
+                          disabled={isLoading.block || isSelfEditing}
+                        >
+                          {isLoading.block ? (
+                            <Loader2 className="h-6 w-6 animate-spin" />
+                          ) : (
+                            <Lock className="h-6 w-6 text-destructive" />
+                          )}
+                          <span className="font-medium text-destructive">
+                            {t("admin.user_account.actions.block_account")}
+                          </span>
+                        </Button>
+                      </div>
+                    </TooltipTrigger>
+                    {isSelfEditing && (
+                      <TooltipContent>{t("admin.user_account.actions.cannot_block_self")}</TooltipContent>
+                    )}
+                  </Tooltip>
+                </TooltipProvider>
               </motion.div>
             )}
 
