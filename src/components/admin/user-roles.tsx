@@ -143,7 +143,7 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
             {AVAILABLE_ROLES.map((role) => {
               const hasRole = selectedRoles.includes(role)
               const isDisabled = isRoleDisabled(role, hasRole)
-              const tooltipMessage = getDisabledTooltip(role, hasRole)
+              const tooltipMessage = getDisabledTooltip(role)
 
               return (
                 <motion.div
