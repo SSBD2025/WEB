@@ -6,6 +6,7 @@ import ChangeDataForm from "./changeDataForm";
 import ChangeEmailForm from "./changeEmailForm";
 import ChangePasswordForm from "./changePasswordForm";
 import { useTranslation } from "react-i18next";
+import Change2fa from "./change2fa";
 
 const MeProfileDetails = ({ user }: { user: User }) => {
   const { t } = useTranslation();
@@ -42,6 +43,12 @@ const MeProfileDetails = ({ user }: { user: User }) => {
                 className="justify-start px-4 py-2 w-full"
               >
                 {t("profile.tabs.changePassword")}
+              </TabsTrigger>
+              <TabsTrigger
+                value="2fa"
+                className="justify-start px-4 py-2 w-full"
+              >
+                {t("profile.tabs.2fa")}
               </TabsTrigger>
             </TabsList>
 
@@ -91,6 +98,54 @@ const MeProfileDetails = ({ user }: { user: User }) => {
                         {user.account.active ? t("common.yes") : t("common.no")}
                       </TableCell>
                     </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">
+                        {t("profile.fields.2fa")}
+                      </TableCell>
+                      <TableCell>
+                        {user.account.twoFactorAuth ? t("common.yes") : t("common.no")}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">
+                        {t("profile.fields.last_sucessful_login_ip")}
+                      </TableCell>
+                      <TableCell>
+                        {user.account.lastSuccessfulLoginIp
+                          ? user.account.lastSuccessfulLoginIp
+                          : "-"}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">
+                        {t("profile.fields.last_sucessful_login_date")}
+                      </TableCell>
+                      <TableCell>
+                        {user.account.lastSuccessfulLogin
+                          ? new Date(user.account.lastSuccessfulLogin).toLocaleString()
+                          : "-"}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">
+                        {t("profile.fields.last_failed_login_ip")}
+                      </TableCell>
+                      <TableCell>
+                        {user.account.lastFailedLoginIp
+                          ? user.account.lastFailedLoginIp
+                          : "-"}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className="font-semibold">
+                        {t("profile.fields.last_failed_login_date")}
+                      </TableCell>
+                      <TableCell>
+                        {user.account.lastFailedLogin
+                          ? new Date(user.account.lastFailedLogin).toLocaleString()
+                          : "-"}
+                      </TableCell>
+                    </TableRow>
                   </TableBody>
                 </Table>
               </TabsContent>
@@ -109,6 +164,9 @@ const MeProfileDetails = ({ user }: { user: User }) => {
 
               <TabsContent value="changePassword">
                 <ChangePasswordForm />
+              </TabsContent>
+              <TabsContent value="2fa">
+                <Change2fa status={user.account.twoFactorAuth}/>
               </TabsContent>
             </div>
           </div>

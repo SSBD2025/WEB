@@ -4,6 +4,6 @@ export interface LoginRequest {
 }
 
 export interface TwoFactorLoginRequest {
-    login: string;
     code: string;
+    access2FAToken: string;
 }
