@@ -9,7 +9,6 @@ import {
   PasswordReset,
   NewPassword,
   AdminDashboard,
-
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -22,6 +21,7 @@ import { useEffect } from "react";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 import GuestRoute from "./components/shared/GuestRole";
 import { Navbar } from "./components/shared/Navbar";
+import Redirect from "./pages/Redirect";
 
 const Layout = () => {
   const { data: user } = useCurrentUser();
@@ -42,8 +42,9 @@ const Layout = () => {
       <ThemeWrapper role={currentRole || "client"} prefersDark={false}>
         <Navbar />
         <Routes>
+          <Route path={ROUTES.REDIRECT} element={<Redirect />} />
           <Route path={ROUTES.HOME} element={<Home />} />
-          <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset/>} />
+          <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset />} />
           <Route path={ROUTES.NEW_PASSWORD} element={<NewPassword />} />
           <Route element={<GuestRoute />}>
             <Route path={ROUTES.LOGIN} element={<Login />} />
