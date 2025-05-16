@@ -22,7 +22,7 @@ const Login = () => {
         <CardContent className="p-6">
           <LoginForm />
         </CardContent>
-        <CardFooter className="flex justify-center border-t p-6">
+        <CardFooter className="flex flex-col items-center border-t p-6 space-y-2">
           <p className="text-sm text-gray-600">
             {t("login.sign_up_info")}
             <Link
@@ -30,6 +30,15 @@ const Login = () => {
               className="text-blue-600 hover:text-blue-800 font-medium ml-1"
             >
               {t("login.sign_up")}
+            </Link>
+          </p>
+          <p className="text-sm text-gray-600">
+            {t("login.password_reset_info")}
+            <Link
+                to={ROUTES.PASSWORD_RESET}
+                className="text-blue-600 hover:text-blue-800 font-medium ml-1"
+            >
+              {t("login.password_reset")}
             </Link>
           </p>
         </CardFooter>

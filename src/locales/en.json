@@ -4,6 +4,8 @@
     "info": "Log in to your account to start using the application",
     "sign_up_info": "Don’t have an account?",
     "sign_up": "Sign Up",
+    "password_reset_info": "Don't remember password?",
+    "password_reset": "Reset password",
     "error": {
       "password_error": "Incorrect password",
       "login_error": "User does not exist",
@@ -58,6 +60,36 @@
     "no": "No",
     "save": "Save",
     "loading": "Loading"
+  },
+  "password_reset": {
+    "header": "Reset password",
+    "description": "Type in an email address linked to your account to reset password",
+    "password_reset_email_error": "Error sending password reset email: {{error}}",
+    "button": "Send reset link",
+    "invalid_email": "Invalid email address",
+    "toasts": {
+      "password_reset_email_sent": "Password reset email sent. Please check your inbox.",
+      "password_reset_email_error": "Error sending password reset email. Please try again."
+    },
+    "new": {
+      "too_short": "Password must be at least 8 characters long",
+      "too_long": "Password must be at most 60 characters long",
+      "regex_fail": "Password must include at least 1 lowercase letter, 1 uppercase letter, 1 number and one special character",
+      "not_match": "Passwords do not match",
+      "reset_error": "Error resetting password: {{error}}",
+      "toasts": {
+        "reset_success": "Password reset successful. You can now log in with your new password.",
+        "reset_error": "Failed to reset the password. Please try again."
+      },
+      "enter_password": "Enter your new password to reset your password.",
+      "confirm_password": "Confirm Password",
+      "new_password": "New Password",
+      "reset_password": "Reset Password"
+    },
+    "requests": {
+      "error_404_not_found": "Account not found",
+      "error_other": "INTERNAL SERVER ERROR"
+    }
   },
   "admin": {
     "api": {
