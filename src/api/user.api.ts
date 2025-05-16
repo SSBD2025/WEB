@@ -28,3 +28,14 @@ export const changeUserEmail = async (data: {
   const res = await apiClient.post("/account/change-email", data);
   return res.data;
 }
+
+
+export const enable2FA = async () => {
+  const res = await apiClient.post("/account/me/enable2f");
+  return res.data;
+}
+
+export const disable2FA = async () => {
+  const res = await apiClient.post("/account/me/disable2f");
+  return res.data;
+}

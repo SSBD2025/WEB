@@ -12,4 +12,8 @@ export const loginSchema = z.object({
         .max(60, { message: i18n.t("login.error.password_too_long") }),
 });
 
-export type LoginSchema = z.infer<typeof loginSchema>;
+export const twoFactorSchema = loginSchema.extend({
+    code: z
+        .string()
+        .length(8, {message: i18n.t("2fa.error.code_length")}),
+});

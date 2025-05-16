@@ -27,7 +27,8 @@
       "details": "Dane",
       "changeData": "Zmień dane",
       "changeEmail": "Zmień e-mail",
-      "changePassword": "Zmień hasło"
+      "changePassword": "Zmień hasło",
+      "2fa": "Dwufazowe uwierzytelnianie"
     },
     "fields": {
       "firstName": "Imię",
@@ -43,7 +44,15 @@
       "confirm_data_change_description": "Czy na pewno chcesz zmienić dane osobowe? Ta operacja zaktualizuje imię i nazwisko w systemie.",
       "confirm_password_change_description": "Czy na pewno chcesz zmienić hasło? Ta operacja zaktualizuje hasło w systemie.",
       "confirm_password_change_title": "Potwierdź zmianę hasła",
-      "change_password_button": "Zmień hasło"
+      "change_password_button": "Zmień hasło",
+      "2fa": "Dwufazowe uwierzytelnianie",
+      "last_sucessful_login_ip": "Adres IP ostatniego poprawnego logowania",
+      "last_sucessful_login_date": "Data ostatniego poprawnego logowania",
+      "last_failed_login_ip": "Adres IP ostatniego niepoprawnego logowania",
+      "last_failed_login_date": "Data ostatniego niepoprawnego logowania",
+      "2fastatus": "Status dwufazowego uwierzytelniania",
+      "2fa_enabled": "Włączone",
+      "2fa_disabled": "Wyłączone"
     },
     "error": {
       "firstName_too_short": "Imię musi mieć co najmniej 2 znaki",
@@ -53,6 +62,17 @@
       "email_too_long": "Email może mieć maksymalnie 50 znaków",
       "email_invalid": "Email jest nieprawidłowy",
       "password_dont_match": "Hasła nie pasują do siebie"
+    },
+    "toasts": {
+      "data_updated": "Dane zostały zaktualizowane",
+      "email_changed": "Email został zmieniony",
+      "password_changed": "Hasło zostało zmienione",
+      "data_change_error": "Nie udało się zmienić danych osobowych.",
+      "email_change_error": "Nie udało się zmienić adresu email.",
+      "password_change_error": "Nie udało się zmienić hasła.",
+      "2fa_enabled": "Dwufazowe uwierzytelnianie zostało włączone",
+      "2fa_disabled": "Dwufazowe uwierzytelnianie zostało wyłączone",
+      "2fa_error": "Nie udało się zmienić ustawień dwufazowego uwierzytelniania."
     }
   },
   "common": {
@@ -256,11 +276,12 @@
     }
   },
   "2fa": {
-    "enter_code": "Podaj kod do dwufazowego uwierzytelniania",
-    "submit": "Potwierdź",
+    "label": "Kod uwierzytelniania dwufazowego",
+    "submit": "Zaloguj się",
     "error": {
       "code_required": "Kod jest wymagany",
-      "code_length": "Kod powinien być 8 znakowy"
+      "code_length": "Kod powinien być 8 znakowy",
+      "code_invalid": "Niepoprawny kod uwierzytelniania dwufazowego"
     }
   },
   "home": {

@@ -12,6 +12,7 @@ export type Account = {
   language: string | null;
   lastSuccessfulLoginIp: string | null;
   lastFailedLoginIp: string | null;
+  twoFactorAuth: boolean;
 };
 
 export type Role = {

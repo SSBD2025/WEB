@@ -27,7 +27,8 @@
       "details": "Details",
       "changeData": "Change details",
       "changeEmail": "Change email",
-      "changePassword": "Change password"
+      "changePassword": "Change password",
+      "2fa": "Two-factor authentication"
     },
     "fields": {
       "firstName": "Name",
@@ -43,7 +44,16 @@
       "confirm_data_change_description": "Are you sure you want to change personal data? This operation will update the first and last name in the system.",
       "confirm_password_change_description": "Are you sure you want to change your password? This operation will update the password in the system.",
       "confirm_password_change_title": "Confirm password change",
-      "change_password_button": "Change password"
+      "change_password_button": "Change password",
+      "2fa": "Two-factor authentication",
+      "last_sucessful_login_ip": "IP address of last successful login",
+      "last_sucessful_login_date": "Date of last successful login",
+      "last_failed_login_ip": "IP address of last failed login",
+      "last_failed_login_date": "Date of last failed login",
+      "2fastatus": "Status of two-factor authentication",
+      "2fa_enabled": "Enabled",
+      "2fa_disabled": "Disabled"
+
     },
     "error": {
       "firstName_too_short": "Name must be at least 2 characters",
@@ -53,6 +63,17 @@
       "email_too_long": "Email can be at most 50 characters",
       "email_invalid": "Email is invalid",
       "password_dont_match": "Passwords do not match"
+    },
+    "toasts": {
+      "data_updated": "Data has been updated",
+      "email_changed": "Email has been changed",
+      "password_changed": "Password has been changed",
+      "data_change_error": "Failed to change personal data.",
+      "email_change_error": "Failed to change email.",
+      "password_change_error": "Failed to change password.",
+      "2fa_enabled": "2fa authentication has been enabled",
+      "2fa_disabled": "2fa authentication has been disabled",
+      "2fa_error": "Failed to change 2fa settings."
     }
   },
   "common": {
@@ -256,11 +277,12 @@
     }
   },
   "2fa": {
-    "enter_code": "Enter two-factor authentication code",
-    "submit": "Submit",
+    "label": "Two factor code",
+    "submit": "Sign In",
     "error": {
       "code_required": "Code is required",
-      "code_length": "Code should be 8 characters long"
+      "code_length": "Code should be 8 characters long",
+      "code_invalid": "Invalid two factor code"
     }
   },
   "home": {

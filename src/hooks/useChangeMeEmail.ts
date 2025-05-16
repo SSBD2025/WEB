@@ -2,16 +2,18 @@ import { useMutation } from "@tanstack/react-query";
 import { changeUserEmail } from "@/api/user.api";
 import { axiosErrorHandler } from "@/lib/axiosErrorHandler.ts";
 import { toast } from "sonner";
-
+import { useTranslation } from "react-i18next";
 
 export const useChangeMeEmail = () => {
+  const { t } = useTranslation();
+
   return useMutation({
     mutationFn: changeUserEmail,
     onError: (error) => {
-      axiosErrorHandler(error, "Failed to update user email");
+      axiosErrorHandler(error, t("profile.toasts.email_change_error"));
     },
     onSuccess: () => {
-      toast.success("User email updated successfully");
+      toast.success(t("profile.toasts.email_changed"));
     },
   });
-}
+};
