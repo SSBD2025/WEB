@@ -5,6 +5,8 @@ import DieticianRegister from "./DieticianRegister.tsx";
 import NotFound from "./NotFound";
 import AdminDashboard from "./AdminDashboard"
 import AdminUserAccount from "./AdminUserAccount";
+import PasswordReset from "./PasswordReset";
+import NewPassword from "./NewPassword";
 import TwoFactorLogin from "@/pages/TwoFactorLogin.tsx";
 
-export { Home, Login, ClientRegister, DieticianRegister, NotFound, AdminUserAccount, AdminDashboard, TwoFactorLogin };
+export { Home, Login, ClientRegister, DieticianRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard, TwoFactorLogin };

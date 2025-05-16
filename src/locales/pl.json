@@ -4,6 +4,8 @@
     "info": "Zaloguj się na swoje konto, aby zacząć korzystać z aplikacji",
     "sign_up_info": "Nie masz konta?",
     "sign_up": "Zarejestruj się",
+    "password_reset_info": "Nie pamiętasz hasła?",
+    "password_reset": "Zresetuj hasło",
     "error": {
       "password_error": "Złe hasło",
       "login_error": "Użytkownik nie istnieje",
@@ -58,6 +60,36 @@
     "no": "Nie",
     "save": "Zapisz",
     "loading": "Ładowanie"
+  },
+  "password_reset": {
+    "header": "Zresetuj hasło",
+    "description": "Wpisz adres e-mail powiązany z kontem, by zresetować hasło",
+    "password_reset_email_error": "Błąd wysyłania maila resetującego hasło: {{error}}",
+    "button": "Wyślij link",
+    "invalid_email": "Nieprawidłowy adres email",
+    "toasts": {
+      "password_reset_email_sent": "Email z linkiem resetującym hasło wysłany.",
+      "password_reset_email_error": "Błąd wysyłania maila resetującego hasło. Spróbuj ponownie."
+    },
+    "new": {
+      "too_short": "Hasło musi mieć co najmniej 8 znaków",
+      "too_long": "Hasło musi mieć maksymalnie 60 znaków",
+      "regex_fail": "Hasło musi zawierać przynajmniej jedną małą literę, wielką literę, liczbę i znak specjalny",
+      "not_match": "Hasła nie są jednakowe",
+      "reset_error": "Błąd resetowania hasła: {{error}}",
+      "toasts": {
+        "reset_success": "Reset hasła zakończony pomyślnie. Możesz się zalogować używając nowego hasła.",
+        "reset_error": "Błąd resetowania hasła. Spróbuj ponownie."
+      },
+      "enter_password": "Wprowadź nowe hasło",
+      "confirm_password": "Potwierdź hasło",
+      "new_password": "Nowe hasło",
+      "reset_password": "Resetuj hasło"
+    },
+    "requests": {
+      "error_404_not_found": "Konto nie zostało odnalezione",
+      "error_other": "Wewnętrzny błąd serwera"
+    }
   },
   "admin": {
     "api": {

@@ -6,6 +6,8 @@ import {
   ClientRegister,
   DieticianRegister,
   AdminUserAccount,
+  PasswordReset,
+  NewPassword,
   AdminDashboard,
   TwoFactorLogin
 } from "./pages";
@@ -41,6 +43,15 @@ const Layout = () => {
         <Navbar />
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.LOGIN} element={<Login />} />
+          <Route path={ROUTES.PASSWORD_RESET} element={<PasswordReset/>} />
+          <Route path={ROUTES.ME} element={<MeProfile />} />
+          <Route path={ROUTES.USER_REGISTER} element={<ClientRegister />} />
+          <Route path={ROUTES.NEW_PASSWORD} element={<NewPassword />} />
+          <Route
+            path={ROUTES.DIETICIAN_REGISTER}
+            element={<DieticianRegister />}
+          />
           <Route element={<GuestRoute />}>
             <Route path={ROUTES.LOGIN} element={<Login />} />
             <Route path={ROUTES.USER_REGISTER} element={<ClientRegister />} />
