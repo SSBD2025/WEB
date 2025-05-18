@@ -377,5 +377,8 @@
     "paragrapth": "Track your meals, monitor nutrition, and achieve your health goals with personalized diet plans.",
     "loginButton": "Log in to continue",
     "registerButton": "Create an account"
+  },
+  "role_change": {
+    "log_error": "Failed to log role change:"
   }
 }

@@ -21,6 +21,7 @@ import { AccessLevel } from "./ThemeWrapper";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import useRole from "@/store";
 import { useQueryClient } from "@tanstack/react-query";
+import { useLogRoleChange } from "@/hooks/useLogRoleChange"
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -32,10 +33,22 @@ export function Navbar() {
     .filter((role) => role.active)
     .map((role) => role.roleName.toLowerCase());
 
+  const logRoleChangeMutation = useLogRoleChange()
+
   const handleRoleChange = (value: string) => {
     const role = value as AccessLevel;
+  
+    if (role) {
+      logRoleChangeMutation.mutate({
+        previousRole: currentRole,
+        newRole: role,
+      });
+    }
+  
     setCurrentRole(role);
   };
+  
+
 
   const handleLogout = async () => {
     localStorage.removeItem("token");

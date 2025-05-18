@@ -39,3 +39,8 @@ export const disable2FA = async () => {
   const res = await apiClient.post("/account/me/disable2f");
   return res.data;
 }
+
+export const logRoleChange = async (data: { previousRole: string | null; newRole: string }) => {
+  const res = await apiClient.post("/account/log-role-change", data)
+  return res.data
+}

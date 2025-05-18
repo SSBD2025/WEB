@@ -376,5 +376,8 @@
     "paragraph": "Śledź swoje posiłki, monitoruj składniki odżywcze i osiągaj cele zdrowotne dzięki spersonalizowanym planom dietetycznym.",
     "loginButton": "Zaloguj się, aby kontynuować",
     "registerButton": "Utwórz konto"
+  },
+  "role_change": {
+    "log_error": "Nie udało się zalogować zmiany roli:"
   }
 }
