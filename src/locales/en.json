@@ -289,6 +289,9 @@
     "title": "Your personalized path to better health",
     "info": "In the Dietetycy XXI wieku application, we connect you with professional\n          dietitians who will prepare an individual nutrition plan for you\n          tailored to your needs, goals and lifestyle.",
     "sign_in": "Sign In",
+    "admin_dashboard": "Admin Dashboard",
+    "dietitian_dashboard": "Dietitian Dashboard",
+    "client_dashboard": "Client Dashboard",
     "why_us": "Why us?",
     "role_info": "What can a client do and what can a dietitian do?",
     "client": "Client",
@@ -389,6 +392,13 @@
     "paragrapth": "Track your meals, monitor nutrition, and achieve your health goals with personalized diet plans.",
     "loginButton": "Log in to continue",
     "registerButton": "Create an account"
+  },
+  "navbar": {
+    "profile": "Profile",
+    "account": "My Account",
+    "logout": "Logout",
+    "role": "Role",
+    "openMenu": "Open main menu"
   },
   "exceptions": {
     "account_already_blocked": "The account is already blocked",

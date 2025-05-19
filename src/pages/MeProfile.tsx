@@ -7,9 +7,8 @@ const MeProfile = () => {
     const { data: user } = useCurrentUser();
     
   return (
-    <div className="w-screen h-screen p-10">
+    <div className="flex-grow flex items-center justify-center">
         {user && <MeProfileDetails user={user} />}
-
     </div>
   );
 }

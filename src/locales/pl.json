@@ -289,6 +289,9 @@
     "title": "Twoja spersonalizowana droga do lepszego zdrowia",
     "info": "W aplikacji Dietetycy XXI wieku łączymy Cię z profesjonalnymi\n          dietetykami, którzy przygotują dla Ciebie indywidualny plan żywieniowy\n          dopasowany do Twoich potrzeb, celów i stylu życia.",
     "sign_in": "Zaloguj się",
+    "admin_dashboard": "Panel administracyjny",
+    "dietitian_dashboard": "Panel dietetyka",
+    "client_dashboard": "Panel klienta",
     "why_us": "Dlaczego my?",
     "role_info": "Co może klient, a co dietetyk?",
     "client": "Klient",
@@ -389,6 +392,13 @@
     "paragraph": "Śledź swoje posiłki, monitoruj składniki odżywcze i osiągaj cele zdrowotne dzięki spersonalizowanym planom dietetycznym.",
     "loginButton": "Zaloguj się, aby kontynuować",
     "registerButton": "Utwórz konto"
+  },
+  "navbar": {
+    "profile": "Profil",
+    "account": "Moje konto",
+    "logout": "Wyloguj się",
+    "role": "Rola",
+    "openMenu": "Otwórz menu"
   },
   "exceptions": {
     "account_already_blocked": "Konto jest już zablokowane",

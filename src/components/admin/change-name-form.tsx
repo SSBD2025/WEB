@@ -1,26 +1,45 @@
-import type { UseFormReturn } from "react-hook-form"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Loader2, User } from "lucide-react"
-import { useTranslation } from "react-i18next"
+import type { UseFormReturn } from "react-hook-form";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Loader2, User } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { RequiredFormLabel } from "@/components/ui/requiredLabel";
 
 type ChangeNameFormProps = {
-  form: UseFormReturn<{ firstName: string; lastName: string }>
-  onSubmit: (data: { firstName: string; lastName: string }) => void
-  isLoading: boolean
-}
+  form: UseFormReturn<{ firstName: string; lastName: string }>;
+  onSubmit: (data: { firstName: string; lastName: string }) => void;
+  isLoading: boolean;
+};
 
-export default function ChangeNameForm({ form, onSubmit, isLoading }: ChangeNameFormProps) {
-  const { t } = useTranslation()
+export default function ChangeNameForm({
+  form,
+  onSubmit,
+  isLoading,
+}: ChangeNameFormProps) {
+  const { t } = useTranslation();
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>{t("admin.user_account.forms.personal_data")}</CardTitle>
-        <CardDescription>{t("admin.user_account.forms.confirm_data_change_description")}</CardDescription>
+        <CardDescription>
+          {t("admin.user_account.forms.confirm_data_change_description")}
+        </CardDescription>
       </CardHeader>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -34,9 +53,15 @@ export default function ChangeNameForm({ form, onSubmit, isLoading }: ChangeName
                 }}
                 render={({ field }) => (
                   <FormItem>
-                    <RequiredFormLabel>{t("admin.user_account.forms.first_name")}</RequiredFormLabel>
+                    <RequiredFormLabel htmlFor="firstName" >
+                      {t("admin.user_account.forms.first_name")}
+                    </RequiredFormLabel>
                     <FormControl>
-                      <Input placeholder={t("admin.user_account.forms.first_name")} {...field} disabled={isLoading} />
+                      <Input
+                        placeholder={t("admin.user_account.forms.first_name")}
+                        {...field}
+                        disabled={isLoading}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -51,9 +76,15 @@ export default function ChangeNameForm({ form, onSubmit, isLoading }: ChangeName
                 }}
                 render={({ field }) => (
                   <FormItem>
-                    <RequiredFormLabel>{t("admin.user_account.forms.last_name")}</RequiredFormLabel>
+                    <RequiredFormLabel htmlFor="lastName" >
+                      {t("admin.user_account.forms.last_name")}
+                    </RequiredFormLabel>
                     <FormControl>
-                      <Input placeholder={t("admin.user_account.forms.last_name")} {...field} disabled={isLoading} />
+                      <Input
+                        placeholder={t("admin.user_account.forms.last_name")}
+                        {...field}
+                        disabled={isLoading}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -62,7 +93,11 @@ export default function ChangeNameForm({ form, onSubmit, isLoading }: ChangeName
             </div>
           </CardContent>
           <CardFooter>
-            <Button type="submit" disabled={isLoading} className="flex items-center gap-2">
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="flex items-center gap-2"
+            >
               {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
               <User className="h-4 w-4" />
               {t("admin.user_account.forms.save_personal_data")}
@@ -71,5 +106,5 @@ export default function ChangeNameForm({ form, onSubmit, isLoading }: ChangeName
         </form>
       </Form>
     </Card>
-  )
+  );
 }

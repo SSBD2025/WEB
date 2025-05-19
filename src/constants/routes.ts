@@ -12,6 +12,8 @@ const ROUTES = {
     ADMIN_DASHBOARD: "/admin/dashboard",
     TWO_FACTOR: "/2fa-login",
     REDIRECT: "/redirect",
+    DIETICIAN_DASHBOARD: "/dietician/dashboard",
+    CLIENT_DASHBOARD: "/client/dashboard",
 }
 
 export default ROUTES;

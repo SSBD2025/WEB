@@ -72,7 +72,7 @@ export function ChangePasswordForm() {
             name="oldPassword"
             render={({ field }) => (
               <FormItem>
-                <RequiredFormLabel>
+                <RequiredFormLabel htmlFor="oldPassword">
                   {t("profile.fields.oldPassword")}
                 </RequiredFormLabel>
                 <FormControl>
@@ -91,7 +91,7 @@ export function ChangePasswordForm() {
             name="newPassword"
             render={({ field }) => (
               <FormItem>
-                <RequiredFormLabel>
+                <RequiredFormLabel htmlFor="newPassword">
                   {t("profile.fields.newPassword")}
                 </RequiredFormLabel>
                 <FormControl>
@@ -110,7 +110,7 @@ export function ChangePasswordForm() {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem>
-                <RequiredFormLabel>
+                <RequiredFormLabel htmlFor="confirmPassword" >
                   {t("profile.fields.confirmPassword")}
                 </RequiredFormLabel>
                 <FormControl>

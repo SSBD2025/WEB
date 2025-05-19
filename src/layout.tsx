@@ -13,7 +13,7 @@ import {
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
-import { AccessLevel, ThemeWrapper } from "./components/shared/ThemeWrapper";
+import { ThemeWrapper } from "./components/shared/ThemeWrapper";
 import { useCurrentUser } from "./hooks/useCurrentUser";
 import MeProfile from "./pages/MeProfile";
 import Footer from "./components/shared/Footer";
@@ -23,6 +23,7 @@ import ProtectedRoute from "./components/shared/ProtectedRoute";
 import GuestRoute from "./components/shared/GuestRole";
 import { Navbar } from "./components/shared/Navbar";
 import Redirect from "./pages/Redirect";
+import { AccessLevel } from "./types/user";
 
 const Layout = () => {
   const { data: user } = useCurrentUser();

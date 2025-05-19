@@ -8,7 +8,7 @@ import Unauthorized from "@/pages/Unauthorized";
 
 const ProtectedRoute = ({ allowedRoles }: { allowedRoles?: string[] }) => {
   const { data: user, isLoading, isError } = useCurrentUser();
-  const { currentRole } = useRole();
+  const { currentRole, setCurrentRole } = useRole();
   const { t } = useTranslation();
 
   if (isLoading) {
@@ -25,11 +25,14 @@ const ProtectedRoute = ({ allowedRoles }: { allowedRoles?: string[] }) => {
   }
 
   if (isError || !user) {
+    localStorage.removeItem("token");
+    setCurrentRole(null);
     return <Navigate to={ROUTES.LOGIN} replace />;
   }
 
   if (!user.account.active) {
     localStorage.removeItem("token");
+    setCurrentRole(null);
     return <Navigate to={ROUTES.LOGIN} replace />;
   }
 

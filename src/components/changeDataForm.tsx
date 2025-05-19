@@ -82,7 +82,7 @@ export function ChangeDataForm({
             name="firstName"
             render={({ field }) => (
               <FormItem>
-                <RequiredFormLabel>{t("profile.fields.firstName")}</RequiredFormLabel>
+                <RequiredFormLabel htmlFor="firstName" >{t("profile.fields.firstName")}</RequiredFormLabel>
                 <FormControl>
                   <Input
                     placeholder={t("profile.fields.firstName")}
@@ -98,7 +98,7 @@ export function ChangeDataForm({
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <RequiredFormLabel>{t("profile.fields.lastName")}</RequiredFormLabel>
+                <RequiredFormLabel htmlFor="lastName" >{t("profile.fields.lastName")}</RequiredFormLabel>
                 <FormControl>
                   <Input
                     placeholder={t("profile.fields.lastName")}

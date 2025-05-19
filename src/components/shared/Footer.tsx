@@ -23,8 +23,8 @@ const Footer = () => {
   const isHome = breadcrumbItems.length === 0;
 
   return (
-    <footer className="w-full border-t bg-card">
-      <div className="flex justify-between items-center md:max-w-7xl mx-auto max-w-5xl">
+    <footer className="w-full border-t bg-card px-8">
+      <div className="flex justify-between items-center md:max-w-7xl mx-auto max-w-5xl flex-col md:flex-row py-4 md:py-0">
         <Breadcrumb>
           <BreadcrumbList>
             {isHome ? (
@@ -65,7 +65,7 @@ const Footer = () => {
           </BreadcrumbList>
         </Breadcrumb>
         <div>
-          <div className="container flex flex-col items-center justify-between gap-4 py-6 md:h-16 md:flex-row md:py-0">
+          <div className="container flex flex-col items-center justify-between md:gap-4 py-2 md:h-16 md:flex-row md:py-0">
             <p className="text-center text-sm text-muted-foreground">
               &copy; {new Date().getFullYear()} Bartosz Podemski.{" "}
               {t("footer.rights")}
