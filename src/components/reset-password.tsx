@@ -68,7 +68,7 @@ export default function ForgetPasswordPreview() {
 
         } catch (error) {
             console.error(t("password_reset.password_reset_email_error", {error}), error)
-            toast.error(t("password_reset.toasts.password_reset_email_error"))
+            // toast.error(t("password_reset.toasts.password_reset_email_error"))
         }
     }
 
@@ -89,6 +89,7 @@ export default function ForgetPasswordPreview() {
                                     name="email"
                                     render={({ field }) => (
                                         <FormItem className="grid gap-2">
+                                            {/* TODO dodac * */}
                                             <FormLabel htmlFor="email">{t("admin.user_account.user_data.email")}</FormLabel>
                                             <FormControl>
                                                 <Input

@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Mail, User, Loader2, Save } from "lucide-react"
 import {
@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { useTranslation } from "react-i18next"
 import type { PersonalDataFormValues, EmailFormValues } from "@/schemas/admin/userForms.schema"
+import { RequiredFormLabel } from "@/components/ui/requiredLabel";
 
 interface UserFormsProps {
   emailForm: UseFormReturn<EmailFormValues>
@@ -100,7 +101,7 @@ export default function UserForms({
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t("admin.user_account.forms.first_name")}</FormLabel>
+                          <RequiredFormLabel>{t("admin.user_account.forms.first_name")}</RequiredFormLabel>
                           <FormControl>
                             <div className="relative">
                               <Input
@@ -122,7 +123,7 @@ export default function UserForms({
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>{t("admin.user_account.forms.last_name")}</FormLabel>
+                          <RequiredFormLabel>{t("admin.user_account.forms.last_name")}</RequiredFormLabel>
                           <FormControl>
                             <div className="relative">
                               <Input
@@ -163,7 +164,7 @@ export default function UserForms({
                     render={({ field }) => (
                       <FormItem>
                         <div className="flex justify-between items-center">
-                          <FormLabel>{t("admin.user_account.forms.new_email")}</FormLabel>
+                          <RequiredFormLabel>{t("admin.user_account.forms.new_email")}</RequiredFormLabel>
                           <span className="text-xs text-muted-foreground">
                             {t("admin.user_account.forms.current")} {currentEmail}
                           </span>

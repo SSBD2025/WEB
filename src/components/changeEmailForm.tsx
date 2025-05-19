@@ -6,7 +6,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -25,6 +24,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { RequiredFormLabel } from "@/components/ui/requiredLabel";
 
 export function ChangeEmailForm() {
   const { t } = useTranslation();
@@ -63,7 +63,9 @@ export function ChangeEmailForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("profile.fields.email")}</FormLabel>
+                <RequiredFormLabel>
+                  {t("profile.fields.email")}
+                </RequiredFormLabel>
                 <FormControl>
                   <Input placeholder={t("profile.fields.email")} {...field} />
                 </FormControl>

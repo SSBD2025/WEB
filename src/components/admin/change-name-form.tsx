@@ -1,10 +1,11 @@
 import type { UseFormReturn } from "react-hook-form"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2, User } from "lucide-react"
 import { useTranslation } from "react-i18next"
+import { RequiredFormLabel } from "@/components/ui/requiredLabel";
 
 type ChangeNameFormProps = {
   form: UseFormReturn<{ firstName: string; lastName: string }>
@@ -33,7 +34,7 @@ export default function ChangeNameForm({ form, onSubmit, isLoading }: ChangeName
                 }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("admin.user_account.forms.first_name")}</FormLabel>
+                    <RequiredFormLabel>{t("admin.user_account.forms.first_name")}</RequiredFormLabel>
                     <FormControl>
                       <Input placeholder={t("admin.user_account.forms.first_name")} {...field} disabled={isLoading} />
                     </FormControl>
@@ -50,7 +51,7 @@ export default function ChangeNameForm({ form, onSubmit, isLoading }: ChangeName
                 }}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>{t("admin.user_account.forms.last_name")}</FormLabel>
+                    <RequiredFormLabel>{t("admin.user_account.forms.last_name")}</RequiredFormLabel>
                     <FormControl>
                       <Input placeholder={t("admin.user_account.forms.last_name")} {...field} disabled={isLoading} />
                     </FormControl>

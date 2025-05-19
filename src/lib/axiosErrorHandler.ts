@@ -1,4 +1,5 @@
 import axios from "axios";
+import i18n from "@/i18n"
 import { toast } from "sonner";
 
 export const axiosErrorHandler = (
@@ -11,8 +12,7 @@ export const axiosErrorHandler = (
       error.response?.data?.error ||
       error.message ||
       fallbackMessage;
-
-      toast.error(message)
+      toast.error(i18n.t("exceptions." + message))
       console.log("Axios error:", error);
   } else {
     toast.error(fallbackMessage)

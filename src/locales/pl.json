@@ -377,6 +377,35 @@
     "loginButton": "Zaloguj się, aby kontynuować",
     "registerButton": "Utwórz konto"
   },
+  "exceptions": {
+    "account_already_blocked": "Konto jest już zablokowane",
+    "account_already_unblocked": "Konto jest już odblokowane",
+    "account_already_verified": "Konto zostało już zweryfikowane",
+    "account_email_already_in_use": "Adres e-mail jest już używany",
+    "account_has_no_roles": "Konto nie ma przypisanych ról",
+    "account_not_active": "Konto nie jest aktywne",
+    "account_not_found": "Nie znaleziono konta",
+    "account_not_verified": "Konto nie zostało zweryfikowane",
+    "account_same_email": "Nowy adres e-mail jest taki sam jak obecny",
+    "account_two_factor_already_disabled": "Uwierzytelnianie dwuskładnikowe jest już wyłączone",
+    "account_two_factor_already_enabled": "Uwierzytelnianie dwuskładnikowe jest już włączone",
+    "concurrent_update": "Ktoś inny zmodyfikował ten zasób. Odśwież dane.",
+    "cookie_not_found": "Nie znaleziono pliku cookie",
+    "email_change_token_not_found": "Token zmiany adresu e-mail nie został znaleziony",
+    "excessive_login_attempts": "Zbyt wiele nieudanych prób logowania. Konto zostało tymczasowo zablokowane.",
+    "invalid_credentials": "Nieprawidłowe dane logowania",
+    "invalid_lock_token": "Nieprawidłowy token blokady",
+    "role_already_assigned": "Rola została już przypisana",
+    "role_conflict": "Konflikt ról. Konto nie może mieć przypisanych ról Klienta i Dietetyka jednocześnie.",
+    "role_not_found": "Nie znaleziono roli",
+    "self_block": "Nie możesz zablokować samego siebie",
+    "self_role_assignment": "Nie możesz samodzielnie przypisywać sobie ról",
+    "token_expired": "Żeton wygasł",
+    "token_not_found": "Nie znaleziono żetonu",
+    "token_signature_invalid": "Podpis żetonu jest nieprawidłowy",
+    "token_type_invalid": "Nieprawidłowy typ żetonu",
+    "two_factor_token_invalid": "Nieprawidłowy żeton dwuskładnikowy"
+  },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
   }
