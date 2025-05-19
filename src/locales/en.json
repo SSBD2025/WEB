@@ -369,6 +369,18 @@
     },
     "confirm_password": {
       "field": "Confirm Password"
+    },
+    "success" : "User registered successfully. Please check your email to verify your account.",
+    "error": {
+      "emailExist": "This email is already in use. Try using different email address.",
+      "loginExist": "This username is already in use. Try using different username.",
+      "passwordRegex": "Password must include at least: 1 lower case letter, 1 upper case letter, 1 number and 1 special character.",
+      "firstNameRegex": "First Name contains prohibited characters.",
+      "lastNameRegex": "Last Name contains prohibited characters.",
+      "loginRegex": "Username contains prohibited characters.",
+      "accessDenied": "You don't have privileges to execute this action.",
+      "unauthorized": "You must be logged in to execute this action.",
+      "generic": "An unexpected error occurred. Try again later."
     }
   },
   "unauthorized": {
