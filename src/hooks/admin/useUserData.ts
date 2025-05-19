@@ -6,16 +6,16 @@ import type { UseFormReturn } from "react-hook-form"
 import type { User } from "@/types/user"
 import type { EmailFormValues, PersonalDataFormValues } from "@/schemas/admin/userForms.schema"
 
-interface ApiError {
-  response?: {
-    status?: number
-    data?: {
-      message?: string
-      error?: string
-    }
-  }
-  message?: string
-}
+// interface ApiError {
+//   response?: {
+//     status?: number
+//     data?: {
+//       message?: string
+//       error?: string
+//     }
+//   }
+//   message?: string
+// }
 
 export const useUserData = (
   userId?: string,
@@ -33,13 +33,13 @@ export const useUserData = (
       emailForm?.reset()
       toast.success(t("admin.user_account.toasts.email_changed"))
     },
-    onError: (error: ApiError) => {
-      if (error?.response?.status === 409) {
-        toast.error(t("admin.user_account.toasts.email_in_use"))
-      } else {
-        toast.error(t("admin.user_account.toasts.email_change_error"))
-      }
-    },
+    // onError: (error: ApiError) => {
+    //   if (error?.response?.status === 409) {
+    //     toast.error(t("admin.user_account.toasts.email_in_use"))
+    //   } else {
+    //     toast.error(t("admin.user_account.toasts.email_change_error"))
+    //   }
+    // },
   })
 
   const dataMutation = useMutation({

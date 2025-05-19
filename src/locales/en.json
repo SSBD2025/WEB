@@ -53,7 +53,6 @@
       "2fastatus": "Status of two-factor authentication",
       "2fa_enabled": "Enabled",
       "2fa_disabled": "Disabled"
-
     },
     "error": {
       "firstName_too_short": "Name must be at least 2 characters",
@@ -377,6 +376,35 @@
     "paragrapth": "Track your meals, monitor nutrition, and achieve your health goals with personalized diet plans.",
     "loginButton": "Log in to continue",
     "registerButton": "Create an account"
+  },
+  "exceptions": {
+    "account_already_blocked": "The account is already blocked",
+    "account_already_unblocked": "The account is already unblocked",
+    "account_already_verified": "The account is already verified",
+    "account_email_already_in_use": "The email address is already in use",
+    "account_has_no_roles": "The account has no assigned roles",
+    "account_not_active": "The account is not active",
+    "account_not_found": "Account not found",
+    "account_not_verified": "The account has not been verified",
+    "account_same_email": "The new email address is the same as the current one",
+    "account_two_factor_already_disabled": "Two-factor authentication is already disabled",
+    "account_two_factor_already_enabled": "Two-factor authentication is already enabled",
+    "concurrent_update": "The resource was modified by someone else. Please refresh.",
+    "cookie_not_found": "Cookie not found",
+    "email_change_token_not_found": "Email change token not found",
+    "excessive_login_attempts": "Too many failed login attempts. Account is temporarily blocked.",
+    "invalid_credentials": "Invalid login credentials",
+    "invalid_lock_token": "Invalid lock token",
+    "role_already_assigned": "Role has already been assigned",
+    "role_conflict": "Role conflict. User cannot be both a Client and a Dietician.",
+    "role_not_found": "Role not found",
+    "self_block": "You cannot block yourself",
+    "self_role_assignment": "You cannot assign roles to yourself",
+    "token_expired": "Token has expired",
+    "token_not_found": "Token not found",
+    "token_signature_invalid": "Token signature is invalid",
+    "token_type_invalid": "Invalid token type",
+    "two_factor_token_invalid": "Invalid two-factor token"
   },
   "role_change": {
     "log_error": "Failed to log role change:"

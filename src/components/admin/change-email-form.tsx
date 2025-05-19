@@ -1,10 +1,11 @@
 import type { UseFormReturn } from "react-hook-form"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2, Mail } from "lucide-react"
 import { useTranslation } from "react-i18next"
+import { RequiredFormLabel } from "@/components/ui/requiredLabel";
 
 type ChangeEmailFormProps = {
   form: UseFormReturn<{ email: string }>
@@ -39,7 +40,7 @@ export default function ChangeEmailForm({ form, onSubmit, currentEmail, isLoadin
               }}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>{t("admin.user_account.forms.new_email")}</FormLabel>
+                  <RequiredFormLabel>{t("admin.user_account.forms.new_email")}</RequiredFormLabel>
                   <FormControl>
                     <Input placeholder="nowy@email.com" {...field} disabled={isLoading} />
                   </FormControl>

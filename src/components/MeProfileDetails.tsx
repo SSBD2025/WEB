@@ -103,7 +103,9 @@ const MeProfileDetails = ({ user }: { user: User }) => {
                         {t("profile.fields.2fa")}
                       </TableCell>
                       <TableCell>
-                        {user.account.twoFactorAuth ? t("common.yes") : t("common.no")}
+                        {user.account.twoFactorAuth
+                          ? t("common.yes")
+                          : t("common.no")}
                       </TableCell>
                     </TableRow>
                     <TableRow>
@@ -122,7 +124,9 @@ const MeProfileDetails = ({ user }: { user: User }) => {
                       </TableCell>
                       <TableCell>
                         {user.account.lastSuccessfulLogin
-                          ? new Date(user.account.lastSuccessfulLogin).toLocaleString()
+                          ? new Date(
+                              user.account.lastSuccessfulLogin
+                            ).toLocaleString()
                           : "-"}
                       </TableCell>
                     </TableRow>
@@ -142,7 +146,9 @@ const MeProfileDetails = ({ user }: { user: User }) => {
                       </TableCell>
                       <TableCell>
                         {user.account.lastFailedLogin
-                          ? new Date(user.account.lastFailedLogin).toLocaleString()
+                          ? new Date(
+                              user.account.lastFailedLogin
+                            ).toLocaleString()
                           : "-"}
                       </TableCell>
                     </TableRow>
@@ -166,7 +172,7 @@ const MeProfileDetails = ({ user }: { user: User }) => {
                 <ChangePasswordForm />
               </TabsContent>
               <TabsContent value="2fa">
-                <Change2fa status={user.account.twoFactorAuth}/>
+                <Change2fa status={user.account.twoFactorAuth} />
               </TabsContent>
             </div>
           </div>

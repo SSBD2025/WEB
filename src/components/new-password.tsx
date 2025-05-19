@@ -80,7 +80,7 @@ export default function ResetPassword() {
                         })
                     }
                     console.error(t("password_reset.new.reset_error", {error}), error)
-                    toast.error(t("password_reset.new.toasts.reset_error"))
+                    // toast.error(t("password_reset.new.toasts.reset_error"))
                 }
             })
 
@@ -88,7 +88,7 @@ export default function ResetPassword() {
             toast.success(t("password_reset.new.toasts.reset_success"))
         } catch (error) {
             console.error(t("password_reset.new.reset_error", {error}), error)
-            toast.error(t("password_reset.new.toasts.reset_error"))
+            // toast.error(t("password_reset.new.toasts.reset_error"))
         }
     }
 
@@ -112,7 +112,8 @@ export default function ResetPassword() {
                                     name="password"
                                     render={({ field }) => (
                                         <FormItem className="grid gap-2">
-                                            <FormLabel htmlFor="password">{t("password_reset.new.new_password")}</FormLabel>
+                                            {/* TODO dodac * */}
+                                            <FormLabel htmlFor="password">{t("password_reset.new.new_password")}</FormLabel> 
                                             <FormControl>
                                                 <PasswordInput
                                                     id="password"

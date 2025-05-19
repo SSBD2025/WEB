@@ -6,7 +6,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -25,6 +24,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { RequiredFormLabel } from "@/components/ui/requiredLabel"
 
 type ChangeDataFormProps = {
   firstName: string;
@@ -82,7 +82,7 @@ export function ChangeDataForm({
             name="firstName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("profile.fields.firstName")}</FormLabel>
+                <RequiredFormLabel>{t("profile.fields.firstName")}</RequiredFormLabel>
                 <FormControl>
                   <Input
                     placeholder={t("profile.fields.firstName")}
@@ -98,7 +98,7 @@ export function ChangeDataForm({
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("profile.fields.lastName")}</FormLabel>
+                <RequiredFormLabel>{t("profile.fields.lastName")}</RequiredFormLabel>
                 <FormControl>
                   <Input
                     placeholder={t("profile.fields.lastName")}
