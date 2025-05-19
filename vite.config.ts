@@ -28,21 +28,5 @@ export default defineConfig(({ mode }) => {
         },
       },
     },
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (id.includes("node_modules")) {
-              if (id.includes("react")) return "react";
-              if (id.includes("framer-motion")) return "motion";
-              if (id.includes("react-router")) return "router";
-              if (id.includes("@tanstack")) return "react-query";
-              if (id.includes("i18next")) return "i18n";
-              return "vendor";
-            }
-          }
-        }
-      }
-    }
   };
 });
