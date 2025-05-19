@@ -4,6 +4,7 @@ const ROUTES = {
     ME: "/me",
     USER_REGISTER: "/user/register",
     DIETICIAN_REGISTER: "/dietician/register",
+    ADMIN_REGISTER: "/admin/register",
     PASSWORD_RESET: "/reset/password",
     NEW_PASSWORD: "/reset/password/:token",
     ADMIN_USER_DETAILS: "/admin/dashboard/users/:id",

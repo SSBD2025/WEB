@@ -369,6 +369,18 @@
     },
     "confirm_password": {
       "field": "Potwierdź hasło"
+    },
+    "success" : "Użytkownik zarejestrowany pomyślnie. Sprawdź swoją skrzynkę email aby dokończyć rejestrację",
+    "error": {
+      "emailExist": "Ten adres email jest już używany. Spróbuj ponownie używając innego adresu email.",
+      "loginExist": "Ta nazwa użtkownika jest już zajęta. Spróbuj ponownie wybierając inną.",
+      "passwordRegex": "Hasło musi zawierać co najmniej: 1 małą literę, 1 wielką literę, 1 cyfrę i 1 znak specjalny.",
+      "firstNameRegex": "Imię zawiera niedozwolone znaki.",
+      "lastNameRegex": "Nazwisko zawiera niedozwolone znaki.",
+      "loginRegex": "Nazwa użytkownika zawiera niedozwolone znaki.",
+      "accessDenied": "Nie masz uprawnień, aby wykonać tę akcję.",
+      "unauthorized": "Musisz być zalogowany aby wykonać tę akcję.",
+      "generic": "Wystąpił niespodziewany błąd. Spróbuj ponownie później."
     }
   },
   "unauthorized": {

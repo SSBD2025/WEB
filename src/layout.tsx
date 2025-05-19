@@ -4,6 +4,7 @@ import {
   Login,
   NotFound,
   ClientRegister,
+  AdminRegister,
   DieticianRegister,
   AdminUserAccount,
   PasswordReset,
@@ -67,6 +68,7 @@ const Layout = () => {
               element={<AdminUserAccount />}
             />
             <Route path={ROUTES.ADMIN_DASHBOARD} element={<AdminDashboard />} />
+            <Route path={ROUTES.ADMIN_REGISTER} element={<AdminRegister />}/>
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

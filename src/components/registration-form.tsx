@@ -16,7 +16,7 @@ import {useTranslation} from "react-i18next";
 
 
 
-type UserType = "client" | "dietician"
+type UserType = "client" | "dietician" | "admin"
 
 interface RegistrationFormProps {
     userType: UserType
