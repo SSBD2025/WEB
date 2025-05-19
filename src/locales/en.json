@@ -6,6 +6,7 @@
     "sign_up": "Sign Up",
     "password_reset_info": "Don't remember password?",
     "password_reset": "Reset password",
+    "loading": "Logging in...",
     "error": {
       "password_error": "Incorrect password",
       "login_error": "User does not exist",

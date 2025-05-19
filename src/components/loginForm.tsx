@@ -19,6 +19,7 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const loginMutation = useLogin();
     const twoFactorMutation = use2faLogin();
+    const isSubmitting = loginMutation.isPending || twoFactorMutation.isPending;
 
     const [is2faRequired, setIs2faRequired] = useState(false);
     const [access2FAToken, setAccess2FAToken] = useState("");
@@ -156,8 +157,12 @@ const LoginForm = () => {
                     )}
 
                     <div className="flex justify-center">
-                        <Button type="submit" className="w-1/2">
-                            {is2faRequired ? t("2fa.submit") : t("login.sign_in")}
+                        <Button type="submit" className="w-1/2" disabled={isSubmitting}>
+                            {isSubmitting
+                                ? t("login.loading")
+                                : is2faRequired
+                                    ? t("2fa.submit")
+                                    : t("login.sign_in")}
                         </Button>
                     </div>
                 </form>
