@@ -1,10 +1,10 @@
-import { AccessLevel } from "@/components/shared/ThemeWrapper";
+import { AccessLevel } from "@/types/user";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 type Store = {
   currentRole: AccessLevel | null;
-  setCurrentRole: (role: AccessLevel) => void;
+  setCurrentRole: (role: AccessLevel | null) => void;
 };
 
 const useRole = create<Store>()(
@@ -14,7 +14,7 @@ const useRole = create<Store>()(
       setCurrentRole: (role) => set({ currentRole: role }),
     }),
     {
-      name: "user-role", // klucz w localStorage
+      name: "user-role",
     }
   )
 );

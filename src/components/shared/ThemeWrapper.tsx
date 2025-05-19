@@ -1,6 +1,5 @@
+import { AccessLevel } from "@/types/user";
 import { ReactNode, useEffect, useState } from "react";
-
-export type AccessLevel = "admin" | "client" | "dietician" | null;
 
 interface ThemeWrapperProps {
   role: AccessLevel;

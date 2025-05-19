@@ -20,7 +20,7 @@ const AdminDashboard = () => {
   return (
     <main className="flex-grow items-center justify-center flex">
       <motion.div
-        className="relative w-full overflow-auto p-16"
+        className="relative w-full overflow-auto lg:p-16"
         initial="hidden"
         animate="visible"
         variants={containerVariants}

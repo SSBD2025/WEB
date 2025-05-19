@@ -63,7 +63,7 @@ export function ChangeEmailForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <RequiredFormLabel>
+                <RequiredFormLabel htmlFor="email" >
                   {t("profile.fields.email")}
                 </RequiredFormLabel>
                 <FormControl>

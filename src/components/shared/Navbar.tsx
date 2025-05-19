@@ -4,7 +4,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
@@ -17,10 +16,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Link } from "react-router";
-import { AccessLevel } from "./ThemeWrapper";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import useRole from "@/store";
 import { useQueryClient } from "@tanstack/react-query";
+import ROUTES from "@/constants/routes";
+import { AccessLevel } from "@/types/user";
+import { ROLE_LINKS } from "@/constants/navbarlinks";
+import { t } from "i18next";
 import { useLogRoleChange } from "@/hooks/useLogRoleChange"
 
 export function Navbar() {
@@ -28,6 +30,8 @@ export function Navbar() {
   const { currentRole, setCurrentRole } = useRole();
   const { data: user } = useCurrentUser();
   const queryClient = useQueryClient();
+
+  const links = ROLE_LINKS[currentRole as AccessLevel] ?? [];
 
   const possibleRoles = user?.roles
     .filter((role) => role.active)
@@ -71,6 +75,16 @@ export function Navbar() {
             </Link>
           </div>
 
+          {links.map(({ label, path }) => (
+            <Link
+              key={path}
+              to={path}
+              className="hidden sm:ml-6 sm:flex sm:items-center text-gray-600 hover:text-primary"
+            >
+              {label}
+            </Link>
+          ))}
+
           {currentRole && (
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
               <DropdownMenu>
@@ -80,16 +94,20 @@ export function Navbar() {
                     className="flex items-center text-gray-600 hover:text-green-600"
                   >
                     <User className="h-5 w-5 mr-1" />
-                    <span className="mr-1">Profile</span>
+                    <span className="mr-1">{t("navbar.profile")}</span>
                     <ChevronDown className="h-4 w-4" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                  <DropdownMenuItem asChild className="cursor-pointer">
+                    <Link to={ROUTES.ME}>{t("navbar.account")}</Link>
+                  </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <div className="flex flex-col w-full">
-                      <span className="text-sm font-medium mb-1">Role</span>
+                      <span className="text-sm font-medium mb-1">
+                        {t("navbar.role")}
+                      </span>
                       <Select
                         value={currentRole}
                         onValueChange={handleRoleChange}
@@ -113,7 +131,7 @@ export function Navbar() {
                     onClick={handleLogout}
                   >
                     <LogOut className="h-4 w-4 mr-2" />
-                    Logout
+                    {t("navbar.logout")}
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -126,7 +144,7 @@ export function Navbar() {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-green-600 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
               >
-                <span className="sr-only">Open main menu</span>
+                <span className="sr-only">{t("navbar.openMenu")}</span>
                 {isMenuOpen ? (
                   <X className="block h-6 w-6" aria-hidden="true" />
                 ) : (
@@ -147,14 +165,17 @@ export function Navbar() {
                 <User className="h-10 w-10 text-gray-400" />
               </div>
               <div className="ml-3">
-                <div className="text-base font-medium text-gray-800">
-                  User Profile
-                </div>
+                <Link
+                  to={ROUTES.ME}
+                  className="text-base font-medium text-gray-800"
+                >
+                  {t("navbar.account")}
+                </Link>
               </div>
             </div>
             <div className="mt-3 space-y-1">
               <div className="px-4 py-2">
-                <p className="text-sm font-medium mb-1">Role</p>
+                <p className="text-sm font-medium mb-1">{t("navbar.role")}</p>
                 <Select value={currentRole} onValueChange={handleRoleChange}>
                   <SelectTrigger className="w-full">
                     <SelectValue placeholder="Select role" />
@@ -173,7 +194,7 @@ export function Navbar() {
                 className="flex items-center w-full text-left px-4 py-2 text-base font-medium text-red-500 hover:bg-green-100"
               >
                 <LogOut className="h-5 w-5 mr-2" />
-                Logout
+                {t("navbar.logout")}
               </button>
             </div>
           </div>

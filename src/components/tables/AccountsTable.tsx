@@ -11,7 +11,7 @@ import ROUTES from "@/constants/routes";
 import { getRoleBadges, getStatusBadge } from "@/lib/badges";
 import { AccountWithRoles } from "@/types/user";
 import { motion } from "framer-motion";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { t } from "i18next";
 
 const rowVariants = {
@@ -27,6 +27,8 @@ const rowVariants = {
 };
 
 const AccountsTable = ({ accounts }: { accounts: AccountWithRoles[] }) => {
+  const navigate = useNavigate();
+
   return (
     <Table>
       <TableHeader>
@@ -46,61 +48,73 @@ const AccountsTable = ({ accounts }: { accounts: AccountWithRoles[] }) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {accounts.map(({ accountDTO, userRoleDTOS }, i) => (
-          <motion.tr
-            key={accountDTO.id}
-            custom={i}
-            initial="hidden"
-            animate="visible"
-            variants={rowVariants}
-          >
-            <TableCell className="font-medium">
-              <div>
-                <div className="font-medium">{`${accountDTO.firstName} ${accountDTO.lastName}`}</div>
-                <div className="text-xs text-muted-foreground">
-                  {accountDTO.email}
+        {accounts.map(({ accountDTO, userRoleDTOS }, i) => {
+          const isClickableRow = window.innerWidth < 768;
+
+          const handleRowClick = () => {
+            if (isClickableRow) {
+              navigate(ROUTES.getAdminUserDetails(accountDTO.id));
+            }
+          };
+
+          return (
+            <motion.tr
+              key={accountDTO.id}
+              custom={i}
+              initial="hidden"
+              animate="visible"
+              variants={rowVariants}
+              onClick={handleRowClick}
+              className={isClickableRow ? "cursor-pointer" : ""}
+            >
+              <TableCell className="font-medium">
+                <div>
+                  <div className="font-medium">{`${accountDTO.firstName} ${accountDTO.lastName}`}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {accountDTO.email}
+                  </div>
                 </div>
-              </div>
-            </TableCell>
-            <TableCell>
-              {getRoleBadges(
-                userRoleDTOS
-                  .filter((role) => role.active)
-                  .map((role) => {
-                    const name = role.roleName.toLowerCase();
-                    return name.charAt(0).toUpperCase() + name.slice(1);
-                  })
-              )}
-            </TableCell>
-            <TableCell>
-              {getStatusBadge({
-                active: accountDTO.active,
-                verified: accountDTO.verified,
-              })}
-            </TableCell>
-            <TableCell className="hidden md:table-cell">
-              <span>
-                {accountDTO.lastSuccessfulLogin
-                  ? new Date(accountDTO.lastSuccessfulLogin).toLocaleString()
-                  : t("accountsTable.tableData.neverLoggedIn")}
-              </span>
-            </TableCell>
-            <TableCell className="hidden md:table-cell">
-              {accountDTO.lastSuccessfulLoginIp ||
-                t("accountsTable.tableData.neverLoggedIn")}
-            </TableCell>
-            <TableCell>
-              <Link
-                className="cursor-pointer"
-                to={ROUTES.getAdminUserDetails(accountDTO.id)}
-              >
-                <Button variant="ghost">
-                  {t("accountsTable.buttons.editAccount")}
-                </Button>
-              </Link>
-            </TableCell>
-          </motion.tr>
-        ))}
+              </TableCell>
+              <TableCell>
+                {getRoleBadges(
+                  userRoleDTOS
+                    .filter((role) => role.active)
+                    .map((role) => {
+                      const name = role.roleName.toLowerCase();
+                      return name.charAt(0).toUpperCase() + name.slice(1);
+                    })
+                )}
+              </TableCell>
+              <TableCell>
+                {getStatusBadge({
+                  active: accountDTO.active,
+                  verified: accountDTO.verified,
+                })}
+              </TableCell>
+              <TableCell className="hidden md:table-cell">
+                <span>
+                  {accountDTO.lastSuccessfulLogin
+                    ? new Date(accountDTO.lastSuccessfulLogin).toLocaleString()
+                    : t("accountsTable.tableData.neverLoggedIn")}
+                </span>
+              </TableCell>
+              <TableCell className="hidden md:table-cell">
+                {accountDTO.lastSuccessfulLoginIp ||
+                  t("accountsTable.tableData.neverLoggedIn")}
+              </TableCell>
+              <TableCell className="hidden md:table-cell">
+                <Link
+                  className="cursor-pointer"
+                  to={ROUTES.getAdminUserDetails(accountDTO.id)}
+                >
+                  <Button variant="ghost">
+                    {t("accountsTable.buttons.editAccount")}
+                  </Button>
+                </Link>
+              </TableCell>
+            </motion.tr>
+          );
+        })}
       </TableBody>
     </Table>
   );

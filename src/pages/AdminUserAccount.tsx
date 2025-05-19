@@ -46,7 +46,6 @@ export default function AdminUserAccount() {
 
   useEffect(() => {
     if (user) {
-      console.log("Setting form values with user data:", user)
       emailForm.setValue("email", user.account.email)
       dataForm.setValue("firstName", user.account.firstName)
       dataForm.setValue("lastName", user.account.lastName)
@@ -69,12 +68,11 @@ export default function AdminUserAccount() {
   }
 
   return (
-    <div className="flex-grow justify-center items-center flex">
+    <div className="flex-grow justify-center items-center flex my-6">
       <DataRenderer
         status={isLoading ? "loading" : isError ? "error" : "success"}
         data={user ? [user] : []}
         render={([user]) => {
-          console.log("User data:", user)
           return (
             <motion.div className="max-w-7xl mx-auto" variants={container} initial="hidden" animate="show">
               <motion.div variants={item} className="mb-8">

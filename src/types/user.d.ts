@@ -30,3 +30,5 @@ export type AccountWithRoles = {
   accountDTO: Account;
   userRoleDTOS: Role[];
 };
+
+export type AccessLevel = "admin" | "client" | "dietician";
