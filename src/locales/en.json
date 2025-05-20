@@ -53,7 +53,8 @@
       "last_failed_login_date": "Date of last failed login",
       "2fastatus": "Status of two-factor authentication",
       "2fa_enabled": "Enabled",
-      "2fa_disabled": "Disabled"
+      "2fa_disabled": "Disabled",
+      "resend_email": "Resend email"
     },
     "error": {
       "firstName_too_short": "Name must be at least 2 characters",
@@ -66,7 +67,7 @@
     },
     "toasts": {
       "data_updated": "Data has been updated",
-      "email_changed": "Email has been changed",
+      "email_changed": "Confirm your new email address to complete the change",
       "password_changed": "Password has been changed",
       "data_change_error": "Failed to change personal data.",
       "email_change_error": "Failed to change email.",

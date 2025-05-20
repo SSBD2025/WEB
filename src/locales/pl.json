@@ -53,7 +53,8 @@
       "last_failed_login_date": "Data ostatniego niepoprawnego logowania",
       "2fastatus": "Status dwufazowego uwierzytelniania",
       "2fa_enabled": "Włączone",
-      "2fa_disabled": "Wyłączone"
+      "2fa_disabled": "Wyłączone",
+      "resend_email": "Wyślij ponownie e-mail"
     },
     "error": {
       "firstName_too_short": "Imię musi mieć co najmniej 2 znaki",
@@ -66,7 +67,7 @@
     },
     "toasts": {
       "data_updated": "Dane zostały zaktualizowane",
-      "email_changed": "Email został zmieniony",
+      "email_changed": "Potwierdź zmianę adresu email w wiadomości e-mail",
       "password_changed": "Hasło zostało zmienione",
       "data_change_error": "Nie udało się zmienić danych osobowych.",
       "email_change_error": "Nie udało się zmienić adresu email.",

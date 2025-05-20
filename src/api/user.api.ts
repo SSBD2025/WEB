@@ -44,3 +44,8 @@ export const logRoleChange = async (data: { previousRole: string | null; newRole
   const res = await apiClient.post("/account/log-role-change", data)
   return res.data
 }
+
+export const resendEmailChangeEmail = async () => {
+  const res = await apiClient.post("/account/resend-change-email");
+  return res.data;
+}
