@@ -23,10 +23,21 @@ import { useTranslation } from "react-i18next";
 import { usePasswordResetRequest } from "@/hooks/usePasswordReset.ts";
 import { AxiosError } from "axios";
 import { RequiredFormLabel } from "./ui/requiredLabel";
+import { useEffect, useState } from "react";
 
 export default function ForgetPasswordPreview() {
   const { t } = useTranslation();
   const passwordResetMutation = usePasswordResetRequest();
+  const [resendCooldown, setResendCooldown] = useState(0);
+
+  useEffect(() => {
+    if (resendCooldown > 0) {
+      const timer = setInterval(() => {
+        setResendCooldown((prev) => prev - 1);
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [resendCooldown]);
 
   const formSchema = z.object({
     email: z.string().email({ message: t("invalid_email") }),
@@ -40,6 +51,8 @@ export default function ForgetPasswordPreview() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    if (resendCooldown === 0) {
+      setResendCooldown(120);
     try {
       passwordResetMutation.mutate(values, {
         onSuccess: async () => {
@@ -68,6 +81,7 @@ export default function ForgetPasswordPreview() {
       );
       toast.error(t("password_reset.toasts.password_reset_email_error"));
     }
+  }
   }
 
   return (
@@ -105,8 +119,14 @@ export default function ForgetPasswordPreview() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">
-                  {t("password_reset.button")}
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={resendCooldown > 0}
+                >
+                  {resendCooldown > 0
+                    ? `${t("password_reset.button")} (${resendCooldown}s)`
+                    : t("password_reset.button")}
                 </Button>
               </div>
             </form>
