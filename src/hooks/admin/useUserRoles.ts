@@ -13,7 +13,7 @@ export const useUserRoles = (userId?: string, id?: string) => {
     mutationFn: (role: string) => addRoleToUser(userId!, role),
     onSuccess: (_, role) => {
       queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
-      queryClient.invalidateQueries({ queryKey: ALL_ACCOUNTS_QUERY_KEY})
+      queryClient.invalidateQueries({ queryKey: [ALL_ACCOUNTS_QUERY_KEY]})
       toast.success(t("admin.user_account.toasts.role_added", { role }))
     },
   })

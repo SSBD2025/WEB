@@ -13,7 +13,7 @@ export const useUserActions = (userId?: string, id?: string) => {
     mutationFn: () => blockUser(userId!),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
-      queryClient.invalidateQueries({ queryKey: ALL_ACCOUNTS_QUERY_KEY})
+      queryClient.invalidateQueries({ queryKey: [ALL_ACCOUNTS_QUERY_KEY]})
       toast.success(t("admin.user_account.toasts.account_blocked"))
     },
   })
@@ -22,7 +22,7 @@ export const useUserActions = (userId?: string, id?: string) => {
     mutationFn: () => unblockUser(userId!),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
-      queryClient.invalidateQueries({ queryKey: ALL_ACCOUNTS_QUERY_KEY})
+      queryClient.invalidateQueries({ queryKey: [ALL_ACCOUNTS_QUERY_KEY]})
       toast.success(t("admin.user_account.toasts.account_unblocked"))
     },
   })
