@@ -5,17 +5,8 @@ import { useTranslation } from "react-i18next"
 import type { UseFormReturn } from "react-hook-form"
 import type { User } from "@/types/user"
 import type { EmailFormValues, PersonalDataFormValues } from "@/schemas/admin/userForms.schema"
-
-// interface ApiError {
-//   response?: {
-//     status?: number
-//     data?: {
-//       message?: string
-//       error?: string
-//     }
-//   }
-//   message?: string
-// }
+import { ADMIN_USER_QUERY_KEY } from "./useAdminUser"
+import { ALL_ACCOUNTS_QUERY_KEY } from "../useAllAccounts"
 
 export const useUserData = (
   userId?: string,
@@ -29,17 +20,11 @@ export const useUserData = (
   const emailMutation = useMutation({
     mutationFn: (data: EmailFormValues) => changeUserEmail(userId!, { email: data.email }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user", id] })
+      queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
+      queryClient.invalidateQueries({ queryKey: ALL_ACCOUNTS_QUERY_KEY})
       emailForm?.reset()
       toast.success(t("admin.user_account.toasts.email_changed"))
     },
-    // onError: (error: ApiError) => {
-    //   if (error?.response?.status === 409) {
-    //     toast.error(t("admin.user_account.toasts.email_in_use"))
-    //   } else {
-    //     toast.error(t("admin.user_account.toasts.email_change_error"))
-    //   }
-    // },
   })
 
   const dataMutation = useMutation({
@@ -50,7 +35,8 @@ export const useUserData = (
         lockToken: queryClient.getQueryData<User>(["user", id])?.lockToken || "",
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["user", id] })
+      queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
+      queryClient.invalidateQueries({ queryKey: ALL_ACCOUNTS_QUERY_KEY})
       dataForm?.reset()
       toast.success(t("admin.user_account.toasts.data_updated"))
     },

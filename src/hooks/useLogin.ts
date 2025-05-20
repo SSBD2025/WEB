@@ -1,13 +1,12 @@
-import { useCurrentUser } from "./useCurrentUser";
+import { CURRENT_USER_QUERY_KEY } from "./useCurrentUser";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser, twoFactorLogin } from "@/api/auth/login.api.ts";
 import { axiosErrorHandler } from "@/lib/axiosErrorHandler.ts";
 import { toast } from "sonner";
 import { t } from "i18next";
+import { queryClient } from "@/lib/queryClient";
 
 export const useLogin = () => {
-  const { refetch } = useCurrentUser();
-
   return useMutation({
     mutationFn: loginUser,
     onError: (error) => axiosErrorHandler(error, t("login.failed_to_login")),
@@ -17,13 +16,13 @@ export const useLogin = () => {
         localStorage.setItem("token", data.value);
         toast.success(t("login.login_successful"));
       }
-      refetch();
+
+      queryClient.invalidateQueries({ queryKey: CURRENT_USER_QUERY_KEY });
     },
   });
 };
 
 export const use2faLogin = () => {
-  const { refetch } = useCurrentUser();
   return useMutation({
     mutationFn: twoFactorLogin,
     onError: (error) => axiosErrorHandler(error, t("login.failed_to_login")),
@@ -31,7 +30,7 @@ export const use2faLogin = () => {
       localStorage.setItem("token", data.value);
       toast.success(t("login.login_successful"));
 
-      refetch();
+      queryClient.invalidateQueries({ queryKey: CURRENT_USER_QUERY_KEY });
     },
   });
 };

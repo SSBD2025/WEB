@@ -2,9 +2,11 @@ import { getAllAccounts } from "@/api/account.api";
 import { AccountWithRoles } from "@/types/user";
 import { useQuery } from "@tanstack/react-query";
 
+export const ALL_ACCOUNTS_QUERY_KEY = ["allAccounts"];
+
 export const useAllAccounts = () => {
   const query = useQuery<AccountWithRoles[]>({
-    queryKey: ["allAccounts"],
+    queryKey: ALL_ACCOUNTS_QUERY_KEY,
     queryFn: getAllAccounts,
   });
 
