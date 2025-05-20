@@ -55,11 +55,11 @@ export function Navbar() {
   };
 
   const handleLogout = async () => {
+    await apiClient.post("/account/logout");
+
     localStorage.removeItem("token");
 
     setCurrentRole(null);
-
-    await apiClient.post("/account/logout");
 
     localStorage.removeItem("user-role");
     queryClient.setQueryData(["currentUser"], null);
