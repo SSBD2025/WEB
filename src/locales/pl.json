@@ -388,10 +388,9 @@
   },
   "unauthorized": {
     "cardTitle": "Dostęp ograniczony",
-    "cardDescription": "Musisz być zalogowany, aby uzyskać dostęp do tej części serwisu Dietetycy XXI wieku.",
+    "cardDescription": "Musisz posiadać odpowiednią rolę, aby uzyskać dostęp do tej części serwisu Dietetycy XXI wieku.",
     "paragraph": "Śledź swoje posiłki, monitoruj składniki odżywcze i osiągaj cele zdrowotne dzięki spersonalizowanym planom dietetycznym.",
-    "loginButton": "Zaloguj się, aby kontynuować",
-    "registerButton": "Utwórz konto"
+    "loginButton": "Wróc na stronę główną"
   },
   "navbar": {
     "profile": "Profil",
