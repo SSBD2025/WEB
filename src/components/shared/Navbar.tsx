@@ -25,8 +25,12 @@ import { ROLE_LINKS } from "@/constants/navbarlinks";
 import { t } from "i18next";
 import { useLogRoleChange } from "@/hooks/useLogRoleChange";
 import apiClient from "@/lib/apiClient";
+import { Sun, Moon } from "lucide-react";
 
-export function Navbar() {
+export function Navbar({onToggleTheme, userTheme,}: {
+  onToggleTheme: () => void;
+  userTheme: boolean;
+}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { currentRole, setCurrentRole } = useRole();
   const { data: user } = useCurrentUser();
@@ -71,7 +75,7 @@ export function Navbar() {
   return (
     <nav className="bg-background border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0 flex items-center">
               <span className="text-primary font-bold text-xl">
@@ -79,6 +83,12 @@ export function Navbar() {
               </span>
             </Link>
           </div>
+
+          <div className="sm:ml-6 flex sm:hidden sm:items-center">
+              <Button variant="outline" onClick={onToggleTheme}>
+                {userTheme ? <Moon size={18} /> : <Sun size={18} />}
+              </Button>
+            </div>
 
           {links.map(({ label, path }) => (
             <Link
@@ -90,59 +100,65 @@ export function Navbar() {
             </Link>
           ))}
 
-          {currentRole && (
+          <div className="flex">
+            {currentRole && (
+              <div className="hidden sm:ml-6 sm:flex sm:items-center">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="flex items-center text-gray-600 hover:text-green-600"
+                    >
+                      <User className="h-5 w-5 mr-1" />
+                      <span className="mr-1">{t("navbar.profile")}</span>
+                      <ChevronDown className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem asChild className="cursor-pointer">
+                      <Link to={ROUTES.ME}>{t("navbar.account")}</Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                      <div className="flex flex-col w-full">
+                        <span className="text-sm font-medium mb-1">
+                          {t("navbar.role")}
+                        </span>
+                        <Select
+                          value={currentRole}
+                          onValueChange={handleRoleChange}
+                        >
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select role" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {possibleRoles?.map((role) => (
+                              <SelectItem key={role} value={role}>
+                                {role.charAt(0).toUpperCase() + role.slice(1)}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem
+                      className="text-red-500 cursor-pointer"
+                      onClick={handleLogout}
+                    >
+                      <LogOut className="h-4 w-4 mr-2" />
+                      {t("navbar.logout")}
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+            )}
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="flex items-center text-gray-600 hover:text-green-600"
-                  >
-                    <User className="h-5 w-5 mr-1" />
-                    <span className="mr-1">{t("navbar.profile")}</span>
-                    <ChevronDown className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem asChild className="cursor-pointer">
-                    <Link to={ROUTES.ME}>{t("navbar.account")}</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <div className="flex flex-col w-full">
-                      <span className="text-sm font-medium mb-1">
-                        {t("navbar.role")}
-                      </span>
-                      <Select
-                        value={currentRole}
-                        onValueChange={handleRoleChange}
-                      >
-                        <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Select role" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {possibleRoles?.map((role) => (
-                            <SelectItem key={role} value={role}>
-                              {role.charAt(0).toUpperCase() + role.slice(1)}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    className="text-red-500 cursor-pointer"
-                    onClick={handleLogout}
-                  >
-                    <LogOut className="h-4 w-4 mr-2" />
-                    {t("navbar.logout")}
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Button variant="outline" onClick={onToggleTheme}>
+                {userTheme ? <Moon size={18} /> : <Sun size={18} />}
+              </Button>
             </div>
-          )}
-
+          </div>
           {currentRole && (
             <div className="flex items-center sm:hidden">
               <button
