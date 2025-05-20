@@ -9,10 +9,10 @@ import { ADMIN_USER_QUERY_KEY } from "./useAdminUser"
 import { ALL_ACCOUNTS_QUERY_KEY } from "../useAllAccounts"
 
 export const useUserData = (
-  userId?: string,
-  id?: string,
-  emailForm?: UseFormReturn<EmailFormValues>,
-  dataForm?: UseFormReturn<PersonalDataFormValues>,
+    userId?: string,
+    id?: string,
+    emailForm?: UseFormReturn<EmailFormValues>,
+    dataForm?: UseFormReturn<PersonalDataFormValues>,
 ) => {
   const { t } = useTranslation()
   const queryClient = useQueryClient()
@@ -21,7 +21,7 @@ export const useUserData = (
     mutationFn: (data: EmailFormValues) => changeUserEmail(userId!, { email: data.email }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
-      queryClient.invalidateQueries({ queryKey: ALL_ACCOUNTS_QUERY_KEY})
+      queryClient.invalidateQueries({ queryKey: [ALL_ACCOUNTS_QUERY_KEY]})
       emailForm?.reset()
       toast.success(t("admin.user_account.toasts.email_changed"))
     },
@@ -29,14 +29,14 @@ export const useUserData = (
 
   const dataMutation = useMutation({
     mutationFn: (data: PersonalDataFormValues) =>
-      updateUserData(id!, {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        lockToken: queryClient.getQueryData<User>(["user", id])?.lockToken || "",
-      }),
+        updateUserData(id!, {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          lockToken: queryClient.getQueryData<User>(["user", id])?.lockToken || "",
+        }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
-      queryClient.invalidateQueries({ queryKey: ALL_ACCOUNTS_QUERY_KEY})
+      queryClient.invalidateQueries({ queryKey: [ALL_ACCOUNTS_QUERY_KEY]})
       dataForm?.reset()
       toast.success(t("admin.user_account.toasts.data_updated"))
     },

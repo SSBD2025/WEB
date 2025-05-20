@@ -32,3 +32,11 @@ export type AccountWithRoles = {
 };
 
 export type AccessLevel = "admin" | "client" | "dietician";
+
+export type AllAccounts = {
+  content: AccountWithRoles[];
+  last: boolean;
+  first: boolean;
+  number: number;
+  totalPages: number;
+}
