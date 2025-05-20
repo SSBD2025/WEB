@@ -39,14 +39,9 @@ const Unauthorized = () => {
         </CardContent>
         <CardFooter className="flex flex-col gap-2">
           <Button asChild className="w-full bg-primary hover:opacity-75">
-            <Link to={ROUTES.LOGIN}>
+            <Link to={ROUTES.HOME}>
               {t("unauthorized.loginButton")}
               <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-          <Button asChild variant="outline" className="w-full">
-            <Link to={ROUTES.USER_REGISTER}>
-              {t("unauthorized.registerButton")}
             </Link>
           </Button>
         </CardFooter>
