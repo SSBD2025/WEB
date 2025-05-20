@@ -10,7 +10,10 @@ const Redirect = () => {
 
   useEffect(() => {
     const handleRedirect = async () => {
-      if (!token) return;
+      if (!token || !type) {
+        navigate("/")
+        return;
+      } 
 
       try {
         if (type === "confirm") {

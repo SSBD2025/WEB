@@ -48,6 +48,10 @@ apiClient.interceptors.response.use(
       error.response.status === 401 &&
       !originalRequest._retry
     ) {
+      if (!window.location.pathname.includes("/login")) {
+        localStorage.removeItem("token");
+      }
+
       if (isRefreshing) {
         return new Promise(function (resolve, reject) {
           failedQueue.push({ resolve, reject});

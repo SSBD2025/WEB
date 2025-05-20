@@ -16,8 +16,8 @@ export const useLogin = () => {
       if (payload.typ !== "access2fa") {
         localStorage.setItem("token", data.value);
         toast.success(t("login.login_successful"));
-        refetch();
       }
+      refetch();
     },
   });
 };

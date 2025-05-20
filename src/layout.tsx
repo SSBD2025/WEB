@@ -30,10 +30,7 @@ const Layout = () => {
   const { currentRole, setCurrentRole } = useRole();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-
-    if (!currentRole && user?.roles?.[0]?.roleName) {
+    if (user?.roles?.[0]?.roleName && !currentRole) {
       const role = user.roles[0].roleName.toLowerCase() as AccessLevel;
       setCurrentRole(role);
     }

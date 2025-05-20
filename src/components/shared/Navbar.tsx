@@ -15,7 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import useRole from "@/store";
 import { useQueryClient } from "@tanstack/react-query";
@@ -23,13 +23,15 @@ import ROUTES from "@/constants/routes";
 import { AccessLevel } from "@/types/user";
 import { ROLE_LINKS } from "@/constants/navbarlinks";
 import { t } from "i18next";
-import { useLogRoleChange } from "@/hooks/useLogRoleChange"
+import { useLogRoleChange } from "@/hooks/useLogRoleChange";
+import apiClient from "@/lib/apiClient";
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { currentRole, setCurrentRole } = useRole();
   const { data: user } = useCurrentUser();
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const links = ROLE_LINKS[currentRole as AccessLevel] ?? [];
 
@@ -37,30 +39,33 @@ export function Navbar() {
     .filter((role) => role.active)
     .map((role) => role.roleName.toLowerCase());
 
-  const logRoleChangeMutation = useLogRoleChange()
+  const logRoleChangeMutation = useLogRoleChange();
 
   const handleRoleChange = (value: string) => {
     const role = value as AccessLevel;
-  
+
     if (role) {
       logRoleChangeMutation.mutate({
         previousRole: currentRole,
         newRole: role,
       });
     }
-  
+
     setCurrentRole(role);
   };
-  
-
 
   const handleLogout = async () => {
     localStorage.removeItem("token");
 
     setCurrentRole(null);
 
+    await apiClient.post("/account/logout");
+
     localStorage.removeItem("user-role");
     queryClient.setQueryData(["currentUser"], null);
+    queryClient.removeQueries();
+
+    navigate("/login");
   };
 
   return (
