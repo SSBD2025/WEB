@@ -18,16 +18,24 @@ import { useCurrentUser } from "./hooks/useCurrentUser";
 import MeProfile from "./pages/MeProfile";
 import Footer from "./components/shared/Footer";
 import useRole from "./store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 import GuestRoute from "./components/shared/GuestRole";
 import { Navbar } from "./components/shared/Navbar";
 import Redirect from "./pages/Redirect";
 import { AccessLevel } from "./types/user";
+import { useTheme } from "./hooks/useTheme.ts";
 
 const Layout = () => {
   const { data: user } = useCurrentUser();
   const { currentRole, setCurrentRole } = useRole();
+  const { userTheme, toggleTheme } = useTheme();
+  const [, setThemeToggleCounter] = useState(0);
+
+  const handleToggleTheme = () => {
+    toggleTheme();
+    setThemeToggleCounter((c) => c + 1);
+  };
 
   useEffect(() => {
     if (user?.roles?.[0]?.roleName && !currentRole) {
@@ -38,8 +46,8 @@ const Layout = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <ThemeWrapper role={currentRole || "client"} prefersDark={false}>
-        <Navbar />
+      <ThemeWrapper role={currentRole || "client"} prefersDark={userTheme}>
+        <Navbar onToggleTheme={handleToggleTheme} userTheme={userTheme} />
         <Routes>
           <Route path={ROUTES.REDIRECT} element={<Redirect />} />
           <Route path={ROUTES.HOME} element={<Home />} />
@@ -66,7 +74,7 @@ const Layout = () => {
               element={<AdminUserAccount />}
             />
             <Route path={ROUTES.ADMIN_DASHBOARD} element={<AdminDashboard />} />
-            <Route path={ROUTES.ADMIN_REGISTER} element={<AdminRegister />}/>
+            <Route path={ROUTES.ADMIN_REGISTER} element={<AdminRegister />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
