@@ -111,9 +111,9 @@ const AccountsTable = ({
                   userRoleDTOS
                     .filter((role) => role.active)
                     .map((role) => {
-                      const name = role.roleName.toLowerCase();
-                      return name.charAt(0).toUpperCase() + name.slice(1);
-                    })
+                      const name = role.roleName.toLowerCase()
+                      return t(`roles.${name}`)
+                    }),
                 )}
               </TableCell>
               <TableCell>
@@ -148,7 +148,7 @@ const AccountsTable = ({
         })}
       </TableBody>
     </Table>
-  );
-};
+  )
+}
 
-export default AccountsTable;
+export default AccountsTable
