@@ -467,6 +467,7 @@
     "success": {
       "message": "Zalogowano pomyślnie. Witamy ponownie!"
     },
-    "placeholder": "Wprowadź kod"
+    "placeholder": "Wprowadź kod",
+    "validation": "Kod musi być 10-znakowy"
   }
 }

@@ -34,7 +34,7 @@ export default function Codelogin() {
   const navigate = useNavigate();
 
   const formSchema = z.object({
-    value: z.string().length(10, "Code must be 10 characters"),
+    value: z.string().length(10, t("code.validation")),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({

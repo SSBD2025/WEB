@@ -467,6 +467,7 @@
     "success": {
       "message": "You have successfully logged in. Welcome back!"
     },
-    "placeholder": "Enter code"
+    "placeholder": "Enter code",
+    "validation": "Code must be 10 characters"
   }
 }
