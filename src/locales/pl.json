@@ -7,6 +7,8 @@
     "password_reset_info": "Nie pamiętasz hasła?",
     "password_reset": "Zresetuj hasło",
     "loading": "Logowanie...",
+    "request_codelogin": "Zaloguj się za pomocą kodu jednorazowego",
+    "request_codelogin_link": "Wpisz adres email",
     "error": {
       "password_error": "Złe hasło",
       "login_error": "Użytkownik nie istnieje",

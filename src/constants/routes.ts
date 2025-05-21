@@ -14,6 +14,8 @@ const ROUTES = {
     REDIRECT: "/redirect",
     DIETICIAN_DASHBOARD: "/dietician/dashboard",
     CLIENT_DASHBOARD: "/client/dashboard",
+    CODELOGIN_REQUEST: "/codelogin/request",
+    CODELOGIN: "/codelogin"
 }
 
 export default ROUTES;
