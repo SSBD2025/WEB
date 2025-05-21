@@ -485,5 +485,13 @@
       "too_short": "Hasło musi mieć co najmniej 8 znaków",
       "not_match": "Hasła się nie zgadzają"
     }
+  },
+  "session": {
+    "extended": "Twoja sesja została przedłuzona",
+    "extension_failed": "Nie udało się przedłużyć sesji",
+    "title": "Twoja sesja wkrótce wygaśnie",
+    "description": "Czy chcesz przedłużyć swoją sesję?",
+    "logout": "Wyloguj",
+    "extend": "Przedłuż sesję"
   }
 }
