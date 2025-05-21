@@ -240,7 +240,10 @@
   "accountsTable": {
     "search": {
       "placeholder": "Search by first name or last name...",
-      "results": "Found {{count}} accounts"
+      "results": "Found {{count}} accounts",
+      "clear": "Clear search",
+      "noSuggestions": "No suggestions",
+      "suggestionsList": "Search suggestions"
     },
     "tableRow": {
       "name": "Name",
