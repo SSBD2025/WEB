@@ -8,5 +8,7 @@ import AdminDashboard from "./AdminDashboard"
 import AdminUserAccount from "./AdminUserAccount";
 import PasswordReset from "./PasswordReset";
 import NewPassword from "./NewPassword";
+import CodeloginRequestPage from "./CodeloginRequestPage.tsx";
+import CodeloginPage from "./CodeloginPage.tsx";
 
-export { Home, Login, ClientRegister, DieticianRegister, AdminRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard };
+export { Home, Login, ClientRegister, DieticianRegister, AdminRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard, CodeloginRequestPage, CodeloginPage };
