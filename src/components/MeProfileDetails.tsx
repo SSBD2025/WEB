@@ -157,11 +157,7 @@ const MeProfileDetails = ({ user }: { user: User }) => {
                           {t("profile.fields.last_sucessful_login_date")}
                         </TableCell>
                         <TableCell>
-                          {user.account.lastSuccessfulLogin
-                            ? new Date(
-                                user.account.lastSuccessfulLogin
-                              ).toLocaleString()
-                            : "-"}
+                          {user.account.lastSuccessfulLogin}
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -195,11 +191,7 @@ const MeProfileDetails = ({ user }: { user: User }) => {
                           {t("profile.fields.last_failed_login_date")}
                         </TableCell>
                         <TableCell>
-                          {user.account.lastFailedLogin
-                            ? new Date(
-                                user.account.lastFailedLogin
-                              ).toLocaleString()
-                            : "-"}
+                          {user.account.lastFailedLogin}
                         </TableCell>
                       </TableRow>
                     </TableBody>
