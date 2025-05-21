@@ -407,6 +407,7 @@
     "openMenu": "Open main menu"
   },
   "exceptions": {
+    "account_is_autolocked": "The account has not been logged on in quite a while! Check your inbox for an activation link!",
     "account_already_blocked": "The account is already blocked",
     "account_already_unblocked": "The account is already unblocked",
     "account_already_verified": "The account is already verified",

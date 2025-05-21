@@ -407,6 +407,7 @@
     "openMenu": "Otwórz menu"
   },
   "exceptions": {
+    "account_is_autolocked": "Konto nie było używane od dłuższego czasu! Sprawdź swoją skrzynkę odbiorczą, aby znaleźć link aktywacyjny!",
     "account_already_blocked": "Konto jest już zablokowane",
     "account_already_unblocked": "Konto jest już odblokowane",
     "account_already_verified": "Konto zostało już zweryfikowane",
