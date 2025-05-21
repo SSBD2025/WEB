@@ -431,7 +431,8 @@
     "token_not_found": "Nie znaleziono żetonu",
     "token_signature_invalid": "Podpis żetonu jest nieprawidłowy",
     "token_type_invalid": "Nieprawidłowy typ żetonu",
-    "two_factor_token_invalid": "Nieprawidłowy żeton dwuskładnikowy"
+    "two_factor_token_invalid": "Nieprawidłowy żeton dwuskładnikowy",
+    "previous_password_used": "Nie można używać poprzednich haseł"
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
