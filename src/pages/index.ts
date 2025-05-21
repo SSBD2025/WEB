@@ -10,5 +10,6 @@ import PasswordReset from "./PasswordReset";
 import NewPassword from "./NewPassword";
 import CodeloginRequestPage from "./CodeloginRequestPage.tsx";
 import CodeloginPage from "./CodeloginPage.tsx";
+import {ForceChangePasswordPage} from "./ForceChangePasswordPage";
 
-export { Home, Login, ClientRegister, DieticianRegister, AdminRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard, CodeloginRequestPage, CodeloginPage };
+export { Home, Login, ClientRegister, DieticianRegister, AdminRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard, CodeloginRequestPage, CodeloginPage, ForceChangePasswordPage };
