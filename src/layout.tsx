@@ -48,6 +48,11 @@ const Layout = () => {
     }
   }, [user, currentRole, setCurrentRole]);
 
+  useEffect(() => {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    localStorage.setItem('timezone', tz);
+  }, []);
+
   return (
       <div className="min-h-screen flex flex-col">
         <ThemeWrapper role={currentRole || "client"} prefersDark={userTheme}>
