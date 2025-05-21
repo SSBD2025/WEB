@@ -40,15 +40,15 @@ const Login = () => {
             >
               {t("login.password_reset")}
             </Link>
-            <p className="text-sm text-gray-600 text-center mt-2">
+          </p>
+          <p className="text-sm text-gray-600">
               {t("login.request_codelogin")}
-              <Link
-                  to={ROUTES.CODELOGIN_REQUEST}
-                  className="text-blue-600 hover:text-blue-800 font-medium ml-1"
-              >
-                {t("login.request_codelogin_link")}
-              </Link>
-            </p>
+            <Link
+                to={ROUTES.CODELOGIN_REQUEST}
+                className="text-blue-600 hover:text-blue-800 font-medium ml-1"
+            >
+              {t("login.request_codelogin_link")}
+            </Link>
           </p>
         </CardFooter>
       </Card>

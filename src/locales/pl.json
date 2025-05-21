@@ -435,7 +435,8 @@
     "token_signature_invalid": "Podpis żetonu jest nieprawidłowy",
     "token_type_invalid": "Nieprawidłowy typ żetonu",
     "two_factor_token_invalid": "Nieprawidłowy żeton dwuskładnikowy",
-    "previous_password_used": "Nie można używać poprzednich haseł"
+    "previous_password_used": "Nie można używać poprzednich haseł",
+    "password_must_be_changed": "Hasło musi zostać zmienione"
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -470,5 +471,16 @@
     },
     "placeholder": "Wprowadź kod",
     "validation": "Kod musi być 10-znakowy"
+  },
+  "force_change_password": {
+    "header": "Wymagana zmiana hasła",
+    "info": "Ze względów bezpieczeństwa, musisz zmienić swoje hasło przed kontynuacją.",
+    "old_password": {
+      "too_short": "Poprzednie hasło jest wymagane"
+    },
+    "new_password": {
+      "too_short": "Hasło musi mieć co najmniej 8 znaków",
+      "not_match": "Hasła się nie zgadzają"
+    }
   }
 }
