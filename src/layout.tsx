@@ -10,7 +10,9 @@ import {
   PasswordReset,
   NewPassword,
   AdminDashboard,
-  ForceChangePasswordPage
+  ForceChangePasswordPage,
+  CodeloginRequestPage,
+  CodeloginPage
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -58,6 +60,8 @@ const Layout = () => {
               <Route path={ROUTES.LOGIN} element={<Login />} />
               <Route path={ROUTES.USER_REGISTER} element={<ClientRegister />} />
               <Route path={ROUTES.FORCE_CHANGE_PASSWORD} element={<ForceChangePasswordPage/>}/>
+              <Route path={ROUTES.CODELOGIN} element={<CodeloginPage />} />
+              <Route path={ROUTES.CODELOGIN_REQUEST} element={<CodeloginRequestPage />} />
               <Route
                   path={ROUTES.DIETICIAN_REGISTER}
                   element={<DieticianRegister />}
