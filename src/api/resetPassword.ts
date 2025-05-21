@@ -1,4 +1,5 @@
 import apiClient from "@/lib/apiClient.ts";
+import authClient from "@/lib/authClient";
 import {PasswordReset, PasswordResetRequest} from "@/types/reset_password";
 
 export const resetPasswordRequest = async (body: PasswordResetRequest) => {
@@ -7,6 +8,6 @@ export const resetPasswordRequest = async (body: PasswordResetRequest) => {
 }
 
 export const resetPassword = async (body: PasswordReset, token: string) => {
-    const response = await apiClient.post('/account/reset/password/' + token, body);
+    const response = await authClient.post('/account/reset/password/' + token, body);
     return response.data;
 }
