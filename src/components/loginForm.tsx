@@ -91,23 +91,27 @@ const LoginForm = () => {
             const err = error as AxiosError;
             const status = err.response?.status;
 
-            if (status === 401) {
-              form.setError("password", {
-                message: t("login.error.password_error"),
-              });
-            } else if (status === 404) {
-              form.setError("login", {
-                message: t("login.error.login_error"),
-              });
-            } else {
-              form.setError("root", {
-                message: t("login.error.login_failed", {
-                  message: error.message,
-                }),
-              });
-            }
-          },
-        }
+              if (status === 401) {
+                form.setError("password", {
+                  message: t("login.error.password_error"),
+                });
+              } else if (status === 404) {
+                form.setError("login", {
+                  message: t("login.error.login_error"),
+                });
+              } else if (status === 428) {
+                navigate(ROUTES.FORCE_CHANGE_PASSWORD, {
+                  state: { login: values.login }
+                })
+              } else {
+                form.setError("root", {
+                  message: t("login.error.login_failed", {
+                    message: error.message,
+                  }),
+                });
+              }
+            },
+          }
       );
     }
   };

@@ -22,6 +22,15 @@ export const changeUserPassword = async (data: {
   return res.data;
 };
 
+export const forceChangeUserPassword = async (data: {
+  login: string;
+  oldPassword: string;
+  newPassword: string;
+}) => {
+  const res = await apiClient.post("/account/force/changePassword", data);
+  return res.data;
+};
+
 export const changeUserEmail = async (data: {
   email: string;
 }) => {
