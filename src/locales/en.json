@@ -236,6 +236,10 @@
     }
   },
   "accountsTable": {
+    "search": {
+      "placeholder": "Search by first name or last name...",
+      "results": "Found {{count}} accounts"
+    },
     "tableRow": {
       "name": "Name",
       "roles": "Roles",

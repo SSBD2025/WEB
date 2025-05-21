@@ -39,4 +39,5 @@ export type AllAccounts = {
   first: boolean;
   number: number;
   totalPages: number;
+  totalElements: number;
 }
