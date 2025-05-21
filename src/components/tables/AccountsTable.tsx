@@ -69,11 +69,9 @@ const AccountsTable = ({
             {renderSortArrow("lastSuccessfulLogin")}
           </TableHead>
           <TableHead
-            onClick={() => onSortChange("lastLoggedInIp")}
             className="hidden md:table-cell"
           >
             {t("accountsTable.tableRow.lastLoggedInIp")}
-            {renderSortArrow("lastLoggedInIp")}
           </TableHead>
           <TableHead></TableHead>
         </TableRow>

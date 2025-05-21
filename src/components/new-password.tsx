@@ -21,14 +21,16 @@ import {
 import { PasswordInput } from "@/components/ui/password-input";
 import { useTranslation } from "react-i18next";
 import { usePasswordReset } from "@/hooks/usePasswordReset.ts";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AxiosError } from "axios";
 import { RequiredFormLabel } from "./ui/requiredLabel";
+import ROUTES from "@/constants/routes";
 
 export default function ResetPassword() {
   const { t } = useTranslation();
   const passwordResetMutation = usePasswordReset();
   const { token } = useParams<{ token: string }>();
+  const navigate = useNavigate();
 
   const formSchema = z
     .object({
@@ -66,6 +68,7 @@ export default function ResetPassword() {
         {
           onSuccess: async () => {
             toast.success(t("password_reset.new.toasts.reset_success"));
+            navigate(ROUTES.LOGIN);
           },
           onError: async (error) => {
             const err = error as AxiosError;
@@ -91,8 +94,6 @@ export default function ResetPassword() {
           },
         }
       );
-
-      toast.success(t("password_reset.new.toasts.reset_success"));
     } catch (error) {
       console.error(t("password_reset.new.reset_error", { error }), error);
       toast.error(t("password_reset.new.toasts.reset_error"));
