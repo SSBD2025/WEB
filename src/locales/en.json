@@ -431,7 +431,8 @@
     "token_not_found": "Token not found",
     "token_signature_invalid": "Token signature is invalid",
     "token_type_invalid": "Invalid token type",
-    "two_factor_token_invalid": "Invalid two-factor token"
+    "two_factor_token_invalid": "Invalid two-factor token",
+    "previous_password_used": "The new password cannot be the same as the previous password"
   },
   "role_change": {
     "log_error": "Failed to log role change:"
