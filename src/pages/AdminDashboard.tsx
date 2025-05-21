@@ -9,7 +9,7 @@ import useStoredSettings from "@/hooks/useStoredSettings";
 import { useDebounce } from "@/hooks/useDebounce";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-// import { AccountSearchAutocomplete } from "@/components/AccountSearchAutocomplete";
+import { AccountSearchAutocomplete } from "@/components/accountSearchAutocomplete";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -25,14 +25,14 @@ const AdminDashboard = () => {
   const debouncedSearchPhrase = useDebounce(searchPhrase, 300);
   const { t } = useTranslation();
 
-  const [settings, setSettings] = useStoredSettings();
-  const [searchParams] = useSearchParams();
-  const pageParam = searchParams.get("page") || "1";
-  const page = Number.parseInt(pageParam, 10);
+  const [settings, setSettings] = useStoredSettings()
+  const [searchParams] = useSearchParams()
+  const pageParam = searchParams.get("page") || "1"
+  const page = Number.parseInt(pageParam, 10)
 
-  const sortBy = settings.sortBy;
-  const sortOrder = settings.sortOrder;
-  const pageSize = settings.pageSize;
+  const sortBy = settings.sortBy
+  const sortOrder = settings.sortOrder
+  const pageSize = settings.pageSize
 
   const { status, error, data, isFetching } = useAllAccounts({
     searchPhrase: debouncedSearchPhrase,
@@ -63,17 +63,15 @@ const AdminDashboard = () => {
     <main className="flex-grow items-center justify-center flex flex-col">
       <div className="w-full max-w-6xl px-4 py-6">
         <div className="mb-4 relative">
-          {/* <AccountSearchAutocomplete
+          <AccountSearchAutocomplete
             accounts={data?.content}
             onSearch={handleSearch}
             searchPhrase={searchPhrase}
             isLoading={isFetching}
-          /> */}
+          />
           {searchPhrase && (
             <p className="text-sm text-muted-foreground mt-2">
-              {t("accountsTable.search.results", {
-                count: data?.totalElements || 0,
-              })}
+              {t("accountsTable.search.results", { count: data?.totalElements || 0 })}
             </p>
           )}
         </div>
