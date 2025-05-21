@@ -485,5 +485,13 @@
       "too_short": "Password must be at least 8 characters",
       "not_match": "Passwords do not match"
     }
+  },
+  "session": {
+    "extended": "Your session has been extended",
+    "extension_failed": "Could not extend session",
+    "title": "Your session will expire soon",
+    "description": "Would you like to extend your session?",
+    "logout": "Logout",
+    "extend": "Extend session"
   }
 }

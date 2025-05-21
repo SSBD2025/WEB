@@ -28,6 +28,7 @@ import { Navbar } from "./components/shared/Navbar";
 import Redirect from "./pages/Redirect";
 import { AccessLevel } from "./types/user";
 import { useTheme } from "./hooks/useTheme.ts";
+import {SessionTimeout} from "./components/sessionTimeout";
 
 const Layout = () => {
   const { data: user } = useCurrentUser();
@@ -84,6 +85,7 @@ const Layout = () => {
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <SessionTimeout />
           <Footer />
         </ThemeWrapper>
         <Toaster />
