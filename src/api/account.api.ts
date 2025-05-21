@@ -4,11 +4,23 @@ import { AllAccounts } from "@/types/user";
 export interface AccountsQueryParams {
   page?: number;
   size?: number;
-  sort?: string;
+  sortBy?: string;
+  sortOrder?: "asc" | "desc";
 }
 
-export const getAllAccounts = async (params: AccountsQueryParams) => {
-  console.log(params);
-  const res = await apiClient.get("/account", { params });
+export const getAllAccounts = async ({
+  page,
+  size,
+  sortBy,
+  sortOrder,
+}: AccountsQueryParams) => {
+  const sort = sortBy && sortOrder ? `${sortBy},${sortOrder}` : undefined;
+  const res = await apiClient.get("/account", {
+    params: {
+      page,
+      size,
+      ...(sort ? { sort } : {}),
+    },
+  });
   return res.data as AllAccounts;
 };

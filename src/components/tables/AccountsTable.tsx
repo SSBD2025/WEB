@@ -26,23 +26,54 @@ const rowVariants = {
   }),
 };
 
-const AccountsTable = ({ accounts }: { accounts: AccountWithRoles[] }) => {
+const AccountsTable = ({
+  accounts,
+  sortBy,
+  sortOrder,
+  onSortChange,
+}: {
+  accounts: AccountWithRoles[];
+  sortBy: string;
+  sortOrder: "asc" | "desc";
+  onSortChange: (field: string) => void;
+}) => {
   const navigate = useNavigate();
+
+  const renderSortArrow = (field: string) => {
+    if (sortBy !== field) return null;
+    return sortOrder === "asc" ? " ↑" : " ↓";
+  };
 
   return (
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[250px]">
+          <TableHead
+            className="w-[250px]"
+            onClick={() => onSortChange("firstName")}
+          >
             {t("accountsTable.tableRow.name")}
+            {renderSortArrow("firstName")}
           </TableHead>
-          <TableHead>{t("accountsTable.tableRow.roles")}</TableHead>
-          <TableHead>{t("accountsTable.tableRow.status")}</TableHead>
-          <TableHead className="hidden md:table-cell">
+          <TableHead>
+            {t("accountsTable.tableRow.roles")}
+          </TableHead>
+          <TableHead>
+            {t("accountsTable.tableRow.status")}
+          </TableHead>
+          <TableHead
+            onClick={() => onSortChange("lastSuccessfulLogin")}
+            className="hidden md:table-cell"
+          >
             {t("accountsTable.tableRow.lastLoggedIn")}
+            {renderSortArrow("lastSuccessfulLogin")}
           </TableHead>
-          <TableHead className="hidden md:table-cell">
+          <TableHead
+            onClick={() => onSortChange("lastLoggedInIp")}
+            className="hidden md:table-cell"
+          >
             {t("accountsTable.tableRow.lastLoggedInIp")}
+            {renderSortArrow("lastLoggedInIp")}
           </TableHead>
           <TableHead></TableHead>
         </TableRow>
