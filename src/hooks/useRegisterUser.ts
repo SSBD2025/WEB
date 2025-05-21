@@ -20,10 +20,10 @@ export const useRegisterUser = (userType: "client" | "dietician" | "admin") => {
         const data = error.response?.data;
 
         if (status === 409) {
-          if (data === "Constraint error: this email is already in use") {
+          if (data.message === "account_constraint_violation: email already in use") {
             toast.error(t("register.error.emailExist"));
           } else if (
-            data === "Constraint error: this login is already in use"
+              data.message === "account_constraint_violation: login already in use"
           ) {
             toast.error(t("register.error.loginExist"));
           }

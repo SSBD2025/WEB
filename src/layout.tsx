@@ -21,7 +21,7 @@ import { useCurrentUser } from "./hooks/useCurrentUser";
 import MeProfile from "./pages/MeProfile";
 import Footer from "./components/shared/Footer";
 import useRole from "./store";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProtectedRoute from "./components/shared/ProtectedRoute";
 import GuestRoute from "./components/shared/GuestRole";
 import { Navbar } from "./components/shared/Navbar";
@@ -34,11 +34,9 @@ const Layout = () => {
   const { data: user } = useCurrentUser();
   const { currentRole, setCurrentRole } = useRole();
   const { userTheme, toggleTheme } = useTheme();
-  const [, setThemeToggleCounter] = useState(0);
 
   const handleToggleTheme = () => {
     toggleTheme();
-    setThemeToggleCounter((c) => c + 1);
   };
 
   useEffect(() => {
