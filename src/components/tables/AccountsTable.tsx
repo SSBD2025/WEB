@@ -124,7 +124,9 @@ const AccountsTable = ({
               </TableCell>
               <TableCell className="hidden md:table-cell">
                 <span>
-                  {accountDTO.lastSuccessfulLogin}
+                  {accountDTO.lastSuccessfulLogin
+                    ? new Date(accountDTO.lastSuccessfulLogin).toLocaleString()
+                    : t("accountsTable.tableData.neverLoggedIn")}
                 </span>
               </TableCell>
               <TableCell className="hidden md:table-cell">
