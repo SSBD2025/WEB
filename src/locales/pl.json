@@ -240,7 +240,10 @@
   "accountsTable": {
     "search": {
       "placeholder": "Szukaj po imieniu lub nazwisku...",
-      "results": "Znaleziono {{count}} kont"
+      "results": "Znaleziono {{count}} kont",
+      "clear": "Wyczyść wyszukiwanie",
+      "noSuggestions": "Brak sugestii",
+      "suggestionsList": "Sugestie wyszukiwania"
     },
     "tableRow": {
       "name": "Imię",

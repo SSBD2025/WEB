@@ -7,10 +7,9 @@ import Pagination from "@/components/shared/Pagination";
 import { useSearchParams } from "react-router";
 import useStoredSettings from "@/hooks/useStoredSettings";
 import { useDebounce } from "@/hooks/useDebounce";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
+// import { AccountSearchAutocomplete } from "@/components/AccountSearchAutocomplete";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -29,13 +28,13 @@ const AdminDashboard = () => {
   const [settings, setSettings] = useStoredSettings();
   const [searchParams] = useSearchParams();
   const pageParam = searchParams.get("page") || "1";
-  const page = parseInt(pageParam, 10);
+  const page = Number.parseInt(pageParam, 10);
 
   const sortBy = settings.sortBy;
   const sortOrder = settings.sortOrder;
   const pageSize = settings.pageSize;
 
-  const { status, error, data } = useAllAccounts({
+  const { status, error, data, isFetching } = useAllAccounts({
     searchPhrase: debouncedSearchPhrase,
     page: page - 1,
     size: pageSize,
@@ -43,10 +42,15 @@ const AdminDashboard = () => {
     sortOrder,
   });
 
+  const handleSearch = (value: string) => {
+    setSearchPhrase(value)
+  }
+
   const handleSortChange = (newSortBy: string) => {
     setSettings((prev) => {
       const newSortOrder =
         prev.sortBy === newSortBy && prev.sortOrder === "asc" ? "desc" : "asc";
+
       return {
         ...prev,
         sortBy: newSortBy,
@@ -59,18 +63,17 @@ const AdminDashboard = () => {
     <main className="flex-grow items-center justify-center flex flex-col">
       <div className="w-full max-w-6xl px-4 py-6">
         <div className="mb-4 relative">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-            <Input
-              placeholder={t("accountsTable.search.placeholder")}
-              value={searchPhrase}
-              onChange={(event) => setSearchPhrase(event.target.value)}
-              className="pl-10 max-w-md"
-            />
-          </div>
+          {/* <AccountSearchAutocomplete
+            accounts={data?.content}
+            onSearch={handleSearch}
+            searchPhrase={searchPhrase}
+            isLoading={isFetching}
+          /> */}
           {searchPhrase && (
             <p className="text-sm text-muted-foreground mt-2">
-              {t("accountsTable.search.results", { count: data?.totalElements || 0 })}
+              {t("accountsTable.search.results", {
+                count: data?.totalElements || 0,
+              })}
             </p>
           )}
         </div>
