@@ -40,7 +40,7 @@ const Login = () => {
             >
               {t("login.password_reset")}
             </Link>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 text-center mt-2">
               {t("login.request_codelogin")}
               <Link
                   to={ROUTES.CODELOGIN_REQUEST}
