@@ -10,6 +10,7 @@ import ROUTES from "@/constants/routes";
 import React from "react";
 import { useLocation } from "react-router";
 import { t } from "i18next";
+import DigitalClock from "@/components/digital-clock.tsx";
 
 const Footer = () => {
   const location = useLocation();
@@ -70,6 +71,7 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} Bartosz Podemski.{" "}
               {t("footer.rights")}
             </p>
+            <DigitalClock/>
           </div>
         </div>
       </div>
