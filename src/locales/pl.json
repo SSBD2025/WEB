@@ -380,7 +380,7 @@
     "confirm_password": {
       "field": "Potwierdź hasło"
     },
-    "success" : "Użytkownik zarejestrowany pomyślnie. Sprawdź swoją skrzynkę email aby dokończyć rejestrację",
+    "success": "Użytkownik zarejestrowany pomyślnie. Sprawdź swoją skrzynkę email aby dokończyć rejestrację",
     "error": {
       "emailExist": "Ten adres email jest już używany. Spróbuj ponownie używając innego adresu email.",
       "loginExist": "Ta nazwa użtkownika jest już zajęta. Spróbuj ponownie wybierając inną.",
@@ -443,5 +443,30 @@
     "admin": "Administrator",
     "client": "Klient",
     "dietician": "Dietetyk"
+  },
+  "code_login": {
+    "title": "Zaloguj się za pomocą kodu",
+    "description": "Wpisz adres e-mail powiązany z Twoim kontem, aby otrzymać kod",
+    "button": "Wyślij kod",
+    "error": {
+      "404": "Nie znaleziono adresu e-mail",
+      "other": "Wystąpił błąd podczas wysyłania kodu. Spróbuj ponownie."
+    },
+    "success": {
+      "message": "Kod został wysłany na Twój adres e-mail. Sprawdź swoją skrzynkę odbiorczą."
+    }
+  },
+  "code": {
+    "error": {
+      "code_invalid": "Nieprawidłowy kod",
+      "other": "Wystąpił błąd podczas sprawdzania kodu. Spróbuj ponownie."
+    },
+    "title": "Wprowadź swój kod",
+    "description": "Wprowadź kod wysłany na Twój adres e-mail",
+    "button": "Zaloguj się",
+    "success": {
+      "message": "Zalogowano pomyślnie. Witamy ponownie!"
+    },
+    "placeholder": "Wprowadź kod"
   }
 }

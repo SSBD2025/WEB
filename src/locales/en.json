@@ -443,5 +443,30 @@
     "admin": "Admin",
     "client": "Client",
     "dietician": "Dietician"
+  },
+  "code_login": {
+    "title": "Login with code",
+    "description": "Type in an email address linked to your account to get a code",
+    "button": "Send code",
+    "error": {
+      "404": "Email not found",
+      "other": "An error occurred while sending the code. Please try again."
+    },
+    "success": {
+      "message": "Code has been sent to your email address. Please check your inbox."
+    }
+  },
+  "code": {
+    "error": {
+      "code_invalid": "Invalid code",
+      "other": "An error occurred while checking the code. Please try again."
+    },
+    "title": "Enter your code",
+    "description": "Please enter the code sent to your email address",
+    "button": "Login",
+    "success": {
+      "message": "You have successfully logged in. Welcome back!"
+    },
+    "placeholder": "Enter code"
   }
 }
