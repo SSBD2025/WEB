@@ -130,7 +130,7 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
               {selectedRoles.length > 0 ? (
                 selectedRoles.map((role) => (
                   <Badge key={role} variant="secondary">
-                    {role}
+                    {t(`roles.${role.toLowerCase()}`)}
                   </Badge>
                 ))
               ) : (
@@ -163,7 +163,7 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
                             onClick={() => !isDisabled && handleRoleAction(role, !hasRole)}
                             disabled={isLoading || isDisabled}
                           >
-                            <span>{role}</span>
+                            <span>{t(`roles.${role.toLowerCase()}`)}</span>
                             <AnimatePresence mode="wait">
                               {isLoading ? (
                                 <Loader2 className="h-4 w-4 animate-spin" />
@@ -195,13 +195,21 @@ export default function UserRoles({ user, onAddRole, onRemoveRole, isLoading }: 
           <AlertDialogHeader>
             <AlertDialogTitle>
               {isAddingRole
-                ? t("admin.user_account.roles.add_role_confirm", { role: roleToModify })
-                : t("admin.user_account.roles.remove_role_confirm", { role: roleToModify })}
+                ? t("admin.user_account.roles.add_role_confirm", {
+                    role: roleToModify ? t(`roles.${roleToModify.toLowerCase()}`) : "",
+                  })
+                : t("admin.user_account.roles.remove_role_confirm", {
+                    role: roleToModify ? t(`roles.${roleToModify.toLowerCase()}`) : "",
+                  })}
             </AlertDialogTitle>
             <AlertDialogDescription>
               {isAddingRole
-                ? t("admin.user_account.roles.add_role_description", { role: roleToModify })
-                : t("admin.user_account.roles.remove_role_description", { role: roleToModify })}
+                ? t("admin.user_account.roles.add_role_description", {
+                    role: roleToModify ? t(`roles.${roleToModify.toLowerCase()}`) : "",
+                  })
+                : t("admin.user_account.roles.remove_role_description", {
+                    role: roleToModify ? t(`roles.${roleToModify.toLowerCase()}`) : "",
+                  })}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

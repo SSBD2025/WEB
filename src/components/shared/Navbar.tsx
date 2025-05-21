@@ -121,20 +121,15 @@ export function Navbar({onToggleTheme, userTheme,}: {
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
                       <div className="flex flex-col w-full">
-                        <span className="text-sm font-medium mb-1">
-                          {t("navbar.role")}
-                        </span>
-                        <Select
-                          value={currentRole}
-                          onValueChange={handleRoleChange}
-                        >
+                        <span className="text-sm font-medium mb-1">{t("navbar.role")}</span>
+                        <Select value={currentRole} onValueChange={handleRoleChange}>
                           <SelectTrigger className="w-full">
                             <SelectValue placeholder="Select role" />
                           </SelectTrigger>
                           <SelectContent>
                             {possibleRoles?.map((role) => (
                               <SelectItem key={role} value={role}>
-                                {role.charAt(0).toUpperCase() + role.slice(1)}
+                                {t(`roles.${role}`)}
                               </SelectItem>
                             ))}
                           </SelectContent>
@@ -204,7 +199,7 @@ export function Navbar({onToggleTheme, userTheme,}: {
                   <SelectContent>
                     {possibleRoles?.map((role) => (
                       <SelectItem key={role} value={role}>
-                        {role.charAt(0).toUpperCase() + role.slice(1)}
+                        {t(`roles.${role}`)}
                       </SelectItem>
                     ))}
                   </SelectContent>

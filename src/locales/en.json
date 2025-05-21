@@ -436,5 +436,10 @@
   },
   "role_change": {
     "log_error": "Failed to log role change:"
+  },
+  "roles": {
+    "admin": "Admin",
+    "client": "Client",
+    "dietician": "Dietician"
   }
 }

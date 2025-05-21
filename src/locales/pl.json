@@ -436,5 +436,10 @@
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
+  },
+  "roles": {
+    "admin": "Administrator",
+    "client": "Klient",
+    "dietician": "Dietetyk"
   }
 }

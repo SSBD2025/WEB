@@ -13,8 +13,8 @@ export const useUserRoles = (userId?: string, id?: string) => {
     mutationFn: (role: string) => addRoleToUser(userId!, role),
     onSuccess: (_, role) => {
       queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
-      queryClient.invalidateQueries({ queryKey: [ALL_ACCOUNTS_QUERY_KEY]})
-      toast.success(t("admin.user_account.toasts.role_added", { role }))
+      queryClient.invalidateQueries({ queryKey: [ALL_ACCOUNTS_QUERY_KEY] })
+      toast.success(t("admin.user_account.toasts.role_added", { role: t(`roles.${role.toLowerCase()}`) }))
     },
   })
 
@@ -22,7 +22,7 @@ export const useUserRoles = (userId?: string, id?: string) => {
     mutationFn: (role: string) => removeRoleFromUser(userId!, role),
     onSuccess: (_, role) => {
       queryClient.invalidateQueries({ queryKey: ADMIN_USER_QUERY_KEY(id!) })
-      toast.success(t("admin.user_account.toasts.role_removed", { role }))
+      toast.success(t("admin.user_account.toasts.role_removed", { role: t(`roles.${role.toLowerCase()}`) }))
     },
   })
 
