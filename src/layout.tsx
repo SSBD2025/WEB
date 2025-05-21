@@ -54,7 +54,7 @@ const Layout = () => {
   }, []);
 
   return (
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col relative">
         <ThemeWrapper role={currentRole || "client"} prefersDark={userTheme}>
           <Navbar onToggleTheme={handleToggleTheme} userTheme={userTheme} />
           <Routes>
