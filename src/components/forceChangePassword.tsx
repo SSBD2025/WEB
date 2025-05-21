@@ -28,18 +28,7 @@ import { RequiredFormLabel } from "@/components/ui/requiredLabel";
 import ROUTES from "@/constants/routes";
 import {Card, CardContent, CardHeader} from "@/components/ui/card.tsx";
 
-const passwordSchema = z
-    .object({
-        oldPassword: z.string().min(1, { message: "Old password is required" }),
-        newPassword: z
-            .string()
-            .min(8, { message: "Password must be at least 8 characters" }),
-        confirmPassword: z.string(),
-    })
-    .refine((data) => data.newPassword === data.confirmPassword, {
-        message: "Passwords do not match",
-        path: ["confirmPassword"],
-    });
+
 
 type ForceChangePasswordFormProps = {
     login: string;
@@ -55,6 +44,18 @@ export function ForceChangePasswordForm({ login, onSuccess }: ForceChangePasswor
         oldPassword?: string;
         newPassword?: string;
     } | null>(null);
+
+
+    const passwordSchema = z
+        .object({
+            oldPassword: z.string().min(1, { message: t("force_change_password.old_password.too_short")} ),
+            newPassword: z.string().min(8, { message: t("force_change_password.new_password.too_short") }),
+            confirmPassword: z.string(),
+        })
+        .refine((data) => data.newPassword === data.confirmPassword, {
+            message: t("force_change_password.new_password.not_match"),
+            path: ["confirmPassword"],
+        });
 
     const form = useForm({
         defaultValues: {
@@ -99,9 +100,9 @@ export function ForceChangePasswordForm({ login, onSuccess }: ForceChangePasswor
     return (
         <Card>
             <CardHeader className="space-y-1">
-                <h1 className="text-2xl font-bold text-center">Wymagana zmiana hasła</h1>
+                <h1 className="text-2xl font-bold text-center">{t("force_change_password.header")}</h1>
                 <p className="text-center">
-                    Ze względów bezpieczeństwa, musisz zmienić swoje hasło przed kontynuacją.
+                    {t("force_change_password.info")}
                 </p>
             </CardHeader>
             <CardContent className="p-6">
