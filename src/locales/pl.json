@@ -111,7 +111,7 @@
       "reset_password": "Resetuj hasło"
     },
     "requests": {
-      "error_404_not_found": "Konto nie zostało odnalezione",
+      "404_not_found": "Hasło zostało już użyte",
       "error_other": "Wewnętrzny błąd serwera"
     }
   },

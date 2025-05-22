@@ -111,7 +111,7 @@
       "reset_password": "Reset Password"
     },
     "requests": {
-      "error_404_not_found": "Account not found",
+      "404_not_found": "Password was already used",
       "error_other": "INTERNAL SERVER ERROR"
     }
   },
