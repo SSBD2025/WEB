@@ -9,14 +9,17 @@ export const getRoleBadges = (roles: string[]) => {
 
         switch (role) {
           case "Admin":
+          case "Administrator":
             badgeClass =
               "bg-[hsl(204,30%,85%)] text-[hsl(242,5%,35%)] border-[hsl(242,30%,50%)]";
             break;
           case "Dietician":
+          case "Dietetyk":
             badgeClass =
               "bg-[hsl(-7,30%,85%)] text-[hsl(31,5%,35%)] border-[hsl(31,30%,50%)]";
             break;
           case "Client":
+          case "Klient":
             badgeClass =
               "bg-[hsl(112,30%,85%)] text-[hsl(150,5%,35%)] border-[hsl(150,30%,50%)]";
             break;
