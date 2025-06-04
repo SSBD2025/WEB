@@ -277,6 +277,10 @@
       "accounts": {
         "title": "Brak kont",
         "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie żadnych kont."
+      },
+      "clients": {
+        "title": "Brak klientów",
+        "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie klientów."
       }
     },
     "error": {
@@ -493,5 +497,11 @@
     "description": "Czy chcesz przedłużyć swoją sesję?",
     "logout": "Wyloguj",
     "extend": "Przedłuż sesję"
+  },
+  "clients_table": {
+    "title": "Lista klientów",
+    "name": "Imię i nazwisko",
+    "email": "Adres e-mail",
+    "view_details": "Wyświetl szczegóły"
   }
 }

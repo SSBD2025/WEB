@@ -41,3 +41,12 @@ export type AllAccounts = {
   totalPages: number;
   totalElements: number;
 }
+
+export interface Client {
+  account: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
+}
