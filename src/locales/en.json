@@ -499,9 +499,13 @@
     "extend": "Extend session"
   },
   "clients_table": {
-    "title": "Clients list",
     "name": "First name and last name",
     "email": "E-mail address",
-    "view_details": "View details"
+    "view_details": "View details",
+    "title": "Clients list"
+  },
+  "dietician_dashboard": {
+    "clients_list_title": "Clients list",
+    "search": "Enter first name, last name or e-mail address"
   }
 }

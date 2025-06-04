@@ -17,6 +17,7 @@ const ROUTES = {
     CODELOGIN_REQUEST: "/codelogin/request",
     CODELOGIN: "/codelogin",
     FORCE_CHANGE_PASSWORD: "/password/change",
+    CLIENT_DETAILS: "/client-details",
 }
 
 export default ROUTES;
