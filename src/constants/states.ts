@@ -14,3 +14,8 @@ export const ACCOUNTS_EMPTY = {
   title: t("states.empty.accounts.title"),
   message: t("states.empty.accounts.message"),
 };
+
+export const CLIENTS_EMPTY = {
+  title: t("states.empty.clients.title"),
+  message: t("states.empty.clients.message"),
+}

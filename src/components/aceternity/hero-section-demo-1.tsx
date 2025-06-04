@@ -25,8 +25,8 @@ export default function HeroSectionOne({ onClick }: { onClick: () => void }) {
             className="w-60 cursor-pointer transform rounded-lg  px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200"
             asChild
           >
-            {/* <Link to={ROUTES.DIETICIAN_DASHBOARD}>{t("home.dietitian_dashboard")}</Link> */}
-            <span>{t("home.dietitian_dashboard")}</span>
+            <Link to={ROUTES.DIETICIAN_DASHBOARD}>{t("home.dietitian_dashboard")}</Link>
+            {/*<span>{t("home.dietitian_dashboard")}</span>*/}
           </Button>
         );
       case "client":

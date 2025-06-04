@@ -277,6 +277,10 @@
       "accounts": {
         "title": "No Accounts Found",
         "message": "Looks like we couldn't find any accounts for you."
+      },
+      "clients": {
+        "title": "No Clients Found",
+        "message": "Looks like we couldn't find any clients for you."
       }
     },
     "error": {
@@ -493,5 +497,11 @@
     "description": "Would you like to extend your session?",
     "logout": "Logout",
     "extend": "Extend session"
+  },
+  "clients_table": {
+    "title": "Clients list",
+    "name": "First name and last name",
+    "email": "E-mail address",
+    "view_details": "View details"
   }
 }
