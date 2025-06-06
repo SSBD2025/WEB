@@ -281,6 +281,10 @@
       "clients": {
         "title": "No Clients Found",
         "message": "Looks like we couldn't find any clients for you."
+      },
+      "dieticians": {
+        "title": "No Dieticians Found",
+        "message": "Looks like we couldn't find any dieticians for you."
       }
     },
     "error": {
@@ -507,5 +511,17 @@
   "dietician_dashboard": {
     "clients_list_title": "Clients list",
     "search": "Enter first name, last name or e-mail address"
+  },
+  "client_dashboard": {
+    "dashboard_title": "Client Dashboard",
+    "hide_dieticians_list": "Hide Dieticians List",
+    "show_dieticians_list": "Show Dieticians List",
+    "search": "Enter first name, last name or e-mail address"
+  },
+  "dieticians_table": {
+    "title": "Dieticians List",
+    "name": "First name and last name",
+    "email": "E-mail address",
+    "choose_dietician": "Choose Dietician"
   }
 }
