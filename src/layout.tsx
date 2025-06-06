@@ -14,6 +14,8 @@ import {
   CodeloginRequestPage,
   CodeloginPage,
   DieticianDashboard,
+  ShowClientReports,
+  ShowClientReportsByDietician,
   ClientDashboard
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
@@ -80,6 +82,11 @@ const Layout = () => {
             >
               <Route path={ROUTES.ME} element={<MeProfile />} />
             </Route>
+            <Route element={
+              <ProtectedRoute allowedRoles={["client"]}/>
+            }>
+              <Route path={ROUTES.CLIENT_BLOOD_REPORT} element={<ShowClientReports />} />
+            </Route>
             <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
               <Route
                   path={ROUTES.ADMIN_USER_DETAILS}
@@ -90,6 +97,7 @@ const Layout = () => {
             </Route>
             <Route element={<ProtectedRoute allowedRoles={["dietician"]} />}>
               <Route path={ROUTES.DIETICIAN_DASHBOARD} element={<DieticianDashboard />}/>
+              <Route path={ROUTES.DIETICIAN_BLOOD_REPORT} element={<ShowClientReportsByDietician />}/>
             </Route>
             <Route element={<ProtectedRoute allowedRoles={["client"]} />}>
               <Route path={ROUTES.CLIENT_DASHBOARD} element={<ClientDashboard />}/>

@@ -13,5 +13,7 @@ import CodeloginPage from "./CodeloginPage.tsx";
 import {ForceChangePasswordPage} from "./ForceChangePasswordPage.tsx";
 import DieticianDashboard from "@/pages/DieticianDashboard.tsx";
 import ClientDashboard from "@/pages/ClientDashboard.tsx";
+import ShowClientReports from "@/pages/ShowClientReports.tsx";
+import ShowClientReportsByDietician from "@/pages/ShowClientReportsByDietician.tsx";
 
-export { Home, Login, ClientRegister, DieticianRegister, AdminRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard, CodeloginRequestPage, CodeloginPage, ForceChangePasswordPage, DieticianDashboard, ClientDashboard };
+export { Home, Login, ClientRegister, DieticianRegister, AdminRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard, CodeloginRequestPage, CodeloginPage, ForceChangePasswordPage, DieticianDashboard, ClientDashboard, ShowClientReports, ShowClientReportsByDietician };

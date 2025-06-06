@@ -27,45 +27,58 @@ const rowVariants = {
 
 const ClientsTable = ({ clients }: { clients: Client[] }) => {
   return (
-    <>
-      <h2 className="text-xl font-semibold mb-4">{t("clients_table.title")}</h2>
-      <Table className="w-full table-auto">
-        <TableHeader>
-          <TableRow>
-            <TableHead>{t("clients_table.name")}</TableHead>
-            <TableHead>{t("clients_table.email")}</TableHead>
-            <TableHead></TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {clients.map((client, i) => {
-            const { firstName, lastName, email, id } = client.account;
-            return (
-              <motion.tr
-                key={id}
-                custom={i}
-                initial="hidden"
-                animate="visible"
-                variants={rowVariants}
-                className="cursor-pointer"
-              >
-                <TableCell className="font-medium">
-                  {firstName} {lastName}
-                </TableCell>
-                <TableCell>{email}</TableCell>
-                <TableCell>
-                  <Link className="cursor-pointer" to={ROUTES.CLIENT_DETAILS}>
-                    <Button variant="ghost">
-                      {t("clients_table.view_details")}
-                    </Button>
-                  </Link>
-                </TableCell>
-              </motion.tr>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </>
+      <>
+        <h2 className="text-xl font-semibold mb-4">{t("clients_table.title")}</h2>
+        <Table className="w-full table-auto">
+          <TableHeader>
+            <TableRow>
+              <TableHead>{t("clients_table.name")}</TableHead>
+              <TableHead>{t("clients_table.email")}</TableHead>
+              <TableHead className="text-right">{t("clients_table.actions")}</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {clients.map((client, i) => {
+              const { firstName, lastName, email, id } = client.account;
+              return (
+                  <motion.tr
+                      key={id}
+                      custom={i}
+                      initial="hidden"
+                      animate="visible"
+                      variants={rowVariants}
+                      className="cursor-pointer"
+                  >
+                    <TableCell className="font-medium">
+                      {firstName} {lastName}
+                    </TableCell>
+                    <TableCell>{email}</TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex gap-2 justify-end">
+                        <Link
+                            className="cursor-pointer"
+                            to={ROUTES.CLIENT_DETAILS.replace(':id', id)}
+                        >
+                          <Button variant="ghost" size="sm">
+                            {t("clients_table.view_details")}
+                          </Button>
+                        </Link>
+                        <Link
+                            className="cursor-pointer"
+                            to={ROUTES.DIETICIAN_BLOOD_REPORT.replace(':clientId', id)}
+                        >
+                          <Button variant="outline" size="sm">
+                            {t("clients_table.view_blood_reports")}
+                          </Button>
+                        </Link>
+                      </div>
+                    </TableCell>
+                  </motion.tr>
+              );
+            })}
+          </TableBody>
+        </Table>
+      </>
   );
 };
 
