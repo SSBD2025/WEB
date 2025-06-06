@@ -18,6 +18,8 @@ const ROUTES = {
     CODELOGIN: "/codelogin",
     FORCE_CHANGE_PASSWORD: "/password/change",
     CLIENT_DETAILS: "/client-details",
+    CLIENT_BLOOD_REPORT: "/client/blood-report",
+    DIETICIAN_BLOOD_REPORT: "/dietician/blood-report/:clientId"
 }
 
 export default ROUTES;

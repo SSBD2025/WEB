@@ -83,7 +83,8 @@
     "yes": "Yes",
     "no": "No",
     "save": "Save",
-    "loading": "Loading"
+    "loading": "Loading",
+    "cancel": "Cancel"
   },
   "password_reset": {
     "header": "Reset password",
@@ -506,11 +507,45 @@
     "name": "First name and last name",
     "email": "E-mail address",
     "view_details": "View details",
-    "title": "Clients list"
+    "title": "Clients list",
+    "actions": "Actions",
+    "view_blood_reports": "Blood test results"
   },
   "dietician_dashboard": {
     "clients_list_title": "Clients list",
     "search": "Enter first name, last name or e-mail address"
+  },
+  "blood_test_reports": {
+    "error_loading_reports": "Error loading reports",
+    "no_reports_found": "No reports found.",
+    "blood_test_reports": "Blood Test Reports",
+    "blood_test_report": "Blood Test Report",
+    "newest": "Newest First",
+    "oldest": "Oldest First",
+    "range": "Normal range:",
+    "normal": "Normal",
+    "above": "Above Normal",
+    "below": "Below Normal",
+    "parameter": "parameter",
+    "parameters": "parameters",
+    "edit_report": "Edit report"
+  },
+  "blood_test_reports": {
+    "error_loading_reports": "Error loading reports",
+    "no_reports_found": "No reports found.",
+    "blood_test_reports": "Blood Test Reports",
+    "blood_test_report": "Blood Test Report",
+    "newest": "Newest First",
+    "oldest": "Oldest First",
+    "range": "Normal range:",
+    "normal": "Normal",
+    "above": "Above Normal",
+    "below": "Below Normal",
+    "parameter": "parameter",
+    "parameters": "parameters",
+    "edit_report": "Edit report",
+    "report_updated": "Report updated",
+    "update_error": "An error occured during update"
   },
   "client_dashboard": {
     "dashboard_title": "Client Dashboard",

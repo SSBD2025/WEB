@@ -83,7 +83,8 @@
     "yes": "Tak",
     "no": "Nie",
     "save": "Zapisz",
-    "loading": "Ładowanie"
+    "loading": "Ładowanie",
+    "cancel": "Anuluj"
   },
   "password_reset": {
     "header": "Zresetuj hasło",
@@ -506,11 +507,45 @@
     "name": "Imię i nazwisko",
     "email": "Adres e-mail",
     "view_details": "Wyświetl szczegóły",
-    "title": "Lista klientów"
+    "title": "Lista klientów",
+    "actions": "Akcje",
+    "view_blood_reports": "Wyniki badań"
   },
   "dietician_dashboard": {
     "clients_list_title": "Lista klientów",
     "search": "Wprowadź imię, nazwisko lub adres e-mail"
+  },
+  "blood_test_reports": {
+    "error_loading_reports": "Wystąpił błąd podczas ładowania raportów",
+    "no_reports_found": "Nie znaleziono wyników.",
+    "blood_test_reports": "Raporty badań krwi",
+    "blood_test_report": "Badanie krwi",
+    "newest": "Od najnowszych",
+    "oldest": "Od najstarszych",
+    "range": "Norma:",
+    "normal": "W normie",
+    "above": "Powyżej normy",
+    "below": "Poniżej normy",
+    "parameter": "parametr",
+    "parameters": "parametry",
+    "edit_report": "Edytuj raport"
+  },
+  "blood_test_reports": {
+    "error_loading_reports": "Wystąpił błąd podczas ładowania raportów",
+    "no_reports_found": "Nie znaleziono wyników.",
+    "blood_test_reports": "Raporty badań krwi",
+    "blood_test_report": "Badanie krwi",
+    "newest": "Od najnowszych",
+    "oldest": "Od najstarszych",
+    "range": "Norma:",
+    "normal": "W normie",
+    "above": "Powyżej normy",
+    "below": "Poniżej normy",
+    "parameter": "parametr",
+    "parameters": "parametry",
+    "edit_report": "Edytuj raport",
+    "report_updated": "Wyniki zaktualizowane",
+    "update_error": "Wystąpił błąd podczas aktualizacji badań"
   },
   "client_dashboard": {
     "dashboard_title": "Panel Klienta",
