@@ -19,3 +19,8 @@ export const CLIENTS_EMPTY = {
   title: t("states.empty.clients.title"),
   message: t("states.empty.clients.message"),
 }
+
+export const DIETICIANS_EMPTY = {
+  title: t("states.empty.dieticians.title"),
+  message: t("states.empty.dieticians.message"),
+}

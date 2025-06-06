@@ -281,6 +281,10 @@
       "clients": {
         "title": "Brak klientów",
         "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie klientów."
+      },
+      "dieticians": {
+        "title": "Brak dietetyków",
+        "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie dietetyków."
       }
     },
     "error": {
@@ -507,5 +511,17 @@
   "dietician_dashboard": {
     "clients_list_title": "Lista klientów",
     "search": "Wprowadź imię, nazwisko lub adres e-mail"
+  },
+  "client_dashboard": {
+    "dashboard_title": "Panel Klienta",
+    "hide_dieticians_list": "Ukryj Listę Dietetyków",
+    "show_dieticians_list": "Wyświetl Listę Dietetyków",
+    "search": "Wprowadź imię, nazwisko lub adres e-mail"
+  },
+  "dieticians_table": {
+    "title": "Lista Dietetyków",
+    "name": "Imię i nazwisko",
+    "email": "Adres e-mail",
+    "choose_dietician": "Wybierz dietetyka"
   }
 }

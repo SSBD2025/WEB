@@ -1,9 +1,9 @@
 import apiClient from "@/lib/apiClient";
 
-export const getClientsByDietician = async (searchPhrase?: string) => {
+export const getAvailableDieticians = async (searchPhrase?: string) => {
   const params = searchPhrase ? { searchPhrase } : {};
   const response = await apiClient.get(
-    "/mod/dieticians/get-clients-by-dietician",
+    "/mod/clients/get-available-dieticians",
     { params },
   );
   return response.data;

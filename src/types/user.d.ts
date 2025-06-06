@@ -50,3 +50,13 @@ export interface Client {
     email: string;
   };
 }
+
+export interface Dietician {
+  //TODO zrobic zaraz
+  account: {
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
+}

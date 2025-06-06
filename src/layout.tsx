@@ -13,7 +13,8 @@ import {
   ForceChangePasswordPage,
   CodeloginRequestPage,
   CodeloginPage,
-  DieticianDashboard
+  DieticianDashboard,
+  ClientDashboard
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -89,6 +90,9 @@ const Layout = () => {
             </Route>
             <Route element={<ProtectedRoute allowedRoles={["dietician"]} />}>
               <Route path={ROUTES.DIETICIAN_DASHBOARD} element={<DieticianDashboard />}/>
+            </Route>
+            <Route element={<ProtectedRoute allowedRoles={["client"]} />}>
+              <Route path={ROUTES.CLIENT_DASHBOARD} element={<ClientDashboard />}/>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
