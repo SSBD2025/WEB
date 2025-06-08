@@ -1,4 +1,5 @@
 import { AccessLevel } from "@/types/user";
+import ROUTES from "@/constants/routes.ts";
 
 export interface RoleLink {
   label: string;
@@ -8,5 +9,5 @@ export interface RoleLink {
 export const ROLE_LINKS: Record<Exclude<AccessLevel, null>, RoleLink[]> = {
   admin: [{ label: "Dashboard", path: "/admin/dashboard" }],
   dietician: [],
-  client: [],
+  client: [{label: "Pyramids", path: ROUTES.CLIENT_ALL_PYRAMIDS}],
 };

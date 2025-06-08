@@ -509,7 +509,8 @@
     "view_details": "Wyświetl szczegóły",
     "title": "Lista klientów",
     "actions": "Akcje",
-    "view_blood_reports": "Wyniki badań"
+    "view_blood_reports": "Wyniki badań",
+    "view_client_pyramids": "Wyświetl piramidy użytkownika"
   },
   "dietician_dashboard": {
     "clients_list_title": "Lista klientów",
@@ -558,5 +559,41 @@
     "name": "Imię i nazwisko",
     "email": "Adres e-mail",
     "choose_dietician": "Wybierz dietetyka"
+  },
+  "client_food_pyramid_list": {
+    "no_data": "Brak dostępnych piramid do wyświetlenia.",
+    "active_pyramid": "Piramida aktywna",
+    "archive_pyramid": "Piramida archiwalna",
+    "issued_on": "Wystawiono dnia",
+    "parameters": "Parametry",
+    "nutrients": {
+      "averageRating": "Średnia ocena",
+      "a": "Witamina A",
+      "d": "Witamina D",
+      "e": "Witamina E",
+      "k": "Witamina K",
+      "b1": "Witamina B1",
+      "b2": "Witamina B2",
+      "b3": "Witamina B3",
+      "b5": "Witamina B5",
+      "b6": "Witamina B6",
+      "b7": "Witamina B7",
+      "b9": "Witamina B9",
+      "b12": "Witamina B12",
+      "c": "Witamina C",
+      "potassium": "Potas",
+      "calcium": "Wapń",
+      "phosphorus": "Fosfor",
+      "magnesium": "Magnez",
+      "iron": "Żelazo",
+      "zinc": "Cynk",
+      "fluorine": "Fluorek",
+      "manganese": "Mangan",
+      "copper": "Miedź",
+      "iodine": "Jod",
+      "selenium": "Selen",
+      "molybdenum": "Molibden",
+      "chromium": "Chrom"
+    }
   }
 }
