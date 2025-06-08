@@ -416,7 +416,8 @@
     "account": "Moje konto",
     "logout": "Wyloguj się",
     "role": "Rola",
-    "openMenu": "Otwórz menu"
+    "openMenu": "Otwórz menu",
+    "diet_profiles": "Profile dietetyczne"
   },
   "exceptions": {
     "account_is_autolocked": "Konto nie było używane od dłuższego czasu! Sprawdź swoją skrzynkę odbiorczą, aby znaleźć link aktywacyjny!",
@@ -529,21 +530,6 @@
     "below": "Poniżej normy",
     "parameter": "parametr",
     "parameters": "parametry",
-    "edit_report": "Edytuj raport"
-  },
-  "blood_test_reports": {
-    "error_loading_reports": "Wystąpił błąd podczas ładowania raportów",
-    "no_reports_found": "Nie znaleziono wyników.",
-    "blood_test_reports": "Raporty badań krwi",
-    "blood_test_report": "Badanie krwi",
-    "newest": "Od najnowszych",
-    "oldest": "Od najstarszych",
-    "range": "Norma:",
-    "normal": "W normie",
-    "above": "Powyżej normy",
-    "below": "Poniżej normy",
-    "parameter": "parametr",
-    "parameters": "parametry",
     "edit_report": "Edytuj raport",
     "report_updated": "Wyniki zaktualizowane",
     "update_error": "Wystąpił błąd podczas aktualizacji badań"
@@ -559,6 +545,21 @@
     "name": "Imię i nazwisko",
     "email": "Adres e-mail",
     "choose_dietician": "Wybierz dietetyka"
+  },
+  "food_pyramids": {
+    "list_title": "Profile Dietetyczne",
+    "empty": {
+      "title": "Nie znaleziono profili dietetycznych",
+      "description": "W tej chwili nie ma dostępnych profili dietetycznych."
+    }
+  },
+  "food_pyramids_table": {
+    "title": "Profile Dietetyczne",
+    "id": "ID",
+    "rating": "Ocena",
+    "vitamins": "Witaminy",
+    "minerals": "Minerały",
+    "view_details": "Zobacz szczegóły"
   },
   "client_food_pyramid_list": {
     "no_data": "Brak dostępnych piramid do wyświetlenia.",
