@@ -1,3 +1,34 @@
+export interface FoodPyramid {
+  id: string
+  averageRating: number
+  a: number
+  d: number
+  e: number
+  k: number
+  b1: number
+  b2: number
+  b3: number
+  b5: number
+  b6: number
+  b7: number
+  b9: number
+  b12: number
+  c: number
+  potassium: number
+  calcium: number
+  phosphorus: number
+  magnesium: number
+  iron: number
+  zinc: number
+  fluorine: number
+  manganese: number
+  copper: number
+  iodine: number
+  selenium: number
+  molybdenum: number
+  chromium: number
+}
+
 export type ClientFoodPyramid = {
   foodPyramid: {
     id: string;

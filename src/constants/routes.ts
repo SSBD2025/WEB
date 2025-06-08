@@ -20,6 +20,7 @@ const ROUTES = {
     CLIENT_DETAILS: "/client-details",
     CLIENT_BLOOD_REPORT: "/client/blood-report",
     DIETICIAN_BLOOD_REPORT: "/dietician/blood-report/:clientId",
+    FOOD_PYRAMIDS: "/food-pyramids",
     CLIENT_ALL_PYRAMIDS: "/client/pyramids",
     DIETICIAN_CLIENT_PYRAMIDS: "/dietician/pyramids/:clientId",
 }

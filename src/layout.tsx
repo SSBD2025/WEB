@@ -17,6 +17,7 @@ import {
   ShowClientReports,
   ShowClientReportsByDietician,
   ClientDashboard,
+  FoodPyramidsList,
   ClientPyramidsPage,
   DieticianClientPyramidsPage
 } from "./pages";
@@ -100,6 +101,7 @@ const Layout = () => {
             <Route element={<ProtectedRoute allowedRoles={["dietician"]} />}>
               <Route path={ROUTES.DIETICIAN_DASHBOARD} element={<DieticianDashboard />}/>
               <Route path={ROUTES.DIETICIAN_BLOOD_REPORT} element={<ShowClientReportsByDietician />}/>
+              <Route path={ROUTES.FOOD_PYRAMIDS} element={<FoodPyramidsList />} />
               <Route path={ROUTES.DIETICIAN_CLIENT_PYRAMIDS} element={<DieticianClientPyramidsPage/>}/>
             </Route>
             <Route element={<ProtectedRoute allowedRoles={["client"]} />}>

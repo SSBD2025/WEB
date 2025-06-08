@@ -416,7 +416,8 @@
     "account": "My Account",
     "logout": "Logout",
     "role": "Role",
-    "openMenu": "Open main menu"
+    "openMenu": "Open main menu",
+    "diet_profiles": "Diet Profiles"
   },
   "exceptions": {
     "account_is_autolocked": "The account has not been logged on in quite a while! Check your inbox for an activation link!",
@@ -529,21 +530,6 @@
     "below": "Below Normal",
     "parameter": "parameter",
     "parameters": "parameters",
-    "edit_report": "Edit report"
-  },
-  "blood_test_reports": {
-    "error_loading_reports": "Error loading reports",
-    "no_reports_found": "No reports found.",
-    "blood_test_reports": "Blood Test Reports",
-    "blood_test_report": "Blood Test Report",
-    "newest": "Newest First",
-    "oldest": "Oldest First",
-    "range": "Normal range:",
-    "normal": "Normal",
-    "above": "Above Normal",
-    "below": "Below Normal",
-    "parameter": "parameter",
-    "parameters": "parameters",
     "edit_report": "Edit report",
     "report_updated": "Report updated",
     "update_error": "An error occured during update"
@@ -559,6 +545,21 @@
     "name": "First name and last name",
     "email": "E-mail address",
     "choose_dietician": "Choose Dietician"
+  },
+  "food_pyramids": {
+    "list_title": "Food Pyramids",
+    "empty": {
+      "title": "No Food Pyramids Found",
+      "description": "There are no food pyramids available at the moment."
+    }
+  },
+  "food_pyramids_table": {
+    "title": "Food Pyramids",
+    "id": "ID",
+    "rating": "Rating",
+    "vitamins": "Vitamins",
+    "minerals": "Minerals",
+    "view_details": "View Details"
   },
   "client_food_pyramid_list": {
     "no_data": "No pyramids available to display.",

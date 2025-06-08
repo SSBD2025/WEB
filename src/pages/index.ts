@@ -15,7 +15,8 @@ import DieticianDashboard from "@/pages/DieticianDashboard.tsx";
 import ClientDashboard from "@/pages/ClientDashboard.tsx";
 import ShowClientReports from "@/pages/ShowClientReports.tsx";
 import ShowClientReportsByDietician from "@/pages/ShowClientReportsByDietician.tsx";
+import FoodPyramidsList from "@/pages/FoodPyramidsList.tsx";
 import ClientPyramidsPage from "@/pages/ClientPyramidsPage.tsx";
 import DieticianClientPyramidsPage from "@/pages/DieticianClientPyramidsPage.tsx";
 
-export { Home, Login, ClientRegister, DieticianRegister, AdminRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard, CodeloginRequestPage, CodeloginPage, ForceChangePasswordPage, DieticianDashboard, ClientDashboard, ShowClientReports, ShowClientReportsByDietician, ClientPyramidsPage, DieticianClientPyramidsPage };
+export { Home, Login, ClientRegister, DieticianRegister, AdminRegister, NotFound, AdminUserAccount, PasswordReset, NewPassword, AdminDashboard, CodeloginRequestPage, CodeloginPage, ForceChangePasswordPage, DieticianDashboard, ClientDashboard, ShowClientReports, ShowClientReportsByDietician, ClientPyramidsPage, DieticianClientPyramidsPage, FoodPyramidsList };
