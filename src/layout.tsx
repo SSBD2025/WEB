@@ -16,7 +16,9 @@ import {
   DieticianDashboard,
   ShowClientReports,
   ShowClientReportsByDietician,
-  ClientDashboard
+  ClientDashboard,
+  ClientPyramidsPage,
+  DieticianClientPyramidsPage
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -98,9 +100,11 @@ const Layout = () => {
             <Route element={<ProtectedRoute allowedRoles={["dietician"]} />}>
               <Route path={ROUTES.DIETICIAN_DASHBOARD} element={<DieticianDashboard />}/>
               <Route path={ROUTES.DIETICIAN_BLOOD_REPORT} element={<ShowClientReportsByDietician />}/>
+              <Route path={ROUTES.DIETICIAN_CLIENT_PYRAMIDS} element={<DieticianClientPyramidsPage/>}/>
             </Route>
             <Route element={<ProtectedRoute allowedRoles={["client"]} />}>
               <Route path={ROUTES.CLIENT_DASHBOARD} element={<ClientDashboard />}/>
+              <Route path={ROUTES.CLIENT_ALL_PYRAMIDS} element={<ClientPyramidsPage/>}/>
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

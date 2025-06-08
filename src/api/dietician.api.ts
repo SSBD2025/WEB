@@ -8,3 +8,8 @@ export const getAvailableDieticians = async (searchPhrase?: string) => {
   );
   return response.data;
 };
+
+export const getClientPyramidsByDietician = async (clientId: string) => {
+  const response = await apiClient.get(`/mod/client-food-pyramids/dietician/${clientId}`);
+  return response.data;
+}

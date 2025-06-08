@@ -19,7 +19,9 @@ const ROUTES = {
     FORCE_CHANGE_PASSWORD: "/password/change",
     CLIENT_DETAILS: "/client-details",
     CLIENT_BLOOD_REPORT: "/client/blood-report",
-    DIETICIAN_BLOOD_REPORT: "/dietician/blood-report/:clientId"
+    DIETICIAN_BLOOD_REPORT: "/dietician/blood-report/:clientId",
+    CLIENT_ALL_PYRAMIDS: "/client/pyramids",
+    DIETICIAN_CLIENT_PYRAMIDS: "/dietician/pyramids/:clientId",
 }
 
 export default ROUTES;

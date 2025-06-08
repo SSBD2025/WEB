@@ -55,20 +55,28 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
                     <TableCell>{email}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex gap-2 justify-end">
-                        <Link
-                            className="cursor-pointer"
-                            to={ROUTES.CLIENT_DETAILS.replace(':id', id)}
-                        >
-                          <Button variant="ghost" size="sm">
-                            {t("clients_table.view_details")}
-                          </Button>
-                        </Link>
+                        {/*<Link*/}
+                        {/*    className="cursor-pointer"*/}
+                        {/*    to={ROUTES.CLIENT_DETAILS.replace(':id', id)}*/}
+                        {/*>*/}
+                        {/*  <Button variant="ghost" size="sm">*/}
+                        {/*    {t("clients_table.view_details")}*/}
+                        {/*  </Button>*/}
+                        {/*</Link>*/}
                         <Link
                             className="cursor-pointer"
                             to={ROUTES.DIETICIAN_BLOOD_REPORT.replace(':clientId', id)}
                         >
                           <Button variant="outline" size="sm">
                             {t("clients_table.view_blood_reports")}
+                          </Button>
+                        </Link>
+                        <Link
+                            className="cursor-pointer"
+                            to={ROUTES.DIETICIAN_CLIENT_PYRAMIDS.replace(':clientId', id)}
+                        >
+                          <Button variant="outline" size="sm">
+                            {t("clients_table.view_client_pyramids")}
                           </Button>
                         </Link>
                       </div>

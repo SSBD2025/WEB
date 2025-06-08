@@ -509,7 +509,8 @@
     "view_details": "View details",
     "title": "Clients list",
     "actions": "Actions",
-    "view_blood_reports": "Blood test results"
+    "view_blood_reports": "Blood test results",
+    "view_client_pyramids": "View user pyramids"
   },
   "dietician_dashboard": {
     "clients_list_title": "Clients list",
@@ -558,5 +559,41 @@
     "name": "First name and last name",
     "email": "E-mail address",
     "choose_dietician": "Choose Dietician"
+  },
+  "client_food_pyramid_list": {
+    "no_data": "No pyramids available to display.",
+    "active_pyramid": "Active pyramid",
+    "archive_pyramid": "Archive pyramid",
+    "issued_on": "Issued on",
+    "parameters": "Parameters",
+    "nutrients": {
+      "averageRating": "Average rating",
+      "a": "Vitamin A",
+      "d": "Vitamin D",
+      "e": "Vitamin E",
+      "k": "Vitamin K",
+      "b1": "Vitamin B1",
+      "b2": "Vitamin B2",
+      "b3": "Vitamin B3",
+      "b5": "Vitamin B5",
+      "b6": "Vitamin B6",
+      "b7": "Vitamin B7",
+      "b9": "Vitamin B9",
+      "b12": "Vitamin B12",
+      "c": "Vitamin C",
+      "potassium": "Potassium",
+      "calcium": "Calcium",
+      "phosphorus": "Phosphorus",
+      "magnesium": "Magnesium",
+      "iron": "Iron",
+      "zinc": "Zinc",
+      "fluorine": "Fluorine",
+      "manganese": "Manganese",
+      "copper": "Copper",
+      "iodine": "Iodine",
+      "selenium": "Selenium",
+      "molybdenum": "Molybdenum",
+      "chromium": "Chromium"
+    }
   }
 }
