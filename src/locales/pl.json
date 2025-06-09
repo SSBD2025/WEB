@@ -449,7 +449,9 @@
     "token_type_invalid": "Nieprawidłowy typ żetonu",
     "two_factor_token_invalid": "Nieprawidłowy żeton dwuskładnikowy",
     "previous_password_used": "Nie można używać poprzednich haseł",
-    "password_must_be_changed": "Hasło musi zostać zmienione"
+    "password_must_be_changed": "Hasło musi zostać zmienione",
+    "client_not_found": "Nie znaleziono klienta",
+    "periodic_survey_too_soon": "Nie możesz wypełnić ankiety okresowej zbyt często. Proszę spróbować później."
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -596,5 +598,27 @@
       "molybdenum": "Molibden",
       "chromium": "Chrom"
     }
+  },
+  "periodic_survey": {
+    "form": {
+      "label": {
+        "weight": "Waga (kg)",
+        "blood_pressure": "Ciśnienie krwi (skurczowe/rozkurczowe)",
+        "blood_sugar": "Poziom cukru we krwi (mg/dL)"
+      },
+      "violations": {
+        "weight_min": "Waga nie może być mniejsza niż 20 kg",
+        "weight_max": "Waga nie może być większa niż 350 kg",
+        "blood_pressure_pattern": "Nieprawidłowy format ciśnienia krwi. Użyj formatu: skurczowe/rozkurczowe (np. 120/80)",
+        "blood_sugar_min": "Poziom cukru we krwi nie może być mniejszy niż 10",
+        "blood_sugar_max": "Poziom cukru we krwi nie może być większy niż 500",
+        "required": "To pole jest wymagane"
+      },
+      "submit_button": "Prześlij ankietę",
+      "submit_alert_title": "Potwierdź przesłanie ankiety",
+      "submit_alert_description": "Czy na pewno chcesz przesłać tę ankietę? Upewnij się, że wszystkie dane są poprawne."
+    },
+    "submit_error": "Wystąpił błąd podczas przesyłania ankiety.",
+    "submit_success": "Ankieta została pomyślnie przesłana."
   }
 }

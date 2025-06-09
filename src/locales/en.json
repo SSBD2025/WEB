@@ -449,7 +449,9 @@
     "token_type_invalid": "Invalid token type",
     "two_factor_token_invalid": "Invalid two-factor token",
     "previous_password_used": "The new password cannot be the same as the previous password",
-    "password_must_be_changed": "Password must be changed"
+    "password_must_be_changed": "Password must be changed",
+    "client_not_found": "Client not found",
+    "periodic_survey_too_soon": "You cannot take the periodic survey yet. Please wait until the next survey date."
   },
   "role_change": {
     "log_error": "Failed to log role change:"
@@ -596,5 +598,27 @@
       "molybdenum": "Molybdenum",
       "chromium": "Chromium"
     }
+  },
+  "periodic_survey": {
+    "form": {
+      "label": {
+        "weight": "Weight (kg)",
+        "blood_pressure": "Blood Pressure (systolic/diastolic)",
+        "blood_sugar": "Blood Sugar Level (mg/dL)"
+      },
+      "violations": {
+        "weight_min": "Weight cannot be less than 30 kg",
+        "weight_max": "Weight cannot be greater than 350 kg",
+        "blood_pressure_pattern": "Invalid blood pressure format. Use format: systolic/diastolic (e.g. 120/80)",
+        "blood_sugar_min": "Blood sugar level cannot be less than 10",
+        "blood_sugar_max": "Blood sugar level cannot be greater than 500",
+        "required": "This field is required"
+      },
+      "submit_button": "Submit Survey",
+      "submit_alert_title": "Confirm Survey Submission",
+      "submit_alert_description": "Are you sure you want to submit the survey? Please ensure that all data is correct before proceeding."
+    },
+    "submit_error": "An error occurred while submitting the survey.",
+    "submit_success": "Survey submitted successfully."
   }
 }

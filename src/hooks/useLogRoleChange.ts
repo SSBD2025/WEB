@@ -8,7 +8,8 @@ export const useLogRoleChange = () => {
   return useMutation({
     mutationFn: (data: { previousRole: string | null; newRole: string }) => logRoleChange(data),
     onError: (error) => {
-      console.error(t("role_change.log_error"), error)
+      // TODO poprawic
+      console.error(t("role_change.log_error"), error) 
     },
   })
 }
