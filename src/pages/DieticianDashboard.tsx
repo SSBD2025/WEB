@@ -29,7 +29,7 @@ const DieticianDashboard = () => {
 
   return (
     <main className="flex-grow items-center justify-center flex flex-col">
-      <div className="w-full max-w-4xl px-4 py-6">
+      <div className="w-full max-w-6xl px-4 py-6">
         <h2 className="text-xl font-semibold mb-4">
           {t("dietician_dashboard.clients_list_title")}
         </h2>

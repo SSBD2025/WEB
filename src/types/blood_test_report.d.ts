@@ -17,3 +17,12 @@ export interface BloodTestReport {
     timestamp: string;
     results: BloodTestResult[];
 }
+
+export interface SubmitBloodTestReport {
+    results: {
+        result: number,
+        bloodParameter: {
+            name: string;
+        }
+    }[];
+}

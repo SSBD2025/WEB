@@ -513,7 +513,8 @@
     "title": "Lista klientów",
     "actions": "Akcje",
     "view_blood_reports": "Wyniki badań",
-    "view_client_pyramids": "Wyświetl piramidy użytkownika"
+    "view_client_pyramids": "Wyświetl piramidy użytkownika",
+    "insert_blood_test_report": "Wprowadź wyniki badań"
   },
   "dietician_dashboard": {
     "clients_list_title": "Lista klientów",
@@ -534,7 +535,22 @@
     "parameters": "parametry",
     "edit_report": "Edytuj raport",
     "report_updated": "Wyniki zaktualizowane",
-    "update_error": "Wystąpił błąd podczas aktualizacji badań"
+    "update_error": "Wystąpił błąd podczas aktualizacji badań",
+    "insert": {
+      "insert_title": "Wstaw raport z badania krwi klienta",
+      "clear_all": "Wyczyść wszystko",
+      "select_placeholder": "Wybierz parametr",
+      "parameters": "Parametry krwi",
+      "parameter_name": "Nazwa parametru",
+      "result": "Wynik",
+      "add_parameter": "Dodaj parametr",
+      "submit": "Zatwierdź",
+      "error": {
+        "duplicate": "Formularz zawiera duplikaty, proszę je usunąć lub edytować.",
+        "invalid_result": "Nieprawidłowa wartość wyniku.",
+        "incomplete_entry": "Są niekompletne wpisy, proszę je usunąć lub uzupełnić."
+      }
+    }
   },
   "client_dashboard": {
     "dashboard_title": "Panel Klienta",
