@@ -23,6 +23,9 @@ const ROUTES = {
     FOOD_PYRAMIDS: "/food-pyramids",
     CLIENT_ALL_PYRAMIDS: "/client/pyramids",
     DIETICIAN_CLIENT_PYRAMIDS: "/dietician/pyramids/:clientId",
+    CLIENT_PERIODIC_SURVEY_LIST: "/client/periodic-survey-list",
+    DIETICIAN_PERIODIC_SURVEY_LIST: "/dietician/periodic-survey-list/:clientId",
+    getDieticianPeriodicSurveyList: (clientId: string) => `/dietician/periodic-survey-list/${clientId}`,
     DIETICIAN_INSERT_BLOOD_TEST_REPORT: "/dietician/blood-report/insert/:id",
     dieticianInsertBloodTestReport: (id: string) => `/dietician/blood-report/insert/${id}`,
 }

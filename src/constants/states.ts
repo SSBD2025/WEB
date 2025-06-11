@@ -24,3 +24,8 @@ export const DIETICIANS_EMPTY = {
   title: t("states.empty.dieticians.title"),
   message: t("states.empty.dieticians.message"),
 }
+
+export const PERIODIC_SURVEY_EMPTY = {
+  title: t("states.empty.periodic.title"),
+  message: t("states.empty.periodic.message"),
+}
