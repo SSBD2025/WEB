@@ -1,11 +1,11 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { t } from "i18next"
 import type { FoodPyramid } from "@/types/food_pyramid"
 import { Link } from "react-router"
 import { Star, Pill, Zap } from "lucide-react"
+import NutrientBadge from "../shared/NutritionBadge"
 
 const rowVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -18,23 +18,6 @@ const rowVariants = {
     },
   }),
 }
-
-const NutrientBadge = ({
-  label,
-  value,
-  unit = "",
-  color = "default",
-}: {
-  label: string
-  value: number
-  unit?: string
-  color?: "default" | "secondary" | "destructive" | "outline"
-}) => (
-  <Badge variant={color} className="text-xs">
-    {label}: {value.toFixed(value < 1 ? 3 : 1)}
-    {unit}
-  </Badge>
-)
 
 const FoodPyramidsTable = ({ foodPyramids }: { foodPyramids: FoodPyramid[] }) => {
   return (
