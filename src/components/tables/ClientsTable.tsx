@@ -89,6 +89,14 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
                         </Link>
                         <Link
                             className="cursor-pointer"
+                            to={ROUTES.MEDICAL_CHARTS.replace(':clientId', id)}
+                        >
+                          <Button variant="outline" size="sm">
+                            {t("clients_table.view_client_charts")}
+                          </Button>
+                        </Link>
+                        <Link
+                            className="cursor-pointer"
                             to={ROUTES.getDieticianPeriodicSurveyList(id)}
                         >
                           <Button variant="outline" size="sm">

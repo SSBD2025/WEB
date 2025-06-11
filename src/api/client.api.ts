@@ -26,7 +26,7 @@ export const updateBloodTestReport = async (reportData: BloodTestReport) => {
 };
 
 export const getClientSurveys = async (clientId: string) => {
-  const response = await apiClient.get(`/mod/clients/${clientId}/periodic-survey`);
+  const response = await apiClient.get(`/mod/clients/dietician/${clientId}/periodic-survey`);
   return response.data;
 };
 

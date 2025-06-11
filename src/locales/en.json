@@ -422,7 +422,9 @@
     "role": "Role",
     "openMenu": "Open main menu",
     "diet_profiles": "Diet Profiles",
-    "periodic_survey_list": "Periodic surveys"
+    "periodic_survey_list": "Periodic surveys",
+    "blood_test_reports": "Blood test reports",
+    "charts": "Medical charts"
   },
   "exceptions": {
     "account_is_autolocked": "The account has not been logged on in quite a while! Check your inbox for an activation link!",
@@ -523,7 +525,8 @@
     "view_blood_reports": "Blood test results",
     "view_client_pyramids": "View user pyramids",
     "view_periodic_survey_list": "Periodic surveys",
-    "insert_blood_test_report": "Insert blood test report"
+    "insert_blood_test_report": "Insert blood test report",
+    "view_client_charts": "View user charts"
   },
   "dietician_dashboard": {
     "clients_list_title": "Clients list",
