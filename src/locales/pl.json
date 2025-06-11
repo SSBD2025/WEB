@@ -286,6 +286,10 @@
       "dieticians": {
         "title": "Brak dietetyków",
         "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie dietetyków."
+      },
+      "periodic": {
+        "title": "Brak ankiet okresowych",
+        "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie ankiet okresowych."
       }
     },
     "error": {
@@ -417,7 +421,8 @@
     "logout": "Wyloguj się",
     "role": "Rola",
     "openMenu": "Otwórz menu",
-    "diet_profiles": "Profile dietetyczne"
+    "diet_profiles": "Profile dietetyczne",
+    "periodic_survey_list": "Ankiety okresowe"
   },
   "exceptions": {
     "account_is_autolocked": "Konto nie było używane od dłuższego czasu! Sprawdź swoją skrzynkę odbiorczą, aby znaleźć link aktywacyjny!",
@@ -514,6 +519,7 @@
     "actions": "Akcje",
     "view_blood_reports": "Wyniki badań",
     "view_client_pyramids": "Wyświetl piramidy użytkownika",
+    "view_periodic_survey_list": "Ankiety okresowe",
     "insert_blood_test_report": "Wprowadź wyniki badań"
   },
   "dietician_dashboard": {
@@ -635,6 +641,24 @@
       "submit_alert_description": "Czy na pewno chcesz przesłać tę ankietę? Upewnij się, że wszystkie dane są poprawne."
     },
     "submit_error": "Wystąpił błąd podczas przesyłania ankiety.",
-    "submit_success": "Ankieta została pomyślnie przesłana."
+    "submit_success": "Ankieta została pomyślnie przesłana.",
+    "client": {
+      "header": "Lista ankiet okresowych"
+    },
+    "list": {
+      "table": {
+        "head": {
+          "measurement_date": "Data pomiaru",
+          "weight": "Waga (kg)",
+          "blood_pressure": "Ciśnienie krwi (skurczowe/rozkurczowe)",
+          "blood_sugar": "Poziom cukru we krwi (mg/dL)"
+        }
+      }
+    },
+    "loading": "Ładowanie ankiet okresowych...",
+    "error": {
+      "loading": "Błąd ładowania ankiet okresowych",
+      "fetch": "Nie udało się pobrać ankiet okresowych"
+    }
   }
 }

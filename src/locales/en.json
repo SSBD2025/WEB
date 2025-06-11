@@ -286,6 +286,10 @@
       "dieticians": {
         "title": "No Dieticians Found",
         "message": "Looks like we couldn't find any dieticians for you."
+      },
+      "periodic": {
+        "title": "No Periodic Surveys found",
+        "message": "Looks like we couldn't find any periodic surveys for you."
       }
     },
     "error": {
@@ -417,7 +421,8 @@
     "logout": "Logout",
     "role": "Role",
     "openMenu": "Open main menu",
-    "diet_profiles": "Diet Profiles"
+    "diet_profiles": "Diet Profiles",
+    "periodic_survey_list": "Periodic surveys"
   },
   "exceptions": {
     "account_is_autolocked": "The account has not been logged on in quite a while! Check your inbox for an activation link!",
@@ -514,6 +519,7 @@
     "actions": "Actions",
     "view_blood_reports": "Blood test results",
     "view_client_pyramids": "View user pyramids",
+    "view_periodic_survey_list": "Periodic surveys",
     "insert_blood_test_report": "Insert blood test report"
   },
   "dietician_dashboard": {
@@ -635,6 +641,24 @@
       "submit_alert_description": "Are you sure you want to submit the survey? Please ensure that all data is correct before proceeding."
     },
     "submit_error": "An error occurred while submitting the survey.",
-    "submit_success": "Survey submitted successfully."
+    "submit_success": "Survey submitted successfully.",
+    "client": {
+      "header": "List of periodic surveys"
+    },
+    "list": {
+      "table": {
+        "head": {
+          "measurement_date": "Measurement date",
+          "weight": "Weight (kg)",
+          "blood_pressure": "Blood Pressure (systolic - diastolic)",
+          "blood_sugar_level": "Blood Sugar Level (mg/dL)"
+        }
+      }
+    },
+    "loading": "Loading periodic surveys...",
+    "error": {
+      "loading": "Error loading periodic surveys",
+      "fetch": "Failed to fetch periodic surveys"
+    }
   }
 }

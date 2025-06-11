@@ -87,6 +87,14 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
                             {t("clients_table.view_client_pyramids")}
                           </Button>
                         </Link>
+                        <Link
+                            className="cursor-pointer"
+                            to={ROUTES.getDieticianPeriodicSurveyList(id)}
+                        >
+                          <Button variant="outline" size="sm">
+                            {t("clients_table.view_periodic_survey_list")}
+                          </Button>
+                        </Link>
                       </div>
                     </TableCell>
                   </motion.tr>

@@ -20,7 +20,9 @@ import {
     FoodPyramidsList,
     ClientPyramidsPage,
     DieticianClientPyramidsPage,
-    DieticianClientInsertBloodTestReportPage
+    DieticianClientInsertBloodTestReportPage,
+      ClientPeriodicSurveyListPage,
+      DieticianPeriodicSurveyListPage
 } from "./pages";
 import {Toaster} from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -90,6 +92,7 @@ const Layout = () => {
                         <ProtectedRoute allowedRoles={["client"]}/>
                     }>
                         <Route path={ROUTES.CLIENT_BLOOD_REPORT} element={<ShowClientReports/>}/>
+                        <Route path={ROUTES.CLIENT_PERIODIC_SURVEY_LIST} element={<ClientPeriodicSurveyListPage />} />
                     </Route>
                     <Route element={<ProtectedRoute allowedRoles={["admin"]}/>}>
                         <Route
@@ -104,8 +107,8 @@ const Layout = () => {
                         <Route path={ROUTES.DIETICIAN_BLOOD_REPORT} element={<ShowClientReportsByDietician/>}/>
                         <Route path={ROUTES.FOOD_PYRAMIDS} element={<FoodPyramidsList/>}/>
                         <Route path={ROUTES.DIETICIAN_CLIENT_PYRAMIDS} element={<DieticianClientPyramidsPage/>}/>
-                        <Route path={ROUTES.DIETICIAN_INSERT_BLOOD_TEST_REPORT}
-                               element={<DieticianClientInsertBloodTestReportPage/>}/>
+                        <Route path={ROUTES.DIETICIAN_INSERT_BLOOD_TEST_REPORT} element={<DieticianClientInsertBloodTestReportPage/>}/>
+                        <Route path={ROUTES.DIETICIAN_PERIODIC_SURVEY_LIST} element={<DieticianPeriodicSurveyListPage/>}/>
                     </Route>
                     <Route element={<ProtectedRoute allowedRoles={["client"]}/>}>
                         <Route path={ROUTES.CLIENT_DASHBOARD} element={<ClientDashboard/>}/>

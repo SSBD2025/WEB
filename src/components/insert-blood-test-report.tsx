@@ -45,7 +45,7 @@ function formatUnit(unit: string): string {
 
 export default function InsertBloodTestReport() {
     const { id } = useParams<{ id?: string }>();
-    const submitReportMutation = useSubmitReport(id!);
+    const submitReportMutation = useSubmitReport(id!); //todo check if this is correct
     const { data: allBloodParameters, status } = useBloodParameter(true);
     const STORAGE_KEY = "blood_test_entries";
     const [showIncompleteWarning, setShowIncompleteWarning] = useState(false);
