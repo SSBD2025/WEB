@@ -513,7 +513,8 @@
     "title": "Clients list",
     "actions": "Actions",
     "view_blood_reports": "Blood test results",
-    "view_client_pyramids": "View user pyramids"
+    "view_client_pyramids": "View user pyramids",
+    "insert_blood_test_report": "Insert blood test report"
   },
   "dietician_dashboard": {
     "clients_list_title": "Clients list",
@@ -534,7 +535,22 @@
     "parameters": "parameters",
     "edit_report": "Edit report",
     "report_updated": "Report updated",
-    "update_error": "An error occured during update"
+    "update_error": "An error occured during update",
+    "insert": {
+      "insert_title": "Insert clients blood test report",
+      "clear_all": "Clear all",
+      "select_placeholder": "Select parameter",
+      "parameters": "Blood parameters",
+      "parameter_name": "Parameter name",
+      "result": "Result",
+      "add_parameter": "Add parameter",
+      "submit": "Submit",
+      "error": {
+        "duplicate": "Form has duplicates, please remove or edit them.",
+        "invalid_result": "Invalid result value.",
+        "incomplete_entry": "There are incomplete entries, please remove or fill them."
+      }
+    }
   },
   "client_dashboard": {
     "dashboard_title": "Client Dashboard",

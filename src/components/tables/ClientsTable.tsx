@@ -65,6 +65,14 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
                         {/*</Link>*/}
                         <Link
                             className="cursor-pointer"
+                            to={ROUTES.dieticianInsertBloodTestReport(id)}
+                        >
+                          <Button variant="outline" size="sm">
+                            {t("clients_table.insert_blood_test_report")}
+                          </Button>
+                        </Link>
+                        <Link
+                            className="cursor-pointer"
                             to={ROUTES.DIETICIAN_BLOOD_REPORT.replace(':clientId', id)}
                         >
                           <Button variant="outline" size="sm">

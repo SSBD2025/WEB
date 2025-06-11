@@ -23,6 +23,8 @@ const ROUTES = {
     FOOD_PYRAMIDS: "/food-pyramids",
     CLIENT_ALL_PYRAMIDS: "/client/pyramids",
     DIETICIAN_CLIENT_PYRAMIDS: "/dietician/pyramids/:clientId",
+    DIETICIAN_INSERT_BLOOD_TEST_REPORT: "/dietician/blood-report/insert/:id",
+    dieticianInsertBloodTestReport: (id: string) => `/dietician/blood-report/insert/${id}`,
 }
 
 export default ROUTES;
