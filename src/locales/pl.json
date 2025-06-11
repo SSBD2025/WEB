@@ -422,7 +422,9 @@
     "role": "Rola",
     "openMenu": "Otwórz menu",
     "diet_profiles": "Profile dietetyczne",
-    "periodic_survey_list": "Ankiety okresowe"
+    "periodic_survey_list": "Ankiety okresowe",
+    "blood_test_reports": "Badania krwi",
+    "charts": "Wykresy danych medycznych"
   },
   "exceptions": {
     "account_is_autolocked": "Konto nie było używane od dłuższego czasu! Sprawdź swoją skrzynkę odbiorczą, aby znaleźć link aktywacyjny!",
@@ -523,7 +525,8 @@
     "view_blood_reports": "Wyniki badań",
     "view_client_pyramids": "Wyświetl piramidy użytkownika",
     "view_periodic_survey_list": "Ankiety okresowe",
-    "insert_blood_test_report": "Wprowadź wyniki badań"
+    "insert_blood_test_report": "Wprowadź wyniki badań",
+    "view_client_charts": "Wyświetl wykresy klienta"
   },
   "dietician_dashboard": {
     "clients_list_title": "Lista klientów",

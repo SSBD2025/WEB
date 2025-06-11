@@ -8,16 +8,13 @@ import {
     CardTitle,
 } from "@/components/ui/card";
 import {
-    ChartContainer,
-    ChartTooltip,
-    ChartTooltipContent,
+    ChartContainer, ChartTooltip,
 } from "@/components/ui/chart";
-import { LineChart, Line, XAxis, YAxis } from "recharts";
+import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Activity, Heart, Droplets } from "lucide-react";
 import { Spinner } from "@/components/ui/spinner";
 import { useGetSurveys } from "@/hooks/useGetSyrveys";
-import {useTranslation} from "react-i18next";
-
+import { useTranslation } from "react-i18next";
 
 type RawSurvey = {
     id: string;
@@ -29,7 +26,22 @@ type RawSurvey = {
     measurementDate: string;
 };
 
-
+const xAxis = (
+    <XAxis
+        dataKey="timestamp"
+        type="number"
+        domain={["dataMin", "dataMax"]}
+        tickFormatter={(value) =>
+            new Date(value).toLocaleDateString("pl-PL", {
+                month: "short",
+                day: "numeric",
+            })
+        }
+        tickLine={false}
+        axisLine={false}
+        tickMargin={8}
+    />
+);
 
 export default function MedicalCharts() {
     const { clientId } = useParams<{ clientId: string }>();
@@ -95,13 +107,20 @@ export default function MedicalCharts() {
 
     const chartData = useMemo(() => {
         if (!surveysRaw || surveysRaw.length === 0) return [];
-        return surveysRaw.map((item: RawSurvey) => {
+
+        const sorted = [...surveysRaw].sort(
+            (a, b) => new Date(a.measurementDate).getTime() - new Date(b.measurementDate).getTime()
+        );
+
+        return sorted.map((item: RawSurvey) => {
             const [systolic, diastolic] = item.bloodPressure
-                ? item.bloodPressure.split("-").map((v) => Number(v.trim()))
+                ? item.bloodPressure.split(/[-/]/).map((v) => Number(v.trim()))
                 : [undefined, undefined];
 
+            const dateObj = new Date(item.measurementDate);
             return {
-                date: new Date(item.measurementDate).toLocaleDateString("pl-PL", {
+                timestamp: dateObj.getTime(),
+                date: dateObj.toLocaleDateString("pl-PL", {
                     month: "short",
                     day: "numeric",
                 }),
@@ -118,29 +137,45 @@ export default function MedicalCharts() {
 
     const renderChart = () => {
         if (chartType === "blood_pressure") {
-
             const bpConfig = currentConfig.config as typeof chartConfigs.blood_pressure.config;
 
             return (
-                <LineChart data={chartData}>
-                    <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} />
-                    <YAxis tickLine={false} axisLine={false} tickMargin={8} domain={["dataMin - 10", "dataMax + 10"]} />
-                    <Line
-                        type="monotone"
-                        dataKey="systolic"
-                        stroke={bpConfig.systolic.color}
-                        strokeWidth={2}
-                        dot={{ fill: bpConfig.systolic.color, strokeWidth: 2, r: 4 }}
-                    />
-                    <Line
-                        type="monotone"
-                        dataKey="diastolic"
-                        stroke={bpConfig.diastolic.color}
-                        strokeWidth={2}
-                        dot={{ fill: bpConfig.diastolic.color, strokeWidth: 2, r: 4 }}
-                    />
-                    <ChartTooltip content={<ChartTooltipContent />} labelFormatter={(value) => `Data: ${value}`} />
-                </LineChart>
+                <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={chartData}>
+                        {xAxis}
+                        <YAxis tickLine={false} axisLine={false} tickMargin={8} domain={["dataMin - 10", "dataMax + 10"]} />
+                        <Line
+                            type="monotone"
+                            dataKey="systolic"
+                            stroke={bpConfig.systolic.color}
+                            strokeWidth={2}
+                            dot={{ fill: bpConfig.systolic.color, strokeWidth: 2, r: 4 }}
+                        />
+                        <Line
+                            type="monotone"
+                            dataKey="diastolic"
+                            stroke={bpConfig.diastolic.color}
+                            strokeWidth={2}
+                            dot={{ fill: bpConfig.diastolic.color, strokeWidth: 2, r: 4 }}
+                        />
+                        <ChartTooltip
+                            content={({ payload }) => {
+                                if (!payload?.length) return null;
+                                const data = payload[0].payload;
+                                return (
+                                    <div className="p-3 border border-gray-200 rounded shadow-md">
+                                        <p className="font-medium mb-1">{`${t("charts.date")}: ${data.date}`}</p>
+                                        {payload.map((entry, index) => (
+                                            <p key={index} style={{ color: entry.color }}>
+                                                {entry.dataKey === 'systolic' ? t("charts.systolic") : t("charts.diastolic")}: {entry.value} mmHg
+                                            </p>
+                                        ))}
+                                    </div>
+                                );
+                            }}
+                        />
+                    </LineChart>
+                </ResponsiveContainer>
             );
         }
 
@@ -150,20 +185,37 @@ export default function MedicalCharts() {
             : currentConfig.dataKey;
         const lineColor = otherConfig[dataKey]?.color ?? "#000";
 
-
         return (
-            <LineChart data={chartData}>
-                <XAxis dataKey="date" tickLine={false} axisLine={false} tickMargin={8} />
-                <YAxis tickLine={false} axisLine={false} tickMargin={8} domain={["dataMin - 5", "dataMax + 5"]} />
-                <Line
-                    type="monotone"
-                    dataKey={dataKey}
-                    stroke={lineColor}
-                    strokeWidth={2}
-                    dot={{ fill: lineColor, strokeWidth: 2, r: 4 }}
-                />
-                <ChartTooltip content={<ChartTooltipContent />} labelFormatter={(value) => `Data: ${value}`} />
-            </LineChart>
+            <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={chartData}>
+                    {xAxis}
+                    <YAxis tickLine={false} axisLine={false} tickMargin={8} domain={["dataMin - 5", "dataMax + 5"]} />
+                    <Line
+                        type="monotone"
+                        dataKey={dataKey}
+                        stroke={lineColor}
+                        strokeWidth={2}
+                        dot={{ fill: lineColor, strokeWidth: 2, r: 4 }}
+                    />
+                    <ChartTooltip
+                        content={({ payload }) => {
+                            if (!payload?.length) return null;
+                            const data = payload[0].payload;
+                            const value = payload[0].value;
+                            const unit = currentConfig.unit;
+
+                            return (
+                                <div className="p-3 border border-gray-200 rounded shadow-md">
+                                    <p className="font-medium mb-1">{`${t("charts.date")}: ${data.date}`}</p>
+                                    <p style={{ color: payload[0].color }}>
+                                        {currentConfig.title}: {value} {unit}
+                                    </p>
+                                </div>
+                            );
+                        }}
+                    />
+                </LineChart>
+            </ResponsiveContainer>
         );
     };
 
