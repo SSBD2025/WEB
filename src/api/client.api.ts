@@ -25,6 +25,11 @@ export const updateBloodTestReport = async (reportData: BloodTestReport) => {
   return response.data;
 };
 
+export const getClientSurveys = async (clientId: string) => {
+  const response = await apiClient.get(`/mod/clients/${clientId}/periodic-survey`);
+  return response.data;
+};
+
 export const getAllClientsPyramids = async () => {
   const response = await apiClient.get(`/mod/client-food-pyramids/client-pyramids`);
   return response.data;

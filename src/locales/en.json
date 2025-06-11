@@ -660,5 +660,13 @@
       "loading": "Error loading periodic surveys",
       "fetch": "Failed to fetch periodic surveys"
     }
+  },
+  "charts": {
+    "weight": "Weight",
+    "blood_pressure": "Blood pressure",
+    "blood_sugar": "Blood sugar level",
+    "systolic": "Systolic",
+    "diastolic": "Diastolic",
+    "no_data": "No data to display"
   }
 }

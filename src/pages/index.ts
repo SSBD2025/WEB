@@ -15,6 +15,7 @@ import DieticianDashboard from "@/pages/DieticianDashboard.tsx";
 import ClientDashboard from "@/pages/ClientDashboard.tsx";
 import ShowClientReports from "@/pages/ShowClientReports.tsx";
 import ShowClientReportsByDietician from "@/pages/ShowClientReportsByDietician.tsx";
+import MedicalChartsPage from "@/pages/MedicalChartsPage.tsx";
 import FoodPyramidsList from "@/pages/FoodPyramidsList.tsx";
 import ClientPyramidsPage from "@/pages/ClientPyramidsPage.tsx";
 import DieticianClientPyramidsPage from "@/pages/DieticianClientPyramidsPage.tsx";
@@ -43,6 +44,7 @@ export {
     ClientPyramidsPage,
     DieticianClientPyramidsPage,
     FoodPyramidsList,
+    MedicalChartsPage,
     DieticianClientInsertBloodTestReportPage,
     ClientPeriodicSurveyListPage,
     DieticianPeriodicSurveyListPage

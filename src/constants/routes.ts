@@ -28,6 +28,7 @@ const ROUTES = {
     getDieticianPeriodicSurveyList: (clientId: string) => `/dietician/periodic-survey-list/${clientId}`,
     DIETICIAN_INSERT_BLOOD_TEST_REPORT: "/dietician/blood-report/insert/:id",
     dieticianInsertBloodTestReport: (id: string) => `/dietician/blood-report/insert/${id}`,
+    MEDICAL_CHARTS: "/charts/:clientId"
 }
 
 export default ROUTES;
