@@ -1,6 +1,13 @@
 export interface FoodPyramid {
   id: string
   averageRating: number
+  name: string;
+  kcal: number;
+  fat: number;
+  saturatedFattyAcids: number;
+  carbohydrates: number;
+  sugar: number;
+  protein: number;
   a: number
   d: number
   e: number
@@ -73,3 +80,24 @@ export type ClientFoodPyramid = {
   timestamp: string;
   active: boolean;
 };
+
+export interface Feedback {
+  id: string;
+  rating: number;
+  description: string;
+  timestamp: string;
+  clientId: string;
+  foodPyramidId: string;
+}
+
+export interface Client {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+export interface FoodPyramidResponse {
+  foodPyramid: FoodPyramid;
+  feedbacks: Feedback[];
+  clients: Client[];
+}
