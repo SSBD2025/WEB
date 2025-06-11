@@ -34,3 +34,8 @@ export const getAllClientsPyramids = async () => {
   const response = await apiClient.get(`/mod/client-food-pyramids/client-pyramids`);
   return response.data;
 }
+
+export const assignDietician = async (dieticianId: string) => {
+  const response = await apiClient.post(`/mod/clients/assign-dietician/${dieticianId}`);
+  return response.data;
+}

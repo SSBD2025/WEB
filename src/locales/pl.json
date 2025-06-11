@@ -456,7 +456,10 @@
     "previous_password_used": "Nie można używać poprzednich haseł",
     "password_must_be_changed": "Hasło musi zostać zmienione",
     "client_not_found": "Nie znaleziono klienta",
-    "periodic_survey_too_soon": "Nie możesz wypełnić ankiety okresowej zbyt często. Proszę spróbować później."
+    "periodic_survey_too_soon": "Nie możesz wypełnić ankiety okresowej zbyt często. Proszę spróbować później.",
+    "dietician_already_assigned": "Masz już przypisanego dietetyka",
+    "same_dietician_already_assigned": "Ten dietetyk jest już do ciebie przypisany.",
+    "dietician_client_limit_exceeded": "Ten dietetyk ma już przypisanych dzisięciu klientów."
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -560,9 +563,8 @@
   },
   "client_dashboard": {
     "dashboard_title": "Panel Klienta",
-    "hide_dieticians_list": "Ukryj Listę Dietetyków",
-    "show_dieticians_list": "Wyświetl Listę Dietetyków",
-    "search": "Wprowadź imię, nazwisko lub adres e-mail"
+    "search": "Wprowadź imię, nazwisko lub adres e-mail",
+    "permanent_survey": "Ankieta parametrów stałych"
   },
   "dieticians_table": {
     "title": "Lista Dietetyków",
@@ -668,5 +670,9 @@
     "systolic": "Skurczowe",
     "diastolic": "Rozkurczowe",
     "no_data": "Brak danych do wyświetlenia"
+  },
+  "assign_dietician": {
+    "failed_to_assignDietician": "Nie udało się przypisać dietetyka",
+    "succes": "Udało się przypisać dietetyka"
   }
 }
