@@ -660,5 +660,13 @@
       "loading": "Błąd ładowania ankiet okresowych",
       "fetch": "Nie udało się pobrać ankiet okresowych"
     }
+  },
+  "charts": {
+    "weight": "Waga",
+    "blood_pressure": "Ciśnienie krwi",
+    "blood_sugar": "Poziom cukru",
+    "systolic": "Skurczowe",
+    "diastolic": "Rozkurczowe",
+    "no_data": "Brak danych do wyświetlenia"
   }
 }
