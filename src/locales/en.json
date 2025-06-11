@@ -456,7 +456,10 @@
     "previous_password_used": "The new password cannot be the same as the previous password",
     "password_must_be_changed": "Password must be changed",
     "client_not_found": "Client not found",
-    "periodic_survey_too_soon": "You cannot take the periodic survey yet. Please wait until the next survey date."
+    "periodic_survey_too_soon": "You cannot take the periodic survey yet. Please wait until the next survey date.",
+    "dietician_already_assigned": "You already have a dietitian assigned.",
+    "same_dietician_already_assigned": "This dietician is already assigned to you.",
+    "dietician_client_limit_exceeded": "This dietitian already has ten clients assigned to him."
   },
   "role_change": {
     "log_error": "Failed to log role change:"
@@ -560,9 +563,8 @@
   },
   "client_dashboard": {
     "dashboard_title": "Client Dashboard",
-    "hide_dieticians_list": "Hide Dieticians List",
-    "show_dieticians_list": "Show Dieticians List",
-    "search": "Enter first name, last name or e-mail address"
+    "search": "Enter first name, last name or e-mail address",
+    "permanent_survey": "Constant parameters survey"
   },
   "dieticians_table": {
     "title": "Dieticians List",
@@ -668,5 +670,9 @@
     "systolic": "Systolic",
     "diastolic": "Diastolic",
     "no_data": "No data to display"
+  },
+  "assign_dietician": {
+    "failed_to_assignDietician": "Failed to assign dietician",
+    "succes": "Dietician assigned"
   }
 }

@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { t } from "i18next";
 import { Dietician } from "@/types/user";
-import { Link } from "react-router";
+import { useAssignDietician } from "@/hooks/useAssignDietician";
 
 const rowVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -24,18 +24,21 @@ const rowVariants = {
   }),
 };
 
-const ClientsTable = ({ dieticians }: { dieticians: Dietician[] }) => {
+const DieticiansTable = ({ dieticians }: { dieticians: Dietician[] }) => {
+  const assignDieticianMutation = useAssignDietician();
+
+  const handleAssign = (id: string) => {
+    assignDieticianMutation.mutate(id);
+  };
+
   return (
     <>
-      <h2 className="text-xl font-semibold mb-4">
-        {t("dieticians_table.title")}
-      </h2>
       <Table className="w-full table-auto">
         <TableHeader>
           <TableRow>
             <TableHead>{t("dieticians_table.name")}</TableHead>
             <TableHead>{t("dieticians_table.email")}</TableHead>
-            <TableHead></TableHead>
+            <TableHead>{t("dieticians_table.choose_dietician")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -55,11 +58,12 @@ const ClientsTable = ({ dieticians }: { dieticians: Dietician[] }) => {
                 </TableCell>
                 <TableCell>{email}</TableCell>
                 <TableCell>
-                  <Link className="cursor-pointer" to={"/choose-dietician"}>
-                    <Button variant="ghost">
+                    <Button
+                        variant="ghost"
+                        onClick={() => handleAssign(id)}
+                    >
                       {t("dieticians_table.choose_dietician")}
                     </Button>
-                  </Link>
                 </TableCell>
               </motion.tr>
             );
@@ -70,4 +74,4 @@ const ClientsTable = ({ dieticians }: { dieticians: Dietician[] }) => {
   );
 };
 
-export default ClientsTable;
+export default DieticiansTable;

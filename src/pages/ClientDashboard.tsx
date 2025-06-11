@@ -4,11 +4,11 @@ import { useGetAllAvailableDieticians } from "@/hooks/useGetAllAvailableDieticia
 import { t } from "i18next";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input.tsx";
+import { Button } from "@/components/ui/button.tsx";
 import { motion } from "framer-motion";
 import DataRenderer from "@/components/shared/DataRenderer.tsx";
 import { DIETICIANS_EMPTY } from "@/constants/states.ts";
 import DieticiansTable from "@/components/tables/DieticiansTable.tsx";
-import { Button } from "@/components/ui/button.tsx";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -19,18 +19,16 @@ const containerVariants = {
   },
 };
 
+type View = "dieticians" | "permanent_survey";
+
 const ClientDashboard = () => {
+  const [activeView, setActiveView] = useState<View>("dieticians");
   const [searchPhrase, setSearchPhrase] = useState("");
-  const [showDieticians, setShowDieticians] = useState(false);
   const debouncedSearchPhrase = useDebounce(searchPhrase, 300);
   const { data, status } = useGetAllAvailableDieticians(debouncedSearchPhrase);
 
   const handleSearch = (value: string) => {
     setSearchPhrase(value);
-  };
-
-  const toggleDieticiansList = () => {
-    setShowDieticians((prev) => !prev);
   };
 
   return (
@@ -39,15 +37,23 @@ const ClientDashboard = () => {
         <h2 className="text-xl font-semibold mb-6">
           {t("client_dashboard.dashboard_title")}
         </h2>
-        <div className="mb-6">
-          <Button onClick={toggleDieticiansList}>
-            {showDieticians
-              ? t("client_dashboard.hide_dieticians_list")
-              : t("client_dashboard.show_dieticians_list")}
+
+        <div className="flex space-x-4 mb-6">
+          <Button
+            variant={activeView === "dieticians" ? "default" : "outline"}
+            onClick={() => setActiveView("dieticians")}
+          >
+            {t("dieticians_table.title")}
+          </Button>
+          <Button
+            variant={activeView === "permanent_survey" ? "default" : "outline"}
+            onClick={() => setActiveView("permanent_survey")}
+          >
+            {t("client_dashboard.permanent_survey")}
           </Button>
         </div>
 
-        {showDieticians && (
+        {activeView === "dieticians" && (
           <>
             <div className="relative mb-4 max-w-xs">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
@@ -77,6 +83,12 @@ const ClientDashboard = () => {
               />
             </motion.div>
           </>
+        )}
+
+        {activeView === "permanent_survey" && (
+          <div className="mt-4">
+            <p>Tu będzie ankieta</p>
+          </div>
         )}
       </div>
     </main>
