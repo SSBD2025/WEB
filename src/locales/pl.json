@@ -526,6 +526,9 @@
     "view_client_pyramids": "Wyświetl piramidy użytkownika",
     "view_periodic_survey_list": "Ankiety okresowe",
     "insert_blood_test_report": "Wprowadź wyniki badań",
+    "select_client": "Wybierz Klienta",
+    "hide_actions": "Ukryj Akcje",
+    "available_actions": "Dostępne Akcje",
     "view_client_charts": "Wyświetl wykresy klienta"
   },
   "dietician_dashboard": {
