@@ -526,6 +526,9 @@
     "view_client_pyramids": "View user pyramids",
     "view_periodic_survey_list": "Periodic surveys",
     "insert_blood_test_report": "Insert blood test report",
+    "select_client": "Select Client",
+    "hide_actions": "Hide Actions",
+    "available_actions": "Available Actions",
     "view_client_charts": "View user charts"
   },
   "dietician_dashboard": {
