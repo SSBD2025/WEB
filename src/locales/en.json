@@ -461,7 +461,9 @@
     "periodic_survey_too_soon": "You cannot take the periodic survey yet. Please wait until the next survey date.",
     "dietician_already_assigned": "You already have a dietitian assigned.",
     "same_dietician_already_assigned": "This dietician is already assigned to you.",
-    "dietician_client_limit_exceeded": "This dietitian already has ten clients assigned to him."
+    "dietician_client_limit_exceeded": "This dietitian already has ten clients assigned to him.",
+    "no_assigned_dietican": "No assigned dietician",
+    "permanent_survey_already_exists": "You have already completed the permanent parameters survey"
   },
   "role_change": {
     "log_error": "Failed to log role change:"
@@ -679,6 +681,84 @@
   },
   "assign_dietician": {
     "failed_to_assignDietician": "Failed to assign dietician",
-    "succes": "Dietician assigned"
+    "success": "Dietician assigned"
+  },
+  "permanent_survey_form": {
+    "height_required": "Height is required",
+    "height_message": "Height must be a number greater than 0",
+    "date_of_birth_required": "Date of birth is required",
+    "gender_required": "Gender is required",
+    "activity_level_required": "Choose activity level",
+    "meals_per_day_required": "Number of meals is required",
+    "meals_per_day_message": "Number of meals must be between 1 and 10",
+    "nutrition_goal_required": "Select your nutrition goal",
+    "meal_times_required": "Meal time is required",
+    "meal_times_message": "Add at least one time of meal",
+    "eating_habits_required": "Describe your eating habits",
+    "activity_level_info": {
+      "sedentary": "Little or no physical activity, sedentary work",
+      "light": "Light activity 1-3 times a week",
+      "moderate": "Moderate activity 3-5 times a week",
+      "active": "Intense activity 6-7 times a week",
+      "very_active": "Very intense activity"
+    },
+    "nutrition_goal_info": {
+      "reduction": "Weight loss and fat tissue reduction",
+      "maintenance": "Maintaining current body weight",
+      "mass_gain": "Weight gain and muscle building"
+    },
+    "title": "Permanent survey",
+    "description": "Fill out the form below so that a dietitian can prepare a personalized dietary profile for you.",
+    "master_data": "Master data",
+    "height": "Height (cm)",
+    "date_of_birth": "Date of birth",
+    "gender": "Gender",
+    "gender_name": {
+      "man": "Man",
+      "female": "Female"
+    },
+    "food_preferences": "Food preferences",
+    "diet_preferences": "Diet preferences",
+    "add": "Add",
+    "diet_preferences_placeholder": "e.g. vegetarianism, gluten-free diet",
+    "allergies": "Allergies",
+    "allergies_placeholder": "e.g. nuts, gluten, lactose",
+    "lifestyle": "Lifestyle",
+    "activity_level": "Activity level",
+    "activity_level_description": "Choose the activity level that best describes your lifestyle.",
+    "activity_level_placeholder": "Choose the activity level",
+    "activity_level_name": {
+      "SEDENTARY": "Sedentary",
+      "LIGHT": "Light",
+      "MODERATE": "Moderate",
+      "ACTIVE": "Active",
+      "VERY_ACTIVE": "Very active"
+    },
+    "smoking": "Smoking",
+    "smoking_description": "Check if you smoke cigarettes or other tobacco products",
+    "drinking_alcohol": "Drinking alcohol",
+    "drinking_alcohol_description": "Check if you consume alcoholic beverages",
+    "health": "Health",
+    "illnesses": "Illnesses",
+    "illnesses_placeholder": "e.g. diabetes, hypertension",
+    "medications": "Medications taken",
+    "medications_placeholder": "e.g. drug name, dosage",
+    "nutrition_plan": "Nutrition plan",
+    "nutrition_goal": "Nutrition goal",
+    "choose_nutrition_goal": "Choose your goal",
+    "reduction": "Reduction",
+    "maintenance": "Maintenance",
+    "mass_gain": "Mass gain",
+    "number_of_meals_per_day": "Number of meals per day",
+    "meals_per_day_description": "Enter the number of meals you would like to eat per day (1-10)",
+    "meal_times": "Meal times",
+    "eating_habits": "Eating habits",
+    "eating_habits_placeholder": "Describe your current eating habits, e.g. frequent snacking, eating in a hurry, skipping breakfast...",
+    "sending": "Sending...",
+    "send": "Send survey"
+  },
+  "submit_permanent_survey": {
+    "success": "The survey was successfully sent",
+    "error": "Failed to send survey"
   }
 }
