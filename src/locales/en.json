@@ -466,6 +466,11 @@
     "dietician_client_limit_exceeded": "This dietitian already has ten clients assigned to him.",
     "no_assigned_dietican": "No assigned dietician",
     "permanent_survey_already_exists": "You have already completed the permanent parameters survey",
+    "client_has_no_assigned_dietician": "Client has no dietician assigned",
+    "dietician_access_denied": "Access denied - this client is not assigned to you",
+    "blood_test_already_ordered": "Blood test order already ordered",
+    "blood_test_order_not_found": "Blood test order not found",
+    "blood_test_already_fulfilled": "Test order already fulfilled",
     "pyramid_already_rated": "This pyramid has already been rated.",
     "not_your_pyramid": "This pyramid does not belong to you."
   },
@@ -529,13 +534,14 @@
     "title": "Clients list",
     "actions": "Actions",
     "view_blood_reports": "Blood test results",
-    "view_client_pyramids": "View user pyramids",
+    "view_client_pyramids": "View clients diet profiles",
     "view_periodic_survey_list": "Periodic surveys",
     "insert_blood_test_report": "Insert blood test report",
     "select_client": "Select Client",
     "hide_actions": "Hide Actions",
     "available_actions": "Available Actions",
-    "view_client_charts": "View user charts"
+    "view_client_charts": "View user charts",
+    "order_medical_examinations": "Order blood tests"
   },
   "dietician_dashboard": {
     "clients_list_title": "Clients list",
@@ -611,7 +617,7 @@
     "name": "Pyramid name:"
   },
   "client_food_pyramid_list": {
-    "no_data": "No pyramids available to display.",
+    "no_data": "No diet profiles available to display.",
     "active_pyramid": "Active pyramid",
     "archive_pyramid": "Archive pyramid",
     "issued_on": "Issued on",
@@ -793,5 +799,54 @@
   "submit_permanent_survey": {
     "success": "The survey was successfully sent",
     "error": "Failed to send survey"
+  },
+  "order_medical_examinations": {
+    "title": "Ordering blood tests",
+    "back_to_dashboard": "Return",
+    "description": "Description",
+    "description_placeholder": "Enter a description of the medical tests...",
+    "description_required": "Description is required.",
+    "description_min_length": "Description must be at least 10 characters long.",
+    "description_max_length": "Description cannot exceed 500 characters.",
+    "parameters": "Blood Parameters",
+    "selected": "selected",
+    "submit": "Submit Order",
+    "submitting": "Submitting...",
+    "error_no_parameters": "Please select at least one blood parameter.",
+    "parameters_list": {
+      "HGB": "Hemoglobin (HGB)",
+      "HCT": "Hematocrit (HCT)",
+      "RBC": "Red Blood Cells (RBC)",
+      "MCV": "Mean Corpuscular Volume (MCV)",
+      "MCH": "Mean Corpuscular Hemoglobin (MCH)",
+      "MCHC": "Mean Corpuscular Hemoglobin Concentration (MCHC)",
+      "RDW": "Red Cell Distribution Width (RDW)",
+      "WBC": "White Blood Cells (WBC)",
+      "EOS": "Eosinophils (EOS)",
+      "BASO": "Basophils (BASO)",
+      "LYMPH": "Lymphocytes (LYMPH)",
+      "MONO": "Monocytes (MONO)",
+      "PLT": "Platelets (PLT)",
+      "MPV": "Mean Platelet Volume (MPV)",
+      "PDW": "Platelet Distribution Width (PDW)",
+      "PCT": "Plateletcrit (PCT)",
+      "P_LCR": "Platelet Large Cell Ratio (P_LCR)",
+      "IRON": "Iron (IRON)",
+      "FERRITIN": "Ferritin (FERRITIN)",
+      "B9": "Folic acid (B9)",
+      "D": "Vitamin D (D)",
+      "B12": "Vitamin B12 (B12)",
+      "GLUCOSE": "Glucose (GLUCOSE)",
+      "INSULIN": "Insulin (INSULIN)",
+      "CHOL": "Cholesterol (CHOL)",
+      "CA": "Calcium (CA)",
+      "ZN": "Zinc (ZN)",
+      "LDL": "Low-Density Lipoproteins (LDL)",
+      "HDL": "High-Density Lipoproteins (HDL)",
+      "OH_D": "25-Hydroxyvitamin D (OH_D)",
+      "B6": "Vitamin B6 (B6)"
+    },
+    "success": "Blood tests were successfully ordered",
+    "error": "Blood tests could not be ordered"
   }
 }

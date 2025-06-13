@@ -5,7 +5,7 @@ import type { Client } from "@/types/user"
 import { Link } from "react-router"
 import ROUTES from "@/constants/routes.ts"
 import { useState } from "react"
-import { ChevronDown, ChevronRight, User } from "lucide-react"
+import {ChevronDown, ChevronRight, User} from "lucide-react"
 
 const rowVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
@@ -126,6 +126,11 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
                         <Link className="cursor-pointer" to={ROUTES.getDieticianPeriodicSurveyList(id)}>
                           <Button variant="outline" size="sm" className="w-full justify-start">
                             {t("clients_table.view_periodic_survey_list")}
+                          </Button>
+                        </Link>
+                        <Link className="cursor-pointer" to={ROUTES.dieticianOrderMedicalExaminations(id)}>
+                          <Button variant="outline" size="sm" className="w-full justify-start">
+                            {t("clients_table.order_medical_examinations")}
                           </Button>
                         </Link>
                       </div>
