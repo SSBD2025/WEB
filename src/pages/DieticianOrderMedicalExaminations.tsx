@@ -1,5 +1,5 @@
 import { useParams } from "react-router"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import { useNavigate } from "react-router"
 import { OrderMedicalExaminationsForm } from "@/components/OrderMedicalExaminationsForm"
 import { t } from "i18next"
@@ -7,7 +7,7 @@ import ROUTES from "@/constants/routes"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const containerVariants = {
+const containerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
