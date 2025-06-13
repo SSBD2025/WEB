@@ -614,7 +614,8 @@
     "no_client_feedbacks": "Brak opinii dla tej piramidy",
     "go_back": "Powrót",
     "assigned_clients": "Klienci przypisani do piramidy",
-    "name": "Nazwa piramidki:"
+    "name": "Nazwa piramidki:",
+    "no_clients_assigned": "Brak klientów przypisanych do tej piramidy"
   },
   "client_food_pyramid_list": {
     "no_data": "Brak dostępnych profili dietetycznych do wyświetlenia.",

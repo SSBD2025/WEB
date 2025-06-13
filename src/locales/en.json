@@ -614,7 +614,8 @@
     "no_client_feedbacks": "There is no client feedback for this pyramid",
     "go_back": "Go back",
     "assigned_clients": "Clients assigned to pyramid",
-    "name": "Pyramid name:"
+    "name": "Pyramid name:",
+    "no_clients_assigned": "No clients are currently assigned to this pyramid."
   },
   "client_food_pyramid_list": {
     "no_data": "No diet profiles available to display.",
