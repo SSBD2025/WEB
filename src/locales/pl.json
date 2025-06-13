@@ -677,7 +677,8 @@
     "blood_sugar": "Poziom cukru",
     "systolic": "Skurczowe",
     "diastolic": "Rozkurczowe",
-    "no_data": "Brak danych do wyświetlenia"
+    "no_data": "Brak danych do wyświetlenia",
+    "date": "Data"
   },
   "assign_dietician": {
     "failed_to_assignDietician": "Nie udało się przypisać dietetyka",

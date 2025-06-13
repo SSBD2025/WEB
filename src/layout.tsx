@@ -20,7 +20,8 @@ import {
   FoodPyramidsList,
   ClientPyramidsPage,
   DieticianClientPyramidsPage,
-  MedicalChartsPage,
+  DieticianMedicalChartsPage,
+  ClientMedicalChartsPage,
   DieticianClientInsertBloodTestReportPage,
   ClientPeriodicSurveyListPage,
   DieticianPeriodicSurveyListPage,
@@ -106,14 +107,6 @@ const Layout = () => {
               element={<ClientPeriodicSurveyListPage />}
             />
           </Route>
-          <Route
-            element={<ProtectedRoute allowedRoles={["client", "dietician"]} />}
-          >
-            <Route
-              path={ROUTES.MEDICAL_CHARTS}
-              element={<MedicalChartsPage />}
-            />
-          </Route>
           <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
             <Route
               path={ROUTES.ADMIN_USER_DETAILS}
@@ -148,6 +141,10 @@ const Layout = () => {
               path={ROUTES.DIETICIAN_PERIODIC_SURVEY_LIST}
               element={<DieticianPeriodicSurveyListPage />}
             />
+            <Route
+                path={ROUTES.DIETICIAN_MEDICAL_CHARTS}
+                element={<DieticianMedicalChartsPage />}
+            />
           </Route>
           <Route element={<ProtectedRoute allowedRoles={["client"]} />}>
             <Route
@@ -157,6 +154,10 @@ const Layout = () => {
             <Route
               path={ROUTES.CLIENT_ALL_PYRAMIDS}
               element={<ClientPyramidsPage />}
+            />
+            <Route
+                path={ROUTES.CLIENT_MEDICAL_CHARTS}
+                element={<ClientMedicalChartsPage />}
             />
           </Route>
           <Route path="*" element={<NotFound />} />

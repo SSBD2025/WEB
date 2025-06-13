@@ -13,7 +13,7 @@ import {
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Activity, Heart, Droplets } from "lucide-react";
 import { Spinner } from "@/components/ui/spinner";
-import { useGetSurveys } from "@/hooks/useGetSyrveys";
+import {useGetSurveys, useGetSurveysByDietician} from "@/hooks/useGetSyrveys";
 import { useTranslation } from "react-i18next";
 
 type RawSurvey = {
@@ -43,10 +43,22 @@ const xAxis = (
     />
 );
 
-export default function MedicalCharts() {
+interface MedicalChartsProps {
+    userRole: "client" | "dietician";
+}
+
+export default function MedicalCharts({ userRole }: MedicalChartsProps) {
     const { clientId } = useParams<{ clientId: string }>();
     const [chartType, setChartType] = useState<ChartType>("weight");
     const { t } = useTranslation();
+
+    const clientQuery = useGetSurveys(userRole === "client");
+    const dieticianQuery = useGetSurveysByDietician(
+        userRole === "dietician" ? clientId : undefined
+    );
+    const query = userRole === "client" ? clientQuery : dieticianQuery;
+    const { data, isLoading } = query;
+    const surveysRaw = data?.content ?? [];
 
     const chartButtons = [
         { type: "weight", label: t("charts.weight") },
@@ -102,8 +114,7 @@ export default function MedicalCharts() {
         },
     } as const;
 
-    const { data, isLoading } = useGetSurveys(clientId);
-    const surveysRaw = data?.content ?? [];
+
 
     const chartData = useMemo(() => {
         if (!surveysRaw || surveysRaw.length === 0) return [];

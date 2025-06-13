@@ -677,7 +677,8 @@
     "blood_sugar": "Blood sugar level",
     "systolic": "Systolic",
     "diastolic": "Diastolic",
-    "no_data": "No data to display"
+    "no_data": "No data to display",
+    "date": "Date"
   },
   "assign_dietician": {
     "failed_to_assignDietician": "Failed to assign dietician",

@@ -117,7 +117,7 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
 
                         <Link
                             className="cursor-pointer"
-                            to={ROUTES.MEDICAL_CHARTS.replace(':clientId', id)}
+                            to={ROUTES.DIETICIAN_MEDICAL_CHARTS.replace(':clientId', id)}
                         >
                           <Button variant="outline" size="sm" className="w-full justify-start">
                             {t("clients_table.view_client_charts")}

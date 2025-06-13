@@ -30,7 +30,8 @@ const ROUTES = {
   DIETICIAN_INSERT_BLOOD_TEST_REPORT: "/dietician/blood-report/insert/:id",
   dieticianInsertBloodTestReport: (id: string) =>
     `/dietician/blood-report/insert/${id}`,
-  MEDICAL_CHARTS: "/charts/:clientId",
+  DIETICIAN_MEDICAL_CHARTS: "/charts/:clientId",
+  CLIENT_MEDICAL_CHARTS: "/charts",
   FOOD_PYRAMID_DETAILS: "/food-pyramids/:id",
   getFoodPyramidDetails: (id: string) => `/food-pyramids/${id}`,
 };

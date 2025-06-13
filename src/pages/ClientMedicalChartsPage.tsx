@@ -1,11 +1,11 @@
 import MedicalChartsComponent from "@/components/medical-charts";
 
-const MedicalChartsPage = () => {
+const ClientMedicalChartsPage = () => {
     return (
         <div className="flex-grow p-4">
-            <MedicalChartsComponent />
+            <MedicalChartsComponent userRole={"client"} />
         </div>
     );
 };
 
-export default MedicalChartsPage;
+export default ClientMedicalChartsPage;
