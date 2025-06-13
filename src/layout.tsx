@@ -26,6 +26,7 @@ import {
   ClientPeriodicSurveyListPage,
   DieticianPeriodicSurveyListPage,
   FoodPyramidDetails,
+  DieticianOrderMedicalExaminations
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -144,6 +145,10 @@ const Layout = () => {
             <Route
                 path={ROUTES.DIETICIAN_MEDICAL_CHARTS}
                 element={<DieticianMedicalChartsPage />}
+            />
+            <Route
+                path={ROUTES.DIETICIAN_ORDER_MEDICAL_EXAMINATIONS}
+                element={<DieticianOrderMedicalExaminations />}
             />
           </Route>
           <Route element={<ProtectedRoute allowedRoles={["client"]} />}>

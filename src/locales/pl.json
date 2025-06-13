@@ -466,6 +466,11 @@
     "dietician_client_limit_exceeded": "Ten dietetyk ma już przypisanych dzisięciu klientów.",
     "no_assigned_dietican": "Brak przypisanego dietetyka",
     "permanent_survey_already_exists": "Masz już wypełnioną ankietę parametrów stałych",
+    "client_has_no_assigned_dietician": "Klient nie ma przypisanego dietetyka",
+    "dietician_access_denied": "Odmowa dostępu - ten klient nie jest do ciebie przypisany",
+    "blood_test_already_ordered": "Zlecono już wykonanie badań krwi",
+    "blood_test_order_not_found": "Nie znaleziono zlecenia badań krwi",
+    "blood_test_already_fulfilled": "Zlecenie badań zostało już spełnione",
     "pyramid_already_rated": "Ta piramida została już oceniona",
     "not_your_pyramid": "Ta piramida nie należy do Ciebie."
   },
@@ -529,13 +534,14 @@
     "title": "Lista klientów",
     "actions": "Akcje",
     "view_blood_reports": "Wyniki badań",
-    "view_client_pyramids": "Wyświetl piramidy użytkownika",
+    "view_client_pyramids": "Wyświetl profile dietetyczne klienta",
     "view_periodic_survey_list": "Ankiety okresowe",
     "insert_blood_test_report": "Wprowadź wyniki badań",
     "select_client": "Wybierz Klienta",
     "hide_actions": "Ukryj Akcje",
     "available_actions": "Dostępne Akcje",
-    "view_client_charts": "Wyświetl wykresy klienta"
+    "view_client_charts": "Wyświetl wykresy klienta",
+    "order_medical_examinations": "Zleć badania krwi"
   },
   "dietician_dashboard": {
     "clients_list_title": "Lista klientów",
@@ -611,7 +617,7 @@
     "name": "Nazwa piramidki:"
   },
   "client_food_pyramid_list": {
-    "no_data": "Brak dostępnych piramid do wyświetlenia.",
+    "no_data": "Brak dostępnych profili dietetycznych do wyświetlenia.",
     "active_pyramid": "Piramida aktywna",
     "archive_pyramid": "Piramida archiwalna",
     "issued_on": "Wystawiono dnia",
@@ -793,5 +799,54 @@
   "submit_permanent_survey": {
     "success": "Udało się przesłać ankietę",
     "error": "Nie udało się przesłać ankiety"
+  },
+  "order_medical_examinations": {
+    "title": "Zlecenie badań krwi",
+    "back_to_dashboard": "Powrót",
+    "description": "Opis",
+    "description_placeholder": "Wpisz opis zlecanych badań...",
+    "description_required": "Opis jest wymagany.",
+    "description_min_length": "Opis musi mieć co najmniej 10 znaków.",
+    "description_max_length": "Opis nie może przekraczać 500 znaków.",
+    "parameters": "Parametry krwi",
+    "selected": "wybrane",
+    "submit": "Zleć badania",
+    "submitting": "Wysyłanie...",
+    "error_no_parameters": "Wybierz co najmniej jeden parametr krwi.",
+    "parameters_list": {
+      "HGB": "Hemoglobina (HGB)",
+      "HCT": "Hematokryt (HCT)",
+      "RBC": "Erytrocyty (RBC)",
+      "MCV": "Średnia objętość erytrocytu (MCV)",
+      "MCH": "Średnia masa hemoglobiny (MCH)",
+      "MCHC": "Średnie stężenie hemoglobiny (MCHC)",
+      "RDW": "Rozkład objętości erytrocytów (RDW)",
+      "WBC": "Leukocyty (WBC)",
+      "EOS": "Eozynofile (EOS)",
+      "BASO": "Bazofile (BASO)",
+      "LYMPH": "Limfocyty (LYMPH)",
+      "MONO": "Monocyty (MONO)",
+      "PLT": "Płytki krwi (PLT)",
+      "MPV": "Średnia objętość płytek (MPV)",
+      "PDW": "Rozkład objętości płytek (PDW)",
+      "PCT": "Płytkokryt (PCT)",
+      "P_LCR": "Stosunek dużych płytek (P_LCR)",
+      "IRON": "Żelazo (IRON)",
+      "FERRITIN": "Ferrytyna (FERRITIN)",
+      "B9": "Kwas foliowy (B9)",
+      "D": "Witamina D (D)",
+      "B12": "Witamina B12 (B12)",
+      "GLUCOSE": "Glukoza (GLUCOSE)",
+      "INSULIN": "Insulina (INSULIN)",
+      "CHOL": "Cholesterol (CHOL)",
+      "CA": "Wapń (CA)",
+      "ZN": "Cynk (ZN)",
+      "LDL": "Lipoproteiny o niskiej gęstości (LDL)",
+      "HDL": "Lipoproteiny o wysokiej gęstości (HDL)",
+      "OH_D": "25-Hydroksywitamina D (OH_D)",
+      "B6": "Witamina B6 (B6)"
+    },
+    "success": "Pomyślnie zlecono badania krwi",
+    "error": "Nie udało się zlecić badań krwi"
   }
 }
