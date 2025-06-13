@@ -17,6 +17,6 @@ export const ROLE_LINKS: Record<Exclude<AccessLevel, null>, RoleLink[]> = {
     {label: "Pyramids", path: ROUTES.CLIENT_ALL_PYRAMIDS},
     {label: t("navbar.periodic_survey_list"), path: ROUTES.CLIENT_PERIODIC_SURVEY_LIST},
     {label: t("navbar.blood_test_reports"), path: ROUTES.CLIENT_BLOOD_REPORT},
-    {label: t("navbar.charts"), path: ROUTES.MEDICAL_CHARTS}
+    {label: t("navbar.charts"), path: ROUTES.CLIENT_MEDICAL_CHARTS}
   ],
 };
