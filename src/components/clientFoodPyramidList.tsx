@@ -6,7 +6,13 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Badge } from "@/components/ui/badge";
-import { ChevronDown, ChevronRight, Calendar, Star } from "lucide-react";
+import {
+  ChevronDown,
+  ChevronRight,
+  Calendar,
+  Star,
+  Trash2,
+} from "lucide-react";
 import { format } from "date-fns";
 import { ClientFoodPyramid } from "@/types/food_pyramid";
 import { nutrientKeys, nutrientUnits } from "@/constants/nutrients.ts";
@@ -14,6 +20,18 @@ import { t } from "i18next";
 import { useClientFeedbackForPyramid } from "@/hooks/useClientPyramids";
 import { Button } from "./ui/button";
 import RatePyramidModal from "./rate-pyramid-modal";
+import { useDeleteFeedback } from "@/hooks/useDeleteFeedback";
+import {
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "./ui/alert-dialog";
 
 type Props = {
   pyramids: ClientFoodPyramid[];
@@ -32,6 +50,8 @@ function PyramidWithFeedback({
   const [isRatingModalOpen, setIsRatingModalOpen] = useState(false);
   const { data: feedback, isLoading: feedbackLoading } =
     useClientFeedbackForPyramid(pyramid.foodPyramid.id);
+
+  const { mutate: deleteFeedback } = useDeleteFeedback(pyramid.foodPyramid.id);
 
   const renderStars = (rating: number) => {
     return (
@@ -109,9 +129,47 @@ function PyramidWithFeedback({
               </div>
 
               <div className="mt-6 pt-4 border-t">
-                <h4 className="text-lg font-semibold mb-3">
-                  {t("client_food_pyramid_list.my_feedback")}
-                </h4>
+                <div className="flex items-center justify-between">
+                  <h4 className="text-lg font-semibold mb-3">
+                    {t("client_food_pyramid_list.my_feedback")}
+                  </h4>
+
+                  {feedback && (
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button variant="destructive">
+                          <Trash2 />
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle>
+                            {t("client_food_pyramid_list.feedback_alert.title")}
+                          </AlertDialogTitle>
+                          <AlertDialogDescription>
+                            {t(
+                              "client_food_pyramid_list.feedback_alert.description"
+                            )}
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>
+                            {t(
+                              "client_food_pyramid_list.feedback_alert.cancel_button"
+                            )}
+                          </AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => deleteFeedback(feedback.id)}
+                          >
+                            {t(
+                              "client_food_pyramid_list.feedback_alert.confirm_button"
+                            )}
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  )}
+                </div>
 
                 {feedbackLoading ? (
                   <div className="bg-muted/30 rounded-lg p-4">
@@ -124,7 +182,7 @@ function PyramidWithFeedback({
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <span className="text-sm font-medium">
-                          {t("client_food_pyramid_list.my_rating")}:
+                          {t("client_food_pyramid_list.my_rating")}
                         </span>
                         {renderStars(feedback.rating)}
                         <span className="text-sm text-muted-foreground">

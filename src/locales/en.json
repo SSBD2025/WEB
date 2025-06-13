@@ -472,7 +472,9 @@
     "blood_test_order_not_found": "Blood test order not found",
     "blood_test_already_fulfilled": "Test order already fulfilled",
     "pyramid_already_rated": "This pyramid has already been rated.",
-    "not_your_pyramid": "This pyramid does not belong to you."
+    "not_your_pyramid": "This pyramid does not belong to you.",
+    "feedback_not_found": "Feedback not found",
+    "not_your_feedback": "This is not your feedback."
   },
   "role_change": {
     "log_error": "Failed to log role change:"
@@ -667,7 +669,15 @@
       "description_required": "Comment is required"
     },
     "feedback_success": "Your feedback has been successfully added.",
-    "feedback_error": "An error occurred while adding feedback. Please try again later."
+    "feedback_error": "An error occurred while adding feedback. Please try again later.",
+    "feedback_alert": {
+      "title": "Confirm Feedback Deletion",
+      "description": "Are you sure you want to delete your feedback? This action is irreversible.",
+      "confirm_button": "Delete Feedback",
+      "cancel_button": "Cancel"
+    },
+    "feedback_delete_success": "Your feedback has been successfully deleted.",
+    "feedback_delete_error": "An error occurred while deleting feedback. Please try again later."
   },
   "periodic_survey": {
     "form": {

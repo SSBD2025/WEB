@@ -472,7 +472,9 @@
     "blood_test_order_not_found": "Nie znaleziono zlecenia badań krwi",
     "blood_test_already_fulfilled": "Zlecenie badań zostało już spełnione",
     "pyramid_already_rated": "Ta piramida została już oceniona",
-    "not_your_pyramid": "Ta piramida nie należy do Ciebie."
+    "not_your_pyramid": "Ta piramida nie należy do Ciebie.",
+    "feedback_not_found": "Nie znaleziono opinii",
+    "not_your_feedback": "To nie jest Twoja opinia."
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -605,7 +607,7 @@
     "minerals": "Minerały",
     "view_details": "Zobacz szczegóły"
   },
-    "food_pyramids_detail": {
+  "food_pyramids_detail": {
     "vitamins": "Witaminy",
     "vitamins_description": "Niezbędne witaminy dostarczane przez tę piramidę żywieniową",
     "minerals": "Minerały",
@@ -667,7 +669,15 @@
       "description_required": "Komentarz jest wymagany"
     },
     "feedback_success": "Twoja opinia została pomyślnie dodana.",
-    "feedback_error": "Wystąpił błąd podczas dodawania opinii. Spróbuj ponownie później."
+    "feedback_error": "Wystąpił błąd podczas dodawania opinii. Spróbuj ponownie później.",
+    "feedback_alert": {
+      "title": "Potwierdź usunięcie opinii",
+      "description": "Czy na pewno chcesz usunąć swoją opinię? Ta operacja jest nieodwracalna.",
+      "confirm_button": "Usuń opinię",
+      "cancel_button": "Anuluj"
+    },
+    "feedback_delete_success": "Twoja opinia została pomyślnie usunięta.",
+    "feedback_delete_error": "Wystąpił błąd podczas usuwania opinii. Spróbuj ponownie później."
   },
   "periodic_survey": {
     "form": {
