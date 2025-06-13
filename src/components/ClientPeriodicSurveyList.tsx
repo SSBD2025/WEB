@@ -1,5 +1,5 @@
 import {useSearchParams} from "react-router";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import DataRenderer from "./shared/DataRenderer";
 import {PERIODIC_SURVEY_EMPTY} from "@/constants/states.ts";
 import Pagination from "@/components/shared/Pagination.tsx";
@@ -7,7 +7,7 @@ import PeriodicSurveyList from "@/components/PeriodicSurveyList.tsx";
 import {useGetAllClientPeriodicSurvey} from "@/hooks/useSubmitPeriodicSurvey.ts";
 import {useTranslation} from "react-i18next";
 
-const containerVariants = {
+const containerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,

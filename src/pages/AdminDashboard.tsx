@@ -1,7 +1,7 @@
 import { useAllAccounts } from "@/hooks/useAllAccounts";
 import DataRenderer from "@/components/shared/DataRenderer";
 import { ACCOUNTS_EMPTY } from "@/constants/states";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import AccountsTable from "@/components/tables/AccountsTable";
 import Pagination from "@/components/shared/Pagination";
 import { useSearchParams } from "react-router";
@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { AccountSearchAutocomplete } from "@/components/accountSearchAutocomplete";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
