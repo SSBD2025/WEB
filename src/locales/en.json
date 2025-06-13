@@ -595,12 +595,28 @@
     "minerals": "Minerals",
     "view_details": "View Details"
   },
+  "food_pyramids_detail": {
+    "vitamins": "Vitamins",
+    "vitamins_description": "Essential vitamins provided by this food pyramid",
+    "minerals": "Minerals",
+    "minerals_description": "Essential minerals provided by this food pyramid",
+    "client_feedbacks": "Client feedbacks",
+    "no_client_feedbacks": "There is no client feedback for this pyramid",
+    "go_back": "Go back",
+    "assigned_clients": "Clients assigned to pyramid",
+    "name": "Pyramid name:"
+  },
   "client_food_pyramid_list": {
     "no_data": "No pyramids available to display.",
     "active_pyramid": "Active pyramid",
     "archive_pyramid": "Archive pyramid",
     "issued_on": "Issued on",
     "parameters": "Parameters",
+    "my_feedback": "My Feedback",
+    "my_rating": "My Rating",
+    "my_comment": "My Comment",
+    "no_feedback": "You haven't rated this pyramid yet",
+    "has_feedback": "You've already rated this pyramid",
     "nutrients": {
       "averageRating": "Average rating",
       "a": "Vitamin A",
