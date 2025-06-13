@@ -461,7 +461,9 @@
     "periodic_survey_too_soon": "Nie możesz wypełnić ankiety okresowej zbyt często. Proszę spróbować później.",
     "dietician_already_assigned": "Masz już przypisanego dietetyka",
     "same_dietician_already_assigned": "Ten dietetyk jest już do ciebie przypisany.",
-    "dietician_client_limit_exceeded": "Ten dietetyk ma już przypisanych dzisięciu klientów."
+    "dietician_client_limit_exceeded": "Ten dietetyk ma już przypisanych dzisięciu klientów.",
+    "no_assigned_dietican": "Brak przypisanego dietetyka",
+    "permanent_survey_already_exists": "Masz już wypełnioną ankietę parametrów stałych"
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -679,6 +681,84 @@
   },
   "assign_dietician": {
     "failed_to_assignDietician": "Nie udało się przypisać dietetyka",
-    "succes": "Udało się przypisać dietetyka"
+    "success": "Udało się przypisać dietetyka"
+  },
+  "permanent_survey_form": {
+    "height_required": "Wzrost jest wymagany",
+    "height_message": "Wzrost musi być liczbą większą od 0",
+    "date_of_birth_required": "Data urodzenia jest wymagana",
+    "gender_required": "Płeć jest wymagana",
+    "activity_level_required": "Wybierz poziom aktywności",
+    "meals_per_day_required": "Liczba posiłków jest wymagana",
+    "meals_per_day_message": "Liczba posiłków musi być między 1 a 10",
+    "nutrition_goal_required": "Wybierz cel żywieniowy",
+    "meal_times_required": "Godzina posiłku jest wymagana",
+    "meal_times_message": "Dodaj przynajmniej jedną godzinę posiłku",
+    "eating_habits_required": "Opisz swoje nawyki żywieniowe",
+    "activity_level_info": {
+      "sedentary": "Mało lub brak aktywności fizycznej, praca siedząca",
+      "light": "Lekka aktywność 1-3 razy w tygodniu",
+      "moderate": "Umiarkowana aktywność 3-5 razy w tygodniu",
+      "active": "Intensywna aktywność 6-7 razy w tygodniu",
+      "very_active": "Bardzo intensywna aktywność"
+    },
+    "nutrition_goal_info": {
+      "reduction": "Zmniejszenie masy ciała i redukcja tkanki tłuszczowej",
+      "maintenance": "Utrzymanie obecnej masy ciała",
+      "mass_gain": "Zwiększenie masy ciała i budowa mięśni"
+    },
+    "title": "Ankieta parametrów stałych",
+    "description": "Wypełnij poniższy formularz, aby dietetyk mógł przygotować dla Ciebie spersonalizowany profil dietetyczny",
+    "master_data": "Dane podstawowe",
+    "height": "Wzrost (cm)",
+    "date_of_birth": "Data urodzenia",
+    "gender": "Płeć",
+    "gender_name": {
+      "man": "Mężczyzna",
+      "female": "Kobieta"
+    },
+    "food_preferences": "Preferencje żywieniowe",
+    "diet_preferences": "Preferencje dietetyczne",
+    "add": "Dodaj",
+    "diet_preferences_placeholder": "np. wegetarianizm, dieta bezglutenowa",
+    "allergies": "Alergie",
+    "allergies_placeholder": "np. orzechy, gluten, laktoza",
+    "lifestyle": "Styl życia",
+    "activity_level": "Poziom aktywności",
+    "activity_level_description": "Wybierz poziom aktywności, który najlepiej opisuje Twój styl życia.",
+    "activity_level_placeholder": "Wybierz poziom aktywności",
+    "activity_level_name": {
+      "SEDENTARY": "Siedzący",
+      "LIGHT": "Lekki",
+      "MODERATE": "Umiarkowany",
+      "ACTIVE": "Aktywny",
+      "VERY_ACTIVE": "Bardzo aktywny"
+    },
+    "smoking": "Palenie tytoniu",
+    "smoking_description": "Zaznacz, jeśli palisz papierosy lub inne wyroby tytoniowe",
+    "drinking_alcohol": "Spożywanie alkoholu",
+    "drinking_alcohol_description": "Zaznacz, jeśli spożywasz napoje alkoholowe",
+    "health": "Zdrowie",
+    "illnesses": "Choroby",
+    "illnesses_placeholder": "np. cukrzyca, nadciśnienie",
+    "medications": "Przyjmowane leki",
+    "medications_placeholder": "np. nazwa leku, dawkowanie",
+    "nutrition_plan": "Plan żywieniowy",
+    "nutrition_goal": "Cel żywieniowy",
+    "choose_nutrition_goal": "Wybierz cel",
+    "reduction": "Redukcja",
+    "maintenance": "Utrzymanie",
+    "mass_gain": "Masa",
+    "number_of_meals_per_day": "Liczba posiłków dziennie",
+    "meals_per_day_description": "Podaj liczbę posiłków, które chcesz spożywać w ciągu dnia (1-10)",
+    "meal_times": "Godziny posiłków",
+    "eating_habits": "Nawyki żywieniowe",
+    "eating_habits_placeholder": "Opisz swoje obecne nawyki żywieniowe, np. częste podjadanie, jedzenie w pośpiechu, pomijanie śniadań...",
+    "sending": "Wysyłanie...",
+    "send": "Wyślij ankietę"
+  },
+  "submit_permanent_survey": {
+    "success": "Udało się przesłać ankietę",
+    "error": "Nie udało się przesłać ankiety"
   }
 }

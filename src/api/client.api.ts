@@ -1,5 +1,6 @@
 import apiClient from "@/lib/apiClient";
 import { BloodTestReport } from "@/types/blood_test_report"
+import {PermanentSurvey} from "@/types/permanent_survey";
 
 export const getClientsByDietician = async (searchPhrase?: string) => {
   const params = searchPhrase ? { searchPhrase } : {};
@@ -37,5 +38,10 @@ export const getAllClientsPyramids = async () => {
 
 export const assignDietician = async (dieticianId: string) => {
   const response = await apiClient.post(`/mod/clients/assign-dietician/${dieticianId}`);
+  return response.data;
+}
+
+export const submitPermanentSurvey = async (body: PermanentSurvey) => {
+  const response = await apiClient.post(`/mod/clients/permanent-survey`, body);
   return response.data;
 }

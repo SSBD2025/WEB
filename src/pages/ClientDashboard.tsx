@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import DataRenderer from "@/components/shared/DataRenderer.tsx";
 import { DIETICIANS_EMPTY } from "@/constants/states.ts";
 import DieticiansTable from "@/components/tables/DieticiansTable.tsx";
+import PermanentSurveyForm from "@/components/permanentSurveyForm.tsx";
 
 const containerVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -86,9 +87,14 @@ const ClientDashboard = () => {
         )}
 
         {activeView === "permanent_survey" && (
-          <div className="mt-4">
-            <p>Tu będzie ankieta</p>
-          </div>
+            <motion.div
+                className="mt-4"
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+            >
+              <PermanentSurveyForm />
+            </motion.div>
         )}
       </div>
     </main>
