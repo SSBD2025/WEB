@@ -84,7 +84,9 @@
     "no": "Nie",
     "save": "Zapisz",
     "loading": "Ładowanie",
-    "cancel": "Anuluj"
+    "cancel": "Anuluj",
+    "submit": "Wyślij",
+    "subbmitting": "Wysyłanie..."
   },
   "password_reset": {
     "header": "Zresetuj hasło",
@@ -463,7 +465,9 @@
     "same_dietician_already_assigned": "Ten dietetyk jest już do ciebie przypisany.",
     "dietician_client_limit_exceeded": "Ten dietetyk ma już przypisanych dzisięciu klientów.",
     "no_assigned_dietican": "Brak przypisanego dietetyka",
-    "permanent_survey_already_exists": "Masz już wypełnioną ankietę parametrów stałych"
+    "permanent_survey_already_exists": "Masz już wypełnioną ankietę parametrów stałych",
+    "pyramid_already_rated": "Ta piramida została już oceniona",
+    "not_your_pyramid": "Ta piramida nie należy do Ciebie."
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -645,7 +649,19 @@
       "selenium": "Selen",
       "molybdenum": "Molibden",
       "chromium": "Chrom"
-    }
+    },
+    "add_feedback": "Oceń piramidę",
+    "feedback_modal": {
+      "title": "Dodaj opinię",
+      "star_label": "Ocena (1-5 gwiazdek)",
+      "description_label": "Komentarz",
+      "description_placeholder": "Podziel się swoimi uwagami na temat tej piramidy",
+      "submit_button": "Prześlij opinię",
+      "rating_required": "Ocena jest wymagana",
+      "description_required": "Komentarz jest wymagany"
+    },
+    "feedback_success": "Twoja opinia została pomyślnie dodana.",
+    "feedback_error": "Wystąpił błąd podczas dodawania opinii. Spróbuj ponownie później."
   },
   "periodic_survey": {
     "form": {
