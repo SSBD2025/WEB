@@ -5,13 +5,13 @@ import { t } from "i18next";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input.tsx";
 import { Button } from "@/components/ui/button.tsx";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import DataRenderer from "@/components/shared/DataRenderer.tsx";
 import { DIETICIANS_EMPTY } from "@/constants/states.ts";
 import DieticiansTable from "@/components/tables/DieticiansTable.tsx";
 import PermanentSurveyForm from "@/components/permanentSurveyForm.tsx";
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,

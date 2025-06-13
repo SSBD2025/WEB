@@ -1,10 +1,10 @@
 import { useGetAllFoodPyramids } from "@/hooks/useGetAllFoodPyramids"
-import { motion } from "framer-motion"
+import { motion, Variants } from "framer-motion"
 import DataRenderer from "@/components/shared/DataRenderer"
 import FoodPyramidsTable from "@/components/tables/FoodPyramidsTable"
 import { t } from "i18next"
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,

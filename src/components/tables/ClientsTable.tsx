@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, Variants } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { t } from "i18next"
 import type { Client } from "@/types/user"
@@ -7,7 +7,7 @@ import ROUTES from "@/constants/routes.ts"
 import { useState } from "react"
 import { ChevronDown, ChevronRight, User } from "lucide-react"
 
-const rowVariants = {
+const rowVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: (i: number) => ({
     opacity: 1,
@@ -19,7 +19,7 @@ const rowVariants = {
   }),
 }
 
-const expandVariants = {
+const expandVariants: Variants = {
   hidden: {
     opacity: 0,
     height: 0,
