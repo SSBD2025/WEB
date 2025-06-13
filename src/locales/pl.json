@@ -595,12 +595,28 @@
     "minerals": "Minerały",
     "view_details": "Zobacz szczegóły"
   },
+    "food_pyramids_detail": {
+    "vitamins": "Witaminy",
+    "vitamins_description": "Niezbędne witaminy dostarczane przez tę piramidę żywieniową",
+    "minerals": "Minerały",
+    "minerals_description": "Niezbędne minerały dostarczane przez tę piramidę żywieniową",
+    "client_feedbacks": "Opinie klientów",
+    "no_client_feedbacks": "Brak opinii dla tej piramidy",
+    "go_back": "Powrót",
+    "assigned_clients": "Klienci przypisani do piramidy",
+    "name": "Nazwa piramidki:"
+  },
   "client_food_pyramid_list": {
     "no_data": "Brak dostępnych piramid do wyświetlenia.",
     "active_pyramid": "Piramida aktywna",
     "archive_pyramid": "Piramida archiwalna",
     "issued_on": "Wystawiono dnia",
     "parameters": "Parametry",
+    "my_feedback": "Moja opinia",
+    "my_rating": "Moja ocena",
+    "my_comment": "Mój komentarz",
+    "no_feedback": "Nie oceniłeś jeszcze tej piramidy",
+    "has_feedback": "Twoja ocena została zapisana",
     "nutrients": {
       "averageRating": "Średnia ocena",
       "a": "Witamina A",

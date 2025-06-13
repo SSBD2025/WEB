@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import { t } from "i18next";
 import { ArrowLeft, MessageSquare, Pill, Star, User, Zap } from "lucide-react";
 import { Link, useParams } from "react-router";
+import { useTranslation } from "react-i18next"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -42,6 +43,8 @@ const FoodPyramidDetails = () => {
   const id = params.id;
 
   const { data, isLoading } = useGetFoodPyramid(id ?? "");
+  const { i18n } = useTranslation();
+
 
   if (isLoading) {
     return (
@@ -63,12 +66,11 @@ const FoodPyramidDetails = () => {
           <Link to={ROUTES.FOOD_PYRAMIDS}>
             <Button variant="outline" size="sm">
               <ArrowLeft className="mr-2 h-4 w-4" />
-              {/* TODO: i18n here */}
-              Go back
+                {t("food_pyramids_detail.go_back", "Go back")}
             </Button>
           </Link>
           <h1 className="text-3xl font-bold">
-            Nazwa piramidki {data?.foodPyramid.name}
+            {t("food_pyramids_detail.name", "Pyramid name")} {data?.foodPyramid.name}
           </h1>
           <div className="flex items-center ml-auto">
             <Star className="h-5 w-5 text-yellow-500 mr-1" />
@@ -280,15 +282,74 @@ const FoodPyramidDetails = () => {
         <motion.div variants={itemVariants}>
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
             <MessageSquare className="h-5 w-5" />
-            Opinie klientów
+              {t("food_pyramids_detail.client_feedbacks", "Client Feedbacks")}
           </h2>
-          <div className="space-y-4">Zmapowac po opiniach klientow</div>
+          <div className="space-y-4">
+            {data?.feedbacks && data.feedbacks.length > 0 ? (
+              data.feedbacks.map((feedback) => {
+                const client = data.clients.find((c) => c.id === feedback.clientId)
+
+                return (
+                  <Card key={feedback.id}>
+                    <CardContent className="pt-6">
+                      <div className="flex items-start gap-4">
+                        <Avatar className="h-10 w-10">
+                          <AvatarFallback>
+                            {client ? `${client.firstName[0]}${client.lastName[0]}` : "?"}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 space-y-2">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h4 className="font-medium">
+                                {client ? `${client.firstName} ${client.lastName}` : "Unknown user"}
+                              </h4>
+                              <p className="text-sm text-muted-foreground">
+                                {new Date(feedback.timestamp).toLocaleDateString(
+                                  i18n.language === "pl" ? "pl-PL" : "en-US",
+                                  {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                  },
+                                )}
+                              </p>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              {[...Array(5)].map((_, i) => (
+                                <Star
+                                  key={i}
+                                  className={`h-4 w-4 ${
+                                    i < feedback.rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300"
+                                  }`}
+                                />
+                              ))}
+                              <span className="ml-2 text-sm font-medium">{feedback.rating}/5</span>
+                            </div>
+                          </div>
+                          <p className="text-sm leading-relaxed">{feedback.description}</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                )
+              })
+            ) : (
+              <Card>
+                <CardContent className="pt-6">
+                  <p className="text-center text-muted-foreground">{t("food_pyramids_detail.no_client_feedbacks", "Client Feedbacks")}</p>
+                </CardContent>
+              </Card>
+            )}
+          </div>
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
             <User className="h-5 w-5" />
-            Przypisani klienci do piramidki
+              {t("food_pyramids_detail.assigned_clients", "Clients assigned to pyramid")}
           </h2>
           <Card>
             <CardContent className="pt-6">

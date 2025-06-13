@@ -79,6 +79,7 @@ export type ClientFoodPyramid = {
   };
   timestamp: string;
   active: boolean;
+  clientFeedback?: Feedback;
 };
 
 export interface Feedback {
@@ -91,6 +92,7 @@ export interface Feedback {
 }
 
 export interface Client {
+  id: string,
   firstName: string;
   lastName: string;
   email: string;
