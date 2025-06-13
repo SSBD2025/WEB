@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import { t } from "i18next";
 import { ArrowLeft, MessageSquare, Pill, Star, User, Zap } from "lucide-react";
 import { Link, useParams } from "react-router";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -45,7 +45,6 @@ const FoodPyramidDetails = () => {
   const { data, isLoading } = useGetFoodPyramid(id ?? "");
   const { i18n } = useTranslation();
 
-
   if (isLoading) {
     return (
       <main className="flex-grow flex justify-center items-center">
@@ -66,11 +65,12 @@ const FoodPyramidDetails = () => {
           <Link to={ROUTES.FOOD_PYRAMIDS}>
             <Button variant="outline" size="sm">
               <ArrowLeft className="mr-2 h-4 w-4" />
-                {t("food_pyramids_detail.go_back", "Go back")}
+              {t("food_pyramids_detail.go_back", "Go back")}
             </Button>
           </Link>
           <h1 className="text-3xl font-bold">
-            {t("food_pyramids_detail.name", "Pyramid name")} {data?.foodPyramid.name}
+            {t("food_pyramids_detail.name", "Pyramid name")}{" "}
+            {data?.foodPyramid.name}
           </h1>
           <div className="flex items-center ml-auto">
             <Star className="h-5 w-5 text-yellow-500 mr-1" />
@@ -282,30 +282,38 @@ const FoodPyramidDetails = () => {
         <motion.div variants={itemVariants}>
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
             <MessageSquare className="h-5 w-5" />
-              {t("food_pyramids_detail.client_feedbacks", "Client Feedbacks")}
+            {t("food_pyramids_detail.client_feedbacks", "Client Feedbacks")}
           </h2>
           <div className="space-y-4">
             {data?.feedbacks && data.feedbacks.length > 0 ? (
               data.feedbacks.map((feedback) => {
-                const client = data.clients.find((c) => c.id === feedback.clientId)
+                const client = data.clients.find(
+                  (c) => c.id === feedback.clientId
+                );
 
                 return (
                   <Card key={feedback.id}>
-                    <CardContent className="pt-6">
+                    <CardContent>
                       <div className="flex items-start gap-4">
                         <Avatar className="h-10 w-10">
                           <AvatarFallback>
-                            {client ? `${client.firstName[0]}${client.lastName[0]}` : "?"}
+                            {client
+                              ? `${client.firstName[0]}${client.lastName[0]}`
+                              : "?"}
                           </AvatarFallback>
                         </Avatar>
                         <div className="flex-1 space-y-2">
                           <div className="flex items-center justify-between">
                             <div>
                               <h4 className="font-medium">
-                                {client ? `${client.firstName} ${client.lastName}` : "Unknown user"}
+                                {client
+                                  ? `${client.firstName} ${client.lastName}`
+                                  : "Unknown user"}
                               </h4>
                               <p className="text-sm text-muted-foreground">
-                                {new Date(feedback.timestamp).toLocaleDateString(
+                                {new Date(
+                                  feedback.timestamp
+                                ).toLocaleDateString(
                                   i18n.language === "pl" ? "pl-PL" : "en-US",
                                   {
                                     year: "numeric",
@@ -313,7 +321,7 @@ const FoodPyramidDetails = () => {
                                     day: "numeric",
                                     hour: "2-digit",
                                     minute: "2-digit",
-                                  },
+                                  }
                                 )}
                               </p>
                             </div>
@@ -322,24 +330,35 @@ const FoodPyramidDetails = () => {
                                 <Star
                                   key={i}
                                   className={`h-4 w-4 ${
-                                    i < feedback.rating ? "text-yellow-500 fill-yellow-500" : "text-gray-300"
+                                    i < feedback.rating
+                                      ? "text-yellow-500 fill-yellow-500"
+                                      : "text-gray-300"
                                   }`}
                                 />
                               ))}
-                              <span className="ml-2 text-sm font-medium">{feedback.rating}/5</span>
+                              <span className="ml-2 text-sm font-medium">
+                                {feedback.rating}/5
+                              </span>
                             </div>
                           </div>
-                          <p className="text-sm leading-relaxed">{feedback.description}</p>
+                          <p className="text-sm leading-relaxed">
+                            {feedback.description}
+                          </p>
                         </div>
                       </div>
                     </CardContent>
                   </Card>
-                )
+                );
               })
             ) : (
               <Card>
-                <CardContent className="pt-6">
-                  <p className="text-center text-muted-foreground">{t("food_pyramids_detail.no_client_feedbacks", "Client Feedbacks")}</p>
+                <CardContent>
+                  <p className="text-center text-muted-foreground">
+                    {t(
+                      "food_pyramids_detail.no_client_feedbacks",
+                      "Client Feedbacks"
+                    )}
+                  </p>
                 </CardContent>
               </Card>
             )}
@@ -349,35 +368,45 @@ const FoodPyramidDetails = () => {
         <motion.div variants={itemVariants}>
           <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
             <User className="h-5 w-5" />
-              {t("food_pyramids_detail.assigned_clients", "Clients assigned to pyramid")}
+            {t(
+              "food_pyramids_detail.assigned_clients",
+              "Clients assigned to pyramid"
+            )}
           </h2>
           <Card>
-            <CardContent className="pt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {data?.clients.map((client) => (
-                  <div
-                    className="flex items-center gap-3 p-3 rounded-lg border"
-                    key={client.email}
-                  >
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback>
-                        {client.firstName
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </AvatarFallback>
-                    </Avatar>
-                    <div className="flex-1">
-                      <h3 className="text-medium">
-                        {client.firstName} {client.lastName}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {client.email}
-                      </p>
+            <CardContent className="flex items-center justify-center">
+              {data?.clients && data.clients.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+                  {data.clients.map((client) => (
+                    <div
+                      className="flex items-center gap-3 p-3 rounded-lg border"
+                      key={client.email}
+                    >
+                      <Avatar className="h-10 w-10">
+                        <AvatarFallback>
+                          {client
+                            ? `${client.firstName[0]}${client.lastName[0]}`
+                            : "?"}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1">
+                        <h3 className="text-medium">
+                          {client.firstName} {client.lastName}
+                        </h3>
+                        <p className="text-sm text-muted-foreground">
+                          {client.email}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-center text-muted-foreground">
+                  {t(
+                    "food_pyramids_detail.no_clients_assigned",
+                  )}
+                </p>
+              )}
             </CardContent>
           </Card>
         </motion.div>
