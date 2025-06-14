@@ -49,7 +49,8 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
       <h2 className="text-xl font-semibold mb-4">{t("clients_table.title")}</h2>
       <div className="space-y-2">
         {clients.map((client, i) => {
-          const { firstName, lastName, email, id } = client.account
+          const { firstName, lastName, email} = client.account
+          const {id} = client.client
           const isExpanded = expandedClient === id
           return (
             <motion.div

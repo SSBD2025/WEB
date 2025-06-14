@@ -755,6 +755,10 @@
     "meal_times_required": "Meal time is required",
     "meal_times_message": "Add at least one time of meal",
     "eating_habits_required": "Describe your eating habits",
+    "eating_habits_min": "Eating habits must be at least 10 characters long",
+    "eating_habits_max": "Eating habits can have a maximum of 500 characters",
+    "eating_habits_limit": "/500 characters (minimum 10)",
+    "meal": "Meal",
     "activity_level_info": {
       "sedentary": "Little or no physical activity, sedentary work",
       "light": "Light activity 1-3 times a week",
