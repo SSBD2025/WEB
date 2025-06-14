@@ -1,5 +1,10 @@
 import apiClient from "@/lib/apiClient";
-import {AllPeriodicSurveys, PeriodicSurvey, PeriodicSurveyQueryParams} from "@/types/periodic_survey";
+import {
+    AllPeriodicSurveys,
+    EditPeriodicSurvey, GetPeriodicSurvey,
+    PeriodicSurvey,
+    PeriodicSurveyQueryParams
+} from "@/types/periodic_survey";
 
 export const submitPeriodicSurvey = async (surveyData: PeriodicSurvey) => {
     const response = await apiClient.post("/mod/clients/periodic-survey", surveyData);
@@ -9,7 +14,7 @@ export const submitPeriodicSurvey = async (surveyData: PeriodicSurvey) => {
 export const getAllClientPeriodicSurvey = async ({
         page,
         size,
-     }: PeriodicSurveyQueryParams) => {
+    }: PeriodicSurveyQueryParams) => {
     const response = await apiClient.get("/mod/clients/periodic-survey", {
         params: {
             ...(typeof page === "number" ? { page } : {}),
@@ -30,4 +35,14 @@ export const getAllDieticianPeriodicSurvey = async ({
         },
     });
     return response.data as AllPeriodicSurveys;
+}
+
+export const getLatestPeriodicSurvey = async () => {
+    const response = await apiClient.get(`/mod/clients/periodic-survey/latest`);
+    return response.data as GetPeriodicSurvey;
+}
+
+export const updateLatestPeriodicSurvey = async (data: EditPeriodicSurvey) => {
+    const response = await apiClient.put(`/mod/clients/periodic-survey`, data)
+    return response.data as PeriodicSurvey;
 }

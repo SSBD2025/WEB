@@ -9,6 +9,7 @@ export interface GetPeriodicSurvey {
     bloodPressure: string;
     bloodSugarLevel: number;
     measurementDate: Date;
+    lockToken: string;
 }
 
 export type AllPeriodicSurveys = {
@@ -23,4 +24,11 @@ export type AllPeriodicSurveys = {
 export interface PeriodicSurveyQueryParams {
     page?: number;
     size?: number;
+}
+
+export interface EditPeriodicSurvey {
+    weight: number;
+    bloodPressure: string;
+    bloodSugarLevel: number;
+    lockToken: string;
 }
