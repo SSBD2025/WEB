@@ -87,6 +87,8 @@
     "cancel": "Cancel",
     "submit": "Submit",
     "submitting": "Submitting...",
+    "update": "Update",
+    "edit": "Edit",
     "confirm_changes": "Confirm changes",
     "confirm": "Confirm"
   },
@@ -666,6 +668,7 @@
     "add_feedback": "Rate pyramid",
     "feedback_modal": {
       "title": "Add Feedback",
+      "edit_title": "Edit Feedback",
       "star_label": "Rating (1-5 stars)",
       "description_label": "Comment",
       "description_placeholder": "Share your thoughts about this pyramid",
@@ -675,6 +678,8 @@
     },
     "feedback_success": "Your feedback has been successfully added.",
     "feedback_error": "An error occurred while adding feedback. Please try again later.",
+    "feedback_update_success": "Your feedback has been successfully updated.",
+    "feedback_update_error": "An error occurred while updating feedback. Please try again later.",
     "feedback_alert": {
       "title": "Confirm Feedback Deletion",
       "description": "Are you sure you want to delete your feedback? This action is irreversible.",

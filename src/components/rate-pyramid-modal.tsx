@@ -14,20 +14,25 @@ import { StarRating } from "./ui/star-rating";
 import { useTranslation } from "react-i18next";
 import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
-import { useAddFeedback } from "@/hooks/useAddFeedback";
+import { useAddFeedback, useUpdateFeedback } from "@/hooks/useAddFeedback";
+import { Feedback } from "@/types/food_pyramid";
+import { useEffect } from "react";
 
 const RatePyramidModal = ({
   isOpen,
   onClose,
   pyramidId,
+  existingFeedback,
 }: {
   isOpen: boolean;
   onClose: () => void;
   pyramidId: string;
+  existingFeedback?: Feedback;
 }) => {
   const { t } = useTranslation();
 
   const { mutate } = useAddFeedback(pyramidId);
+  const { mutate: updateMutate } = useUpdateFeedback(pyramidId);
 
   const pyramidFeedbackSchema = z.object({
     rating: z
@@ -47,18 +52,39 @@ const RatePyramidModal = ({
   const form = useForm<PyramidFeedbackFormValues>({
     resolver: zodResolver(pyramidFeedbackSchema),
     defaultValues: {
-      rating: 0,
-      description: "",
+      rating: existingFeedback ? existingFeedback.rating : 0,
+      description: existingFeedback ? existingFeedback.description : "",
     },
   });
+
+  useEffect(() => {
+    if (isOpen) {
+      form.reset({
+        rating: existingFeedback ? existingFeedback.rating : 0,
+        description: existingFeedback ? existingFeedback.description : "",
+      })
+    }
+  }, [isOpen, existingFeedback, form])
 
   const { isSubmitting } = form.formState;
 
   const onSubmit = async (data: PyramidFeedbackFormValues) => {
-    mutate({
-      id: pyramidId,
-      data,
-    });
+    if (existingFeedback) {
+      const updatedFeedback: Feedback = {
+        ...existingFeedback,
+        rating: data.rating,
+        description: data.description,
+      };
+
+      updateMutate({
+        data: updatedFeedback,
+      });
+    } else {
+      mutate({
+        id: pyramidId,
+        data,
+      });
+    }
     handleClose();
   };
 
@@ -72,7 +98,9 @@ const RatePyramidModal = ({
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-lg font-semibold">
-            {t("client_food_pyramid_list.feedback_modal.title")}
+            {existingFeedback
+              ? t("client_food_pyramid_list.feedback_modal.edit_title")
+              : t("client_food_pyramid_list.feedback_modal.title")}
           </DialogTitle>
         </DialogHeader>
 
@@ -137,7 +165,7 @@ const RatePyramidModal = ({
                 {t("common.cancel")}
               </Button>
               <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? t("common.submitting") : t("common.submit")}
+                {isSubmitting ? t("common.submitting") : existingFeedback ? t("common.update") : t("common.submit")}
               </Button>
             </DialogFooter>
           </form>

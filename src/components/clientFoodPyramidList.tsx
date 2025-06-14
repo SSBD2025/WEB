@@ -135,6 +135,10 @@ function PyramidWithFeedback({
                   </h4>
 
                   {feedback && (
+                    <div className="flex gap-2">
+                    <Button variant="outline" size="sm" onClick={() => setIsRatingModalOpen(true)}>
+                        {t("common.edit")}
+                      </Button>
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
                         <Button variant="destructive">
@@ -168,6 +172,7 @@ function PyramidWithFeedback({
                         </AlertDialogFooter>
                       </AlertDialogContent>
                     </AlertDialog>
+                    </div>
                   )}
                 </div>
 
@@ -230,6 +235,7 @@ function PyramidWithFeedback({
         isOpen={isRatingModalOpen}
         onClose={() => setIsRatingModalOpen(false)}
         pyramidId={pyramid.foodPyramid.id}
+        existingFeedback={feedback}
       />
     </>
   );
