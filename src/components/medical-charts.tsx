@@ -13,7 +13,7 @@ import {
 import { LineChart, Line, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { Activity, Heart, Droplets } from "lucide-react";
 import { Spinner } from "@/components/ui/spinner";
-import {useGetSurveys, useGetSurveysByDietician} from "@/hooks/useGetSyrveys";
+import { useGetSurveys, useGetSurveysByDietician } from "@/hooks/useGetSurveys";
 import { useTranslation } from "react-i18next";
 
 type RawSurvey = {

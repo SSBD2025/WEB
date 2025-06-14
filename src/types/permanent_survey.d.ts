@@ -1,4 +1,5 @@
 export interface PermanentSurvey {
+    lockToken?: string;
     height: number;
     dateOfBirth: string;
     gender: boolean;

@@ -51,7 +51,6 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
         {clients.map((client, i) => {
           const { firstName, lastName, email, id } = client.account
           const isExpanded = expandedClient === id
-
           return (
             <motion.div
               key={id}
@@ -132,6 +131,11 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
                           <Button variant="outline" size="sm" className="w-full justify-start">
                             {t("clients_table.order_medical_examinations")}
                           </Button>
+                        </Link>
+                        <Link className="cursor-pointer" to={ROUTES.dieticianPermanentSurvey(id)}>
+                        <Button variant="outline" size="sm" className="w-full justify-start">
+                          {t("clients_table.view_permanent_survey")}
+                        </Button>
                         </Link>
                       </div>
                     </div>
