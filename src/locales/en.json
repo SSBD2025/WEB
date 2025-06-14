@@ -86,7 +86,9 @@
     "loading": "Loading",
     "cancel": "Cancel",
     "submit": "Submit",
-    "submitting": "Submitting..."
+    "submitting": "Submitting...",
+    "confirm_changes": "Confirm changes",
+    "confirm": "Confirm"
   },
   "password_reset": {
     "header": "Reset password",
@@ -702,7 +704,12 @@
     "submit_error": "An error occurred while submitting the survey.",
     "submit_success": "Survey submitted successfully.",
     "client": {
-      "header": "List of periodic surveys"
+      "header": "List of periodic surveys",
+      "edit": {
+        "button": "Edit latest survey",
+        "success": "Periodic survey updated successfully",
+        "title": "Edit latest periodic survey"
+      }
     },
     "list": {
       "table": {
@@ -717,7 +724,8 @@
     "loading": "Loading periodic surveys...",
     "error": {
       "loading": "Error loading periodic surveys",
-      "fetch": "Failed to fetch periodic surveys"
+      "fetch": "Failed to fetch periodic surveys",
+      "edit": "An error occurred while updating periodic survey, try again later"
     }
   },
   "charts": {

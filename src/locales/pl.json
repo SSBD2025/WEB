@@ -702,7 +702,11 @@
     "submit_error": "Wystąpił błąd podczas przesyłania ankiety.",
     "submit_success": "Ankieta została pomyślnie przesłana.",
     "client": {
-      "header": "Lista ankiet okresowych"
+      "header": "Lista ankiet okresowych",
+      "edit": {
+        "button": "Edytuj ostatnią ankietę",
+        "success": "Ankieta okresowa zaktualizowana pomyślnie"
+      }
     },
     "list": {
       "table": {
@@ -717,7 +721,8 @@
     "loading": "Ładowanie ankiet okresowych...",
     "error": {
       "loading": "Błąd ładowania ankiet okresowych",
-      "fetch": "Nie udało się pobrać ankiet okresowych"
+      "fetch": "Nie udało się pobrać ankiet okresowych",
+      "edit": "Wystąpił błąd podczas aktualizowania ankiety okresowej, spróbuj ponownie poźniej"
     }
   },
   "charts": {
