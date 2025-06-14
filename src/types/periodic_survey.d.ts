@@ -5,6 +5,7 @@ export interface PeriodicSurvey {
 }
 
 export interface GetPeriodicSurvey {
+    id: string;
     weight: number;
     bloodPressure: string;
     bloodSugarLevel: number;
