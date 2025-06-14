@@ -36,6 +36,9 @@ const ROUTES = {
   getFoodPyramidDetails: (id: string) => `/food-pyramids/${id}`,
   DIETICIAN_ORDER_MEDICAL_EXAMINATIONS: "/dietician/order-medical-examinations/:clientId",
   dieticianOrderMedicalExaminations: (clientId: string) => `/dietician/order-medical-examinations/${clientId}`,
+  CLIENT_PERMANENT_SURVEY: "/client/permanent-survey",
+  DIETICIAN_PERMANENT_SURVEY: "/dietician/permanent-survey/:clientId",
+  dieticianPermanentSurvey: (clientId: string) => `/dietician/permanent-survey/${clientId}`,
 };
 
 export default ROUTES;

@@ -428,7 +428,8 @@
     "diet_profiles": "Diet Profiles",
     "periodic_survey_list": "Periodic surveys",
     "blood_test_reports": "Blood test reports",
-    "charts": "Medical charts"
+    "charts": "Medical charts",
+    "permanent_survey": "Permanent parameters survey"
   },
   "exceptions": {
     "account_is_autolocked": "The account has not been logged on in quite a while! Check your inbox for an activation link!",
@@ -545,7 +546,8 @@
     "hide_actions": "Hide Actions",
     "available_actions": "Available Actions",
     "view_client_charts": "View user charts",
-    "order_medical_examinations": "Order blood tests"
+    "order_medical_examinations": "Order blood tests",
+    "view_permanent_survey": "View permanent parameters survey"
   },
   "dietician_dashboard": {
     "clients_list_title": "Clients list",
@@ -813,7 +815,9 @@
     "eating_habits": "Eating habits",
     "eating_habits_placeholder": "Describe your current eating habits, e.g. frequent snacking, eating in a hurry, skipping breakfast...",
     "sending": "Sending...",
-    "send": "Send survey"
+    "send": "Send survey",
+    "none": "None",
+    "not_found": "Permanent parameters survey not found"
   },
   "submit_permanent_survey": {
     "success": "The survey was successfully sent",

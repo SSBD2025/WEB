@@ -426,7 +426,8 @@
     "diet_profiles": "Profile dietetyczne",
     "periodic_survey_list": "Ankiety okresowe",
     "blood_test_reports": "Badania krwi",
-    "charts": "Wykresy danych medycznych"
+    "charts": "Wykresy danych medycznych",
+    "permanent_survey": "Ankieta parametrów stałych"
   },
   "exceptions": {
     "account_is_autolocked": "Konto nie było używane od dłuższego czasu! Sprawdź swoją skrzynkę odbiorczą, aby znaleźć link aktywacyjny!",
@@ -543,7 +544,8 @@
     "hide_actions": "Ukryj Akcje",
     "available_actions": "Dostępne Akcje",
     "view_client_charts": "Wyświetl wykresy klienta",
-    "order_medical_examinations": "Zleć badania krwi"
+    "order_medical_examinations": "Zleć badania krwi",
+    "view_permanent_survey": "Ankieta parametrów stałych"
   },
   "dietician_dashboard": {
     "clients_list_title": "Lista klientów",
@@ -810,7 +812,9 @@
     "eating_habits": "Nawyki żywieniowe",
     "eating_habits_placeholder": "Opisz swoje obecne nawyki żywieniowe, np. częste podjadanie, jedzenie w pośpiechu, pomijanie śniadań...",
     "sending": "Wysyłanie...",
-    "send": "Wyślij ankietę"
+    "send": "Wyślij ankietę",
+    "none": "Brak",
+    "not_found": "Nie znaleziono ankiety parametrów stałych"
   },
   "submit_permanent_survey": {
     "success": "Udało się przesłać ankietę",

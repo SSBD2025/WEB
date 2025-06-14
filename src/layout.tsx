@@ -26,7 +26,8 @@ import {
   ClientPeriodicSurveyListPage,
   DieticianPeriodicSurveyListPage,
   FoodPyramidDetails,
-  DieticianOrderMedicalExaminations
+  DieticianOrderMedicalExaminations,
+  TempSurveyPage
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -43,6 +44,7 @@ import Redirect from "./pages/Redirect";
 import { AccessLevel } from "./types/user";
 import { useTheme } from "./hooks/useTheme.ts";
 import { SessionTimeout } from "./components/sessionTimeout";
+import DieticianPermanentSurvey from "./pages/DieticianPermanentSurvey.tsx";
 
 const Layout = () => {
   const { data: user } = useCurrentUser();
@@ -108,6 +110,7 @@ const Layout = () => {
               element={<ClientPeriodicSurveyListPage />}
             />
           </Route>
+          <Route path={ROUTES.CLIENT_PERMANENT_SURVEY} element={<TempSurveyPage />} />
           <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
             <Route
               path={ROUTES.ADMIN_USER_DETAILS}
@@ -151,6 +154,10 @@ const Layout = () => {
                 element={<DieticianOrderMedicalExaminations />}
             />
           </Route>
+          <Route
+            path={ROUTES.DIETICIAN_PERMANENT_SURVEY}
+            element={<DieticianPermanentSurvey />}
+          />
           <Route element={<ProtectedRoute allowedRoles={["client"]} />}>
             <Route
               path={ROUTES.CLIENT_DASHBOARD}

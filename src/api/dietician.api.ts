@@ -19,3 +19,8 @@ export const orderMedicalExaminations = async (body: BloodTestOrder) => {
   const response = await apiClient.post(`/mod/dieticians/order-medical-examinations`, body);
   return response.data;
 }
+
+export const getClientPermanentSurvey = async (clientId: string) => {
+  const response = await apiClient.get(`/mod/dieticians/${clientId}/permanent-survey`);
+  return response.data;
+}
