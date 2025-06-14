@@ -43,8 +43,10 @@ export type AllAccounts = {
 }
 
 export interface Client {
-  account: {
+  client: {
     id: string;
+  },
+  account: {
     firstName: string;
     lastName: string;
     email: string;
@@ -52,9 +54,10 @@ export interface Client {
 }
 
 export interface Dietician {
-  //TODO zrobic zaraz
-  account: {
+  dietician: {
     id: string;
+  },
+  account: {
     firstName: string;
     lastName: string;
     email: string;

@@ -43,7 +43,8 @@ const DieticiansTable = ({ dieticians }: { dieticians: Dietician[] }) => {
         </TableHeader>
         <TableBody>
           {dieticians.map((dietician, i) => {
-            const { firstName, lastName, email, id } = dietician.account;
+            const { firstName, lastName, email} = dietician.account;
+            const {id} = dietician.dietician;
             return (
               <motion.tr
                 key={id}

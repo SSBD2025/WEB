@@ -752,6 +752,10 @@
     "meal_times_required": "Godzina posiłku jest wymagana",
     "meal_times_message": "Dodaj przynajmniej jedną godzinę posiłku",
     "eating_habits_required": "Opisz swoje nawyki żywieniowe",
+    "eating_habits_min": "Nawyki żywieniowe muszą mieć minimum 10 znaków",
+    "eating_habits_max": "Nawyki żywieniowe mogą mieć maksymalnie 500 znaków",
+    "eating_habits_limit": "/500 znaków (minimum 10)",
+    "meal": "Posiłek",
     "activity_level_info": {
       "sedentary": "Mało lub brak aktywności fizycznej, praca siedząca",
       "light": "Lekka aktywność 1-3 razy w tygodniu",

@@ -1,6 +1,7 @@
 import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useEffect } from "react";
 import type { PermanentSurvey } from "@/types/permanent_survey";
 import { useSubmitPermanentSurvey } from "@/hooks/useSubmitPermanentSurvey";
 import { Input } from "@/components/ui/input";
@@ -49,14 +50,11 @@ import { t } from "i18next";
 
 const formSchema = z.object({
   height: z
-    .string()
-    .min(1, t("permanent_survey_form.height_required"))
-    .refine(
-      (val) => !isNaN(Number.parseFloat(val)) && Number.parseFloat(val) > 0,
-      {
-        message: t("permanent_survey_form.height_message"),
-      },
-    ),
+    .number({
+      required_error: t("permanent_survey_form.height_required"),
+      invalid_type_error: t("permanent_survey_form.height_message"),
+    })
+    .positive(t("permanent_survey_form.height_message")),
   dateOfBirth: z
     .string()
     .min(1, t("permanent_survey_form.date_of_birth_required")),
@@ -74,17 +72,13 @@ const formSchema = z.object({
   illnesses: z.array(z.object({ value: z.string() })),
   medications: z.array(z.object({ value: z.string() })),
   mealsPerDay: z
-    .string()
-    .min(1, t("permanent_survey_form.meals_per_day_required"))
-    .refine(
-      (val) => {
-        const num = Number.parseInt(val);
-        return !isNaN(num) && num >= 1 && num <= 10;
-      },
-      {
-        message: t("permanent_survey_form.meals_per_day_message"),
-      },
-    ),
+    .number({
+      required_error: t("permanent_survey_form.meals_per_day_required"),
+      invalid_type_error: t("permanent_survey_form.meals_per_day_message"),
+    })
+    .int()
+    .min(1, t("permanent_survey_form.meals_per_day_message"))
+    .max(10, t("permanent_survey_form.meals_per_day_message")),
   nutritionGoal: z.enum(["REDUCTION", "MAINTENANCE", "MASS_GAIN"], {
     required_error: t("permanent_survey_form.nutrition_goal_required"),
   }),
@@ -97,7 +91,8 @@ const formSchema = z.object({
     .min(1, t("permanent_survey_form.meal_times_message")),
   eatingHabits: z
     .string()
-    .min(1, t("permanent_survey_form.eating_habits_required")),
+    .min(10, t("permanent_survey_form.eating_habits_min"))
+    .max(500, t("permanent_survey_form.eating_habits_max")),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -120,13 +115,20 @@ const PermanentSurveyForm = () => {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      height: undefined,
+      dateOfBirth: "",
+      gender: "",
       dietPreferences: [{ value: "" }],
       allergies: [{ value: "" }],
-      illnesses: [{ value: "" }],
-      medications: [{ value: "" }],
-      mealTimes: [{ time: "" }],
+      activityLevel: undefined,
       smokes: false,
       drinksAlcohol: false,
+      illnesses: [{ value: "" }],
+      medications: [{ value: "" }],
+      mealsPerDay: undefined,
+      nutritionGoal: undefined,
+      mealTimes: [{ time: "" }],
+      eatingHabits: "",
     },
   });
 
@@ -153,27 +155,46 @@ const PermanentSurveyForm = () => {
     name: "mealTimes",
   });
 
+  const mealsPerDay = form.watch("mealsPerDay");
+
+  useEffect(() => {
+    if (mealsPerDay && mealsPerDay > 0) {
+      const mealsCount = mealsPerDay;
+      const currentMealTimesCount = mealTimesArray.fields.length;
+
+      if (mealsCount > currentMealTimesCount) {
+        for (let i = currentMealTimesCount; i < mealsCount; i++) {
+          mealTimesArray.append({ time: "" });
+        }
+      } else if (mealsCount < currentMealTimesCount) {
+        for (let i = currentMealTimesCount - 1; i >= mealsCount; i--) {
+          mealTimesArray.remove(i);
+        }
+      }
+    }
+  }, [mealsPerDay, mealTimesArray]);
+
   const onSubmit = (data: FormValues) => {
     const today = new Date().toISOString().split("T")[0];
 
     const formatted: PermanentSurvey = {
-      height: Number.parseFloat(data.height),
+      height: data.height!,
       dateOfBirth: new Date(data.dateOfBirth).toISOString(),
       gender: data.gender === "1",
       dietPreferences: data.dietPreferences
         .map((d) => d.value.trim())
         .filter(Boolean),
       allergies: data.allergies.map((a) => a.value.trim()).filter(Boolean),
-      activityLevel: data.activityLevel,
+      activityLevel: data.activityLevel!,
       smokes: !!data.smokes,
       drinksAlcohol: !!data.drinksAlcohol,
       illnesses: data.illnesses.map((i) => i.value.trim()).filter(Boolean),
       medications: data.medications.map((m) => m.value.trim()).filter(Boolean),
-      mealsPerDay: Number.parseInt(data.mealsPerDay),
-      nutritionGoal: data.nutritionGoal,
-      mealTimes: data.mealTimes.map(({ time }) =>
-        new Date(`${today}T${time}:00`).toISOString(),
-      ),
+      mealsPerDay: data.mealsPerDay!,
+      nutritionGoal: data.nutritionGoal!,
+      mealTimes: data.mealTimes
+        .filter(({ time }) => time.trim() !== "")
+        .map(({ time }) => new Date(`${today}T${time}:00`).toISOString()),
       eatingHabits: data.eatingHabits,
     };
 
@@ -212,13 +233,19 @@ const PermanentSurveyForm = () => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>
-                              {t("permanent_survey_form.height")}
+                              {t("permanent_survey_form.height")} *
                             </FormLabel>
                             <FormControl>
                               <Input
                                 type="number"
                                 placeholder="175"
                                 {...field}
+                                onChange={(e) =>
+                                  field.onChange(
+                                    Number.parseFloat(e.target.value) ||
+                                      undefined,
+                                  )
+                                }
                               />
                             </FormControl>
                             <FormMessage />
@@ -232,7 +259,7 @@ const PermanentSurveyForm = () => {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel>
-                              {t("permanent_survey_form.date_of_birth")}
+                              {t("permanent_survey_form.date_of_birth")} *
                             </FormLabel>
                             <FormControl>
                               <Input type="date" {...field} />
@@ -249,7 +276,7 @@ const PermanentSurveyForm = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>
-                            {t("permanent_survey_form.gender")}
+                            {t("permanent_survey_form.gender")} *
                           </FormLabel>
                           <Select
                             onValueChange={field.onChange}
@@ -286,18 +313,24 @@ const PermanentSurveyForm = () => {
                         <Label>
                           {t("permanent_survey_form.diet_preferences")}
                         </Label>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() =>
-                            dietPreferencesArray.append({ value: "" })
-                          }
-                          className="h-8"
-                        >
-                          <Plus className="h-4 w-4 mr-1" />{" "}
-                          {t("permanent_survey_form.add")}
-                        </Button>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-muted-foreground">
+                            {dietPreferencesArray.fields.length}/5
+                          </span>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              dietPreferencesArray.append({ value: "" })
+                            }
+                            disabled={dietPreferencesArray.fields.length >= 5}
+                            className="h-8"
+                          >
+                            <Plus className="h-4 w-4 mr-1" />{" "}
+                            {t("permanent_survey_form.add")}
+                          </Button>
+                        </div>
                       </div>
                       {dietPreferencesArray.fields.map((field, index) => (
                         <div key={field.id} className="flex items-center gap-2">
@@ -326,16 +359,22 @@ const PermanentSurveyForm = () => {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <Label>{t("permanent_survey_form.allergies")}</Label>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => allergiesArray.append({ value: "" })}
-                          className="h-8"
-                        >
-                          <Plus className="h-4 w-4 mr-1" />{" "}
-                          {t("permanent_survey_form.add")}
-                        </Button>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-muted-foreground">
+                            {allergiesArray.fields.length}/5
+                          </span>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => allergiesArray.append({ value: "" })}
+                            disabled={allergiesArray.fields.length >= 5}
+                            className="h-8"
+                          >
+                            <Plus className="h-4 w-4 mr-1" />{" "}
+                            {t("permanent_survey_form.add")}
+                          </Button>
+                        </div>
                       </div>
                       {allergiesArray.fields.map((field, index) => (
                         <div key={field.id} className="flex items-center gap-2">
@@ -375,7 +414,7 @@ const PermanentSurveyForm = () => {
                         <FormItem>
                           <div className="flex items-center gap-2">
                             <FormLabel>
-                              {t("permanent_survey_form.activity_level")}
+                              {t("permanent_survey_form.activity_level")} *
                             </FormLabel>
                             <TooltipProvider>
                               <Tooltip>
@@ -507,16 +546,22 @@ const PermanentSurveyForm = () => {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <Label>{t("permanent_survey_form.illnesses")}</Label>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => illnessesArray.append({ value: "" })}
-                          className="h-8"
-                        >
-                          <Plus className="h-4 w-4 mr-1" />{" "}
-                          {t("permanent_survey_form.add")}
-                        </Button>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-muted-foreground">
+                            {illnessesArray.fields.length}/5
+                          </span>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() => illnessesArray.append({ value: "" })}
+                            disabled={illnessesArray.fields.length >= 5}
+                            className="h-8"
+                          >
+                            <Plus className="h-4 w-4 mr-1" />{" "}
+                            {t("permanent_survey_form.add")}
+                          </Button>
+                        </div>
                       </div>
                       {illnessesArray.fields.map((field, index) => (
                         <div key={field.id} className="flex items-center gap-2">
@@ -545,16 +590,24 @@ const PermanentSurveyForm = () => {
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <Label>{t("permanent_survey_form.medications")}</Label>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => medicationsArray.append({ value: "" })}
-                          className="h-8"
-                        >
-                          <Plus className="h-4 w-4 mr-1" />{" "}
-                          {t("permanent_survey_form.add")}
-                        </Button>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-muted-foreground">
+                            {medicationsArray.fields.length}/5
+                          </span>
+                          <Button
+                            type="button"
+                            variant="outline"
+                            size="sm"
+                            onClick={() =>
+                              medicationsArray.append({ value: "" })
+                            }
+                            disabled={medicationsArray.fields.length >= 5}
+                            className="h-8"
+                          >
+                            <Plus className="h-4 w-4 mr-1" />{" "}
+                            {t("permanent_survey_form.add")}
+                          </Button>
+                        </div>
                       </div>
                       {medicationsArray.fields.map((field, index) => (
                         <div key={field.id} className="flex items-center gap-2">
@@ -593,7 +646,7 @@ const PermanentSurveyForm = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>
-                            {t("permanent_survey_form.nutrition_goal")}
+                            {t("permanent_survey_form.nutrition_goal")} *
                           </FormLabel>
                           <Select
                             onValueChange={field.onChange}
@@ -640,7 +693,8 @@ const PermanentSurveyForm = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>
-                            {t("permanent_survey_form.number_of_meals_per_day")}
+                            {t("permanent_survey_form.number_of_meals_per_day")}{" "}
+                            *
                           </FormLabel>
                           <FormControl>
                             <Input
@@ -649,6 +703,11 @@ const PermanentSurveyForm = () => {
                               max="10"
                               placeholder="3"
                               {...field}
+                              onChange={(e) =>
+                                field.onChange(
+                                  Number.parseInt(e.target.value) || undefined,
+                                )
+                              }
                             />
                           </FormControl>
                           <FormDescription>
@@ -663,43 +722,47 @@ const PermanentSurveyForm = () => {
 
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <Label>{t("permanent_survey_form.meal_times")}</Label>
-                        <Button
-                          type="button"
-                          variant="outline"
-                          size="sm"
-                          onClick={() => mealTimesArray.append({ time: "" })}
-                          className="h-8"
+                        <Label
+                          className={
+                            form.formState.errors.mealTimes
+                              ? "text-destructive"
+                              : ""
+                          }
                         >
-                          <Plus className="h-4 w-4 mr-1" />{" "}
-                          {t("permanent_survey_form.add")}
-                        </Button>
+                          {t("permanent_survey_form.meal_times")} *
+                        </Label>
                       </div>
                       {mealTimesArray.fields.map((field, index) => (
-                        <div key={field.id} className="flex items-center gap-2">
-                          <Input
-                            type="time"
-                            {...form.register(`mealTimes.${index}.time`)}
-                            className="flex-grow"
-                          />
-                          {mealTimesArray.fields.length > 1 && (
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="icon"
-                              onClick={() => mealTimesArray.remove(index)}
-                              className="h-8 w-8 text-destructive"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
+                        <FormField
+                          key={field.id}
+                          control={form.control}
+                          name={`mealTimes.${index}.time`}
+                          render={({ field: timeField }) => (
+                            <FormItem>
+                              <div className="flex items-center gap-2">
+                                <span className="text-sm text-muted-foreground min-w-[80px]">
+                                  {t("permanent_survey_form.meal")} {index + 1}:
+                                </span>
+                                <FormControl>
+                                  <Input
+                                    type="time"
+                                    className="w-32"
+                                    {...timeField}
+                                  />
+                                </FormControl>
+                              </div>
+                              <FormMessage />
+                            </FormItem>
                           )}
-                        </div>
+                        />
                       ))}
-                      {form.formState.errors.mealTimes && (
-                        <p className="text-sm font-medium text-destructive">
-                          {form.formState.errors.mealTimes.message}
-                        </p>
-                      )}
+                      {form.formState.errors.mealTimes &&
+                        typeof form.formState.errors.mealTimes.message ===
+                          "string" && (
+                          <p className="text-sm font-medium text-destructive">
+                            {form.formState.errors.mealTimes.message}
+                          </p>
+                        )}
                     </div>
 
                     <FormField
@@ -708,7 +771,7 @@ const PermanentSurveyForm = () => {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>
-                            {t("permanent_survey_form.eating_habits")}
+                            {t("permanent_survey_form.eating_habits")} *
                           </FormLabel>
                           <FormControl>
                             <Textarea
@@ -719,6 +782,9 @@ const PermanentSurveyForm = () => {
                               {...field}
                             />
                           </FormControl>
+                          <FormDescription>
+                            {field.value?.length || 0}{t("permanent_survey_form.eating_habits_limit")}
+                          </FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
