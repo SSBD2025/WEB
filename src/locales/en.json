@@ -714,7 +714,16 @@
       "cancel_button": "Cancel"
     },
     "feedback_delete_success": "Your feedback has been successfully deleted.",
-    "feedback_delete_error": "An error occurred while deleting feedback. Please try again later."
+    "feedback_delete_error": "An error occurred while deleting feedback. Please try again later.",
+    "feedback_approve_modal": {
+      "add_title": "Confirm Add Feedback",
+      "edit_title": "Confirm Edit Feedback",
+      "description": "Are you sure you want to {{action}} this feedback? This action is irreversible.",
+      "action": {
+        "add": "add",
+        "edit": "edit"
+      }
+    }
   },
   "periodic_survey": {
     "form": {

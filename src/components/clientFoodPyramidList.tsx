@@ -41,10 +41,12 @@ type Props = {
 function PyramidWithFeedback({
   pyramid,
   pyramidLabel,
+  mode,
 }: {
   pyramid: ClientFoodPyramid;
   isActive: boolean;
   pyramidLabel: string;
+  mode: "client" | "dietician";
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isRatingModalOpen, setIsRatingModalOpen] = useState(false);
@@ -128,7 +130,7 @@ function PyramidWithFeedback({
                 ))}
               </div>
 
-              <div className="mt-6 pt-4 border-t">
+              {mode === "client" && <div className="mt-6 pt-4 border-t">
                 <div className="flex items-center justify-between">
                   <h4 className="text-lg font-semibold mb-3">
                     {t("client_food_pyramid_list.my_feedback")}
@@ -225,7 +227,7 @@ function PyramidWithFeedback({
                     </Button>
                   </div>
                 )}
-              </div>
+              </div>}
             </CardContent>
           </CollapsibleContent>
         </Collapsible>
@@ -268,6 +270,7 @@ export function ClientFoodPyramidsList({ pyramids, mode = "client" }: Props) {
             pyramid={pyramid}
             isActive={isActive}
             pyramidLabel={pyramidLabel}
+            mode={mode}
           />
         );
       })}

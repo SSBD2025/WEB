@@ -714,7 +714,16 @@
       "cancel_button": "Anuluj"
     },
     "feedback_delete_success": "Twoja opinia została pomyślnie usunięta.",
-    "feedback_delete_error": "Wystąpił błąd podczas usuwania opinii. Spróbuj ponownie później."
+    "feedback_delete_error": "Wystąpił błąd podczas usuwania opinii. Spróbuj ponownie później.",
+    "feedback_approve_modal": {
+      "add_title": "Potwierdź dodanie opinii",
+      "edit_title": "Potwierdź edycję opinii",
+      "description": "Czy na pewno chcesz {{action}} tę opinię? Ta operacja jest nieodwracalna.",
+      "action": {
+        "add": "dodać",
+        "edit": "edytować"
+      }
+    }
   },
   "periodic_survey": {
     "form": {

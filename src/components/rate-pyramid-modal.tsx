@@ -16,7 +16,18 @@ import { Button } from "./ui/button";
 import { Textarea } from "./ui/textarea";
 import { useAddFeedback, useUpdateFeedback } from "@/hooks/useAddFeedback";
 import { Feedback } from "@/types/food_pyramid";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog";
 
 const RatePyramidModal = ({
   isOpen,
@@ -33,6 +44,12 @@ const RatePyramidModal = ({
 
   const { mutate } = useAddFeedback(pyramidId);
   const { mutate: updateMutate } = useUpdateFeedback(pyramidId);
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleConfirm = () => {
+    formRef.current?.requestSubmit();
+  };
 
   const pyramidFeedbackSchema = z.object({
     rating: z
@@ -62,9 +79,9 @@ const RatePyramidModal = ({
       form.reset({
         rating: existingFeedback ? existingFeedback.rating : 0,
         description: existingFeedback ? existingFeedback.description : "",
-      })
+      });
     }
-  }, [isOpen, existingFeedback, form])
+  }, [isOpen, existingFeedback, form]);
 
   const { isSubmitting } = form.formState;
 
@@ -105,7 +122,11 @@ const RatePyramidModal = ({
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form
+            ref={formRef}
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-6"
+          >
             <FormField
               control={form.control}
               name="rating"
@@ -164,9 +185,46 @@ const RatePyramidModal = ({
               >
                 {t("common.cancel")}
               </Button>
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? t("common.submitting") : existingFeedback ? t("common.update") : t("common.submit")}
-              </Button>
+              <AlertDialog>
+                <AlertDialogTrigger asChild>
+                  <Button type="button" disabled={isSubmitting}>
+                    {isSubmitting
+                      ? t("common.submitting")
+                      : existingFeedback
+                      ? t("common.update")
+                      : t("common.submit")}
+                  </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>
+                      {t(
+                        "client_food_pyramid_list.feedback_approve_modal.add_title"
+                      )}
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                      {t(
+                        "client_food_pyramid_list.feedback_approve_modal.description",
+                        {
+                          action: existingFeedback
+                            ? t(
+                                "client_food_pyramid_list.feedback_approve_modal.action.edit"
+                              )
+                            : t(
+                                "client_food_pyramid_list.feedback_approve_modal.action.add"
+                              ),
+                        }
+                      )}
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
+                    <AlertDialogAction onClick={handleConfirm}>
+                      {t("common.confirm")}
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </DialogFooter>
           </form>
         </Form>
