@@ -586,13 +586,23 @@
   "client_dashboard": {
     "dashboard_title": "Panel Klienta",
     "search": "Wprowadź imię, nazwisko lub adres e-mail",
-    "permanent_survey": "Ankieta parametrów stałych"
+    "permanent_survey": "Ankieta parametrów stałych",
+    "available_dieticians": "Dostępni dietetycy"
   },
   "dieticians_table": {
     "title": "Lista Dietetyków",
     "name": "Imię i nazwisko",
     "email": "Adres e-mail",
-    "choose_dietician": "Wybierz dietetyka"
+    "choose_dietician": "Wybierz dietetyka",
+    "dietician": "Dietetyk",
+    "contact": "Kontakt",
+    "action": "Akcja",
+    "confirm": "Potwierdź wybór dietetyka",
+    "are_you_sure1": "Czy aby na pewno chcesz wybrać",
+    "are_you_sure2": "jako swojego dietetyka?",
+    "after_confirm": "Po potwierdzeniu będziesz mógł rozpocząć współpracę z wybranym dietetykiem.",
+    "cancel": "Anuluj",
+    "assigning": "Przypisywanie..."
   },
   "food_pyramids": {
     "list_title": "Profile Dietetyczne",
@@ -743,6 +753,7 @@
   "permanent_survey_form": {
     "height_required": "Wzrost jest wymagany",
     "height_message": "Wzrost musi być liczbą większą od 0",
+    "max_height": "Maksymalny wzrost wynosi 220",
     "date_of_birth_required": "Data urodzenia jest wymagana",
     "gender_required": "Płeć jest wymagana",
     "activity_level_required": "Wybierz poziom aktywności",
@@ -774,6 +785,7 @@
     "height": "Wzrost (cm)",
     "date_of_birth": "Data urodzenia",
     "gender": "Płeć",
+    "choose_gender": "Wybierz płeć",
     "gender_name": {
       "man": "Mężczyzna",
       "female": "Kobieta"
@@ -818,7 +830,10 @@
     "sending": "Wysyłanie...",
     "send": "Wyślij ankietę",
     "none": "Brak",
-    "not_found": "Nie znaleziono ankiety parametrów stałych"
+    "not_found": "Nie znaleziono ankiety parametrów stałych",
+    "confirm_dialog_title": "Potwierdzenie wysłania ankiety",
+    "confirm_dialog_description": "Czy na pewno chcesz wysłać ankietę?",
+    "cancel": "Anuluj"
   },
   "submit_permanent_survey": {
     "success": "Udało się przesłać ankietę",
@@ -836,7 +851,7 @@
     "selected": "wybrane",
     "submit": "Zleć badania",
     "submitting": "Wysyłanie...",
-    "error_no_parameters": "Wybierz co najmniej jeden parametr krwi.",
+    "parameters_required": "Wybierz co najmniej jeden parametr krwi.",
     "parameters_list": {
       "HGB": "Hemoglobina (HGB)",
       "HCT": "Hematokryt (HCT)",
@@ -871,6 +886,10 @@
       "B6": "Witamina B6 (B6)"
     },
     "success": "Pomyślnie zlecono badania krwi",
-    "error": "Nie udało się zlecić badań krwi"
+    "error": "Nie udało się zlecić badań krwi",
+    "dialog_title": "Potwierdzenie zlecenia badań krwi",
+    "dialog_description": "Czy na pewno chcesz zlecić badania krwi dla tego klienta?",
+    "cancel": "Anuluj",
+    "ordering": "Zlecanie..."
   }
 }

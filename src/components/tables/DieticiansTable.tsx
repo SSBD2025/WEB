@@ -8,9 +8,21 @@ import {
 } from "@/components/ui/table";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { t } from "i18next";
-import { Dietician } from "@/types/user";
+import type { Dietician } from "@/types/user";
 import { useAssignDietician } from "@/hooks/useAssignDietician";
+import { UserCheck, Mail, User } from "lucide-react";
 
 const rowVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -32,19 +44,20 @@ const DieticiansTable = ({ dieticians }: { dieticians: Dietician[] }) => {
   };
 
   return (
-    <>
-      <Table className="w-full table-auto">
+    <div className="rounded-lg border bg-card">
+      <Table>
         <TableHeader>
-          <TableRow>
-            <TableHead>{t("dieticians_table.name")}</TableHead>
-            <TableHead>{t("dieticians_table.email")}</TableHead>
-            <TableHead>{t("dieticians_table.choose_dietician")}</TableHead>
+          <TableRow className="hover:bg-transparent">
+            <TableHead className="font-semibold">{t("dieticians_table.dietician")}</TableHead>
+            <TableHead className="font-semibold">{t("dieticians_table.contact")}</TableHead>
+            <TableHead className="font-semibold text-right">{t("dieticians_table.action")}</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {dieticians.map((dietician, i) => {
-            const { firstName, lastName, email} = dietician.account;
-            const {id} = dietician.dietician;
+            const { firstName, lastName, email } = dietician.account;
+            const { id } = dietician.dietician;
+
             return (
               <motion.tr
                 key={id}
@@ -52,26 +65,95 @@ const DieticiansTable = ({ dieticians }: { dieticians: Dietician[] }) => {
                 initial="hidden"
                 animate="visible"
                 variants={rowVariants}
-                className="cursor-pointer"
+                className="group hover:bg-muted/50 transition-colors"
               >
-                <TableCell className="font-medium">
-                  {firstName} {lastName}
+                <TableCell className="w-[40%]">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                      <User className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-medium leading-none">
+                        {firstName} {lastName}
+                      </p>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        {t("dieticians_table.dietician")}
+                      </p>
+                    </div>
+                  </div>
                 </TableCell>
-                <TableCell>{email}</TableCell>
-                <TableCell>
-                    <Button
-                        variant="ghost"
-                        onClick={() => handleAssign(id)}
-                    >
-                      {t("dieticians_table.choose_dietician")}
-                    </Button>
+
+                <TableCell className="w-[35%]">
+                  <div className="flex items-center gap-2">
+                    <Mail className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-sm">{email}</span>
+                  </div>
+                </TableCell>
+
+                <TableCell className="text-right w-[25%]">
+                  <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                      <Button
+                        variant="default"
+                        size="sm"
+                        disabled={assignDieticianMutation.isPending}
+                      >
+                        <UserCheck className="h-4 w-4 mr-2" />
+                        {t("dieticians_table.choose_dietician")}
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle className="flex items-center gap-2">
+                          <UserCheck className="h-5 w-5" />
+                          {t("dieticians_table.confirm")}
+                        </AlertDialogTitle>
+                        <AlertDialogDescription className="space-y-2">
+                          <p>
+                            {t("dieticians_table.are_you_sure1")}{" "}
+                            <strong>
+                              {firstName} {lastName}
+                            </strong>{" "}
+                            {t("dieticians_table.are_you_sure2")}
+                          </p>
+                          <div className="bg-muted p-3 rounded-lg">
+                            <div className="flex items-center gap-2 mb-2">
+                              <div>
+                                <p className="font-medium text-sm">
+                                  {firstName} {lastName}
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  {email}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <p className="text-sm text-muted-foreground">
+                            {t("dieticians_table.after_confirm")}
+                          </p>
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>{t("dieticians_table.cancel")}</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => handleAssign(id)}
+                          disabled={assignDieticianMutation.isPending}
+                          className="bg-primary hover:bg-primary/90"
+                        >
+                          {assignDieticianMutation.isPending
+                            ? t("dieticians_table.assigning")
+                            : t("dieticians_table.confirm")}
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog>
                 </TableCell>
               </motion.tr>
             );
           })}
         </TableBody>
       </Table>
-    </>
+    </div>
   );
 };
 
