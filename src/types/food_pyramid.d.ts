@@ -89,6 +89,7 @@ export interface Feedback {
   timestamp: string;
   clientId: string;
   foodPyramidId: string;
+  lockToken?: string;
 }
 
 export interface Client {
