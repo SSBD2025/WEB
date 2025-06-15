@@ -21,6 +21,10 @@ export const useDeleteFeedback = (pyramidId: string) => {
       queryClient.removeQueries({
         queryKey: [CLIENT_PYRAMIDS, "feedback", pyramidId],
       });
+
+      queryClient.invalidateQueries({
+        queryKey: [CLIENT_PYRAMIDS],
+      });
     },
   });
 };

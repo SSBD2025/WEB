@@ -18,25 +18,36 @@ export const useAddFeedback = (pyramidId: string) => {
       toast.success(t("client_food_pyramid_list.feedback_success"));
 
       queryClient.invalidateQueries({
-        queryKey: [CLIENT_PYRAMIDS, "feedback", pyramidId]
-      })
+        queryKey: [CLIENT_PYRAMIDS, "feedback", pyramidId],
+      });
+
+      queryClient.invalidateQueries({
+        queryKey: [CLIENT_PYRAMIDS],
+      });
     },
   });
 };
 
 export const useUpdateFeedback = (pyramidId: string) => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   return useMutation({
     mutationFn: ({ data }: { data: Feedback }) => updateFeedback({ data }),
-    onError: (error) => axiosErrorHandler(error, t("client_food_pyramid_list.feedback_update_error")),
+    onError: (error) =>
+      axiosErrorHandler(
+        error,
+        t("client_food_pyramid_list.feedback_update_error")
+      ),
     onSuccess: () => {
-      toast.success(t("client_food_pyramid_list.feedback_update_success"))
+      toast.success(t("client_food_pyramid_list.feedback_update_success"));
 
       queryClient.invalidateQueries({
         queryKey: [CLIENT_PYRAMIDS, "feedback", pyramidId],
-      })
-    },
-  })
-}
+      });
 
+      queryClient.invalidateQueries({
+        queryKey: [CLIENT_PYRAMIDS],
+      });
+    },
+  });
+};
