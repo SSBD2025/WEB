@@ -11,7 +11,7 @@ const TempSurveyPage = () => {
     return (
       <div className="flex-grow flex items-center justify-center">
         <p className="text-muted-foreground">{t("permanent_survey_form.not_found")}</p>
-      </div> 
+      </div>
       );
   }
 

@@ -1,12 +1,20 @@
-import { PermanentSurvey } from "../types/permanent_survey";
-import { useTranslation } from "react-i18next";
-import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
-import { Separator } from "./ui/separator";
-import { User, Utensils, Activity, Heart, Target } from "lucide-react";
-import { Badge } from "./ui/badge";
+import type { PermanentSurvey } from "../types/permanent_survey"
+import { useTranslation } from "react-i18next"
+import { Card, CardHeader, CardTitle, CardContent } from "./ui/card"
+import { Separator } from "./ui/separator"
+import { User, Utensils, Activity, Heart, Target } from "lucide-react"
+import { Badge } from "./ui/badge"
+import { useState } from "react"
+import EditPermanentSurveyForm from "./editPermamentSurvey"
+import { Edit } from "lucide-react"
+import { Button } from "./ui/button"
+import { useCurrentUser } from "@/hooks/useCurrentUser"
 
 const PermanentSurveyView = ({ survey }: { survey: PermanentSurvey }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
+  const [isEditing, setIsEditing] = useState(false)
+  const { data: currentUser } = useCurrentUser()
+  const canEdit = currentUser?.roles?.some((role) => role.roleName === "CLIENT" && role.active) || false
 
   const getNutritionGoalLabel = (goal: string) => {
     switch (goal) {
@@ -38,11 +46,28 @@ const PermanentSurveyView = ({ survey }: { survey: PermanentSurvey }) => {
     }
   };
 
+  if (isEditing && canEdit) {
+    return <EditPermanentSurveyForm survey={survey} onSuccess={() => setIsEditing(false)} />
+  }
+
   return (
     <div className="container max-w-4xl mx-auto py-8">
       <Card className="mx-auto shadow-xl py-8 rounded-2xl md:min-w-[750px] lg:min-w-[850px] md:min-h-[590px] m-4 md:m-0 lg:p-4">
         <CardHeader>
-        <CardTitle className="text-xl md:mb-5">{t("client_dashboard.permanent_survey")}</CardTitle>
+          <div className="flex justify-between items-center">
+            <CardTitle className="text-xl md:mb-5">{t("client_dashboard.permanent_survey")}</CardTitle>
+            {canEdit && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIsEditing(true)}
+                className="flex items-center gap-2"
+              >
+                <Edit className="h-4 w-4" />
+                {t("common.edit")}
+              </Button>
+            )}
+          </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-4">

@@ -62,6 +62,11 @@ export const submitPermanentSurvey = async (body: PermanentSurvey) => {
   return response.data;
 }
 
+export const updatePermanentSurvey = async (body: PermanentSurvey) => {
+  const response = await apiClient.put(`/mod/clients/permanent-survey`, body)
+  return response.data
+}
+
 export const getPermanentSurvey = async () => {
   const response = await apiClient.get(`/mod/clients/permanent-survey`);
   return response.data;
