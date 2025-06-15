@@ -25,6 +25,9 @@ export type AllPeriodicSurveys = {
 export interface PeriodicSurveyQueryParams {
     page?: number;
     size?: number;
+    since?: string;
+    before?: string;
+    sort?: string;
 }
 
 export interface EditPeriodicSurvey {
