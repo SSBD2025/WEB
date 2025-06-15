@@ -91,7 +91,8 @@
     "edit": "Edytuj",
     "confirm_changes": "Potwierdź zmiany",
     "confirm": "Potwierdź",
-    "no_entries": "Brak wpisów"
+    "no_entries": "Brak wpisów",
+    "unexpected_error": "Wystąpił niespodziewany błąd, spróbuj ponownie później."
   },
   "password_reset": {
     "header": "Zresetuj hasło",
@@ -602,7 +603,8 @@
     "dashboard_title": "Panel Klienta",
     "search": "Wprowadź imię, nazwisko lub adres e-mail",
     "permanent_survey": "Ankieta parametrów stałych",
-    "available_dieticians": "Dostępni dietetycy"
+    "available_dieticians": "Dostępni dietetycy",
+    "blood_test_order": "Zlecenie badań krwi"
   },
   "dieticians_table": {
     "title": "Lista Dietetyków",
@@ -972,5 +974,15 @@
     "choose_second": "Wybierz drugą ankietę",
     "with_pagination": "z dowolnej strony",
     "choose": "Wybierz"
+  },
+  "view_blood_order": {
+    "nothing_to_do": "Wszystko w porządku! Nic nie musisz robić.",
+    "title": "Zlecenie badania krwi",
+    "information": "To są podane parametry krwi, które zostały zlecone przez twojego dietetyka do badań. Możesz pobrać plik zawierający tą listę i przekazać go swojemu lekarzowi.",
+    "orderDate": "Data zlecenia",
+    "description":  "Opis",
+    "parameters": "Parametry krwi do zbadania",
+    "exportcsv":  "Wyeksportuj do pliku",
+    "noData": "Brak danych"
   }
 }

@@ -129,19 +129,19 @@ export const DateTimeRangePicker = ({
                     onClick={() => onApply(formatToISO(since), formatToISO(before))}
                     disabled={!isValidRange()}
                 >
-                    Apply Filters
+                    Apply FiltersTODO
                 </Button>
                 <Button variant="ghost" className="self-end" onClick={handleClear}>
-                    Clear Filters
+                    Clear FiltersTODO
                 </Button>
             </div>
         </div>
         )}
         {!hasResults && (
             <div className="border rounded-lg p-4 text-center text-sm text-muted-foreground">
-                No results found for the selected range.
+                No results found for the selected range.TODO
                 <Button variant="link" className="ml-2" onClick={handleClear}>
-                    Clear filters
+                    Clear filtersTODO
                 </Button>
             </div>
         )}

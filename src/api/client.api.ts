@@ -71,3 +71,8 @@ export const getPermanentSurvey = async () => {
   const response = await apiClient.get(`/mod/clients/permanent-survey`);
   return response.data;
 }
+
+export const getBloodTestOrder = async () => {
+  const response = await apiClient.get(`/mod/clients/blood-test-order`);
+  return response.data;
+}
