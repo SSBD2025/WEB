@@ -26,3 +26,17 @@ export interface SubmitBloodTestReport {
         }
     }[];
 }
+
+export interface BloodTestEntry {
+    parameterName: string;
+    result: string;
+    errors?: {
+        parameterName?: string;
+        result?: string;
+    };
+}
+
+export interface ParameterWithResult {
+    parameter: BloodParameter;
+    result: string;
+}

@@ -2,19 +2,38 @@ import {useMutation, useQuery} from "@tanstack/react-query";
 import {getAllBloodParameters, submitReport} from "@/api/bloodParameters.api.ts";
 import {BloodParameter, SubmitBloodTestReport} from "@/types/blood_test_report";
 import {axiosErrorHandler} from "@/lib/axiosErrorHandler.ts";
-import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 import {toast} from "sonner";
+import {useEffect} from "react";
+import axios from "axios";
 
-export const useBloodParameter = (male: boolean) => {
-    return useQuery<BloodParameter[], Error>({
-        queryKey: ["bloodParameters", male],
-        queryFn: () => getAllBloodParameters(male)
+export const BLOOD_PARAMS_QUERY = "bloodParameters";
+
+export const useBloodParameter = (clientId: string) => {
+    const query = useQuery<BloodParameter[], Error>({
+        queryKey: [BLOOD_PARAMS_QUERY, clientId],
+        queryFn: () => getAllBloodParameters(clientId),
     });
+    useEffect(() => {
+        if (query.error) {
+            if (axios.isAxiosError(query.error)) {
+                const status = query.error.response?.status;
+                if (status === 401) {
+                    toast.error(t("errors.unauthorized"));
+                } else if (status === 403) {
+                    toast.error(t("errors.accessDenied"));
+                } else {
+                    axiosErrorHandler(query.error, t("errors.generic"));
+                }
+            } else {
+                toast.error(t("errors.unknown"));
+            }
+        }
+    }, [query.error]);
+    return query;
 };
 
 export const useSubmitReport = (clientId: string) => {
-    const { t } = useTranslation();
-
     return useMutation({
         mutationFn: (data: SubmitBloodTestReport) => submitReport({ clientId, data }),
         onError: (error) => {

@@ -1,8 +1,8 @@
 import apiClient from "@/lib/apiClient";
 import {SubmitBloodTestReport} from "@/types/blood_test_report";
 
-export const getAllBloodParameters = async (male: boolean) => {
-    const response = await apiClient.get(`/mod/blood-parameters/${male}`);
+export const getAllBloodParameters = async (clientId: string) => {
+    const response = await apiClient.get(`/mod/blood-parameters/${clientId}`);
     return response.data;
 };
 
