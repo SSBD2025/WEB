@@ -104,3 +104,9 @@ export interface FoodPyramidResponse {
   feedbacks: Feedback[];
   clients: Client[];
 }
+
+export interface CurrentPyramidResponse {
+  foodPyramid: FoodPyramid,
+  active: boolean,
+  timestamp: string,
+}
