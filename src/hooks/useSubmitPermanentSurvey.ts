@@ -1,5 +1,5 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { submitPermanentSurvey, getPermanentSurvey } from "@/api/client.api.ts";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { submitPermanentSurvey, getPermanentSurvey, updatePermanentSurvey } from "@/api/client.api.ts";
 import { axiosErrorHandler } from "@/lib/axiosErrorHandler.ts";
 import { t } from "i18next";
 import { toast } from "sonner";
@@ -51,3 +51,16 @@ export const useGetClientPermanentSurvey = (clientId: string) => {
       : undefined,
   };
 };
+export const useUpdatePermanentSurvey = () => {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn: updatePermanentSurvey,
+    onError: (error) => axiosErrorHandler(error, t("permanent_survey_form.error")),
+    onSuccess: (updatedSurvey) => {
+      toast.success(t("permanent_survey_form.success"))
+      queryClient.invalidateQueries({ queryKey: ["permanentSurvey"] })
+      queryClient.setQueryData(["permanentSurvey"], updatedSurvey)
+    },
+  })
+}
