@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { useTranslation } from "react-i18next";
 
 interface ComparisonResult {
   field: string;
@@ -33,6 +34,8 @@ const SurveyComparison = ({
   onClearSelection: () => void;
   timezone: string;
 }) => {
+  const { t } = useTranslation();
+
   const sortedSurveys = [...surveys].sort(
     (a, b) =>
       new Date(a.measurementDate).getTime() -
@@ -52,13 +55,13 @@ const SurveyComparison = ({
 
       results.push({
         field: "weight",
-        label: "Waga (kg)",
+        label: t("survey-comparison.weight") + " (kg)",
         oldValue: oldWeight,
         newValue: newWeight,
         difference,
         percentageChange,
         trend: difference > 0 ? "up" : difference < 0 ? "down" : "same",
-        isImprovement: difference <= 0, // Spadek wagi to poprawa
+        isImprovement: difference <= 0,
       });
     }
 
@@ -66,13 +69,13 @@ const SurveyComparison = ({
     if (olderSurvey.bloodPressure && newerSurvey.bloodPressure) {
       results.push({
         field: "bloodPressure",
-        label: "Ciśnienie krwi",
+        label: t("survey-comparison.blood_pressure"),
         oldValue: olderSurvey.bloodPressure,
         newValue: newerSurvey.bloodPressure,
         difference: null,
         percentageChange: null,
         trend: "same",
-        isImprovement: null, // Trudno określić bez konkretnych wartości
+        isImprovement: null,
       });
     }
 
@@ -89,13 +92,13 @@ const SurveyComparison = ({
 
       results.push({
         field: "bloodSugarLevel",
-        label: "Poziom cukru (mg/dl)",
+        label: t("survey-comparison.blood_sugar"),
         oldValue: oldSugar,
         newValue: newSugar,
         difference,
         percentageChange,
         trend: difference > 0 ? "up" : difference < 0 ? "down" : "same",
-        isImprovement: difference <= 0, // Spadek cukru to poprawa
+        isImprovement: difference <= 0,
       });
     }
 
@@ -105,7 +108,7 @@ const SurveyComparison = ({
   const comparisonResults = calculateComparison();
 
   const formatDate = (date: string) => {
-    return new Intl.DateTimeFormat("pl-PL", {
+    return new Intl.DateTimeFormat(localStorage.getItem("i18nextLng") || "pl-PL", {
       timeZone: timezone,
       year: "numeric",
       month: "long",
@@ -140,14 +143,14 @@ const SurveyComparison = ({
         <div className="flex items-center gap-4">
           <Button variant="outline" size="sm" onClick={onClose}>
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Powrót do listy
+            {t("survey-comparison.back_to_list")}
           </Button>
-          <h2 className="text-2xl font-bold">Porównanie ankiet okresowych</h2>
+          <h2 className="text-2xl font-bold">{t("survey-comparison.comparison_title")}</h2>
         </div>
 
         <Button variant="outline" size="sm" onClick={handleFinishComparison}>
           <Trash2 className="h-4 w-4 mr-2" />
-          Zakończ i wyczyść wybór
+          {t("survey-comparison.end_button")}
         </Button>
       </div>
 
@@ -155,7 +158,7 @@ const SurveyComparison = ({
         <CardContent className="p-4">
           <div className="text-center">
             <div className="text-sm text-muted-foreground mb-1">
-              Okres porównania
+              {t("survey-comparison.time_period")}
             </div>
             <div className="font-medium">
               {formatDate(olderSurvey.measurementDate.toString())} →{" "}
@@ -167,7 +170,7 @@ const SurveyComparison = ({
                   new Date(olderSurvey.measurementDate).getTime()) /
                   (1000 * 60 * 60 * 24)
               )}{" "}
-              dni
+              {t("survey-comparison.days")}
             </div>
           </div>
         </CardContent>
@@ -177,8 +180,8 @@ const SurveyComparison = ({
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Badge variant="outline">Starsza</Badge>
-              Ankieta z{" "}
+              <Badge variant="outline">{t("survey-comparison.older")}</Badge>
+              {t("survey-comparison.survey")}{" "}
               {formatDate(olderSurvey.measurementDate.toString()).split(" ")[0]}
             </CardTitle>
             <p className="text-sm text-muted-foreground">
@@ -187,14 +190,15 @@ const SurveyComparison = ({
           </CardHeader>
           <CardContent className="space-y-2">
             <div>
-              Waga: <span className="font-medium">{olderSurvey.weight} kg</span>
+              {t("survey-comparison.weight")}:{" "}
+              <span className="font-medium">{olderSurvey.weight} kg</span>
             </div>
             <div>
-              Ciśnienie:{" "}
+              {t("survey-comparison.blood_pressure")}:{" "}
               <span className="font-medium">{olderSurvey.bloodPressure}</span>
             </div>
             <div>
-              Cukier:{" "}
+              {t("survey-comparison.blood_sugar")}:{" "}
               <span className="font-medium">
                 {olderSurvey.bloodSugarLevel} mg/dl
               </span>
@@ -205,8 +209,8 @@ const SurveyComparison = ({
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              <Badge variant="outline">Nowsza</Badge>
-              Ankieta z{" "}
+              <Badge variant="outline">{t("survey-comparison.newer")}</Badge>
+              {t("survey-comparison.survey")}{" "}
               {formatDate(newerSurvey.measurementDate.toString()).split(" ")[0]}
             </CardTitle>
             <p className="text-sm text-muted-foreground">
@@ -215,14 +219,15 @@ const SurveyComparison = ({
           </CardHeader>
           <CardContent className="space-y-2">
             <div>
-              Waga: <span className="font-medium">{newerSurvey.weight} kg</span>
+              {t("survey-comparison.weight")}:{" "}
+              <span className="font-medium">{newerSurvey.weight} kg</span>
             </div>
             <div>
-              Ciśnienie:{" "}
+              {t("survey-comparison.blood_pressure")}:{" "}
               <span className="font-medium">{newerSurvey.bloodPressure}</span>
             </div>
             <div>
-              Cukier:{" "}
+              {t("survey-comparison.blood_sugar")}:{" "}
               <span className="font-medium">
                 {newerSurvey.bloodSugarLevel} mg/dl
               </span>
@@ -233,7 +238,7 @@ const SurveyComparison = ({
 
       <Card>
         <CardHeader>
-          <CardTitle>Analiza zmian</CardTitle>
+          <CardTitle>{t("survey-comparison.compare_analyze")}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -291,7 +296,7 @@ const SurveyComparison = ({
                         result.isImprovement ? "text-green-600" : "text-red-600"
                       }`}
                     >
-                      {result.isImprovement ? "Poprawa" : "Pogorszenie"}
+                      {result.isImprovement ? t('survey-comparison.improvement') : t('survey-comparison.decline')}
                     </div>
                   )}
                 </div>
