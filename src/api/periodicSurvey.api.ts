@@ -14,24 +14,36 @@ export const submitPeriodicSurvey = async (surveyData: PeriodicSurvey) => {
 export const getAllClientPeriodicSurvey = async ({
         page,
         size,
+        since,
+        before,
+        sort,
     }: PeriodicSurveyQueryParams) => {
     const response = await apiClient.get("/mod/clients/periodic-survey", {
         params: {
             ...(typeof page === "number" ? { page } : {}),
             ...(typeof size === "number" ? { size } : {}),
+            ...(since ? { since } : {}),
+            ...(before ? { before } : {}),
+            ...(sort ? { sort } : {}),
         },
     });
     return response.data as AllPeriodicSurveys;
 }
 
 export const getAllDieticianPeriodicSurvey = async ({
-                                                     page,
-                                                     size,
-                                                 }: PeriodicSurveyQueryParams, clientId: string) => {
-    const response = await apiClient.get(`/mod/clients/dietician/${clientId}/periodic-survey`, {
+        page,
+        size,
+        since,
+        before,
+        sort,
+    }: PeriodicSurveyQueryParams, clientId: string) => {
+    const response = await apiClient.get(`/mod/dieticians/${clientId}/periodic-surveys`, {
         params: {
             ...(typeof page === "number" ? { page } : {}),
             ...(typeof size === "number" ? { size } : {}),
+            ...(since ? { since } : {}),
+            ...(before ? { before } : {}),
+            ...(sort ? { sort } : {}),
         },
     });
     return response.data as AllPeriodicSurveys;

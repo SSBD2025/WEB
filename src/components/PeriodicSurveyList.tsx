@@ -16,6 +16,8 @@ import { Checkbox } from "./ui/checkbox";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { X } from "lucide-react";
+import { useSearchParams, useNavigate } from "react-router-dom"
+import {ArrowDown, ArrowUp} from "lucide-react";
 
 const rowVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -29,6 +31,13 @@ const rowVariants = {
   }),
 };
 
+const SORT_FIELDS = [
+    "measurementDate",
+    "weight",
+    "bloodPressure",
+    "bloodSugarLevel",
+] as const
+
 const PeriodicSurveyList = ({
   surveys,
   showComparison,
@@ -39,6 +48,8 @@ const PeriodicSurveyList = ({
   setShowComparison: (show: boolean) => void;
 }) => {
   const [timezone, setTimezone] = useState<string>();
+    const [searchParams] = useSearchParams()
+    const navigate = useNavigate()
   const [selectedSurveys, setSelectedSurveys] = useState<GetPeriodicSurvey[]>(
     []
   );
@@ -54,6 +65,61 @@ const PeriodicSurveyList = ({
       setSelectedSurveys(selectedSurveys.filter((s) => s !== survey));
     }
   };
+type SortField = typeof SORT_FIELDS[number]
+type SortDirection = "asc" | "desc"
+
+function getSortParams(sortString: string): { field: SortField; direction: SortDirection } {
+    const [field, direction] = sortString.split(",")
+    if (
+        SORT_FIELDS.includes(field as SortField) &&
+        (direction === "asc" || direction === "desc")
+    ) {
+        return { field: field as SortField, direction: direction as SortDirection }
+    }
+    return { field: "measurementDate", direction: "desc" }
+}
+
+function SortableHeader({
+                            field,
+                            label,
+                            currentSort,
+                            onSortChange,
+                        }: {
+    field: SortField
+    label: string
+    currentSort: { field: SortField; direction: SortDirection }
+    onSortChange: (sort: string) => void
+}) {
+    const isActive = currentSort.field === field
+
+    const toggleDirection = () => {
+        let newDirection: SortDirection = "asc"
+        if (isActive) {
+            newDirection = currentSort.direction === "asc" ? "desc" : "asc"
+        }
+        onSortChange(`${field},${newDirection}`)
+    }
+
+    return (
+        <TableHead
+            className="cursor-pointer select-none"
+            onClick={toggleDirection}
+            aria-sort={isActive ? (currentSort.direction === "asc" ? "ascending" : "descending") : "none"}
+        >
+            <div className="flex items-center gap-1">
+                {label}
+                {isActive && (
+                    <span className="text-sm">
+            {currentSort.direction === "asc" ?
+                <ArrowUp className="h-4 w-4 text-muted-foreground"/> :
+                <ArrowDown className="h-4 w-4 text-muted-foreground"/>
+            }
+          </span>
+                )}
+            </div>
+        </TableHead>
+    )
+}
 
   useEffect(() => {
     const storedTz =
@@ -71,6 +137,13 @@ const PeriodicSurveyList = ({
       }
     }
   }, []);
+    const sortParam = searchParams.get("sort") || "measurementDate,desc"
+    const currentSort = getSortParams(sortParam);
+
+    const handleSortChange = (newSort: string) => {
+        searchParams.set("sort", newSort);
+        navigate(`?${searchParams.toString()}`);
+    }
 
   useEffect(() => {
     if (selectedSurveys.length > 0) {
@@ -189,20 +262,34 @@ const PeriodicSurveyList = ({
         </Card>
       )}
 
-      <Table>
+    <Table className="table-fixed">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-12">Wybierz</TableHead>
-            <TableHead>
-              {t("periodic_survey.list.table.head.measurement_date")}
-            </TableHead>
-            <TableHead>{t("periodic_survey.list.table.head.weight")}</TableHead>
-            <TableHead>
-              {t("periodic_survey.list.table.head.blood_pressure")}
-            </TableHead>
-            <TableHead>
-              {t("periodic_survey.list.table.head.blood_sugar_level")}
-            </TableHead>
+            <TableHead className="w-16">Wybierz</TableHead>
+              <SortableHeader
+                  field="measurementDate"
+                  label={t("periodic_survey.list.table.head.measurement_date")}
+                  currentSort={currentSort}
+                  onSortChange={handleSortChange}
+              />
+              <SortableHeader
+                  field="weight"
+                  label={t("periodic_survey.list.table.head.weight")}
+                  currentSort={currentSort}
+                  onSortChange={handleSortChange}
+              />
+              <SortableHeader
+                  field="bloodPressure"
+                  label={t("periodic_survey.list.table.head.blood_pressure")}
+                  currentSort={currentSort}
+                  onSortChange={handleSortChange}
+              />
+              <SortableHeader
+                  field="bloodSugarLevel"
+                  label={t("periodic_survey.list.table.head.blood_sugar_level")}
+                  currentSort={currentSort}
+                  onSortChange={handleSortChange}
+              />
           </TableRow>
         </TableHeader>
         <TableBody>
