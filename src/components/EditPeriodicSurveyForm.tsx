@@ -8,6 +8,7 @@ import ConfirmSurveyChangesModal from "@/components/ConfirmSurveyChangesModal.ts
 import {useSearchParams} from "react-router";
 import {queryClient} from "@/lib/queryClient.ts";
 import {Input} from "@/components/ui/input.tsx";
+import {Label} from "@/components/ui/label.tsx";
 
 type Props = {
     defaultValues: EditPeriodicSurvey;
@@ -51,9 +52,10 @@ export default function EditPeriodicSurveyForm({ defaultValues, onSuccess }: Pro
         <>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div>
-                <label className="block font-medium">
+                <Label className="text-medium p-2">
                     {t("periodic_survey.form.label.weight")}
-                </label>
+                    <p className="text-red-600">*</p>
+                </Label>
                 <Input
                     type="number"
                     step="0.1"
@@ -65,15 +67,16 @@ export default function EditPeriodicSurveyForm({ defaultValues, onSuccess }: Pro
                     className="input w-full"
                 />
                 {errors.weight && (
-                    <p className="text-red-600 text-sm">{errors.weight.message as string}</p>
+                    <p className="text-red-600 text-sm p-1">{errors.weight.message as string}</p>
                 )}
 
             </div>
 
             <div>
-                <label className="block font-medium">
+                <Label className="text-medium p-2">
                     {t("periodic_survey.form.label.blood_pressure")}
-                </label>
+                    <p className="text-red-600">*</p>
+                </Label>
                 <Input
                     type="text"
                     {...register("bloodPressure", {
@@ -86,14 +89,15 @@ export default function EditPeriodicSurveyForm({ defaultValues, onSuccess }: Pro
                     className="input w-full"
                 />
                 {errors.bloodPressure && (
-                    <p className="text-red-600 text-sm">{errors.bloodPressure.message as string}</p>
+                    <p className="text-red-600 text-sm p-1">{errors.bloodPressure.message as string}</p>
                 )}
             </div>
 
             <div>
-                <label className="block font-medium">
+                <Label className="text-medium p-2">
                     {t("periodic_survey.form.label.blood_sugar")}
-                </label>
+                    <p className="text-red-600">*</p>
+                </Label>
                 <Input
                     type="number"
                     step="0.1"
@@ -105,7 +109,7 @@ export default function EditPeriodicSurveyForm({ defaultValues, onSuccess }: Pro
                     className="input w-full"
                 />
                 {errors.bloodSugarLevel && (
-                    <p className="text-red-600 text-sm">{errors.bloodSugarLevel.message as string}</p>
+                    <p className="text-red-600 text-sm p-1">{errors.bloodSugarLevel.message as string}</p>
                 )}
 
             </div>

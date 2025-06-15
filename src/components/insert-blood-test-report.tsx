@@ -28,7 +28,9 @@ import axios from "axios";
 import DataRenderer from "@/components/shared/DataRenderer.tsx";
 import {PERMANENT_SURVEY_EMPTY_DIETICIAN} from "@/constants/states.ts";
 import { BloodTestEntry, ParameterWithResult } from "@/types/blood_test_report";
-
+import {Label} from "@/components/ui/label.tsx";
+import ROUTES from "@/constants/routes.ts";
+import BackButton from "@/components/shared/BackButton.tsx";
 
 function mapEntriesToParameters(
     entries: BloodTestEntry[],
@@ -203,6 +205,7 @@ export default function InsertBloodTestReport() {
     return (
         <main className="flex-grow items-center justify-center flex flex-col">
             <div className="w-full items-center justify-center flex-col max-w-4xl px-4 py-6">
+                <BackButton route={ROUTES.DIETICIAN_DASHBOARD}/>
                 <DataRenderer
                     status={status}
                     data={allBloodParameters}
@@ -234,6 +237,7 @@ export default function InsertBloodTestReport() {
                     </div>
                     {status === "pending" && t("blood_test_reports.insert.loading")}
                     {status === "error" && t("blood_test_reports.insert.error.unexpected")}
+                    {status === "success" && (
                     <AnimatePresence initial={false}>
                         {entries.map((entry, index) => {
                             const paramDetails = getParameterDetails(entry.parameterName);
@@ -276,12 +280,12 @@ export default function InsertBloodTestReport() {
                                                                     </SelectGroup>
                                                                 </SelectContent>
                                                             </Select>
-                                                            <label
+                                                            <Label
                                                                 htmlFor={`param-${index}`}
                                                                 className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-60 top-2 z-10 origin-[0] left-3 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-80 peer-focus:-translate-y-7"
                                                             >
-                                                                {t("blood_test_reports.insert.parameter_name")}
-                                                            </label>
+                                                                {t("blood_test_reports.insert.parameter_name")}<p className="text-red-600">*</p>
+                                                            </Label>
                                                             {paramDetails?.description && (
                                                                 <Tooltip>
                                                                     <TooltipTrigger asChild>
@@ -308,15 +312,15 @@ export default function InsertBloodTestReport() {
                                                             onChange={(e) => handleUpdateEntry(index, "result", e.target.value)}
                                                             className={`peer ${entry.errors?.result ? "border-red-500" : ""}`}
                                                         />
-                                                        <label
+                                                        <Label
                                                             htmlFor={`param-${index}-result`}
                                                             className="absolute text-sm text-gray-500 duration-300 transform -translate-y-3 scale-60 top-2 z-10 origin-[0] left-3 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-80 peer-focus:-translate-y-7"
                                                         >
-                                                            {t("blood_test_reports.insert.result")}
-                                                        </label>
+                                                            {t("blood_test_reports.insert.result")}<p className="text-red-600">*</p>
+                                                        </Label>
                                                     </div>
                                                 </div>
-                                                <div className="flex flex-col min-w-[120px] text-sm text-gray-700 mt-4 md:mt-0">
+                                                <div className="flex flex-col min-w-[120px] text-sm text-muted-foreground mt-4 md:mt-0">
                                                     {paramDetails && (
                                                         <span>
                                                             {paramDetails.standardMin} - {paramDetails.standardMax}{" " + formatUnit(paramDetails.unit)}
@@ -388,6 +392,7 @@ export default function InsertBloodTestReport() {
                             );
                         })}
                     </AnimatePresence>
+                    )}
                     <div className="flex justify-between mb-6">
                         <Button onClick={handleAddParameter}>
                             {t("blood_test_reports.insert.add_parameter")}

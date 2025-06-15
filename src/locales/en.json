@@ -91,7 +91,8 @@
     "edit": "Edit",
     "confirm_changes": "Confirm changes",
     "confirm": "Confirm",
-    "no_entries": "No entries"
+    "no_entries": "No entries",
+    "back": "Back"
   },
   "password_reset": {
     "header": "Reset password",

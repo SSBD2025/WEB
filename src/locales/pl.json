@@ -91,7 +91,8 @@
     "edit": "Edytuj",
     "confirm_changes": "Potwierdź zmiany",
     "confirm": "Potwierdź",
-    "no_entries": "Brak wpisów"
+    "no_entries": "Brak wpisów",
+    "back": "Powrót"
   },
   "password_reset": {
     "header": "Zresetuj hasło",
