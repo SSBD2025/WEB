@@ -50,7 +50,7 @@ export default function ClientViewBloodOrder() {
                 return (
                     <main className="flex-grow flex items-center justify-center text-center p-4">
                         <div className="max-w-md space-y-2">
-                            <p className="text-lg font-semibold">{t(message)}</p>
+                            <p className="text-lg font-semibold">{t("exceptions."+message)}</p>
                             <p className="text-sm text-muted-foreground">
                                 {t("view_blood_order.nothing_to_do")}
                             </p>
