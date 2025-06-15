@@ -90,7 +90,8 @@
     "update": "Update",
     "edit": "Edit",
     "confirm_changes": "Confirm changes",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "no_entries": "No entries"
   },
   "password_reset": {
     "header": "Reset password",
@@ -296,6 +297,10 @@
       "periodic": {
         "title": "No Periodic Surveys found",
         "message": "Looks like we couldn't find any periodic surveys for you."
+      },
+      "permanent": {
+        "title": "Permanent survey not found.",
+        "message": "Looks like this client has not filled their permanent survey yet."
       }
     },
     "error": {
@@ -479,7 +484,8 @@
     "pyramid_already_rated": "This pyramid has already been rated.",
     "not_your_pyramid": "This pyramid does not belong to you.",
     "feedback_not_found": "Feedback not found",
-    "not_your_feedback": "This is not your feedback."
+    "not_your_feedback": "This is not your feedback.",
+    "permanent_survey_not_found": "Permanent survey not found."
   },
   "role_change": {
     "log_error": "Failed to log role change:"
@@ -556,6 +562,7 @@
     "search": "Enter first name, last name or e-mail address"
   },
   "blood_test_reports": {
+    "loading": "Loading...",
     "error_loading_reports": "Error loading reports",
     "no_reports_found": "No reports found.",
     "blood_test_reports": "Blood Test Reports",
@@ -580,8 +587,12 @@
       "result": "Result",
       "add_parameter": "Add parameter",
       "submit": "Submit",
+      "submitted": "Blood test report submitted successfully!",
+      "normal_range": "Normal range",
+      "loading": "Loading available blood parameters...",
       "error": {
         "duplicate": "Form has duplicates, please remove or edit them.",
+        "unexpected": "An unexpected error has occurred, try again later.",
         "invalid_result": "Invalid result value.",
         "incomplete_entry": "There are incomplete entries, please remove or fill them."
       }

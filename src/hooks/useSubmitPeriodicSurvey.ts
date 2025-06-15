@@ -31,7 +31,7 @@ export const useSubmitPeriodicSurvey = () => {
 export const useGetAllClientPeriodicSurvey = (params: PeriodicSurveyQueryParams) => {
     const { t } = useTranslation();
 
-    const query = useQuery<AllPeriodicSurveys>({
+    const query = useQuery<AllPeriodicSurveys, Error>({
         queryKey: [GET_ALL_PERIODIC_SURVEYS_CLIENT, params],
         queryFn: () => getAllClientPeriodicSurvey(params),
     });

@@ -90,7 +90,8 @@
     "update": "Aktualizuj",
     "edit": "Edytuj",
     "confirm_changes": "Potwierdź zmiany",
-    "confirm": "Potwierdź"
+    "confirm": "Potwierdź",
+    "no_entries": "Brak wpisów"
   },
   "password_reset": {
     "header": "Zresetuj hasło",
@@ -296,6 +297,10 @@
       "periodic": {
         "title": "Brak ankiet okresowych",
         "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie ankiet okresowych."
+      },
+      "permanent": {
+        "title": "Permanent survey not found.",
+        "message": "Looks like this client has not filled their permanent survey yet."
       }
     },
     "error": {
@@ -479,7 +484,8 @@
     "pyramid_already_rated": "Ta piramida została już oceniona",
     "not_your_pyramid": "Ta piramida nie należy do Ciebie.",
     "feedback_not_found": "Nie znaleziono opinii",
-    "not_your_feedback": "To nie jest Twoja opinia."
+    "not_your_feedback": "To nie jest Twoja opinia.",
+    "permanent_survey_not_found": "Permanent survey not found."
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -556,6 +562,7 @@
     "search": "Wprowadź imię, nazwisko lub adres e-mail"
   },
   "blood_test_reports": {
+    "loading": "Ładowanie...",
     "error_loading_reports": "Wystąpił błąd podczas ładowania raportów",
     "no_reports_found": "Nie znaleziono wyników.",
     "blood_test_reports": "Raporty badań krwi",
@@ -580,8 +587,12 @@
       "result": "Wynik",
       "add_parameter": "Dodaj parametr",
       "submit": "Zatwierdź",
+      "submitted": "Wyniki badań krwi zatwierdzone pomyślnie!",
+      "normal_range": "Zakres normalny",
+      "loading": "Ładowanie dostępnych parametrów krwi...",
       "error": {
         "duplicate": "Formularz zawiera duplikaty, proszę je usunąć lub edytować.",
+        "unexpected": "Wystąpił niespodziewany błąd, spróbuj ponownie później.",
         "invalid_result": "Nieprawidłowa wartość wyniku.",
         "incomplete_entry": "Są niekompletne wpisy, proszę je usunąć lub uzupełnić."
       }
@@ -724,7 +735,8 @@
       "header": "Lista ankiet okresowych",
       "edit": {
         "button": "Edytuj ostatnią ankietę",
-        "success": "Ankieta okresowa zaktualizowana pomyślnie"
+        "success": "Ankieta okresowa zaktualizowana pomyślnie",
+        "title": "Edytuj ostatią ankietę okresową"
       }
     },
     "list": {
@@ -733,7 +745,7 @@
           "measurement_date": "Data pomiaru",
           "weight": "Waga (kg)",
           "blood_pressure": "Ciśnienie krwi (skurczowe/rozkurczowe)",
-          "blood_sugar": "Poziom cukru we krwi (mg/dL)"
+          "blood_sugar_level": "Poziom cukru we krwi (mg/dL)"
         }
       }
     },

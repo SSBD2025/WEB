@@ -29,3 +29,8 @@ export const PERIODIC_SURVEY_EMPTY = {
   title: t("states.empty.periodic.title"),
   message: t("states.empty.periodic.message"),
 }
+
+export const PERMANENT_SURVEY_EMPTY_DIETICIAN = {
+  title: t("states.empty.permanent.title"),
+  message: t("states.empty.permanent.message"),
+}
