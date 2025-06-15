@@ -92,6 +92,7 @@
     "confirm_changes": "Confirm changes",
     "confirm": "Confirm",
     "no_entries": "No entries",
+    "back": "Back",
     "unexpected_error": "An unexpected error has occurred, try again later."
   },
   "password_reset": {
@@ -900,6 +901,14 @@
   "submit_permanent_survey": {
     "success": "The survey was successfully sent",
     "error": "Failed to send survey"
+  },
+  "date_time_picker": {
+    "apply": "Apply Filters",
+    "clear": "Clear Filters",
+    "no_results": "No results found for the selected range.",
+    "from": "From",
+    "to": "To",
+    "placeholder": "Select date and time"
   },
   "order_medical_examinations": {
     "title": "Ordering blood tests",

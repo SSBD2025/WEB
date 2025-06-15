@@ -8,6 +8,8 @@ import { useGetAllDieticianPeriodicSurvey } from "@/hooks/useSubmitPeriodicSurve
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { DateTimeRangePicker } from "@/components/DateTimePicker.tsx";
+import ROUTES from "@/constants/routes.ts";
+import BackButton from "./shared/BackButton";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -62,6 +64,7 @@ export default function DieticianPeriodicSurveyList() {
       {status === "pending" && t("periodic_survey.loading")}
       {status === "error" && t("periodic_survey.error.loading")}
       <div className="w-full max-w-6xl px-4 py-6">
+      <BackButton route={ROUTES.DIETICIAN_DASHBOARD}/>
         {(data?.content?.length ?? 0) > 0 && !showComparison && (
           <div className="flex flex-row w-full justify-between">
             <h2 className="text-xl font-semibold mb-6">

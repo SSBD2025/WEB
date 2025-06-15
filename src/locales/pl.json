@@ -92,6 +92,7 @@
     "confirm_changes": "Potwierdź zmiany",
     "confirm": "Potwierdź",
     "no_entries": "Brak wpisów",
+    "back": "Powrót",
     "unexpected_error": "Wystąpił niespodziewany błąd, spróbuj ponownie później."
   },
   "password_reset": {
@@ -900,6 +901,14 @@
   "submit_permanent_survey": {
     "success": "Udało się przesłać ankietę",
     "error": "Nie udało się przesłać ankiety"
+  },
+  "date_time_picker": {
+    "apply": "Filtruj",
+    "clear": "Wyczyść filtry",
+    "no_results": "Nie ma wyników w podanym zakresie.",
+    "from": "Od",
+    "to": "Do",
+    "placeholder": "Wybierz datę i godzinę"
   },
   "order_medical_examinations": {
     "title": "Zlecenie badań krwi",

@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button.tsx";
 import EditSurveyModal from "./EditSurveyModal";
 import { useState } from "react";
 import { DateTimeRangePicker } from "@/components/DateTimePicker.tsx";
+import BackButton from "@/components/shared/BackButton.tsx";
+import ROUTES from "@/constants/routes.ts";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -59,6 +61,7 @@ export default function ClientPeriodicSurveyList() {
       {status === "pending" && t("periodic_survey.loading")}
       {status === "error" && t("periodic_survey.error.loading")}
       <div className="w-full max-w-6xl px-4 py-6">
+      <BackButton route={ROUTES.HOME}/>
         {(data?.content?.length ?? 0) > 0 && !showComparison && (
           <div className="flex flex-row w-full justify-between">
             <h2 className="text-xl font-semibold mb-6">
