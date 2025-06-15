@@ -179,7 +179,7 @@ export const OrderMedicalExaminationsForm = ({
             htmlFor="description"
             className={`text-base font-medium ${errors.description ? "text-destructive" : ""}`}
           >
-            {t("order_medical_examinations.description")} *
+            {t("order_medical_examinations.description")} <span className="text-red-500">*</span>
           </Label>
           <Textarea
             id="description"
@@ -213,7 +213,7 @@ export const OrderMedicalExaminationsForm = ({
             <Label
               className={`text-base font-medium ${errors.parameters ? "text-destructive" : ""}`}
             >
-              {t("order_medical_examinations.parameters")} *
+              {t("order_medical_examinations.parameters")} <span className="text-red-500">*</span>
             </Label>
             <span className="text-sm text-muted-foreground">
               {selectedParameters.length}/31{" "}

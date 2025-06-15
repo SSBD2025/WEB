@@ -47,6 +47,11 @@ export const assignDietician = async (dieticianId: string) => {
   return response.data;
 }
 
+export const getClientStatus = async () => {
+  const response = await apiClient.get(`/mod/clients/status`);
+  return response.data;
+}
+
 export const getFeedbackByClientAndPyramid = async (clientId: string, pyramidId: string) => {
     const response = await apiClient.get(`/mod/feedbacks/client/${clientId}/pyramid/${pyramidId}`);
     return response.data;
