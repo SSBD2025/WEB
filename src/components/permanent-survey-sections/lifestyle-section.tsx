@@ -32,6 +32,7 @@ import {
   activityLevelInfo,
   FormValues,
 } from "@/schemas/permanentSurveyForms.schema.ts";
+import {RequiredFormLabel} from "@/components/ui/requiredLabel.tsx";
 
 interface LifestyleSectionProps {
   form: UseFormReturn<FormValues>;
@@ -51,7 +52,7 @@ export function LifestyleSection({ form }: LifestyleSectionProps) {
             <FormItem>
               <div className="flex items-center gap-2">
                 <FormLabel>
-                  {t("permanent_survey_form.activity_level")} *
+                  <RequiredFormLabel>{t("permanent_survey_form.activity_level")}</RequiredFormLabel>
                 </FormLabel>
                 <TooltipProvider>
                   <Tooltip>

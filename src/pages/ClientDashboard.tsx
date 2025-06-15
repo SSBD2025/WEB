@@ -1,17 +1,13 @@
 import { useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce.ts";
 import { useGetAllAvailableDieticians } from "@/hooks/useGetAllAvailableDieticians";
+import { useClientStatus } from "@/hooks/useAssignDietician";
 import { t } from "i18next";
 import { Search, Users, FileText } from "lucide-react";
 import { Input } from "@/components/ui/input.tsx";
 import { motion, type Variants } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import DataRenderer from "@/components/shared/DataRenderer.tsx";
 import { DIETICIANS_EMPTY } from "@/constants/states.ts";
 import DieticiansTable from "@/components/tables/DieticiansTable.tsx";
@@ -34,6 +30,7 @@ const ClientDashboard = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const debouncedSearchPhrase = useDebounce(searchPhrase, 300);
   const { data, status } = useGetAllAvailableDieticians(debouncedSearchPhrase);
+  const { data: clientStatus, isLoading: isClientStatusLoading } = useClientStatus();
 
   const handleSearch = (value: string) => {
     setSearchPhrase(value);
@@ -111,7 +108,13 @@ const ClientDashboard = () => {
                     data={data}
                     empty={DIETICIANS_EMPTY}
                     render={(dieticians) => (
-                      <DieticiansTable dieticians={dieticians} />
+                      <DieticiansTable
+                        dieticians={dieticians}
+                        hasAssignedDietician={
+                          clientStatus?.hasAssignedDietician === true
+                        }
+                        isLoadingStatus={isClientStatusLoading}
+                      />
                     )}
                   />
                 </motion.div>

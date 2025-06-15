@@ -22,7 +22,7 @@ import {
 import { t } from "i18next";
 import type { Dietician } from "@/types/user";
 import { useAssignDietician } from "@/hooks/useAssignDietician";
-import { UserCheck, Mail, User } from "lucide-react";
+import { UserCheck, Mail, User, CheckCircle } from "lucide-react";
 
 const rowVariants = {
   hidden: { opacity: 0, x: -20 },
@@ -36,21 +36,53 @@ const rowVariants = {
   }),
 };
 
-const DieticiansTable = ({ dieticians }: { dieticians: Dietician[] }) => {
+interface DieticiansTableProps {
+  dieticians: Dietician[];
+  hasAssignedDietician: boolean;
+  isLoadingStatus?: boolean;
+}
+
+const DieticiansTable = ({
+  dieticians,
+  hasAssignedDietician,
+  isLoadingStatus = false,
+}: DieticiansTableProps) => {
   const assignDieticianMutation = useAssignDietician();
 
   const handleAssign = (id: string) => {
     assignDieticianMutation.mutate(id);
   };
 
+  const isButtonDisabled =
+    hasAssignedDietician ||
+    assignDieticianMutation.isPending ||
+    isLoadingStatus;
+
   return (
     <div className="rounded-lg border bg-card">
+      {hasAssignedDietician && (
+        <div className="border-b border-green-200 p-4 rounded-t-lg">
+          <div className="flex items-center gap-2 text-green-800">
+            <CheckCircle className="h-5 w-5" />
+            <span className="font-medium">
+              {t("dieticians_table.already_assigned")}
+            </span>
+          </div>
+        </div>
+      )}
+
       <Table>
         <TableHeader>
           <TableRow className="hover:bg-transparent">
-            <TableHead className="font-semibold">{t("dieticians_table.dietician")}</TableHead>
-            <TableHead className="font-semibold">{t("dieticians_table.contact")}</TableHead>
-            <TableHead className="font-semibold text-right">{t("dieticians_table.action")}</TableHead>
+            <TableHead className="font-semibold">
+              {t("dieticians_table.dietician")}
+            </TableHead>
+            <TableHead className="font-semibold">
+              {t("dieticians_table.contact")}
+            </TableHead>
+            <TableHead className="font-semibold text-right">
+              {t("dieticians_table.action")}
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -91,62 +123,78 @@ const DieticiansTable = ({ dieticians }: { dieticians: Dietician[] }) => {
                 </TableCell>
 
                 <TableCell className="text-right w-[25%]">
-                  <AlertDialog>
-                    <AlertDialogTrigger asChild>
-                      <Button
-                        variant="default"
-                        size="sm"
-                        disabled={assignDieticianMutation.isPending}
-                      >
-                        <UserCheck className="h-4 w-4 mr-2" />
-                        {t("dieticians_table.choose_dietician")}
-                      </Button>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle className="flex items-center gap-2">
-                          <UserCheck className="h-5 w-5" />
-                          {t("dieticians_table.confirm")}
-                        </AlertDialogTitle>
-                        <AlertDialogDescription className="space-y-2">
-                          <p>
-                            {t("dieticians_table.are_you_sure1")}{" "}
-                            <strong>
-                              {firstName} {lastName}
-                            </strong>{" "}
-                            {t("dieticians_table.are_you_sure2")}
-                          </p>
-                          <div className="bg-muted p-3 rounded-lg">
-                            <div className="flex items-center gap-2 mb-2">
-                              <div>
-                                <p className="font-medium text-sm">
-                                  {firstName} {lastName}
-                                </p>
-                                <p className="text-xs text-muted-foreground">
-                                  {email}
-                                </p>
+                  {hasAssignedDietician ? (
+                    <Button
+                      variant="secondary"
+                      size="sm"
+                      disabled
+                      className="opacity-50"
+                    >
+                      <CheckCircle className="h-4 w-4 mr-2" />
+                      {t("dieticians_table.already_chosen")}
+                    </Button>
+                  ) : (
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button
+                          variant="default"
+                          size="sm"
+                          disabled={isButtonDisabled}
+                        >
+                          <UserCheck className="h-4 w-4 mr-2" />
+                          {isLoadingStatus
+                            ? t("dieticians_table.loading")
+                            : t("dieticians_table.choose_dietician")}
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle className="flex items-center gap-2">
+                            <UserCheck className="h-5 w-5" />
+                            {t("dieticians_table.confirm")}
+                          </AlertDialogTitle>
+                          <AlertDialogDescription className="space-y-2">
+                            <p>
+                              {t("dieticians_table.are_you_sure1")}{" "}
+                              <strong>
+                                {firstName} {lastName}
+                              </strong>{" "}
+                              {t("dieticians_table.are_you_sure2")}
+                            </p>
+                            <div className="bg-muted p-3 rounded-lg">
+                              <div className="flex items-center gap-2 mb-2">
+                                <div>
+                                  <p className="font-medium text-sm">
+                                    {firstName} {lastName}
+                                  </p>
+                                  <p className="text-xs text-muted-foreground">
+                                    {email}
+                                  </p>
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <p className="text-sm text-muted-foreground">
-                            {t("dieticians_table.after_confirm")}
-                          </p>
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>{t("dieticians_table.cancel")}</AlertDialogCancel>
-                        <AlertDialogAction
-                          onClick={() => handleAssign(id)}
-                          disabled={assignDieticianMutation.isPending}
-                          className="bg-primary hover:bg-primary/90"
-                        >
-                          {assignDieticianMutation.isPending
-                            ? t("dieticians_table.assigning")
-                            : t("dieticians_table.confirm")}
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
+                            <p className="text-sm text-muted-foreground">
+                              {t("dieticians_table.after_confirm")}
+                            </p>
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <AlertDialogCancel>
+                            {t("dieticians_table.cancel")}
+                          </AlertDialogCancel>
+                          <AlertDialogAction
+                            onClick={() => handleAssign(id)}
+                            disabled={assignDieticianMutation.isPending}
+                            className="bg-primary hover:bg-primary/90"
+                          >
+                            {assignDieticianMutation.isPending
+                              ? t("dieticians_table.assigning")
+                              : t("dieticians_table.confirm")}
+                          </AlertDialogAction>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                  )}
                 </TableCell>
               </motion.tr>
             );

@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/accordion";
 import { t } from "i18next";
 import { FormValues } from "@/schemas/permanentSurveyForms.schema.ts";
+import {RequiredFormLabel} from "@/components/ui/requiredLabel.tsx";
 
 interface MasterDataSectionProps {
   form: UseFormReturn<FormValues>;
@@ -44,7 +45,9 @@ export function MasterDataSection({ form }: MasterDataSectionProps) {
             name="height"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>{t("permanent_survey_form.height")} *</FormLabel>
+                <FormLabel>
+                    <RequiredFormLabel>{t("permanent_survey_form.height")}</RequiredFormLabel>
+                </FormLabel>
                 <FormControl>
                   <Input
                     type="number"
@@ -68,7 +71,7 @@ export function MasterDataSection({ form }: MasterDataSectionProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  {t("permanent_survey_form.date_of_birth")} *
+                  <RequiredFormLabel>{t("permanent_survey_form.date_of_birth")}</RequiredFormLabel>
                 </FormLabel>
                 <FormControl>
                   <Input
@@ -89,7 +92,9 @@ export function MasterDataSection({ form }: MasterDataSectionProps) {
           name="gender"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("permanent_survey_form.gender")} *</FormLabel>
+              <FormLabel>
+                  <RequiredFormLabel>{t("permanent_survey_form.gender")}</RequiredFormLabel>
+              </FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
