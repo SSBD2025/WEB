@@ -28,6 +28,7 @@ import {
   FormValues,
   nutritionGoalInfo,
 } from "@/schemas/permanentSurveyForms.schema";
+import {RequiredFormLabel} from "@/components/ui/requiredLabel.tsx";
 
 interface NutritionPlanSectionProps {
   form: UseFormReturn<FormValues>;
@@ -70,7 +71,7 @@ export function NutritionPlanSection({ form }: NutritionPlanSectionProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("permanent_survey_form.nutrition_goal")} *
+                <RequiredFormLabel>{t("permanent_survey_form.nutrition_goal")}</RequiredFormLabel>
               </FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
@@ -114,7 +115,7 @@ export function NutritionPlanSection({ form }: NutritionPlanSectionProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("permanent_survey_form.number_of_meals_per_day")} *
+                <RequiredFormLabel>{t("permanent_survey_form.number_of_meals_per_day")}</RequiredFormLabel>
               </FormLabel>
               <FormControl>
                 <Input
@@ -146,7 +147,7 @@ export function NutritionPlanSection({ form }: NutritionPlanSectionProps) {
                 form.formState.errors.mealTimes ? "text-destructive" : ""
               }
             >
-              {t("permanent_survey_form.meal_times")} *
+                <RequiredFormLabel>{t("permanent_survey_form.meal_times")}</RequiredFormLabel>
             </Label>
           </div>
           {mealTimesArray.fields.map((field, index) => (
@@ -183,7 +184,7 @@ export function NutritionPlanSection({ form }: NutritionPlanSectionProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                {t("permanent_survey_form.eating_habits")} *
+                  <RequiredFormLabel>{t("permanent_survey_form.eating_habits")}</RequiredFormLabel>
               </FormLabel>
               <FormControl>
                 <Textarea

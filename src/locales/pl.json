@@ -620,7 +620,10 @@
     "are_you_sure2": "jako swojego dietetyka?",
     "after_confirm": "Po potwierdzeniu będziesz mógł rozpocząć współpracę z wybranym dietetykiem.",
     "cancel": "Anuluj",
-    "assigning": "Przypisywanie..."
+    "assigning": "Przypisywanie...",
+    "already_assigned": "Masz już przypisanego dietetyka",
+    "loading": "Ładowanie...",
+    "already_chosen": "Dietetyk już wybrany"
   },
   "food_pyramids": {
     "list_title": "Profile Dietetyczne",

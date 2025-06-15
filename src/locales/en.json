@@ -620,7 +620,10 @@
     "are_you_sure2": "as your dietician?",
     "after_confirm": "Once confirmed, you will be able to start working with your chosen dietitian.",
     "cancel": "Cancel",
-    "assigning": "Assigning..."
+    "assigning": "Assigning...",
+    "already_assigned": "You already have a dietician assigned",
+    "loading": "Loading...",
+    "already_chosen": "Dietician already chosen"
   },
   "food_pyramids": {
     "list_title": "Food Pyramids",
