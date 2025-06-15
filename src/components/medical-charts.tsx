@@ -121,7 +121,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
 
     if (baselineSurvey.weight && latestSurvey.weight) {
       metrics.push({
-        label: "Waga",
+        label: t('charts.weight'),
         field: "weight",
         unit: "kg",
         startValue: Number(baselineSurvey.weight),
@@ -133,7 +133,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
 
     if (baselineSurvey.bloodSugarLevel && latestSurvey.bloodSugarLevel) {
       metrics.push({
-        label: "Poziom cukru",
+        label: t('charts.blood_sugar'),
         field: "bloodSugarLevel",
         unit: "mg/dl",
         startValue: Number(baselineSurvey.bloodSugarLevel),
@@ -147,7 +147,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
   };
 
   const formatDate = (date: string) => {
-    return new Intl.DateTimeFormat("pl-PL", {
+    return new Intl.DateTimeFormat(localStorage.getItem("i18nextLng") || "pl-PL", {
       timeZone: timezone,
       year: "numeric",
       month: "long",
@@ -353,9 +353,9 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
       <Card>
         <CardContent className="p-6 text-center">
           <AlertCircle className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-medium mb-2">Brak danych do analizy</h3>
+          <h3 className="text-lg font-medium mb-2">{t("charts.no_data_to_analyze")}</h3>
           <p className="text-muted-foreground">
-            Nie znaleziono ankiet z okresu po przypisaniu piramidy żywieniowej.
+            {t("charts.no_data_to_analyze_description")}
           </p>
         </CardContent>
       </Card>
@@ -389,10 +389,10 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold">
-            Postęp od rozpoczęcia współpracy
+            {t("charts.header")}
           </h1>
           <p className="text-muted-foreground mt-1">
-            Analiza zmian w okresie {daysSincePyramid} dni od przypisania piramidy żywieniowej.
+            {t("charts.description", { days: daysSincePyramid })}
           </p>
         </div>
       </div>
@@ -401,14 +401,14 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Target className="h-5 w-5" />
-            Piramida żywieniowa
+            {t("charts.food_pyramid")}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-3 gap-4">
             <div>
               <div className="text-sm text-muted-foreground">
-                Nazwa piramidy
+                {t("charts.name_of_pyramid")}
               </div>
               <div className="font-medium">
                 {pyramidData.foodPyramid.name}
@@ -416,15 +416,15 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
             </div>
             <div>
               <div className="text-sm text-muted-foreground">
-                Data przypisania
+                {t("charts.assign_date")}
               </div>
               <div className="font-medium">{formatDate(pyramidData.timestamp)}</div>
             </div>
             <div>
               <div className="text-sm text-muted-foreground">
-                Okres stosowania
+                {t("charts.time_period")}
               </div>
-              <div className="font-medium">{daysSincePyramid} dni</div>
+              <div className="font-medium">{daysSincePyramid} {t("charts.days")}</div>
             </div>
           </div>
         </CardContent>
@@ -453,7 +453,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
                       ) : (
                         <TrendingDown className="h-3 w-3 mr-1" />
                       )}
-                      {isImprovement ? "Poprawa" : "Pogorszenie"}
+                      {isImprovement ? t("charts.improvement") : t("charts.decline")}
                     </Badge>
                   </CardTitle>
                 </CardHeader>
@@ -461,7 +461,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <div className="text-sm text-muted-foreground">
-                        Wartość początkowa
+                        {t("charts.start_value")}
                       </div>
                       <div className="text-2xl font-bold">
                         {metric.startValue} {metric.unit}
@@ -472,7 +472,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
                     </div>
                     <div>
                       <div className="text-sm text-muted-foreground">
-                        Wartość aktualna
+                        {t("charts.current_value")}
                       </div>
                       <div className="text-2xl font-bold">
                         {metric.currentValue} {metric.unit}
@@ -526,13 +526,13 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Award className="h-5 w-5" />
-            Podsumowanie postępów
+            {t("charts.summary")}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h4 className="font-medium mb-3">Osiągnięcia</h4>
+              <h4 className="font-medium mb-3">{t("charts.achievements")}</h4>
               <div className="space-y-2">
                 {metrics.map((metric) => {
                   const change = metric.currentValue - metric.startValue;
@@ -550,7 +550,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
                         <span className="text-sm">
                           {metric.label}: {Math.abs(change).toFixed(1)}{" "}
                           {metric.unit}{" "}
-                          {metric.isLowerBetter ? "mniej" : "więcej"}
+                          {metric.isLowerBetter ? t("charts.less") : t("charts.more")}
                         </span>
                       </div>
                     );
@@ -561,7 +561,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
             </div>
 
             <div>
-              <h4 className="font-medium mb-3">Obszary do poprawy</h4>
+              <h4 className="font-medium mb-3">{t("charts.fields_to_improve")}</h4>
               <div className="space-y-2">
                 {metrics.map((metric) => {
                   const change = metric.currentValue - metric.startValue;
@@ -579,7 +579,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
                         <span className="text-sm">
                           {metric.label}: {Math.abs(change).toFixed(1)}{" "}
                           {metric.unit}{" "}
-                          {metric.isLowerBetter ? "więcej" : "mniej"}
+                          {metric.isLowerBetter ? t("charts.less") : t("charts.more")}
                         </span>
                       </div>
                     );
