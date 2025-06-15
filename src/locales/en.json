@@ -92,7 +92,8 @@
     "confirm_changes": "Confirm changes",
     "confirm": "Confirm",
     "no_entries": "No entries",
-    "back": "Back"
+    "back": "Back",
+    "unexpected_error": "An unexpected error has occurred, try again later."
   },
   "password_reset": {
     "header": "Reset password",
@@ -603,7 +604,8 @@
     "dashboard_title": "Client Dashboard",
     "search": "Enter first name, last name or e-mail address",
     "permanent_survey": "Constant parameters survey",
-    "available_dieticians": "Available dieticians"
+    "available_dieticians": "Available dieticians",
+    "blood_test_order": "Blood test order"
   },
   "dieticians_table": {
     "title": "Dieticians List",
@@ -981,5 +983,15 @@
     "choose_second": "Choose second survey",
     "with_pagination": "from any page",
     "choose": "Choose"
+  },
+  "view_blood_order": {
+    "nothing_to_do": "Everything ok! There is nothing you have to do.",
+    "title": "Blood test order",
+    "information":  "Those are blood parameters your dietician ordered you to test. You can download a file containing the list and give it to your doctor.",
+    "orderDate": "Order date",
+    "description":  "Description",
+    "parameters": "Blood parameters to test",
+    "exportcsv":  "Export to file",
+    "noData": "No data"
   }
 }

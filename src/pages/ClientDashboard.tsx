@@ -16,6 +16,7 @@ import DataRenderer from "@/components/shared/DataRenderer.tsx";
 import { DIETICIANS_EMPTY } from "@/constants/states.ts";
 import DieticiansTable from "@/components/tables/DieticiansTable.tsx";
 import PermanentSurveyForm from "@/components/permanentSurveyForm.tsx";
+import ClientViewBloodOrder from "@/components/ClientViewBloodOrder.tsx";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -57,7 +58,7 @@ const ClientDashboard = () => {
           onValueChange={(value) => setActiveView(value as View)}
           className="w-full"
         >
-          <TabsList className="grid w-full max-w-md grid-cols-2 mb-8">
+          <TabsList className="grid w-full max-w-2xl grid-cols-3 mb-8">
             <TabsTrigger value="dieticians" className="flex items-center gap-2">
               <Users className="h-4 w-4" />
               {t("dieticians_table.title")}
@@ -68,6 +69,13 @@ const ClientDashboard = () => {
             >
               <FileText className="h-4 w-4" />
               {t("client_dashboard.permanent_survey")}
+            </TabsTrigger>
+            <TabsTrigger
+                value="blood_test_order"
+                className="flex items-center gap-2"
+            >
+              <FileText className="h-4 w-4" />
+              {t("client_dashboard.blood_test_order")}
             </TabsTrigger>
           </TabsList>
 
@@ -126,6 +134,26 @@ const ClientDashboard = () => {
                   variants={containerVariants}
                 >
                   <PermanentSurveyForm />
+                </motion.div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="blood_test_order">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5" />
+                  {t("client_dashboard.blood_test_order")}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={containerVariants}
+                >
+                  <ClientViewBloodOrder />
                 </motion.div>
               </CardContent>
             </Card>

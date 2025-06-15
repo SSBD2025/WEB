@@ -133,7 +133,7 @@ export const DateTimeRangePicker = ({
                     {t("date_time_picker.apply")}
                 </Button>
                 <Button variant="ghost" className="self-end" onClick={handleClear}>
-                    Clear Filters
+                    Clear FiltersTODO
                 </Button>
             </div>
         </div>
