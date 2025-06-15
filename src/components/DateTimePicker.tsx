@@ -9,6 +9,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
+import { t } from "i18next"
 
 type DateTimeValue = {
     date: Date | undefined
@@ -21,7 +22,7 @@ type DateTimePickerProps = {
 }
 
 const formatEUDateTime = (date?: Date) => {
-    if (!date) return "Select date and time"
+    if (!date) return t("date_time_picker.placeholder")
     const day = date.getDate().toString().padStart(2, "0")
     const month = (date.getMonth() + 1).toString().padStart(2, "0")
     const year = date.getFullYear()
@@ -122,14 +123,14 @@ export const DateTimeRangePicker = ({
         {hasResults && (
         <div className="flex flex-col gap-4 py-4">
             <div className="flex gap-6 items-end">
-                <DateTimePicker label="From" value={since} onChange={setSince} />
-                <DateTimePicker label="To" value={before} onChange={setBefore} />
+                <DateTimePicker label={t("date_time_picker.from")} value={since} onChange={setSince} />
+                <DateTimePicker label={t("date_time_picker.to")} value={before} onChange={setBefore} />
                 <Button
                     className="self-end"
                     onClick={() => onApply(formatToISO(since), formatToISO(before))}
                     disabled={!isValidRange()}
                 >
-                    Apply Filters
+                    {t("date_time_picker.apply")}
                 </Button>
                 <Button variant="ghost" className="self-end" onClick={handleClear}>
                     Clear Filters
@@ -139,9 +140,9 @@ export const DateTimeRangePicker = ({
         )}
         {!hasResults && (
             <div className="border rounded-lg p-4 text-center text-sm text-muted-foreground">
-                No results found for the selected range.
+                {t("date_time_picker.no_results")}
                 <Button variant="link" className="ml-2" onClick={handleClear}>
-                    Clear filters
+                    {t("date_time_picker.clear")}
                 </Button>
             </div>
         )}
