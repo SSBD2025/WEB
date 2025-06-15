@@ -35,5 +35,6 @@ export enum BloodParameter {
 export interface BloodTestOrder {
     clientId: string;
     description: string;
+    orderDate?: string;
     parameters: BloodParameter[];
 }

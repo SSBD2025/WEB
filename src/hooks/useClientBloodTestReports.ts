@@ -4,7 +4,10 @@ import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { axiosErrorHandler } from "@/lib/axiosErrorHandler";
-import { getClientReports, getClientReportsByDietician } from "@/api/client.api";
+import {getBloodTestOrder, getClientReports, getClientReportsByDietician} from "@/api/client.api";
+import {BloodTestOrder} from "@/types/medical_examination";
+
+export const CLIENT_VIEW_BLOOD_ORDER = "client_view_blood_order"
 
 export const useClientBloodTestReports = (enabled: boolean = true) => {
     const { t } = useTranslation();
@@ -66,3 +69,30 @@ export const useClientBloodTestByDieticianReports = (clientId?: string) => {
 
     return query;
 };
+
+export const useClientViewBloodTestOrder = () => {
+    const { t } = useTranslation();
+
+    const query = useQuery<BloodTestOrder, Error>({
+        queryKey: [CLIENT_VIEW_BLOOD_ORDER],
+        queryFn: () => getBloodTestOrder(),
+    })
+
+    useEffect(() => {
+        if (query.error) {
+            if (axios.isAxiosError(query.error)) {
+                const status = query.error.response?.status;
+                if (status === 401) {
+                    toast.error(t("errors.unauthorized"));
+                } else if (status === 403) {
+                    toast.error(t("errors.accessDenied"));
+                } else {
+                    axiosErrorHandler(query.error, t("errors.generic"));
+                }
+            } else {
+                toast.error(t("errors.unknown"));
+            }
+        }
+    }, [query.error, t]);
+    return query;
+}
