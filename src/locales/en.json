@@ -590,13 +590,23 @@
   "client_dashboard": {
     "dashboard_title": "Client Dashboard",
     "search": "Enter first name, last name or e-mail address",
-    "permanent_survey": "Constant parameters survey"
+    "permanent_survey": "Constant parameters survey",
+    "available_dieticians": "Available dieticians"
   },
   "dieticians_table": {
     "title": "Dieticians List",
     "name": "First name and last name",
     "email": "E-mail address",
-    "choose_dietician": "Choose Dietician"
+    "choose_dietician": "Choose Dietician",
+    "dietician": "Dietician",
+    "contact": "Contact",
+    "action": "Action",
+    "confirm": "Confirm your dietician selection",
+    "are_you_sure1": "Are you sure you want to choose",
+    "are_you_sure2": "as your dietician?",
+    "after_confirm": "Once confirmed, you will be able to start working with your chosen dietitian.",
+    "cancel": "Cancel",
+    "assigning": "Assigning..."
   },
   "food_pyramids": {
     "list_title": "Food Pyramids",
@@ -751,6 +761,7 @@
   "permanent_survey_form": {
     "height_required": "Height is required",
     "height_message": "Height must be a number greater than 0",
+    "max_height": "Maximum height is 220",
     "date_of_birth_required": "Date of birth is required",
     "gender_required": "Gender is required",
     "activity_level_required": "Choose activity level",
@@ -782,6 +793,7 @@
     "height": "Height (cm)",
     "date_of_birth": "Date of birth",
     "gender": "Gender",
+    "choose_gender": "Choose gender",
     "gender_name": {
       "man": "Man",
       "female": "Female"
@@ -826,7 +838,10 @@
     "sending": "Sending...",
     "send": "Send survey",
     "none": "None",
-    "not_found": "Permanent parameters survey not found"
+    "not_found": "Permanent parameters survey not found",
+    "confirm_dialog_title": "Confirmation of sending the survey",
+    "confirm_dialog_description": "Are you sure you want to send the survey?",
+    "cancel": "Cancel"
   },
   "submit_permanent_survey": {
     "success": "The survey was successfully sent",
@@ -844,7 +859,7 @@
     "selected": "selected",
     "submit": "Submit Order",
     "submitting": "Submitting...",
-    "error_no_parameters": "Please select at least one blood parameter.",
+    "parameters_required": "Please select at least one blood parameter.",
     "parameters_list": {
       "HGB": "Hemoglobin (HGB)",
       "HCT": "Hematocrit (HCT)",
@@ -879,6 +894,10 @@
       "B6": "Vitamin B6 (B6)"
     },
     "success": "Blood tests were successfully ordered",
-    "error": "Blood tests could not be ordered"
+    "error": "Blood tests could not be ordered",
+    "dialog_title": "Confirmation of the blood test order",
+    "dialog_description": "Are you sure you want to order blood tests for this client?",
+    "cancel": "Cancel",
+    "ordering": "Ordering..."
   }
 }

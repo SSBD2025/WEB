@@ -2,10 +2,16 @@ import { useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce.ts";
 import { useGetAllAvailableDieticians } from "@/hooks/useGetAllAvailableDieticians";
 import { t } from "i18next";
-import { Search } from "lucide-react";
+import { Search, Users, FileText } from "lucide-react";
 import { Input } from "@/components/ui/input.tsx";
-import { Button } from "@/components/ui/button.tsx";
-import { motion, Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import DataRenderer from "@/components/shared/DataRenderer.tsx";
 import { DIETICIANS_EMPTY } from "@/constants/states.ts";
 import DieticiansTable from "@/components/tables/DieticiansTable.tsx";
@@ -33,69 +39,98 @@ const ClientDashboard = () => {
   };
 
   return (
-    <main className="flex-grow items-center justify-center flex flex-col">
-      <div className="w-full max-w-4xl px-4 py-6">
-        <h2 className="text-xl font-semibold mb-6">
-          {t("client_dashboard.dashboard_title")}
-        </h2>
+    <main className="flex-grow items-center justify-center flex flex-col bg-gradient-to-br from-background to-muted/20">
+      <div className="w-full max-w-6xl px-4 py-8">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          className="mb-8"
+        >
+          <h1 className="text-3xl font-bold tracking-tight mb-2">
+            {t("client_dashboard.dashboard_title")}
+          </h1>
+        </motion.div>
 
-        <div className="flex space-x-4 mb-6">
-          <Button
-            variant={activeView === "dieticians" ? "default" : "outline"}
-            onClick={() => setActiveView("dieticians")}
-          >
-            {t("dieticians_table.title")}
-          </Button>
-          <Button
-            variant={activeView === "permanent_survey" ? "default" : "outline"}
-            onClick={() => setActiveView("permanent_survey")}
-          >
-            {t("client_dashboard.permanent_survey")}
-          </Button>
-        </div>
-
-        {activeView === "dieticians" && (
-          <>
-            <div className="relative mb-4 max-w-xs">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-              <Input
-                id="search"
-                type="text"
-                placeholder={t("client_dashboard.search")}
-                value={searchPhrase}
-                onChange={(e) => handleSearch(e.target.value)}
-                className="pl-8"
-              />
-            </div>
-
-            <motion.div
-              className="relative w-full overflow-auto"
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
+        <Tabs
+          value={activeView}
+          onValueChange={(value) => setActiveView(value as View)}
+          className="w-full"
+        >
+          <TabsList className="grid w-full max-w-md grid-cols-2 mb-8">
+            <TabsTrigger value="dieticians" className="flex items-center gap-2">
+              <Users className="h-4 w-4" />
+              {t("dieticians_table.title")}
+            </TabsTrigger>
+            <TabsTrigger
+              value="permanent_survey"
+              className="flex items-center gap-2"
             >
-              <DataRenderer
-                status={status}
-                data={data}
-                empty={DIETICIANS_EMPTY}
-                render={(dieticians) => (
-                  <DieticiansTable dieticians={dieticians} />
-                )}
-              />
-            </motion.div>
-          </>
-        )}
+              <FileText className="h-4 w-4" />
+              {t("client_dashboard.permanent_survey")}
+            </TabsTrigger>
+          </TabsList>
 
-        {activeView === "permanent_survey" && (
-            <motion.div
-                className="mt-4"
-                initial="hidden"
-                animate="visible"
-                variants={containerVariants}
-            >
-              <PermanentSurveyForm />
-            </motion.div>
-        )}
+          <TabsContent value="dieticians" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="h-5 w-5" />
+                  {t("client_dashboard.available_dieticians")}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="relative mb-6 max-w-sm">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                  <Input
+                    id="search"
+                    type="text"
+                    placeholder={t("client_dashboard.search")}
+                    value={searchPhrase}
+                    onChange={(e) => handleSearch(e.target.value)}
+                    className="pl-10"
+                  />
+                </div>
+
+                <motion.div
+                  className="relative w-full"
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
+                >
+                  <DataRenderer
+                    status={status}
+                    data={data}
+                    empty={DIETICIANS_EMPTY}
+                    render={(dieticians) => (
+                      <DieticiansTable dieticians={dieticians} />
+                    )}
+                  />
+                </motion.div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="permanent_survey">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5" />
+                  {t("client_dashboard.permanent_survey")}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
+                >
+                  <PermanentSurveyForm />
+                </motion.div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
       </div>
     </main>
   );
