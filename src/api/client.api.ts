@@ -77,6 +77,14 @@ export const getPermanentSurvey = async () => {
   return response.data;
 }
 
+export const assignFoodPyramidToClient = async (clientId: string, foodPyramidId: string) => {
+  const response = await apiClient.post(`/mod/client-food-pyramids`, {
+    clientId,
+    foodPyramidId,
+  })
+  return response.data
+}
+
 export const getBloodTestOrder = async () => {
   const response = await apiClient.get(`/mod/clients/blood-test-order`);
   return response.data;

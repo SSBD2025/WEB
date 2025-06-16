@@ -18,9 +18,9 @@ import { Separator } from "@/components/ui/separator"
 import { Info, Plus, Trash2 } from "lucide-react"
 import { t } from "i18next"
 import { useEffect, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -133,6 +133,15 @@ const nutritionGoalInfo = {
   MASS_GAIN: t("permanent_survey_form.nutrition_goal_info.mass_gain"),
 }
 
+const convertTo12Hour = (time24: string): string => {
+  if (!time24) return ""
+  const [hours, minutes] = time24.split(":")
+  const hour = Number.parseInt(hours, 10)
+  const ampm = hour >= 12 ? "PM" : "AM"
+  const hour12 = hour % 12 || 12
+  return `${hour12}:${minutes} ${ampm}`
+}
+
 const getDefaultMealTimes = (mealsCount: number): string[] => {
   const defaultTimes: { [key: number]: string[] } = {
     1: ["12:00"],
@@ -155,6 +164,8 @@ interface EditPermanentSurveyFormProps {
 }
 
 const EditPermanentSurveyForm = ({ survey, onSuccess }: EditPermanentSurveyFormProps) => {
+  const { i18n } = useTranslation()
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -217,7 +228,7 @@ const EditPermanentSurveyForm = ({ survey, onSuccess }: EditPermanentSurveyFormP
         previousMealsPerDay.current = mealsPerDay
       }
     }
-  }, [mealsPerDay, mealTimesArray, form])
+  }, [mealsPerDay, mealTimesArray, form, i18n.language])
 
   useEffect(() => {
     if (survey) {
@@ -691,17 +702,33 @@ const EditPermanentSurveyForm = ({ survey, onSuccess }: EditPermanentSurveyFormP
                     />
 
                     <div className="space-y-4">
-                      <RequiredFormLabel>
-                        {t("permanent_survey_form.meal_times")} ({mealTimesArray.fields.length}{" "}
-                        {t("permanent_survey_form.meals")})
-                      </RequiredFormLabel>
+                      <div className="flex items-center justify-between">
+                        <RequiredFormLabel>
+                          {t("permanent_survey_form.meal_times")} ({mealTimesArray.fields.length}{" "}
+                          {t("permanent_survey_form.meals")})
+                        </RequiredFormLabel>
+                        <div className="text-sm text-muted-foreground">
+                          {t("permanent_survey_form.time_format_label")}
+                        </div>
+                      </div>
+                      <FormDescription className="text-sm">
+                        {t("permanent_survey_form.time_format_helper")}
+                      </FormDescription>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {mealTimesArray.fields.map((field, index) => (
                           <div key={field.id} className="flex items-center gap-2">
                             <Label className="w-20 text-sm text-muted-foreground">
                               {t("permanent_survey_form.meal")} {index + 1}:
                             </Label>
-                            <Input type="time" {...form.register(`mealTimes.${index}.time`)} className="flex-grow" />
+                            <div className="flex-grow">
+                              <Input type="time" {...form.register(`mealTimes.${index}.time`)} className="flex-grow" />
+                              {i18n.language !== "pl" && (
+                                <div className="text-xs text-muted-foreground mt-1">
+                                  {form.watch(`mealTimes.${index}.time`) &&
+                                    convertTo12Hour(form.watch(`mealTimes.${index}.time`))}
+                                </div>
+                              )}
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -762,15 +789,6 @@ const EditPermanentSurveyForm = ({ survey, onSuccess }: EditPermanentSurveyFormP
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
-                      <AlertDialogAction
-                        onClick={() => {
-                          setShowConfirmDialog(false)
-                          form.handleSubmit(onSubmit)()
-                        }}
-                        disabled={isPending}
-                      >
-                        {isPending ? t("permanent_survey_form.updating") : t("permanent_survey_form.confirm_update")}
-                      </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>

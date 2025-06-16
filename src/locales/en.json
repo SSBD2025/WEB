@@ -487,7 +487,9 @@
     "not_your_pyramid": "This pyramid does not belong to you.",
     "feedback_not_found": "Feedback not found",
     "not_your_feedback": "This is not your feedback.",
-    "permanent_survey_not_found": "Permanent survey not found."
+    "permanent_survey_not_found": "Permanent survey not found.",
+    "food_pyramid_already_assigned": "Food pyramid is already assigned",
+    "food_pyramid_not_found": "Food pyramid not found"
   },
   "role_change": {
     "log_error": "Failed to log role change:"
@@ -557,7 +559,27 @@
     "available_actions": "Available Actions",
     "view_client_charts": "View user charts",
     "order_medical_examinations": "Order blood tests",
-    "view_permanent_survey": "View permanent parameters survey"
+    "view_permanent_survey": "View permanent parameters survey",
+    "assign_food_pyramid": "Assign Food Pyramid"
+  },
+  "assign_food_pyramid": {
+    "title": "Assign Food Pyramid",
+    "subtitle": "Select a food pyramid to assign to {{clientName}}",
+    "select_pyramid": "Select Food Pyramid",
+    "select_placeholder": "Choose a pyramid...",
+    "pyramid_details": "Pyramid nutritional information",
+    "average_rating": "Average rating",
+    "assign": "Assign Pyramid",
+    "assigning": "Assigning...",
+    "success": "Food pyramid assigned successfully",
+    "error": "Failed to assign food pyramid",
+    "no_pyramids": "No food pyramids available",
+    "loading": "Loading pyramids...",
+    "confirm_dialog": {
+      "title": "Confirm Pyramid Assignment",
+      "description": "Are you sure you want to assign the pyramid \"{{pyramidName}}\" to {{clientName}}?",
+      "confirm": "Assign Pyramid"
+    }
   },
   "dietician_dashboard": {
     "clients_list_title": "Clients list",
@@ -839,6 +861,8 @@
     "eating_habits_min": "Eating habits must be at least 10 characters long",
     "eating_habits_max": "Eating habits can have a maximum of 500 characters",
     "eating_habits_limit": "/500 characters (minimum 10)",
+    "time_format_helper": "Enter times in 24-hour format (00:00 - 23:59). Example: 21:00 equals 9:00 PM",
+    "time_format_label": "Format: 24h (e.g. 21:00 = 9:00 PM)",
     "activity_level_info": {
       "sedentary": "Little or no physical activity, sedentary work",
       "light": "Light activity 1-3 times a week",
@@ -1005,5 +1029,10 @@
     "parameters": "Blood parameters to test",
     "exportcsv":  "Export to file",
     "noData": "No data"
+  },
+  "nutrients": {
+    "protein": "protein",
+    "carbohydrates": "carbohydrates",
+    "fat": "fat"
   }
 }

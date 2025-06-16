@@ -487,7 +487,9 @@
     "not_your_pyramid": "Ta piramida nie należy do Ciebie.",
     "feedback_not_found": "Nie znaleziono opinii",
     "not_your_feedback": "To nie jest Twoja opinia.",
-    "permanent_survey_not_found": "Permanent survey not found."
+    "permanent_survey_not_found": "Nie znaleziono ankiety stałej.",
+    "food_pyramid_already_assigned": "Ta piramida żywieniowa jest już przypisana do tego klienta",
+    "food_pyramid_not_found": "Nie znaleziono piramidy"
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -557,7 +559,28 @@
     "available_actions": "Dostępne Akcje",
     "view_client_charts": "Wyświetl wykresy klienta",
     "order_medical_examinations": "Zleć badania krwi",
-    "view_permanent_survey": "Ankieta parametrów stałych"
+    "view_permanent_survey": "Ankieta parametrów stałych",
+    "assign_food_pyramid": "Przypisz Piramidę Żywieniową"
+
+  },
+  "assign_food_pyramid": {
+    "title": "Przypisz Piramidę Żywieniową",
+    "subtitle": "Wybierz piramidę żywieniową do przypisania dla {{clientName}}",
+    "select_pyramid": "Wybierz Piramidę Żywieniową",
+    "select_placeholder": "Wybierz piramidę...",
+    "pyramid_details": "Informacje żywieniowe piramidy",
+    "average_rating": "Średnia ocena",
+    "assign": "Przypisz Piramidę",
+    "assigning": "Przypisywanie...",
+    "success": "Piramida żywieniowa została przypisana pomyślnie",
+    "error": "Nie udało się przypisać piramidy żywieniowej",
+    "no_pyramids": "Brak dostępnych piramid żywieniowych",
+    "loading": "Ładowanie piramid...",
+    "confirm_dialog": {
+      "title": "Potwiedź przypisanie piramidy",
+      "description": "Czy na pewno chcesz przypisać piramidę \"{{pyramidName}}\" do klienta {{clientName}}?",
+      "confirm": "Przypisz piramidę"
+    }
   },
   "dietician_dashboard": {
     "clients_list_title": "Lista klientów",
@@ -839,6 +862,8 @@
     "confirm_update_title": "Czy na pewno chcesz zaktualizować ankietę parametrów stałych?",
     "confirm_update_description": "Ta akcja spowoduje zmianę kluczowych parametrów dotyczących twojego zdrowia.",
     "confirm_update": "Zaktualizuj ankietę",
+    "time_format_helper": "Wprowadź godziny w formacie 24-godzinnym (00:00 - 23:59)",
+    "time_format_label": "Format: 24h (np. 21:00)",
     "activity_level_info": {
       "sedentary": "Mało lub brak aktywności fizycznej, praca siedząca",
       "light": "Lekka aktywność 1-3 razy w tygodniu",
@@ -1005,5 +1030,10 @@
     "parameters": "Parametry krwi do zbadania",
     "exportcsv":  "Wyeksportuj do pliku",
     "noData": "Brak danych"
+  },
+  "nutrients": {
+    "protein": "białko",
+    "carbohydrates": "węglowodany",
+    "fat": "tłuszcze"
   }
 }

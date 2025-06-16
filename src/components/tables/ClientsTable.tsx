@@ -5,7 +5,8 @@ import type { Client } from "@/types/user"
 import { Link } from "react-router"
 import ROUTES from "@/constants/routes.ts"
 import { useState } from "react"
-import {ChevronDown, ChevronRight, User} from "lucide-react"
+import { ChevronDown, ChevronRight, User } from "lucide-react"
+import AssignFoodPyramidModal from "@/components/AssignFoodPyramidModal"
 
 const rowVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
@@ -40,8 +41,34 @@ const expandVariants: Variants = {
 const ClientsTable = ({ clients }: { clients: Client[] }) => {
   const [expandedClient, setExpandedClient] = useState<string | null>(null)
 
+  const [assignPyramidModal, setAssignPyramidModal] = useState<{
+    isOpen: boolean
+    clientId: string
+    clientName: string
+  }>({
+    isOpen: false,
+    clientId: "",
+    clientName: "",
+  })
+
   const toggleClient = (clientId: string) => {
     setExpandedClient(expandedClient === clientId ? null : clientId)
+  }
+
+  const openAssignPyramidModal = (clientId: string, clientName: string) => {
+    setAssignPyramidModal({
+      isOpen: true,
+      clientId,
+      clientName,
+    })
+  }
+
+  const closeAssignPyramidModal = () => {
+    setAssignPyramidModal({
+      isOpen: false,
+      clientId: "",
+      clientName: "",
+    })
   }
 
   return (
@@ -138,6 +165,14 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
                           {t("clients_table.view_permanent_survey")}
                         </Button>
                         </Link>
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => openAssignPyramidModal(id, `${firstName} ${lastName}`)}
+                        >
+                          <Button variant="outline" size="sm" className="w-full justify-start">
+                            {t("clients_table.assign_food_pyramid")}
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -147,6 +182,12 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
           )
         })}
       </div>
+      <AssignFoodPyramidModal
+        isOpen={assignPyramidModal.isOpen}
+        onClose={closeAssignPyramidModal}
+        clientId={assignPyramidModal.clientId}
+        clientName={assignPyramidModal.clientName}
+      />
     </>
   )
 }
