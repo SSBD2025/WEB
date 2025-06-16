@@ -1,10 +1,11 @@
-import { useQuery } from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { axiosErrorHandler } from "@/lib/axiosErrorHandler";
-import {getBloodTestOrder, getClientReports, getClientReportsByDietician} from "@/api/client.api";
+import {BloodTestReport} from "@/types/blood_test_report";
+import {getBloodTestOrder, getClientReports, getClientReportsByDietician, updateBloodTestReport} from "@/api/client.api";
 import {BloodTestOrder} from "@/types/medical_examination";
 
 export const CLIENT_VIEW_BLOOD_ORDER = "client_view_blood_order"
@@ -95,4 +96,40 @@ export const useClientViewBloodTestOrder = () => {
         }
     }, [query.error, t]);
     return query;
-}
+};
+
+export const useUpdateBloodTestReport = (
+    refetch: () => Promise<unknown>,
+    onSuccess?: () => void,
+    onSettled?: () => void
+) => {
+    const { t } = useTranslation();
+
+    const mutation = useMutation({
+        mutationFn: (updatedReport: BloodTestReport) => updateBloodTestReport(updatedReport),
+        onSuccess: async () => {
+            await refetch();
+            toast.success(t("blood_test_reports.report_updated"));
+            onSuccess?.();
+        },
+        onError: (error) => {
+            console.error("Error updating report:", error);
+
+            if (axios.isAxiosError(error)) {
+                const status = error.response?.status;
+                if (status === 401) {
+                    toast.error(t("errors.unauthorized"));
+                } else if (status === 403) {
+                    toast.error(t("errors.accessDenied"));
+                } else {
+                    toast.error(t("blood_test_reports.update_error"));
+                }
+            } else {
+                toast.error(t("errors.unknown"));
+            }
+        },
+        onSettled,
+    });
+
+    return mutation;
+};

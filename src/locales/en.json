@@ -489,7 +489,8 @@
     "not_your_feedback": "This is not your feedback.",
     "permanent_survey_not_found": "Permanent survey not found.",
     "food_pyramid_already_assigned": "Food pyramid is already assigned",
-    "food_pyramid_not_found": "Food pyramid not found"
+    "food_pyramid_not_found": "Food pyramid not found",
+    "client_blood_test_report_not_found": "No reports found"
   },
   "role_change": {
     "log_error": "Failed to log role change:"
@@ -602,6 +603,8 @@
     "edit_report": "Edit report",
     "report_updated": "Report updated",
     "update_error": "An error occured during update",
+    "client_blood_test_report_not_found": "No reports found.",
+    "permanent_survey_not_found": "No permanent survey found.",
     "insert": {
       "insert_title": "Insert clients blood test report",
       "clear_all": "Clear all",
