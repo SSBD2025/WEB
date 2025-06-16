@@ -487,9 +487,10 @@
     "not_your_pyramid": "Ta piramida nie należy do Ciebie.",
     "feedback_not_found": "Nie znaleziono opinii",
     "not_your_feedback": "To nie jest Twoja opinia.",
-    "permanent_survey_not_found": "Nie znaleziono ankiety stałej.",
     "food_pyramid_already_assigned": "Ta piramida żywieniowa jest już przypisana do tego klienta",
-    "food_pyramid_not_found": "Nie znaleziono piramidy"
+    "food_pyramid_not_found": "Nie znaleziono piramidy",
+    "client_blood_test_report_not_found": "Nie znaleziono wyników",
+    "permanent_survey_not_found": "Nie znaleziono ankiety parametrów stałych"
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -603,6 +604,8 @@
     "edit_report": "Edytuj raport",
     "report_updated": "Wyniki zaktualizowane",
     "update_error": "Wystąpił błąd podczas aktualizacji badań",
+    "client_blood_test_report_not_found": "Nie znaleziono wyników.",
+    "permanent_survey_not_found": "Nie znaleziono ankiety parametrów stałych.",
     "insert": {
       "insert_title": "Wstaw raport z badania krwi klienta",
       "clear_all": "Wyczyść wszystko",
