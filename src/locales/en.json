@@ -438,7 +438,8 @@
     "periodic_survey_list": "Periodic surveys",
     "blood_test_reports": "Blood test reports",
     "charts": "Medical charts",
-    "permanent_survey": "Permanent parameters survey"
+    "permanent_survey": "Permanent parameters survey",
+    "blood_test_order": "Blood test order"
   },
   "exceptions": {
     "account_is_autolocked": "The account has not been logged on in quite a while! Check your inbox for an activation link!",
@@ -1032,6 +1033,15 @@
     "parameters": "Blood parameters to test",
     "exportcsv":  "Export to file",
     "noData": "No data"
+  },
+  "blood_test_orders": {
+    "page_title": "Unfulfilled blood test orders",
+    "no_orders": "No blood test orders",
+    "parameters": "Parameters",
+    "order_date": "Order Date",
+    "description_label": "Description",
+    "fulfilled": "Fulfilled",
+    "pending": "Pending"
   },
   "nutrients": {
     "protein": "protein",

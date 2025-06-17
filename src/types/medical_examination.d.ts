@@ -1,3 +1,5 @@
+import { AccountData } from "./user";
+
 export enum BloodParameter {
     HGB = "HGB",
     HCT = "HCT",
@@ -37,4 +39,10 @@ export interface BloodTestOrder {
     description: string;
     orderDate?: string;
     parameters: BloodParameter[];
+}
+
+
+export interface BloodTestOrderWithClient {
+    bloodTestOrderDTO: BloodTestOrder;
+    minimalClientDTO: AccountData;
 }

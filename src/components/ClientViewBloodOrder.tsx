@@ -131,7 +131,7 @@ export default function ClientViewBloodOrder() {
             </Card>
             {csvUrl && (
                 <a href={csvUrl.url} download={csvUrl.fileName}>
-                    <Button>{t("common.exportCSV")}</Button>
+                    <Button>{t("view_blood_order.exportcsv")}</Button>
                 </a>
             )}
         </main>
