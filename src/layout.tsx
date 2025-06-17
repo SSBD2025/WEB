@@ -27,7 +27,7 @@ import {
   DieticianPeriodicSurveyListPage,
   FoodPyramidDetails,
   DieticianOrderMedicalExaminations,
-  TempSurveyPage,
+  PermanentSurveyPage,
   DieticianViewAllBloodOrdersPage,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
@@ -111,7 +111,7 @@ const Layout = () => {
               element={<ClientPeriodicSurveyListPage />}
             />
           </Route>
-          <Route path={ROUTES.CLIENT_PERMANENT_SURVEY} element={<TempSurveyPage />} />
+          <Route path={ROUTES.CLIENT_PERMANENT_SURVEY} element={<PermanentSurveyPage />} />
           <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
             <Route
               path={ROUTES.ADMIN_USER_DETAILS}
