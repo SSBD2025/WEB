@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { assignFoodPyramidToClient } from "@/api/client.api"
 import { toast } from "sonner"
 import { useTranslation } from "react-i18next"
+import { axiosErrorHandler } from "@/lib/axiosErrorHandler"
 import type { AxiosError } from "axios"
 
 interface AssignFoodPyramidData {
@@ -21,16 +22,7 @@ export const useAssignFoodPyramid = () => {
       queryClient.invalidateQueries({ queryKey: ["clientPyramidsByDietician"] })
     },
     onError: (error: AxiosError) => {
-      if (error.response?.status === 409) {
-          toast.error(t("exceptions.food_pyramid_already_assigned"))
-      } else if (error.response?.status === 404) {
-        const errorMessage = error.response?.data as string
-        if (errorMessage === "client_not_found") {
-          toast.error(t("exceptions.client_not_found"))
-        } else if (errorMessage === "food_pyramid_not_found") {
-          toast.error(t("exceptions.food_pyramid_not_found"))
-        }
-      }
-    },
+      axiosErrorHandler(error, t("exceptions.unknown_error"))
+    }
   })
 }

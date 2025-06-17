@@ -3,6 +3,8 @@ import { motion, Variants } from "framer-motion"
 import DataRenderer from "@/components/shared/DataRenderer"
 import FoodPyramidsTable from "@/components/tables/FoodPyramidsTable"
 import { t } from "i18next"
+import BackButton from "@/components/shared/BackButton"
+import ROUTES from "@/constants/routes"
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -24,6 +26,9 @@ const FoodPyramidsList = () => {
   return (
     <main className="flex-grow container mx-auto px-4 py-6">
       <motion.div className="w-full" initial="hidden" animate="visible" variants={containerVariants}>
+        <div className="mb-6">
+          <BackButton route={ROUTES.DIETICIAN_DASHBOARD} />
+        </div>
         <DataRenderer
           status={status}
           data={data}
