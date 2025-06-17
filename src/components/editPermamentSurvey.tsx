@@ -789,6 +789,15 @@ const EditPermanentSurveyForm = ({ survey, onSuccess }: EditPermanentSurveyFormP
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogCancel>{t("common.cancel")}</AlertDialogCancel>
+                      <Button
+                        onClick={() => {
+                          setShowConfirmDialog(false)
+                          form.handleSubmit(onSubmit)()
+                        }}
+                        disabled={isPending}
+                      >
+                        {isPending ? t("permanent_survey_form.updating") : t("permanent_survey_form.confirm_update")}
+                      </Button>
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>

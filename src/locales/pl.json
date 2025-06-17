@@ -839,6 +839,8 @@
     "success": "Udało się przypisać dietetyka"
   },
   "permanent_survey_form": {
+    "fix_errors_first": "Napraw błędy w formularzu przed edycją",
+    "form_has_errors": "Twój forumularz ma błędy popraw je",
     "edit_title": "Edytuj ankietę stałą",
     "edit_description": "Zaktualizuj swoją ankietę nowymi informacjami.",
     "updating": "Aktualizacja...",
