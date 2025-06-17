@@ -640,7 +640,11 @@
     "search": "Enter first name, last name or e-mail address",
     "permanent_survey": "Constant parameters survey",
     "available_dieticians": "Available dieticians",
-    "blood_test_order": "Blood test order"
+    "blood_test_order": "Blood test order",
+    "no_dietician_assigned_title": "No dietician assigned",
+    "no_dietician_assigned_description": "You don't have a dietician assigned.",
+    "survey_already_submitted_title": "You have already submitted the survey",
+    "survey_already_submitted_description": "You don't have to do anything else"
   },
   "dieticians_table": {
     "title": "Dieticians List",
@@ -1009,7 +1013,15 @@
     "dialog_title": "Confirmation of the blood test order",
     "dialog_description": "Are you sure you want to order blood tests for this client?",
     "cancel": "Cancel",
-    "ordering": "Ordering..."
+    "ordering": "Ordering...",
+    "client_id_required": "Client ID is required.",
+    "client_not_found": "Client not found",
+    "client_not_found_details": "Couldn't find a client",
+    "client_has_no_assigned_dietician": "Client has no assigned dietician",
+    "client_has_no_assigned_dietician_details": "The selected client does not have a dietician assigned",
+    "access_denied": "Access denied",
+    "access_denied_details": "You don't have access to this client",
+    "unknown_error": "Unexpected error"
   },
   "survey-comparison": {
     "weight": "Weight",

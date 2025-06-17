@@ -5,7 +5,7 @@ import { t } from "i18next";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { useOrderMedicalExaminations } from "@/hooks/useOrderMedicalExaminations";
+import { useOrderMedicalExaminations, useClientValidation } from "@/hooks/useOrderMedicalExaminations";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
   AlertDialog,
@@ -20,6 +20,8 @@ import {
 import ROUTES from "@/constants/routes";
 import { AlertCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import DataRenderer from "@/components/shared/DataRenderer";
+import axios from "axios";
 
 enum BloodParameter {
   HGB = "HGB",
@@ -76,6 +78,12 @@ export const OrderMedicalExaminationsForm = ({
   );
 
   const {
+    data: clientData,
+    status: clientValidationStatus,
+    error: clientValidationError,
+  } = useClientValidation(clientId);
+
+  const {
     register,
     handleSubmit,
     control,
@@ -89,6 +97,53 @@ export const OrderMedicalExaminationsForm = ({
   });
 
   const selectedParameters = watch("parameters");
+
+  if (!clientId) {
+    return (
+      <div className="flex items-center justify-center p-8">
+        <Alert variant="destructive">
+          <AlertCircle className="h-4 w-4" />
+          <AlertDescription>
+            {t("order_medical_examinations.client_id_required")}
+          </AlertDescription>
+        </Alert>
+      </div>
+    );
+  }
+
+  const mappedError = (() => {
+    if (!clientValidationError) return undefined;
+
+    if (axios.isAxiosError(clientValidationError)) {
+      const status = clientValidationError.response?.status;
+
+      if (status === 404) {
+        return {
+          title: t("order_medical_examinations.client_not_found"),
+          details: t("order_medical_examinations.client_not_found_details"),
+        };
+      }
+
+      if (status === 409) {
+        return {
+          title: t("order_medical_examinations.client_has_no_assigned_dietician"),
+          details: t("order_medical_examinations.client_has_no_assigned_dietician_details"),
+        }
+      }
+
+      if (status === 403) {
+        return {
+          title: t("order_medical_examinations.access_denied"),
+          details: t("order_medical_examinations.access_denied_details"),
+        };
+      }
+    }
+
+    return {
+      title: t("order_medical_examinations.unknown_error"),
+      details: t("states.error.default.message"),
+    };
+  })();
 
   const onSubmit = (data: FormValues) => {
     setError(null);
@@ -165,144 +220,166 @@ export const OrderMedicalExaminationsForm = ({
   }));
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        {error && (
-          <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-
-        <div className="space-y-2">
-          <Label
-            htmlFor="description"
-            className={`text-base font-medium ${errors.description ? "text-destructive" : ""}`}
-          >
-            {t("order_medical_examinations.description")} <span className="text-red-500">*</span>
-          </Label>
-          <Textarea
-            id="description"
-            {...register("description", {
-              required: t(
-                "order_medical_examinations.description_required",
-              ) as string,
-              minLength: {
-                value: 10,
-                message: t("order_medical_examinations.description_min_length"),
-              },
-              maxLength: {
-                value: 500,
-                message: t("order_medical_examinations.description_max_length"),
-              },
-            })}
-            placeholder={t(
-              "order_medical_examinations.description_placeholder",
+    <DataRenderer
+      status={clientValidationStatus}
+      data={clientData ? [clientData] : null}
+      error={mappedError}
+      render={() => (
+        <>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            {error && (
+              <Alert variant="destructive">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
             )}
-            className="min-h-[120px] resize-none"
-          />
-          {errors.description && (
-            <p className="text-sm text-destructive mt-1">
-              {errors.description.message}
-            </p>
-          )}
-        </div>
 
-        <div className="space-y-3">
-          <div className="flex justify-between items-center">
-            <Label
-              className={`text-base font-medium ${errors.parameters ? "text-destructive" : ""}`}
-            >
-              {t("order_medical_examinations.parameters")} <span className="text-red-500">*</span>
-            </Label>
-            <span className="text-sm text-muted-foreground">
-              {selectedParameters.length}/31{" "}
-              {t("order_medical_examinations.selected")}
-            </span>
-          </div>
+            <div className="space-y-2">
+              <Label
+                htmlFor="description"
+                className={`text-base font-medium ${errors.description ? "text-destructive" : ""}`}
+              >
+                {t("order_medical_examinations.description")}<span className="text-red-500">*</span>
+              </Label>
+              <Textarea
+                id="description"
+                {...register("description", {
+                  required: t(
+                    "order_medical_examinations.description_required",
+                  ) as string,
+                  minLength: {
+                    value: 10,
+                    message: t(
+                      "order_medical_examinations.description_min_length",
+                    ),
+                  },
+                  maxLength: {
+                    value: 500,
+                    message: t(
+                      "order_medical_examinations.description_max_length",
+                    ),
+                  },
+                })}
+                placeholder={t(
+                  "order_medical_examinations.description_placeholder",
+                )}
+                className="min-h-[120px] resize-none"
+              />
+              {errors.description && (
+                <p className="text-sm text-destructive mt-1">
+                  {errors.description.message}
+                </p>
+              )}
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[300px] overflow-y-auto p-2 border rounded-md">
-            {bloodParameters.map((param) => (
-              <div key={param.value} className="flex items-center space-x-2">
-                <Controller
-                  name="parameters"
-                  control={control}
-                  rules={{
-                    validate: (value) =>
-                      value.length > 0 ||
-                      t("order_medical_examinations.parameters_required"),
-                  }}
-                  render={({ field }) => (
-                    <Checkbox
-                      id={`param-${param.value}`}
-                      checked={field.value?.includes(
-                        param.value as BloodParameter,
-                      )}
-                      onCheckedChange={(checked) => {
-                        const updatedValue = checked
-                          ? [...field.value, param.value as BloodParameter]
-                          : field.value.filter(
-                              (value) => value !== param.value,
-                            );
-                        field.onChange(updatedValue);
-                      }}
-                      disabled={
-                        !field.value?.includes(param.value as BloodParameter) &&
-                        selectedParameters.length >= 31
-                      }
-                    />
-                  )}
-                />
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
                 <Label
-                  htmlFor={`param-${param.value}`}
-                  className="text-sm cursor-pointer"
+                  className={`text-base font-medium ${errors.parameters ? "text-destructive" : ""}`}
                 >
-                  {param.label}
+                  {t("order_medical_examinations.parameters")}<span className="text-red-500">*</span>
                 </Label>
+                <span className="text-sm text-muted-foreground">
+                  {selectedParameters.length}/31{" "}
+                  {t("order_medical_examinations.selected")}
+                </span>
               </div>
-            ))}
-          </div>
-          {errors.parameters && (
-            <p className="text-sm text-destructive mt-1">
-              {errors.parameters.message}
-            </p>
-          )}
-        </div>
 
-        <div className="flex justify-end pt-4">
-          <Button type="submit" disabled={isPending} className="min-w-[150px]">
-            {isPending
-              ? t("order_medical_examinations.submitting")
-              : t("order_medical_examinations.submit")}
-          </Button>
-        </div>
-      </form>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-h-[300px] overflow-y-auto p-2 border rounded-md">
+                {bloodParameters.map((param) => (
+                  <div
+                    key={param.value}
+                    className="flex items-center space-x-2"
+                  >
+                    <Controller
+                      name="parameters"
+                      control={control}
+                      rules={{
+                        validate: (value) =>
+                          value.length > 0 ||
+                          t("order_medical_examinations.parameters_required"),
+                      }}
+                      render={({ field }) => (
+                        <Checkbox
+                          id={`param-${param.value}`}
+                          checked={field.value?.includes(
+                            param.value as BloodParameter,
+                          )}
+                          onCheckedChange={(checked) => {
+                            const updatedValue = checked
+                              ? [...field.value, param.value as BloodParameter]
+                              : field.value.filter(
+                                  (value) => value !== param.value,
+                                );
+                            field.onChange(updatedValue);
+                          }}
+                          disabled={
+                            !field.value?.includes(
+                              param.value as BloodParameter,
+                            ) && selectedParameters.length >= 31
+                          }
+                        />
+                      )}
+                    />
+                    <Label
+                      htmlFor={`param-${param.value}`}
+                      className="text-sm cursor-pointer"
+                    >
+                      {param.label}
+                    </Label>
+                  </div>
+                ))}
+              </div>
+              {errors.parameters && (
+                <p className="text-sm text-destructive mt-1">
+                  {errors.parameters.message}
+                </p>
+              )}
+            </div>
 
-      <AlertDialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle>
-              {t("order_medical_examinations.dialog_title")}
-            </AlertDialogTitle>
-            <AlertDialogDescription>
-              {t("order_medical_examinations.dialog_description")}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogCancel onClick={handleCancelSubmit}>
-              {t("order_medical_examinations.cancel")}
-            </AlertDialogCancel>
-            <AlertDialogAction
-              onClick={handleConfirmSubmit}
-              disabled={isPending}
-            >
-              {isPending
-                ? t("order_medical_examinations.ordering")
-                : t("order_medical_examinations.submit")}
-            </AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </>
+            <div className="flex justify-end pt-4">
+              <Button
+                type="submit"
+                disabled={isPending}
+                className="min-w-[150px]"
+              >
+                {isPending
+                  ? t("order_medical_examinations.submitting")
+                  : t("order_medical_examinations.submit")}
+              </Button>
+            </div>
+          </form>
+
+          <AlertDialog
+            open={showConfirmDialog}
+            onOpenChange={setShowConfirmDialog}
+          >
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>
+                  {t("order_medical_examinations.dialog_title")}
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  {t("order_medical_examinations.dialog_description")}
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel onClick={handleCancelSubmit}>
+                  {t("order_medical_examinations.cancel")}
+                </AlertDialogCancel>
+                <AlertDialogAction
+                  onClick={handleConfirmSubmit}
+                  disabled={isPending}
+                >
+                  {isPending
+                    ? t("order_medical_examinations.ordering")
+                    : t("order_medical_examinations.submit")}
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+        </>
+      )}
+    />
   );
 };

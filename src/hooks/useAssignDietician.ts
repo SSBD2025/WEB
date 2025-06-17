@@ -22,6 +22,7 @@ export const CLIENT_STATUS = ["client-status"];
 
 interface ClientStatus {
   hasAssignedDietician: boolean;
+  hasSubmittedPermanentSurvey: boolean;
 }
 
 export const useClientStatus = () => {
