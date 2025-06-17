@@ -491,7 +491,16 @@
     "permanent_survey_not_found": "Permanent survey not found.",
     "food_pyramid_already_assigned": "Food pyramid is already assigned",
     "food_pyramid_not_found": "Food pyramid not found",
-    "client_blood_test_report_not_found": "No reports found"
+    "client_blood_test_report_not_found": "No reports found",
+    "periodic_survey_not_found": "Periodic survey not found",
+    "account_constraint_violation": "Account constraint violation",
+    "no_active_HTTP_request_context": "No active HTTP request context",
+    "account_unlock_attempt": "Account unlock attempt without permission",
+    "dietician_not_found": "Dietician not found",
+    "blood_test_result_not_found": "Blood test result not found",
+    "invalid_blood_parameter_name": "Invalid blood parameter name",
+    "client_food_pyramid_not_found": "Client food pyramid not found",
+    "client_not_assigned": "Client not assigned to this dietician"
   },
   "role_change": {
     "log_error": "Failed to log role change:"

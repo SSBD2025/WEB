@@ -491,7 +491,16 @@
     "food_pyramid_already_assigned": "Ta piramida żywieniowa jest już przypisana do tego klienta",
     "food_pyramid_not_found": "Nie znaleziono piramidy",
     "client_blood_test_report_not_found": "Nie znaleziono wyników",
-    "permanent_survey_not_found": "Nie znaleziono ankiety parametrów stałych"
+    "permanent_survey_not_found": "Nie znaleziono ankiety parametrów stałych",
+    "periodic_survey_not_found": "Nie znaleziono ankiety okresowej",
+    "account_constraint_violation": "Naruszenie ograniczeń konta",
+    "no_active_HTTP_request_context": "Brak aktywnego kontekstu żądania HTTP",
+    "account_unlock_attempt": "Próba odblokowania konta bez uprawnień",
+    "dietician_not_found": "Nie znaleziono dietetyka",
+    "blood_test_result_not_found": "Nie znaleziono wyników badań krwi",
+    "invalid_blood_parameter_name": "Nieprawidłowa nazwa parametru krwi",
+    "client_food_pyramid_not_found": "Nie znaleziono przypisanej piramidy żywieniowej dla tego klienta",
+    "client_not_assigned": "Klient nie jest przypisany do tego dietetyka"
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
