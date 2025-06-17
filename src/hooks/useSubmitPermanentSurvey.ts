@@ -5,6 +5,8 @@ import { t } from "i18next";
 import { toast } from "sonner";
 import { PermanentSurvey } from "@/types/permanent_survey.ts";
 import { getClientPermanentSurvey } from "@/api/dietician.api.ts";
+import {queryClient} from "@/lib/queryClient.ts";
+import {CLIENT_STATUS} from "@/hooks/useAssignDietician.ts";
 
 export const useSubmitPermanentSurvey = () => {
   return useMutation({
@@ -13,6 +15,7 @@ export const useSubmitPermanentSurvey = () => {
       axiosErrorHandler(error, t("submit_permanent_survey.error")),
     onSuccess: () => {
       toast.success(t("submit_permanent_survey.success"));
+      queryClient.invalidateQueries({ queryKey: CLIENT_STATUS })
     },
   });
 };

@@ -641,7 +641,11 @@
     "search": "Wprowadź imię, nazwisko lub adres e-mail",
     "permanent_survey": "Ankieta parametrów stałych",
     "available_dieticians": "Dostępni dietetycy",
-    "blood_test_order": "Zlecenie badań krwi"
+    "blood_test_order": "Zlecenie badań krwi",
+    "no_dietician_assigned_title": "Brak przypisanego dietetyka",
+    "no_dietician_assigned_description": "Nie masz przypisanego dietetyka.",
+    "survey_already_submitted_title": "Wypełniłeś już ankietę",
+    "survey_already_submitted_description": "Nie musisz nic więcej robić"
   },
   "dieticians_table": {
     "title": "Lista Dietetyków",
@@ -1010,7 +1014,15 @@
     "dialog_title": "Potwierdzenie zlecenia badań krwi",
     "dialog_description": "Czy na pewno chcesz zlecić badania krwi dla tego klienta?",
     "cancel": "Anuluj",
-    "ordering": "Zlecanie..."
+    "ordering": "Zlecanie...",
+    "client_id_required": "ID klienta jest wymagane.",
+    "client_not_found": "Nie znaleziono klienta",
+    "client_not_found_details": "Nie udało się znaleźć klienta",
+    "client_has_no_assigned_dietician": "Klient nie ma przypisanego dietetyka",
+    "client_has_no_assigned_dietician_details": "Wybrany klient nie ma przypisanego dietetyka",
+    "access_denied": "Odmowa dostępu",
+    "access_denied_details": "Nie masz dostępu do tego klienta",
+    "unknown_error": "Nieoczekiwany błąd"
   },
   "survey-comparison": {
     "weight": "Waga",

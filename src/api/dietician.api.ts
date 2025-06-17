@@ -25,6 +25,11 @@ export const getClientPermanentSurvey = async (clientId: string) => {
   return response.data;
 }
 
+export const getClientById = async (clientId: string) => {
+  const response = await apiClient.get(`/mod/dieticians/client/${clientId}`);
+  return response.data;
+}
+
 export const getAllBloodTestOrders = async () => {
   const response = await apiClient.get("/mod/dieticians/orders");
   return response.data;

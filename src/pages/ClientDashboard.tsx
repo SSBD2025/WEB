@@ -3,11 +3,18 @@ import { useDebounce } from "@/hooks/useDebounce.ts";
 import { useGetAllAvailableDieticians } from "@/hooks/useGetAllAvailableDieticians";
 import { useClientStatus } from "@/hooks/useAssignDietician";
 import { t } from "i18next";
-import { Search, Users, FileText } from "lucide-react";
+import {
+  Search,
+  Users,
+  FileText,
+  AlertCircle,
+  CheckCircle,
+} from "lucide-react";
 import { Input } from "@/components/ui/input.tsx";
 import { motion, type Variants } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import DataRenderer from "@/components/shared/DataRenderer.tsx";
 import { DIETICIANS_EMPTY } from "@/constants/states.ts";
 import DieticiansTable from "@/components/tables/DieticiansTable.tsx";
@@ -36,6 +43,10 @@ const ClientDashboard = () => {
     setSearchPhrase(value);
   };
 
+  const hasAssignedDietician = clientStatus?.hasAssignedDietician === true;
+  const hasSubmittedPermanentSurvey = clientStatus?.hasSubmittedPermanentSurvey === true;
+  const isPermanentSurveyTabDisabled = (!hasAssignedDietician || hasSubmittedPermanentSurvey) && !isClientStatusLoading;
+
   return (
     <main className="flex-grow items-center justify-center flex flex-col bg-gradient-to-br from-background to-muted/20">
       <div className="w-full max-w-6xl px-4 py-8">
@@ -63,13 +74,17 @@ const ClientDashboard = () => {
             <TabsTrigger
               value="permanent_survey"
               className="flex items-center gap-2"
+              disabled={isPermanentSurveyTabDisabled}
             >
               <FileText className="h-4 w-4" />
               {t("client_dashboard.permanent_survey")}
+              {hasSubmittedPermanentSurvey && (
+                <CheckCircle className="h-3 w-3 text-green-500 ml-1" />
+              )}
             </TabsTrigger>
             <TabsTrigger
-                value="blood_test_order"
-                className="flex items-center gap-2"
+              value="blood_test_order"
+              className="flex items-center gap-2"
             >
               <FileText className="h-4 w-4" />
               {t("client_dashboard.blood_test_order")}
@@ -110,9 +125,7 @@ const ClientDashboard = () => {
                     render={(dieticians) => (
                       <DieticiansTable
                         dieticians={dieticians}
-                        hasAssignedDietician={
-                          clientStatus?.hasAssignedDietician === true
-                        }
+                        hasAssignedDietician={hasAssignedDietician}
                         isLoadingStatus={isClientStatusLoading}
                       />
                     )}
@@ -136,7 +149,33 @@ const ClientDashboard = () => {
                   animate="visible"
                   variants={containerVariants}
                 >
-                  <PermanentSurveyForm />
+                  {isClientStatusLoading ? (
+                    <div className="flex items-center justify-center py-8">
+                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                    </div>
+                  ) : !hasAssignedDietician ? (
+                    <Alert>
+                      <AlertCircle className="h-4 w-4" />
+                      <AlertTitle>
+                        {t("client_dashboard.no_dietician_assigned_title")}
+                      </AlertTitle>
+                      <AlertDescription>
+                        {t("client_dashboard.no_dietician_assigned_description")}
+                      </AlertDescription>
+                    </Alert>
+                  ) : hasSubmittedPermanentSurvey ? (
+                    <Alert>
+                      <CheckCircle className="h-4 w-4" />
+                      <AlertTitle>
+                        {t("client_dashboard.survey_already_submitted_title")}
+                      </AlertTitle>
+                      <AlertDescription>
+                        {t("client_dashboard.survey_already_submitted_description")}
+                      </AlertDescription>
+                    </Alert>
+                  ) : (
+                    <PermanentSurveyForm />
+                  )}
                 </motion.div>
               </CardContent>
             </Card>
@@ -152,9 +191,9 @@ const ClientDashboard = () => {
               </CardHeader>
               <CardContent>
                 <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
                 >
                   <ClientViewBloodOrder />
                 </motion.div>
