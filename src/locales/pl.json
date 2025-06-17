@@ -642,6 +642,7 @@
     "permanent_survey": "Ankieta parametrów stałych",
     "available_dieticians": "Dostępni dietetycy",
     "blood_test_order": "Zlecenie badań krwi",
+    "periodic_survey": "Ankieta okresowa",
     "no_dietician_assigned_title": "Brak przypisanego dietetyka",
     "no_dietician_assigned_description": "Nie masz przypisanego dietetyka.",
     "survey_already_submitted_title": "Wypełniłeś już ankietę",
@@ -780,6 +781,8 @@
         "blood_sugar_max": "Poziom cukru we krwi nie może być większy niż 500",
         "required": "To pole jest wymagane"
       },
+      "title": "Ankieta okresowa",
+      "description": "Ankieta okresowa może być wypłniana co 24 godziny",
       "submit_button": "Prześlij ankietę",
       "submit_alert_title": "Potwierdź przesłanie ankiety",
       "submit_alert_description": "Czy na pewno chcesz przesłać tę ankietę? Upewnij się, że wszystkie dane są poprawne."

@@ -20,6 +20,7 @@ import { DIETICIANS_EMPTY } from "@/constants/states.ts";
 import DieticiansTable from "@/components/tables/DieticiansTable.tsx";
 import PermanentSurveyForm from "@/components/permanentSurveyForm.tsx";
 import ClientViewBloodOrder from "@/components/ClientViewBloodOrder.tsx";
+import SubmitPeriodicSurveyForm from "@/components/submitPeriodicSurveyForm";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -37,7 +38,8 @@ const ClientDashboard = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const debouncedSearchPhrase = useDebounce(searchPhrase, 300);
   const { data, status } = useGetAllAvailableDieticians(debouncedSearchPhrase);
-  const { data: clientStatus, isLoading: isClientStatusLoading } = useClientStatus();
+  const { data: clientStatus, isLoading: isClientStatusLoading } =
+    useClientStatus();
 
   const handleSearch = (value: string) => {
     setSearchPhrase(value);
@@ -66,7 +68,7 @@ const ClientDashboard = () => {
           onValueChange={(value) => setActiveView(value as View)}
           className="w-full"
         >
-          <TabsList className="grid w-full max-w-2xl grid-cols-3 mb-8">
+          <TabsList className="grid w-full max-w-4xl grid-cols-4 mb-8">
             <TabsTrigger value="dieticians" className="flex items-center gap-2">
               <Users className="h-4 w-4" />
               {t("dieticians_table.title")}
@@ -82,6 +84,15 @@ const ClientDashboard = () => {
                 <CheckCircle className="h-3 w-3 text-green-500 ml-1" />
               )}
             </TabsTrigger>
+
+            <TabsTrigger
+              value="periodic_survey"
+              className="flex items-center gap-2"
+            >
+              <FileText className="h-4 w-4" />
+              {t("client_dashboard.periodic_survey")}
+            </TabsTrigger>
+
             <TabsTrigger
               value="blood_test_order"
               className="flex items-center gap-2"
@@ -176,6 +187,27 @@ const ClientDashboard = () => {
                   ) : (
                     <PermanentSurveyForm />
                   )}
+                </motion.div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="periodic_survey">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <FileText className="h-5 w-5" />
+                  {t("client_dashboard.periodic_survey")}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={containerVariants}
+                >
+                 
+                  <SubmitPeriodicSurveyForm />
                 </motion.div>
               </CardContent>
             </Card>

@@ -24,6 +24,8 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
+
 
 export function SubmitPeriodicSurveyForm() {
   const { t } = useTranslation();
@@ -54,7 +56,17 @@ export function SubmitPeriodicSurveyForm() {
   };
 
   return (
-    <>
+    <div className="container max-w-2xl mx-auto py-8">
+      <Card>
+        <CardHeader>
+          <CardTitle>
+            {t("periodic_survey.form.title")}
+          </CardTitle>
+          <CardDescription>
+            {t("periodic_survey.form.description")}
+          </CardDescription>
+          </CardHeader>
+      <CardContent>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
@@ -122,6 +134,8 @@ export function SubmitPeriodicSurveyForm() {
           </Button>
         </form>
       </Form>
+      </CardContent>
+      </Card>
       <AlertDialog
         open={isSubmitDialogOpen}
         onOpenChange={setIsSubmitDialogOpen}
@@ -145,7 +159,7 @@ export function SubmitPeriodicSurveyForm() {
             </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </>
+    </div>
   );
 }
 

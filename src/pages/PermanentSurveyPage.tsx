@@ -4,8 +4,8 @@ import { useTranslation } from "react-i18next";
 import BackButton from "@/components/shared/BackButton";
 import ROUTES from "@/constants/routes";
 
-//todo przeniesc
-const TempSurveyPage = () => {
+
+const PermanentSurveyPage = () => {
   const { data: survey } = useGetPermanentSurvey()
   const { t } = useTranslation()
 
@@ -31,4 +31,4 @@ const TempSurveyPage = () => {
   )
 }
 
-export default TempSurveyPage
+export default PermanentSurveyPage
