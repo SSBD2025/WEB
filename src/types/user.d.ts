@@ -63,3 +63,10 @@ export interface Dietician {
     email: string;
   };
 }
+
+export interface AccountData {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+}

@@ -41,6 +41,7 @@ const ROUTES = {
   dieticianPermanentSurvey: (clientId: string) => `/dietician/permanent-survey/${clientId}`,
   PERIODIC_SURVEY_DETAILS: "/periodic-survey/:id",
   getPeriodicSurveyDetails: (id: string) => `/periodic-survey/${id}`,
+  DIETICIAN_MEDICAL_EXAMINATIONS_LIST: "/dietician/medical-examinations",
 };
 
 export default ROUTES;

@@ -438,7 +438,8 @@
     "periodic_survey_list": "Ankiety okresowe",
     "blood_test_reports": "Badania krwi",
     "charts": "Wykresy danych medycznych",
-    "permanent_survey": "Ankieta parametrów stałych"
+    "permanent_survey": "Ankieta parametrów stałych",
+    "blood_test_order": "Zlecenia badań krwi"
   },
   "exceptions": {
     "account_is_autolocked": "Konto nie było używane od dłuższego czasu! Sprawdź swoją skrzynkę odbiorczą, aby znaleźć link aktywacyjny!",
@@ -1033,6 +1034,15 @@
     "parameters": "Parametry krwi do zbadania",
     "exportcsv":  "Wyeksportuj do pliku",
     "noData": "Brak danych"
+  },
+  "blood_test_orders": {
+    "page_title": "Oczekujące zlecenia badań krwi",
+    "no_orders": "Brak oczekujących zleceń badań krwi",
+    "parameters": "Parametry",
+    "order_date": "Data Zlecenia",
+    "description_label": "Opis",
+    "fulfilled": "Zrealizowane",
+    "pending": "Oczekujące"
   },
   "nutrients": {
     "protein": "białko",
