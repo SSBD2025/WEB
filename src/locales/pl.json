@@ -303,6 +303,24 @@
       "permanent": {
         "title": "Permanent survey not found.",
         "message": "Looks like this client has not filled their permanent survey yet."
+      },
+      "create_diet_profile": {
+        "client": {
+          "title": "",
+          "message": ""
+        },
+        "periodic":{
+          "title": "",
+          "message": ""
+        },
+        "blood": {
+          "title": "",
+          "message": ""
+        },
+        "pyramid":{
+          "title": "",
+          "message": ""
+        }
       }
     },
     "error": {
@@ -481,6 +499,8 @@
     "permanent_survey_already_exists": "Masz już wypełnioną ankietę parametrów stałych",
     "client_has_no_assigned_dietician": "Klient nie ma przypisanego dietetyka",
     "dietician_access_denied": "Odmowa dostępu - ten klient nie jest do ciebie przypisany",
+    "access_denied": "Odmowa dostępu",
+    "unauthorized": "Brak uwierzytelnienia",
     "blood_test_already_ordered": "Zlecono już wykonanie badań krwi",
     "blood_test_order_not_found": "Nie znaleziono zlecenia badań krwi",
     "blood_test_already_fulfilled": "Zlecenie badań zostało już spełnione",
@@ -492,6 +512,7 @@
     "food_pyramid_not_found": "Nie znaleziono piramidy",
     "client_blood_test_report_not_found": "Nie znaleziono wyników",
     "permanent_survey_not_found": "Nie znaleziono ankiety parametrów stałych",
+    "unexpected": "Wystąpił niespodziewany błąd, spróbuj ponownie później.",
     "periodic_survey_not_found": "Nie znaleziono ankiety okresowej",
     "account_constraint_violation": "Naruszenie ograniczeń konta",
     "no_active_HTTP_request_context": "Brak aktywnego kontekstu żądania HTTP",
@@ -570,6 +591,7 @@
     "available_actions": "Dostępne Akcje",
     "view_client_charts": "Wyświetl wykresy klienta",
     "order_medical_examinations": "Zleć badania krwi",
+    "view_diet_profile_creator": "Przejdź do Kreatora Profili Dietetycznych",
     "view_permanent_survey": "Ankieta parametrów stałych",
     "assign_food_pyramid": "Przypisz Piramidę Żywieniową"
 
@@ -1074,5 +1096,87 @@
     "protein": "białko",
     "carbohydrates": "węglowodany",
     "fat": "tłuszcze"
+  },
+  "create_diet_profile": {
+    "permanent_survey": {
+      "table_name": "DANE KLIENTA I ANKIETA PARAMETRÓW STAŁYCH",
+      "name": "Imię",
+      "height": "Wzrost",
+      "activity_level": "Poziom aktywności",
+      "meals_per_day": "Posiłki na dzień",
+      "nutrition_goal": "Cel żywieniowy",
+      "eating_habits": "Zwyczaje żywieniowe",
+      "gender": {
+        "gender": "Płeć",
+        "male": "Mężczyzna",
+        "female": "Kobieta"
+      },
+      "drinks_alcohol": {
+        "drinks": "Spożywa alkohol",
+        "true": "Tak",
+        "false": "Nie"
+      },
+      "smokes": {
+        "smokes": "Palący",
+        "true": "Tak",
+        "false": "Nie"
+      },
+      "age": {
+        "age": "Wiek",
+        "no_date_of_birth": "Brak danych"
+      },
+      "medications": "Leki",
+      "illnesses": "Choroby",
+      "allergies": "Alergie",
+      "diet_preferences": "Preferencje dietetyczne",
+      "meal_times": "Godziny posiłków"
+    },
+    "periodic_survey": {
+      "table_name": "ANKIETA OKRESOWA",
+      "list": "Lista ankiet okresowych",
+      "from": "z",
+      "blood_sugar_level": "Poziom cukru we krwi",
+      "weight": "Waga",
+      "blood_pressure": "Ciśnienie krwi",
+      "measurement_date": "Data pomiaru:"
+    },
+    "existing_profiles_list": {
+      "table_name": "Lista istniejących profili"
+    },
+    "algorithm_pane": {
+      "table_name": "ALGORYTM",
+      "save_button": "ZAPISZ",
+      "parameter_name": "Nazwa parametru",
+      "existing": "Istniejący plan żywieniowy",
+      "workspace": "Obszar roboczy",
+      "algorithm": "Wygenerowany przez algorytm"
+    },
+    "blood_test_reports": {
+      "table_name": "BADANIA KRWI",
+      "from": "z",
+      "error": "Wystąpił błąd",
+      "parameter": "Parametr",
+      "result": "Wynik",
+      "norm": "Norma",
+      "status": "Status",
+      "measurement_date": "Data pomiaru:"
+    },
+    "name_pyramid_modal": {
+      "title": "Nazwa nowej piramidy",
+      "description": "Podaj nazwę, pod którą chcesz zapisać nową piramidę.",
+      "placeholder": "Nazwa piramidy",
+      "cancel": "Anuluj",
+      "submit": "Zapisz"
+    },
+    "confirm_modal": {
+      "title": "Potwierdź zapis",
+      "description": "Czy na pewno chcesz zapisać nową piramidę pod nazwą:",
+      "cancel": "Anuluj",
+      "submit": "Zapisz"
+    },
+    "error": "Nie udało się utworzyć i przypisać planu żywieniowego.",
+    "success": "Plan został przypisany do klienta.",
+    "no_data": "Brak danych"
+
   }
 }

@@ -6,12 +6,13 @@ interface Props<T> {
     title: string;
     details: string;
   };
-  data: T[] | null | undefined;
+  data: T | T[] | null | undefined;
   empty?: {
     title: string;
     message: string;
   };
-  render: (data: T[]) => React.ReactNode;
+  render: (data: T extends unknown[] ? T : T[]) => React.ReactNode;
+  className?: string;
 }
 
 interface StateSkeletonProps {
@@ -35,26 +36,26 @@ const LoadingSkeleton = () => (
 );
 
 const DataRenderer = <T,>({
-  status,
-  error,
-  data,
-  empty = DEFAULT_EMPTY,
-  render,
-}: Props<T>) => {
-    if (status === "loading") return <LoadingSkeleton />;
-
+                            status,
+                            error,
+                            data,
+                            empty = DEFAULT_EMPTY,
+                            render,
+                            className = "",
+                          }: Props<T>) => {
+  if (status === "loading") return <LoadingSkeleton />;
   if (status === "error")
     return (
-      <StateSkeleton
-        title={error?.title || DEFAULT_ERROR.title}
-        message={error?.details || DEFAULT_ERROR.message}
-      />
+        <StateSkeleton
+            title={error?.title || DEFAULT_ERROR.title}
+            message={error?.details || DEFAULT_ERROR.message}
+        />
     );
-
-  if (!data || data.length === 0)
+  if (Array.isArray(data) && data.length === 0)
     return <StateSkeleton title={empty.title} message={empty.message} />;
-
-  return <div>{render(data)}</div>;
+  if (!data)
+    return <StateSkeleton title={empty.title} message={empty.message} />;
+  return <div className={`h-full ${className}`}>{render(data as T extends unknown[] ? T : T[])}</div>;
 };
 
 export default DataRenderer;

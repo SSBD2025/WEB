@@ -26,6 +26,7 @@ import DieticianClientInsertBloodTestReportPage from "@/pages/DieticianClientIns
 import ClientMedicalChartsPage from "@/pages/ClientMedicalChartsPage.tsx";
 import DieticianOrderMedicalExaminations from "@/pages/DieticianOrderMedicalExaminations.tsx";
 import PermanentSurveyPage from "@/pages/PermanentSurveyPage.tsx";
+import CreateDietProfilePage from "@/pages/CreateDietProfilePage.tsx";
 import DieticianViewAllBloodOrdersPage from "@/pages/DieticianViewAllBloodOrdersPage.tsx";
 
 export {
@@ -58,4 +59,5 @@ export {
   DieticianOrderMedicalExaminations,
   PermanentSurveyPage,
   DieticianViewAllBloodOrdersPage,
+  CreateDietProfilePage,
 };

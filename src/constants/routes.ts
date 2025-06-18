@@ -42,6 +42,8 @@ const ROUTES = {
   PERIODIC_SURVEY_DETAILS: "/periodic-survey/:id",
   getPeriodicSurveyDetails: (id: string) => `/periodic-survey/${id}`,
   DIETICIAN_MEDICAL_EXAMINATIONS_LIST: "/dietician/medical-examinations",
+  createDietProfile: (clientId: string) => `/dietician/diet-profile/create/${clientId}`,
+  DIETICIAN_CREATE_DIET_PROFILE: "/dietician/diet-profile/create/:clientId",
 };
 
 export default ROUTES;
