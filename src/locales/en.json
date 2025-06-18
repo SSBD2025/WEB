@@ -658,6 +658,15 @@
       }
     }
   },
+  "confirm_blood_test_updates": {
+    "title": "Confirm Changes",
+    "description": "Are you sure you want to save the changes made to the blood test report?",
+    "report_date": "Report Date:",
+    "parameters_count": "Number of parameters:",
+    "cancel": "Cancel",
+    "confirm": "Confirm Changes",
+    "saving": "Saving..."
+  },
   "client_dashboard": {
     "dashboard_title": "Client Dashboard",
     "search": "Enter first name, last name or e-mail address",
@@ -716,7 +725,7 @@
     "no_clients_assigned": "No clients are currently assigned to this pyramid."
   },
   "client_food_pyramid_list": {
-    "title": "List of your food pyramids",
+    "title": "List of food pyramids",
     "no_data": "No diet profiles available to display.",
     "active_pyramid": "Active pyramid",
     "archive_pyramid": "Archive pyramid",
@@ -992,7 +1001,7 @@
   },
   "order_medical_examinations": {
     "title": "Ordering blood tests",
-    "back_to_dashboard": "Return",
+    "back_to_dashboard": "Back",
     "description": "Description",
     "description_placeholder": "Enter a description of the medical tests...",
     "description_required": "Description is required.",

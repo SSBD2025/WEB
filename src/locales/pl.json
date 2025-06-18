@@ -658,6 +658,15 @@
       }
     }
   },
+  "confirm_blood_test_updates": {
+    "title": "Potwierdź zmiany",
+    "description": "Czy na pewno chcesz zapisać wprowadzone zmiany w raporcie badań krwi?",
+    "report_date": "Data raportu:",
+    "parameters_count": "Liczba parametrów:",
+    "cancel": "Anuluj",
+    "confirm": "Potwierdź zmiany",
+    "saving": "Zapisywanie..."
+  },
   "client_dashboard": {
     "dashboard_title": "Panel Klienta",
     "search": "Wprowadź imię, nazwisko lub adres e-mail",
@@ -716,7 +725,7 @@
     "no_clients_assigned": "Brak klientów przypisanych do tej piramidy"
   },
   "client_food_pyramid_list": {
-    "title": "Lista twoich piramid żywieniowych",
+    "title": "Lista piramid żywieniowych",
     "no_data": "Brak dostępnych profili dietetycznych do wyświetlenia.",
     "active_pyramid": "Piramida aktywna",
     "archive_pyramid": "Piramida archiwalna",
