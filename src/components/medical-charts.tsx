@@ -22,6 +22,8 @@ import { GetPeriodicSurvey } from "@/types/periodic_survey";
 import { Badge } from "./ui/badge";
 import { useGetCurrentPyramidClient } from "@/hooks/useGetCurrentPyramidClient";
 import { useGetCurrentPyramidByDietician } from "@/hooks/useGetCurrentPyramidByDietician";
+import BackButton from "./shared/BackButton";
+import ROUTES from "@/constants/routes";
 
 type RawSurvey = {
   id: string;
@@ -121,7 +123,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
 
     if (baselineSurvey.weight && latestSurvey.weight) {
       metrics.push({
-        label: t('charts.weight'),
+        label: t("charts.weight"),
         field: "weight",
         unit: "kg",
         startValue: Number(baselineSurvey.weight),
@@ -133,7 +135,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
 
     if (baselineSurvey.bloodSugarLevel && latestSurvey.bloodSugarLevel) {
       metrics.push({
-        label: t('charts.blood_sugar'),
+        label: t("charts.blood_sugar"),
         field: "bloodSugarLevel",
         unit: "mg/dl",
         startValue: Number(baselineSurvey.bloodSugarLevel),
@@ -147,12 +149,15 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
   };
 
   const formatDate = (date: string) => {
-    return new Intl.DateTimeFormat(localStorage.getItem("i18nextLng") || "pl-PL", {
-      timeZone: timezone,
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    }).format(new Date(date));
+    return new Intl.DateTimeFormat(
+      localStorage.getItem("i18nextLng") || "pl-PL",
+      {
+        timeZone: timezone,
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }
+    ).format(new Date(date));
   };
 
   const chartButtons = [
@@ -353,7 +358,9 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
       <Card>
         <CardContent className="p-6 text-center">
           <AlertCircle className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-medium mb-2">{t("charts.no_data_to_analyze")}</h3>
+          <h3 className="text-lg font-medium mb-2">
+            {t("charts.no_data_to_analyze")}
+          </h3>
           <p className="text-muted-foreground">
             {t("charts.no_data_to_analyze_description")}
           </p>
@@ -377,8 +384,8 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
   const pyramidDate = new Date(pyramidData.timestamp);
 
   const daysSincePyramid = Math.floor(
-    (new Date().getTime() - pyramidDate.getTime()) / (1000 * 60 * 60 * 24),
-  )
+    (new Date().getTime() - pyramidDate.getTime()) / (1000 * 60 * 60 * 24)
+  );
 
   return (
     <motion.div
@@ -386,11 +393,16 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
       animate={{ opacity: 1, y: 0 }}
       className="space-y-6 max-w-7xl mx-auto p-4"
     >
+      <BackButton
+        route={
+          userRole === "dietician"
+            ? ROUTES.DIETICIAN_DASHBOARD
+            : ROUTES.CLIENT_DASHBOARD
+        }
+      />
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">
-            {t("charts.header")}
-          </h1>
+          <h1 className="text-3xl font-bold">{t("charts.header")}</h1>
           <p className="text-muted-foreground mt-1">
             {t("charts.description", { days: daysSincePyramid })}
           </p>
@@ -410,21 +422,23 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
               <div className="text-sm text-muted-foreground">
                 {t("charts.name_of_pyramid")}
               </div>
-              <div className="font-medium">
-                {pyramidData.foodPyramid.name}
-              </div>
+              <div className="font-medium">{pyramidData.foodPyramid.name}</div>
             </div>
             <div>
               <div className="text-sm text-muted-foreground">
                 {t("charts.assign_date")}
               </div>
-              <div className="font-medium">{formatDate(pyramidData.timestamp)}</div>
+              <div className="font-medium">
+                {formatDate(pyramidData.timestamp)}
+              </div>
             </div>
             <div>
               <div className="text-sm text-muted-foreground">
                 {t("charts.time_period")}
               </div>
-              <div className="font-medium">{daysSincePyramid} {t("charts.days")}</div>
+              <div className="font-medium">
+                {daysSincePyramid} {t("charts.days")}
+              </div>
             </div>
           </div>
         </CardContent>
@@ -453,7 +467,9 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
                       ) : (
                         <TrendingDown className="h-3 w-3 mr-1" />
                       )}
-                      {isImprovement ? t("charts.improvement") : t("charts.decline")}
+                      {isImprovement
+                        ? t("charts.improvement")
+                        : t("charts.decline")}
                     </Badge>
                   </CardTitle>
                 </CardHeader>
@@ -550,7 +566,9 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
                         <span className="text-sm">
                           {metric.label}: {Math.abs(change).toFixed(1)}{" "}
                           {metric.unit}{" "}
-                          {metric.isLowerBetter ? t("charts.less") : t("charts.more")}
+                          {metric.isLowerBetter
+                            ? t("charts.less")
+                            : t("charts.more")}
                         </span>
                       </div>
                     );
@@ -561,7 +579,9 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
             </div>
 
             <div>
-              <h4 className="font-medium mb-3">{t("charts.fields_to_improve")}</h4>
+              <h4 className="font-medium mb-3">
+                {t("charts.fields_to_improve")}
+              </h4>
               <div className="space-y-2">
                 {metrics.map((metric) => {
                   const change = metric.currentValue - metric.startValue;
@@ -579,7 +599,9 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
                         <span className="text-sm">
                           {metric.label}: {Math.abs(change).toFixed(1)}{" "}
                           {metric.unit}{" "}
-                          {metric.isLowerBetter ? t("charts.less") : t("charts.more")}
+                          {metric.isLowerBetter
+                            ? t("charts.less")
+                            : t("charts.more")}
                         </span>
                       </div>
                     );
