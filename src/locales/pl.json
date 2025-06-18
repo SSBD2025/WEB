@@ -716,6 +716,7 @@
     "no_clients_assigned": "Brak klientów przypisanych do tej piramidy"
   },
   "client_food_pyramid_list": {
+    "title": "Lista twoich piramid żywieniowych",
     "no_data": "Brak dostępnych profili dietetycznych do wyświetlenia.",
     "active_pyramid": "Piramida aktywna",
     "archive_pyramid": "Piramida archiwalna",
@@ -868,6 +869,7 @@
     "success": "Udało się przypisać dietetyka"
   },
   "permanent_survey_form": {
+    "max_5_items": "Maksymalnie 5",
     "fix_errors_first": "Napraw błędy w formularzu przed edycją",
     "form_has_errors": "Twój forumularz ma błędy popraw je",
     "edit_title": "Edytuj ankietę stałą",
@@ -879,7 +881,7 @@
     "error": "Error on updating the survey",
     "meal_times_auto_adjust": "Godziny posiłków dostosują się automatycznie do liczby posiłków",
     "meals": "posiłków",
-    "height_message_violation": "Wzrost musi byc między 50 a 220 cm",
+    "height_message_violation": "Wzrost to wartość z zakresu 130 - 220 cm",
     "date_of_birth_min_year": "Data urodzenia nie może być przed rokiem 1900",
     "height_required": "Wzrost jest wymagany",
     "height_message": "Wzrost musi być liczbą większą od 0",

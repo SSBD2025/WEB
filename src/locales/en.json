@@ -716,6 +716,7 @@
     "no_clients_assigned": "No clients are currently assigned to this pyramid."
   },
   "client_food_pyramid_list": {
+    "title": "List of your food pyramids",
     "no_data": "No diet profiles available to display.",
     "active_pyramid": "Active pyramid",
     "archive_pyramid": "Archive pyramid",
@@ -868,6 +869,7 @@
     "success": "Dietician assigned"
   },
   "permanent_survey_form": {
+    "max_5_items": "Max is 5",
     "fix_errors_first": "U have to fix errors in your form first",
     "form_has_errors": "Your form has error, fix them",
     "edit_title": "Edit Permanent Survey",
@@ -880,7 +882,7 @@
     "meal_times_auto_adjust": "Meal times will automatically adjust to the number of meals",
     "meals": "meals",
     "meal": "meal",
-    "height_message_violation": "Height must be beetween 50 - 220 cm",
+    "height_message_violation": "Height must be beetween 130 - 220 cm",
     "date_of_birth_min_year": "Birth date cannot be before 1900",
     "height_required": "Height is required",
     "height_message": "Height must be a number greater than 0",
