@@ -173,6 +173,11 @@ const ClientsTable = ({ clients }: { clients: Client[] }) => {
                             {t("clients_table.assign_food_pyramid")}
                           </Button>
                         </div>
+                        <Link className="cursor-pointer" to={ROUTES.createDietProfile(id)}>
+                          <Button variant="outline" size="sm" className="w-full justify-start">
+                            {t("clients_table.view_diet_profile_creator")}
+                          </Button>
+                        </Link>
                       </div>
                     </div>
                   </motion.div>

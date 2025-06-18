@@ -25,34 +25,15 @@ import {
 import { Spinner } from "@/components/ui/spinner";
 import { useTranslation } from "react-i18next";
 import EditBloodReportModal from "@/components/edit-blood-report-modal.tsx";
+import {BloodTestReport} from "@/types/blood_test_report";
 import { AxiosError } from "axios";
-
-interface BloodParameter {
-  name: string;
-  description: string;
-  unit: string;
-  standardMin: number;
-  standardMax: number;
-}
-
-interface BloodTestResult {
-  lockToken: string;
-  result: string;
-  bloodParameter: BloodParameter;
-}
-
-interface BloodTestReport {
-  lockToken: string;
-  timestamp: string;
-  results: BloodTestResult[];
-}
 
 interface BloodTestReportsProps {
   userRole: "client" | "dietician";
 }
 
 export default function BloodTestReports({ userRole }: BloodTestReportsProps) {
-  const { clientId } = useParams<{ clientId: string }>();
+  const { clientId } = useParams<{ clientId: string }>()
 
   const clientQuery = useClientBloodTestReports(userRole === "client");
   const dieticianQuery = useClientBloodTestByDieticianReports(
@@ -169,9 +150,9 @@ export default function BloodTestReports({ userRole }: BloodTestReportsProps) {
   if (!reports || reports.length === 0)
     return <p>{t("blood_test_reports.no_reports_found")}</p>;
 
-  const typedReports = reports as BloodTestReport[];
+  // const typedReports = reports as BloodTestReport[];
 
-  const sortedReports = [...typedReports].sort((a, b) => {
+  const sortedReports = [...reports].sort((a, b) => {
     const dateA = new Date(a.timestamp).getTime();
     const dateB = new Date(b.timestamp).getTime();
     return sortOrder === "desc" ? dateB - dateA : dateA - dateB;

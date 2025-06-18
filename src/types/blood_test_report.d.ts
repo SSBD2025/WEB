@@ -28,12 +28,10 @@ export interface SubmitBloodTestReport {
 }
 
 export interface BloodTestEntry {
+    id: string;
     parameterName: string;
     result: string;
-    errors?: {
-        parameterName?: string;
-        result?: string;
-    };
+    errors?: { parameterName?: string; result?: string };
 }
 
 export interface ParameterWithResult {

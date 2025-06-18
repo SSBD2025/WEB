@@ -1,4 +1,4 @@
-import type { PermanentSurvey } from "../types/permanent_survey"
+import type { PermanentSurvey } from "@/types/permanent_survey"
 import { useTranslation } from "react-i18next"
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card"
 import { Separator } from "./ui/separator"

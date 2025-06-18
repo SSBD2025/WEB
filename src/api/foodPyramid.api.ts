@@ -1,4 +1,5 @@
 import apiClient from "@/lib/apiClient";
+import {FoodPyramid} from "@/types/food_pyramid";
 
 export const getAllFoodPyramids = async () => {
   const response = await apiClient.get("/mod/food-pyramids");
@@ -21,3 +22,18 @@ export const getCurrentFoodPyramidByDietician = async (clientId: string) => {
   );
   return response.data;
 };
+
+export const getCurrentFoodPyramidByAlgorithm = async (clientId: string) => {
+  const response = await apiClient.get(
+      `/mod/algorithm/${clientId}`
+  );
+  return response.data;
+};
+
+export const submitNewFoodPyramid = async (clientId: string, payload: FoodPyramid) => {
+  const response = await apiClient.post(
+      `mod/client-food-pyramids/new/${clientId}`, payload
+  );
+
+  return response.data;
+}

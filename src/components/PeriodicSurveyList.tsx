@@ -275,7 +275,6 @@ const PeriodicSurveyList = ({
                 </motion.div>
               ))}
 
-              {/* Placeholder dla drugiej ankiety */}
               {selectedSurveys.length === 1 && (
                 <div className="flex items-center justify-center p-3 border-2 border-dashed border-muted-foreground/25 rounded-lg">
                   <div className="text-center text-muted-foreground">

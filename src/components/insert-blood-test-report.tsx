@@ -71,18 +71,21 @@ export default function InsertBloodTestReport() {
     const [showConfirmModal, setShowConfirmModal] = useState(false);
     const [entries, setEntries] = useState<BloodTestEntry[]>(() => {
         const saved = localStorage.getItem(STORAGE_KEY);
-            if (saved) {
-                try {
-                    const parsed = JSON.parse(saved);
-                    if (Array.isArray(parsed) && parsed.length > 0) {
-                        return parsed;
-                    }
-                } catch (e) {
-                    console.error("Failed to parse saved entries", e);
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    return parsed.map(entry => ({
+                        ...entry,
+                        id: entry.id || crypto.randomUUID()
+                    }));
                 }
+            } catch (e) {
+                console.error("Failed to parse saved entries", e);
             }
-            return [{ parameterName: "", result: "" }];
-        });
+        }
+        return [{ id: crypto.randomUUID(), parameterName: "", result: "" }];
+    });
 
     useEffect(() => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
@@ -95,7 +98,11 @@ export default function InsertBloodTestReport() {
             setShowIncompleteWarning(true);
             return;
         }
-        setEntries((prev) => [...prev, { parameterName: "", result: "" }]);
+        setEntries((prev) => [...prev, {
+            id: crypto.randomUUID(),
+            parameterName: "",
+            result: ""
+        }]);
     };
 
     const handleUpdateEntry = (
@@ -126,7 +133,7 @@ export default function InsertBloodTestReport() {
         }
 
         return {
-            title: t("errors.unknown_error"),
+            title: t("exceptions.unexpected_error"),
             details: error.message ?? t("errors.generic"),
         };
     })();
@@ -228,7 +235,7 @@ export default function InsertBloodTestReport() {
                         <h2 className="text-2xl font-semibold mb-4">
                             {t("blood_test_reports.insert.insert_title")}
                         </h2>
-                        <Button onClick={() => setEntries([{ parameterName: "", result: "" }])}
+                        <Button onClick={() => setEntries([{ id: crypto.randomUUID(), parameterName: "", result: "" }])}
                                 variant="destructive"
                                 className="ml-auto"
                         >
@@ -238,18 +245,17 @@ export default function InsertBloodTestReport() {
                     {status === "pending" && t("blood_test_reports.insert.loading")}
                     {status === "error" && t("blood_test_reports.insert.error.unexpected")}
                     {status === "success" && (
-                    <AnimatePresence initial={false}>
+                    <AnimatePresence>
                         {entries.map((entry, index) => {
                             const paramDetails = getParameterDetails(entry.parameterName);
                             const step = paramDetails ? (paramDetails.standardMax + paramDetails.standardMin) / 100 : 0.1;
-                            // const matchingOptions = filteredParameters(entry.parameterName);
                             return (
                                 <motion.div
-                                    key={index}
-                                    initial={{ opacity: 0, x: -10 }}
+                                    key={entry.id}
+                                    initial={{ opacity: 0, x: -50 }}
                                     animate={{ opacity: 1, x: 0 }}
-                                    exit={{ opacity: 0, x: 10 }}
-                                    transition={{ duration: 0.3 }}
+                                    exit={{ opacity: 0, x: 50 }}
+                                    transition={{ duration: 0.5, delay: index * 0.05 }}
                                 >
                                     <Card key={index} className="mb-3">
                                         <CardContent>
@@ -333,7 +339,7 @@ export default function InsertBloodTestReport() {
                                                         size="icon"
                                                         onClick={() => {
                                                             if (entries.length === 1) {
-                                                                setEntries([{ parameterName: "", result: "" }]);
+                                                                setEntries([{ id: crypto.randomUUID(), parameterName: "", result: "" }]);
                                                             } else {
                                                                 setEntries(entries.filter((_, i) => i !== index));
                                                             }

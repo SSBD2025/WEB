@@ -13,7 +13,7 @@ export const CLIENT_VIEW_BLOOD_ORDER = "client_view_blood_order"
 export const useClientBloodTestReports = (enabled: boolean = true) => {
     const { t } = useTranslation();
 
-    const query = useQuery({
+    const query = useQuery<BloodTestReport[]>({
         queryKey: ["clientReports"],
         queryFn: getClientReports,
         staleTime: 1000 * 60 * 5,
@@ -25,14 +25,14 @@ export const useClientBloodTestReports = (enabled: boolean = true) => {
             if (axios.isAxiosError(query.error)) {
                 const status = query.error.response?.status;
                 if (status === 401) {
-                    toast.error(t("errors.unauthorized"));
+                    toast.error(t("exceptions.unauthorized"));
                 } else if (status === 403) {
-                    toast.error(t("errors.accessDenied"));
+                    toast.error(t("exceptions.access_denied"));
                 } else {
                     axiosErrorHandler(query.error, t("errors.generic"));
                 }
             } else {
-                toast.error(t("errors.unknown"));
+                toast.error(t("exceptions.unexpected"));
             }
         }
     }, [query.error, t]);
@@ -43,7 +43,7 @@ export const useClientBloodTestReports = (enabled: boolean = true) => {
 export const useClientBloodTestByDieticianReports = (clientId?: string) => {
     const { t } = useTranslation();
 
-    const query = useQuery({
+    const query = useQuery<BloodTestReport[]>({
         queryKey: ["clientReports", "dietician", clientId],
         queryFn: () => getClientReportsByDietician(clientId!),
         staleTime: 1000 * 60 * 5,
@@ -55,14 +55,14 @@ export const useClientBloodTestByDieticianReports = (clientId?: string) => {
             if (axios.isAxiosError(query.error)) {
                 const status = query.error.response?.status;
                 if (status === 401) {
-                    toast.error(t("errors.unauthorized"));
+                    toast.error(t("exceptions.unauthorized"));
                 } else if (status === 403) {
-                    toast.error(t("errors.accessDenied"));
+                    toast.error(t("exceptions.access_denied"));
                 } else {
                     axiosErrorHandler(query.error, t("errors.generic"));
                 }
             } else {
-                toast.error(t("errors.unknown"));
+                toast.error(t("exceptions.unexpected"));
             }
         }
     }, [query.error, t]);
@@ -84,14 +84,14 @@ export const useClientViewBloodTestOrder = () => {
             if (axios.isAxiosError(query.error)) {
                 const status = query.error.response?.status;
                 if (status === 401) {
-                    toast.error(t("errors.unauthorized"));
+                    toast.error(t("exceptions.unauthorized"));
                 } else if (status === 403) {
-                    toast.error(t("errors.accessDenied"));
+                    toast.error(t("exceptions.access_denied"));
                 } else {
                     axiosErrorHandler(query.error, t("errors.generic"));
                 }
             } else {
-                toast.error(t("errors.unknown"));
+                toast.error(t("exceptions.unexpected"));
             }
         }
     }, [query.error, t]);
@@ -118,14 +118,14 @@ export const useUpdateBloodTestReport = (
             if (axios.isAxiosError(error)) {
                 const status = error.response?.status;
                 if (status === 401) {
-                    toast.error(t("errors.unauthorized"));
+                    toast.error(t("exceptions.unauthorized"));
                 } else if (status === 403) {
-                    toast.error(t("errors.accessDenied"));
+                    toast.error(t("exceptions.access_denied"));
                 } else {
                     toast.error(t("blood_test_reports.update_error"));
                 }
             } else {
-                toast.error(t("errors.unknown"));
+                toast.error(t("exceptions.unexpected"));
             }
         },
         onSettled,

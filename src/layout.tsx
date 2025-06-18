@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router";
+import {Route, Routes} from "react-router";
 import {
   Home,
   Login,
@@ -29,6 +29,7 @@ import {
   DieticianOrderMedicalExaminations,
   PermanentSurveyPage,
   DieticianViewAllBloodOrdersPage,
+  CreateDietProfilePage
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -154,15 +155,16 @@ const Layout = () => {
                 path={ROUTES.DIETICIAN_ORDER_MEDICAL_EXAMINATIONS}
                 element={<DieticianOrderMedicalExaminations />}
             />
+              <Route path={ROUTES.DIETICIAN_CREATE_DIET_PROFILE} element={<CreateDietProfilePage/>}/>
           </Route>
           <Route
             path={ROUTES.DIETICIAN_PERMANENT_SURVEY}
             element={<DieticianPermanentSurvey />}
           />
-          <Route 
+          <Route
             path={ROUTES.DIETICIAN_MEDICAL_EXAMINATIONS_LIST}
               element={ <DieticianViewAllBloodOrdersPage />}
-            
+
           />
           <Route element={<ProtectedRoute allowedRoles={["client"]} />}>
             <Route

@@ -19,14 +19,14 @@ export const useBloodParameter = (clientId: string) => {
             if (axios.isAxiosError(query.error)) {
                 const status = query.error.response?.status;
                 if (status === 401) {
-                    toast.error(t("errors.unauthorized"));
+                    toast.error(t("exceptions.unauthorized"));
                 } else if (status === 403) {
-                    toast.error(t("errors.accessDenied"));
+                    toast.error(t("exceptions.access_denied"));
                 } else {
                     axiosErrorHandler(query.error, t("errors.generic"));
                 }
             } else {
-                toast.error(t("errors.unknown"));
+                toast.error(t("exceptions.unexpected"));
             }
         }
     }, [query.error]);

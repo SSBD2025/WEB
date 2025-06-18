@@ -62,7 +62,6 @@ export default function DieticianPeriodicSurveyList() {
   return (
     <main className="flex-grow items-center justify-center flex flex-col">
       {status === "pending" && t("periodic_survey.loading")}
-      {status === "error" && t("periodic_survey.error.loading")}
       <div className="w-full max-w-6xl px-4 py-6">
       <BackButton route={ROUTES.DIETICIAN_DASHBOARD}/>
         {(data?.content?.length ?? 0) > 0 && !showComparison && (
