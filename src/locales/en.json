@@ -93,7 +93,8 @@
     "confirm": "Confirm",
     "no_entries": "No entries",
     "back": "Back",
-    "unexpected_error": "An unexpected error has occurred, try again later."
+    "unexpected_error": "An unexpected error has occurred, try again later.",
+    "select": "Select"
   },
   "password_reset": {
     "header": "Reset password",
@@ -1144,19 +1145,20 @@
     },
     "periodic_survey": {
       "table_name": "PERIODIC SURVEY",
-      "list": "Periodic survey list",
-      "from": "from",
+      "list": "Choose",
+      "from": "of",
       "blood_sugar_level": "Level of sugar in blood",
       "weight": "Weight",
       "blood_pressure": "Blood Pressure",
       "measurement_date": "Measurement date:"
     },
     "existing_profiles_list": {
-      "table_name": "Existing profiles list"
+      "table_name": "EXISTING PROFILES"
     },
     "algorithm_pane": {
       "table_name": "ALGORITHM",
-      "save_button": "SAVE",
+      "save_button": "Save",
+      "clear_workspace": "Clear workspace",
       "parameter_name": "Parameter name",
       "existing": "Existing diet plan",
       "workspace": "Workspace",
@@ -1164,7 +1166,7 @@
     },
     "blood_test_reports": {
       "table_name": "BLOOD TESTS",
-      "from": "from",
+      "from": "of",
       "error": "An error occurred",
       "parameter": "Parameter",
       "result": "Result",

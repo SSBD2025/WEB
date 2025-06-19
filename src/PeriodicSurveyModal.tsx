@@ -1,27 +1,27 @@
-import {Dialog, DialogContent, DialogFooter} from "@/components/ui/dialog.tsx";
-import { Button } from "@/components/ui/button";
+import {Dialog, DialogContent, DialogHeader, DialogTitle} from "@/components/ui/dialog.tsx";
 import { t } from "i18next";
 import DieticianPeriodicSurveyList from "@/components/DieticianPeriodicSurveyList.tsx";
+import { GetPeriodicSurvey } from "@/types/periodic_survey";
 
 type Props = {
-    onConfirm: () => void;
     onCancel: () => void;
+    onSurveySelect: (survey: GetPeriodicSurvey) => void;
 };
 
-export default function PeriodicSurveyModal({onConfirm, onCancel}: Props) {
+export default function PeriodicSurveyModal({onCancel, onSurveySelect}: Props) {
     return (
         <Dialog open onOpenChange={onCancel}>
-            <DialogContent className="w-full max-w-[50vw] overflow-x-auto">
-                <DieticianPeriodicSurveyList />
+            <DialogContent className="w-full min-w-[1400px] max-h-[80vh] overflow-hidden flex flex-col">
+                <DialogHeader>
+                    <DialogTitle>{t("create_diet_profile.periodic_survey.list")}</DialogTitle>
+                </DialogHeader>
+                <div className="flex-1 overflow-auto">
+                    <DieticianPeriodicSurveyList
+                        onSurveySelect={onSurveySelect}
+                        isModal={true}
+                    />
+                </div>
             </DialogContent>
-            <DialogFooter className="pt-4">
-                <Button variant="outline" onClick={onCancel}>
-                    {t("common.cancel")}
-                </Button>
-                <Button variant="outline" onClick={onConfirm}>
-                    {t("common.confirm")}
-                </Button>
-            </DialogFooter>
         </Dialog>
-    )
+    );
 }

@@ -9,12 +9,14 @@ import {getBloodTestOrder, getClientReports, getClientReportsByDietician, update
 import {BloodTestOrder} from "@/types/medical_examination";
 
 export const CLIENT_VIEW_BLOOD_ORDER = "client_view_blood_order"
+export const CLIENT_BLOOD_TEST_REPORTS = "clientReports"
+export const DIETICIAN_BLOOD_TEST_REPORTS = "dietician"
 
 export const useClientBloodTestReports = (enabled: boolean = true) => {
     const { t } = useTranslation();
 
     const query = useQuery<BloodTestReport[]>({
-        queryKey: ["clientReports"],
+        queryKey: [CLIENT_BLOOD_TEST_REPORTS],
         queryFn: getClientReports,
         staleTime: 1000 * 60 * 5,
         enabled: enabled,
@@ -44,7 +46,7 @@ export const useClientBloodTestByDieticianReports = (clientId?: string) => {
     const { t } = useTranslation();
 
     const query = useQuery<BloodTestReport[]>({
-        queryKey: ["clientReports", "dietician", clientId],
+        queryKey: [CLIENT_BLOOD_TEST_REPORTS, DIETICIAN_BLOOD_TEST_REPORTS, clientId],
         queryFn: () => getClientReportsByDietician(clientId!),
         staleTime: 1000 * 60 * 5,
         enabled: !!clientId,

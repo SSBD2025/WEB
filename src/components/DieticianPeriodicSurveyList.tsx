@@ -10,6 +10,7 @@ import { useState } from "react";
 import { DateTimeRangePicker } from "@/components/DateTimePicker.tsx";
 import ROUTES from "@/constants/routes.ts";
 import BackButton from "./shared/BackButton";
+import { GetPeriodicSurvey } from "@/types/periodic_survey";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -20,30 +21,37 @@ const containerVariants: Variants = {
   },
 };
 
-export default function DieticianPeriodicSurveyList() {
+type Props = {
+  onSurveySelect?: (survey: GetPeriodicSurvey) => void;
+  isModal?: boolean;
+};
+
+export default function DieticianPeriodicSurveyList({ onSurveySelect, isModal = false }: Props) {
   const { clientId } = useParams<{ clientId: string }>();
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const [showComparison, setShowComparison] = useState(false);
   const navigate = useNavigate();
+
   const since = searchParams.get("since") || undefined;
   const before = searchParams.get("before") || undefined;
   const pageParam = searchParams.get("page") || "1";
   const sort = searchParams.get("sort") || "measurementDate,desc";
   const page = Number.parseInt(pageParam, 10);
   const pageSize = 10;
+
   const { status, error, data } = useGetAllDieticianPeriodicSurvey(
-    {
-      page: page - 1,
-      size: pageSize,
-      since,
-      before,
-      sort,
-    },
-    clientId,
-    {
-      enabled: !!clientId,
-    }
+      {
+        page: page - 1,
+        size: pageSize,
+        since,
+        before,
+        sort,
+      },
+      clientId,
+      {
+        enabled: !!clientId,
+      }
   );
 
   const handleDateFilter = (sinceISO?: string, beforeISO?: string) => {
@@ -60,58 +68,66 @@ export default function DieticianPeriodicSurveyList() {
   }
 
   return (
-    <main className="flex-grow items-center justify-center flex flex-col">
-      {status === "pending" && t("periodic_survey.loading")}
-      <div className="w-full max-w-6xl px-4 py-6">
-      <BackButton route={ROUTES.DIETICIAN_DASHBOARD}/>
-        {(data?.content?.length ?? 0) > 0 && !showComparison && (
-          <div className="flex flex-row w-full justify-between">
-            <h2 className="text-xl font-semibold mb-6">
-              {t("periodic_survey.client.header")}
-            </h2>
-          </div>
-        )}
-        {!showComparison && (
-          <DateTimeRangePicker
-            onApply={handleDateFilter}
-            hasResults={(data?.content?.length ?? 0) > 0}
-          />
-        )}
-        <motion.div
-          className="relative w-full overflow-auto"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          <DataRenderer
-            status={status}
-            error={error}
-            data={data?.content}
-            empty={PERIODIC_SURVEY_EMPTY}
-            render={() => (
-              <PeriodicSurveyList
-                showComparison={showComparison}
-                setShowComparison={setShowComparison}
-                surveys={data?.content}
+      <main className={`flex-grow items-center justify-center flex flex-col ${isModal ? 'h-full' : ''}`}>
+        {status === "pending" && t("periodic_survey.loading")}
+        <div className={`w-full px-4 py-6 ${isModal ? 'max-w-full' : 'max-w-6xl'}`}>
+          {!isModal && <BackButton route={ROUTES.DIETICIAN_DASHBOARD}/>}
+
+          {(data?.content?.length ?? 0) > 0 && !showComparison && (
+              <div className="flex flex-row w-full justify-between">
+                <h2 className="text-xl font-semibold mb-6">
+                  {isModal ? t("create_diet_profile.periodic_survey.select_survey") : t("periodic_survey.client.header")}
+                </h2>
+              </div>
+          )}
+
+          {!showComparison && (
+              <DateTimeRangePicker
+                  onApply={handleDateFilter}
+                  hasResults={(data?.content?.length ?? 0) > 0}
               />
-            )}
-          />
-        </motion.div>
-      </div>
-      <div className="max-w-6xl w-full mx-auto px-4">
-        <div className="grid grid-cols-3 items-center py-4">
-          <div />
-          <div className="flex justify-center">
-            {(data?.content?.length ?? 0) > 0 && !showComparison && (
-              <Pagination
-                page={page}
-                isNext={!data?.last}
-                containerClasses="p-6"
-              />
-            )}
-          </div>
+          )}
+
+          <motion.div
+              className="relative w-full overflow-auto"
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+          >
+            <DataRenderer
+                status={status}
+                error={error}
+                data={data?.content}
+                empty={PERIODIC_SURVEY_EMPTY}
+                render={() => (
+                    <PeriodicSurveyList
+                        showComparison={showComparison}
+                        setShowComparison={setShowComparison}
+                        surveys={data?.content}
+                        onSurveySelect={onSurveySelect}
+                        isModal={isModal}
+                    />
+                )}
+            />
+          </motion.div>
         </div>
-      </div>
-    </main>
+
+        {!isModal && (
+            <div className="max-w-6xl w-full mx-auto px-4">
+              <div className="grid grid-cols-3 items-center py-4">
+                <div />
+                <div className="flex justify-center">
+                  {(data?.content?.length ?? 0) > 0 && !showComparison && (
+                      <Pagination
+                          page={page}
+                          isNext={!data?.last}
+                          containerClasses="p-6"
+                      />
+                  )}
+                </div>
+              </div>
+            </div>
+        )}
+      </main>
   );
 }

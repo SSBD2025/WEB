@@ -93,7 +93,8 @@
     "confirm": "Potwierdź",
     "no_entries": "Brak wpisów",
     "back": "Powrót",
-    "unexpected_error": "Wystąpił niespodziewany błąd, spróbuj ponownie później."
+    "unexpected_error": "Wystąpił niespodziewany błąd, spróbuj ponownie później.",
+    "select": "Wybierz"
   },
   "password_reset": {
     "header": "Zresetuj hasło",
@@ -1144,7 +1145,7 @@
     },
     "periodic_survey": {
       "table_name": "ANKIETA OKRESOWA",
-      "list": "Lista ankiet okresowych",
+      "list": "Wybierz",
       "from": "z",
       "blood_sugar_level": "Poziom cukru we krwi",
       "weight": "Waga",
@@ -1152,11 +1153,12 @@
       "measurement_date": "Data pomiaru:"
     },
     "existing_profiles_list": {
-      "table_name": "Lista istniejących profili"
+      "table_name": "ISTNIEJĄCE PROFILE"
     },
     "algorithm_pane": {
       "table_name": "ALGORYTM",
-      "save_button": "ZAPISZ",
+      "save_button": "Zapisz",
+      "clear_workspace": "Wyczyść obszar roboczy",
       "parameter_name": "Nazwa parametru",
       "existing": "Istniejący plan żywieniowy",
       "workspace": "Obszar roboczy",
