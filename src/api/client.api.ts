@@ -43,8 +43,8 @@ export const getAllClientsPyramids = async () => {
 }
 
 export const assignDietician = async (dieticianId: string) => {
-  const response = await apiClient.post(`/mod/clients/assign-dietician/${dieticianId}`);
-  return response.data;
+    const response = await apiClient.post(`/mod/clients/assign-dietician/${dieticianId}`);
+    return response.data;
 }
 
 export const getClientStatus = async () => {

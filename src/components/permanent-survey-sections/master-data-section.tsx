@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/accordion";
 import { t } from "i18next";
 import { FormValues } from "@/schemas/permanentSurveyForms.schema.ts";
-import {RequiredFormLabel} from "@/components/ui/requiredLabel.tsx";
+import { RequiredFormLabel } from "@/components/ui/requiredLabel.tsx";
 
 interface MasterDataSectionProps {
   form: UseFormReturn<FormValues>;
@@ -46,18 +46,21 @@ export function MasterDataSection({ form }: MasterDataSectionProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                    <RequiredFormLabel>{t("permanent_survey_form.height")}</RequiredFormLabel>
+                  <RequiredFormLabel>
+                    {t("permanent_survey_form.height")}
+                  </RequiredFormLabel>
                 </FormLabel>
                 <FormControl>
                   <Input
                     type="number"
                     placeholder="175"
-                    {...field}
-                    onChange={(e) =>
+                    value={field.value ?? ""}
+                    onChange={(e) => {
+                      const value = e.target.value;
                       field.onChange(
-                        Number.parseFloat(e.target.value) || undefined,
-                      )
-                    }
+                        value === "" ? undefined : Number.parseFloat(value),
+                      );
+                    }}
                   />
                 </FormControl>
                 <FormMessage />
@@ -71,14 +74,17 @@ export function MasterDataSection({ form }: MasterDataSectionProps) {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  <RequiredFormLabel>{t("permanent_survey_form.date_of_birth")}</RequiredFormLabel>
+                  <RequiredFormLabel>
+                    {t("permanent_survey_form.date_of_birth")}
+                  </RequiredFormLabel>
                 </FormLabel>
                 <FormControl>
                   <Input
                     type="date"
                     min={minDateString}
                     max={today}
-                    {...field}
+                    value={field.value ?? ""}
+                    onChange={field.onChange}
                   />
                 </FormControl>
                 <FormMessage />
@@ -93,15 +99,15 @@ export function MasterDataSection({ form }: MasterDataSectionProps) {
           render={({ field }) => (
             <FormItem>
               <FormLabel>
-                  <RequiredFormLabel>{t("permanent_survey_form.gender")}</RequiredFormLabel>
+                <RequiredFormLabel>
+                  {t("permanent_survey_form.gender")}
+                </RequiredFormLabel>
               </FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value ?? ""}>
                 <FormControl>
                   <SelectTrigger>
                     <SelectValue
-                      placeholder={t(
-                        "permanent_survey_form.choose_gender",
-                      )}
+                      placeholder={t("permanent_survey_form.choose_gender")}
                     />
                   </SelectTrigger>
                 </FormControl>

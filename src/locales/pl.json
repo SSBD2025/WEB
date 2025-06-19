@@ -670,7 +670,7 @@
   "client_dashboard": {
     "dashboard_title": "Panel Klienta",
     "search": "Wprowadź imię, nazwisko lub adres e-mail",
-    "permanent_survey": "Ankieta parametrów stałych",
+    "permanent_survey": "Ankieta stała",
     "available_dieticians": "Dostępni dietetycy",
     "blood_test_order": "Zlecenie badań krwi",
     "periodic_survey": "Ankieta okresowa",

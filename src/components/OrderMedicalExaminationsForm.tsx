@@ -22,6 +22,7 @@ import { AlertCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import DataRenderer from "@/components/shared/DataRenderer";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 enum BloodParameter {
   HGB = "HGB",
@@ -225,7 +226,14 @@ export const OrderMedicalExaminationsForm = ({
       data={clientData ? [clientData] : null}
       error={mappedError}
       render={() => (
-        <>
+        <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+            }}
+        >
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             {error && (
               <Alert variant="destructive">
@@ -378,7 +386,7 @@ export const OrderMedicalExaminationsForm = ({
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
-        </>
+        </motion.div>
       )}
     />
   );

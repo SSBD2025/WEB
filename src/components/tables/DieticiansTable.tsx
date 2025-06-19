@@ -49,8 +49,8 @@ const DieticiansTable = ({
 }: DieticiansTableProps) => {
   const assignDieticianMutation = useAssignDietician();
 
-  const handleAssign = (id: string) => {
-    assignDieticianMutation.mutate(id);
+  const handleAssign = (dieticianId: string) => {
+    assignDieticianMutation.mutate(dieticianId);
   };
 
   const isButtonDisabled =
@@ -153,29 +153,31 @@ const DieticiansTable = ({
                             <UserCheck className="h-5 w-5" />
                             {t("dieticians_table.confirm")}
                           </AlertDialogTitle>
-                          <AlertDialogDescription className="space-y-2">
-                            <p>
-                              {t("dieticians_table.are_you_sure1")}{" "}
-                              <strong>
-                                {firstName} {lastName}
-                              </strong>{" "}
-                              {t("dieticians_table.are_you_sure2")}
-                            </p>
-                            <div className="bg-muted p-3 rounded-lg">
-                              <div className="flex items-center gap-2 mb-2">
-                                <div>
-                                  <p className="font-medium text-sm">
-                                    {firstName} {lastName}
-                                  </p>
-                                  <p className="text-xs text-muted-foreground">
-                                    {email}
-                                  </p>
+                          <AlertDialogDescription>
+                            <div className="space-y-2">
+                              <p>
+                                {t("dieticians_table.are_you_sure1")}{" "}
+                                <strong>
+                                  {firstName} {lastName}
+                                </strong>{" "}
+                                {t("dieticians_table.are_you_sure2")}
+                              </p>
+                              <div className="bg-muted p-3 rounded-lg">
+                                <div className="flex items-center gap-2 mb-2">
+                                  <div>
+                                    <p className="font-medium text-sm">
+                                      {firstName} {lastName}
+                                    </p>
+                                    <p className="text-xs text-muted-foreground">
+                                      {email}
+                                    </p>
+                                  </div>
                                 </div>
                               </div>
+                              <p className="text-sm text-muted-foreground">
+                                {t("dieticians_table.after_confirm")}
+                              </p>
                             </div>
-                            <p className="text-sm text-muted-foreground">
-                              {t("dieticians_table.after_confirm")}
-                            </p>
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
