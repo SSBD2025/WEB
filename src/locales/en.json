@@ -670,7 +670,7 @@
   "client_dashboard": {
     "dashboard_title": "Client Dashboard",
     "search": "Enter first name, last name or e-mail address",
-    "permanent_survey": "Constant parameters survey",
+    "permanent_survey": "Permanent survey",
     "available_dieticians": "Available dieticians",
     "blood_test_order": "Blood test order",
     "periodic_survey": "Periodic survey",
