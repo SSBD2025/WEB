@@ -1,6 +1,6 @@
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card.tsx";
 import { Separator } from "@radix-ui/react-select";
-import {ArrowLeft, ArrowRight, Pencil, Save, Star} from "lucide-react";
+import {ArrowLeft, ArrowRight, Pencil, Save, Star, X} from "lucide-react";
 import {Badge} from "@/components/ui/badge"
 import {useEffect, useMemo, useState} from "react";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table";
@@ -28,6 +28,7 @@ import {
     CDP_CLIENT_PERIODIC_EMPTY,
     CDP_FOOD_PYRAMID_EMPTY,
 } from "@/constants/states.ts";
+import {GetPeriodicSurvey} from "@/types/periodic_survey";
 
 
 export default function CreateDietProfile() {
@@ -114,14 +115,6 @@ export default function CreateDietProfile() {
         }
     }, [algorithm])
 
-    const confirmSubmit = () => {
-        setIsSurveyModalOpen(false);
-    };
-
-    const cancelSubmit = () => {
-        setIsSurveyModalOpen(false);
-    };
-
     const formatUnit = (unit: string) => {
         const unitMap: Record<string, string> = {
             G_DL: "g/dL",
@@ -168,6 +161,13 @@ export default function CreateDietProfile() {
         setWorkspace((prev) => ({ ...prev, [name]: value }));
     };
 
+    const handleClearWorkspace = () => {
+        setWorkspace((prev) =>
+            Object.fromEntries(Object.keys(prev).map((key) => [key, ""]))
+        );
+    };
+
+
     const handleSave = () => {
         setIsDialogOpen(true);
     };
@@ -198,20 +198,34 @@ export default function CreateDietProfile() {
         setPendingName("");
     };
 
-
     const [currentIndexSurvey, setCurrentIndexSurvey] = useState(0);
-    const currentSurvey = periodicSurveyList?.content?.[currentIndexSurvey];
+    const [selectedSurveyFromModal, setSelectedSurveyFromModal] = useState<GetPeriodicSurvey | null>(null);
+    const currentSurvey = selectedSurveyFromModal || periodicSurveyList?.content?.[currentIndexSurvey];
     const totalSurveys = periodicSurveyList?.content?.length || 0;
+
     const goToPreviousPeriodicSurvey = () => {
+        setSelectedSurveyFromModal(null);
         setCurrentIndexSurvey(prev =>
             prev > 0 ? prev - 1 : (periodicSurveyList?.content?.length || 1) - 1
         );
     };
 
     const goToNextPeriodicSurvey = () => {
+        setSelectedSurveyFromModal(null);
         setCurrentIndexSurvey(prev =>
             prev < (periodicSurveyList?.content?.length || 1) - 1 ? prev + 1 : 0
         );
+    };
+
+    const handleSurveySelection = (survey: GetPeriodicSurvey) => {
+        setSelectedSurveyFromModal(survey);
+        const index = periodicSurveyList?.content?.findIndex(s => s.id === survey.id) ?? 0;
+        setCurrentIndexSurvey(index);
+        setIsSurveyModalOpen(false);
+    };
+
+    const cancelSubmit = () => {
+        setIsSurveyModalOpen(false);
     };
 
     const [currentIndexBlood, setCurrentIndexBlood] = useState(0);
@@ -473,7 +487,7 @@ export default function CreateDietProfile() {
 
                                         <div className="text-center">
                                             {currentSurvey?.measurementDate && (
-                                                <div className="font-medium">
+                                                <div className="font-medium text-sm">
                                                     {t("create_diet_profile.periodic_survey.measurement_date")} {formatDateTime(currentSurvey.measurementDate)}
                                                 </div>
                                             )}
@@ -513,7 +527,7 @@ export default function CreateDietProfile() {
                     data={foodPyramidsDataList}
                     empty={CDP_FOOD_PYRAMID_EMPTY}
                     render={() => (
-                    <Card>
+                    <Card className="h-full">
                         <CardHeader className="pb-3">
                             <CardTitle className="text-lg">{t("create_diet_profile.existing_profiles_list.table_name")}</CardTitle>
                         </CardHeader>
@@ -541,24 +555,30 @@ export default function CreateDietProfile() {
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
-                    className="xl:col-span-5"
+                    className="xl:col-span-5 h-full"
                 >
-                    <Card>
+                    <Card className="h-full">
                         <CardHeader className="pb-3">
                             <CardTitle className="text-lg flex flex-row justify-between items-center w-full">
                                 <span>{t("create_diet_profile.algorithm_pane.table_name")}</span>
-                                <Button onClick={handleSave} className="flex items-center gap-2">
-                                    <Save className="h-4 w-4" />
-                                    {t("create_diet_profile.algorithm_pane.save_button")}
-                                </Button>
+                                <div className="flex flex-row gap-4">
+                                    <Button onClick={handleClearWorkspace} className="flex items-center gap-2">
+                                        <X className="h-4 w-4"/>
+                                        {t("create_diet_profile.algorithm_pane.clear_workspace")}
+                                    </Button>
+                                    <Button onClick={handleSave} className="flex items-center gap-2">
+                                        <Save className="h-4 w-4" />
+                                        {t("create_diet_profile.algorithm_pane.save_button")}
+                                    </Button>
+                                </div>
                             </CardTitle>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="space-y-2 h-155 overflow-y-auto">
                             <div className="space-y-2 h-155 overflow-y-auto">
                                 <Table className="table-fixed">
                                     <TableHeader>
                                         <TableRow>
-                                            <TableHead className="text-left text-lg w-32">{t("create_diet_profile.algorithm_pane.parameter_name")}</TableHead>
+                                            <TableHead className="text-left text-lg w-24">{t("create_diet_profile.algorithm_pane.parameter_name")}</TableHead>
                                             <TableHead className="text-center text-lg w-24">{t("create_diet_profile.algorithm_pane.existing")}</TableHead>
                                             <TableHead className="w-12">
                                                 <Button
@@ -568,7 +588,9 @@ export default function CreateDietProfile() {
                                                     <ArrowRight className="h-4 w-4 mx-auto" />
                                                 </Button>
                                             </TableHead>
-                                            <TableHead className="text-center text-lg w-32">{t("create_diet_profile.algorithm_pane.workspace")}</TableHead>
+                                            <TableHead className="text-center text-lg w-24">
+                                                {t("create_diet_profile.algorithm_pane.workspace")}
+                                            </TableHead>
                                             <TableHead className="w-12">
                                                 <Button
                                                     variant="ghost"
@@ -584,9 +606,7 @@ export default function CreateDietProfile() {
                                         {nutrientRows.map((row) => (
                                             <TableRow key={row.name}>
                                                 <TableCell className="text-medium font-medium w-32">{row.name.toUpperCase()}</TableCell>
-
                                                 <TableCell className="text-medium text-center w-24">{row.existing}</TableCell>
-
                                                 <TableCell className="text-center w-12">
                                                     <Button
                                                         variant="ghost"
@@ -596,13 +616,23 @@ export default function CreateDietProfile() {
                                                         <ArrowRight className="h-3 w-3 mx-auto text-muted-foreground" />
                                                     </Button>
                                                 </TableCell>
-
                                                 <TableCell className="text-center w-24">
-                                                    <Input
-                                                        value={row.workspace}
-                                                        onChange={(e) => handleWorkspaceChange(row.name, e.target.value)}
-                                                        className="h-8 text-medium text-center w-full"
-                                                    />
+                                                    <div key={row.name} className="relative">
+                                                        <Input
+                                                            value={row.workspace}
+                                                            onChange={(e) => handleWorkspaceChange(row.name, e.target.value)}
+                                                            className="h-8 text-medium text-center w-full"
+                                                        />
+                                                        {row.workspace && (
+                                                            <Button
+                                                                variant="ghost"
+                                                                onClick={() => handleWorkspaceChange(row.name, "")}
+                                                                className="absolute right-1 top-1/2 transform -translate-y-1/2 h-6 w-6"
+                                                            >
+                                                                <X className="h-2 w-2"/>
+                                                            </Button>
+                                                        )}
+                                                    </div>
                                                 </TableCell>
 
                                                 <TableCell className="text-center w-12">
@@ -639,7 +669,6 @@ export default function CreateDietProfile() {
                     empty={CDP_CLIENT_BLOOD_EMPTY}
                     render={() => (
                     <Card className="h-full flex flex-col">
-
                         <CardHeader>
                             <CardTitle className="text-lg flex items-center justify-between">
                                 {t("create_diet_profile.blood_test_reports.table_name")}
@@ -650,7 +679,7 @@ export default function CreateDietProfile() {
                                 )}
                             </CardTitle>
                         </CardHeader>
-                        <CardContent className="h-full flex flex-col flex-1">
+                        <CardContent className="h-full flex-col flex-1">
                             {clientBloodTestReportsStatus==="pending" && (
                                 <Spinner/>)}
                             {clientBloodTestReportsStatus==="error" && (
@@ -659,13 +688,13 @@ export default function CreateDietProfile() {
                                 </div>)}
                             {clientBloodTestReportsStatus === "success" && currentBlood?.results && (
                                 <div className="flex flex-col h-full">
-                                    <div className="grid grid-cols-4 gap-3 mb-4 text-sm border-b">
+                                    <div className="grid grid-cols-4 gap-3 mb-4 text-sm border-b ml-1 mr-1">
                                         <div className="text-medium font-medium">{t("create_diet_profile.blood_test_reports.parameter")}</div>
                                         <div className="text-medium font-medium">{t("create_diet_profile.blood_test_reports.result")}</div>
                                         <div className="text-medium font-medium">{t("create_diet_profile.blood_test_reports.norm")}</div>
                                         <div className="text-medium font-medium">{t("create_diet_profile.blood_test_reports.status")}</div>
                                     </div>
-
+                                    <div className="h-140 overflow-y-auto ml-1 mr-1">
                                     {currentBlood.results.map((currentBloodParam) => {
                                         const status = getResultStatus(
                                             currentBloodParam.result,
@@ -690,7 +719,7 @@ export default function CreateDietProfile() {
                                             </div>
                                         );
                                     })}
-
+                                    </div>
                                     <Separator />
                                     <div className="flex flex-row items-center justify-between mt-auto">
                                         <Button
@@ -707,7 +736,7 @@ export default function CreateDietProfile() {
                                         </Button>
                                         <div className="text-center">
                                             {currentBlood?.timestamp && (
-                                                <div className="font-medium">
+                                                <div className="font-medium text-sm">
                                                     {t("create_diet_profile.blood_test_reports.measurement_date")} {formatDateTime(new Date(currentBlood.timestamp))}
                                                 </div>
                                             )}
@@ -746,8 +775,8 @@ export default function CreateDietProfile() {
             />
             {isSurveyModalOpen && (
                 <PeriodicSurveyModal
-                    onConfirm={confirmSubmit}
                     onCancel={cancelSubmit}
+                    onSurveySelect={handleSurveySelection}
                 />
             )}
         </div>

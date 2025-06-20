@@ -6,6 +6,8 @@ import { t } from "i18next";
 import {toast} from "sonner";
 import {useEffect} from "react";
 import axios from "axios";
+import {queryClient} from "@/lib/queryClient.ts";
+import {CLIENT_BLOOD_TEST_REPORTS, DIETICIAN_BLOOD_TEST_REPORTS} from "@/hooks/useClientBloodTestReports.ts";
 
 export const BLOOD_PARAMS_QUERY = "bloodParameters";
 
@@ -40,6 +42,8 @@ export const useSubmitReport = (clientId: string) => {
             axiosErrorHandler(error, t("blood_test_reports.insert.error"));
         },
         onSuccess: () => {
+            queryClient.invalidateQueries({queryKey: [CLIENT_BLOOD_TEST_REPORTS]})
+            queryClient.invalidateQueries({queryKey: [CLIENT_BLOOD_TEST_REPORTS, DIETICIAN_BLOOD_TEST_REPORTS, clientId]})
             toast.success(t("blood_test_reports.insert.submitted"));
         },
     });
