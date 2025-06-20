@@ -153,31 +153,29 @@ const DieticiansTable = ({
                             <UserCheck className="h-5 w-5" />
                             {t("dieticians_table.confirm")}
                           </AlertDialogTitle>
-                          <AlertDialogDescription>
-                            <div className="space-y-2">
-                              <p>
-                                {t("dieticians_table.are_you_sure1")}{" "}
-                                <strong>
-                                  {firstName} {lastName}
-                                </strong>{" "}
-                                {t("dieticians_table.are_you_sure2")}
-                              </p>
-                              <div className="bg-muted p-3 rounded-lg">
-                                <div className="flex items-center gap-2 mb-2">
-                                  <div>
-                                    <p className="font-medium text-sm">
-                                      {firstName} {lastName}
-                                    </p>
-                                    <p className="text-xs text-muted-foreground">
-                                      {email}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                              <p className="text-sm text-muted-foreground">
-                                {t("dieticians_table.after_confirm")}
-                              </p>
-                            </div>
+                          <AlertDialogDescription className="space-y-2">
+                            <span className="block">
+                              {t("dieticians_table.are_you_sure1")}{" "}
+                              <strong>
+                                {firstName} {lastName}
+                              </strong>{" "}
+                              {t("dieticians_table.are_you_sure2")}
+                            </span>
+                            <span className="block bg-muted p-3 rounded-lg">
+                              <span className="flex items-center gap-2 mb-2">
+                                <span className="block">
+                                  <span className="font-medium text-sm block">
+                                    {firstName} {lastName}
+                                  </span>
+                                  <span className="text-xs text-muted-foreground block">
+                                    {email}
+                                  </span>
+                                </span>
+                              </span>
+                            </span>
+                            <span className="block text-sm text-muted-foreground">
+                              {t("dieticians_table.after_confirm")}
+                            </span>
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>

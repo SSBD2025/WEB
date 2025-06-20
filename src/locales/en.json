@@ -739,6 +739,13 @@
     "has_feedback": "You've already rated this pyramid",
     "nutrients": {
       "averageRating": "Average rating",
+      "name": "Pyramid name",
+      "kcal": "Kcal",
+      "fat": "Fat",
+      "saturatedFattyAcids": "SFA",
+      "carbohydrates": "Carbohydrates",
+      "sugar": "Sugar",
+      "protein": "Protein",
       "a": "Vitamin A",
       "d": "Vitamin D",
       "e": "Vitamin E",
