@@ -739,6 +739,13 @@
     "has_feedback": "Twoja ocena została zapisana",
     "nutrients": {
       "averageRating": "Średnia ocena",
+      "name": "Nazwa piramidy",
+      "kcal": "Kcal",
+      "fat": "Tłuszcze",
+      "saturatedFattyAcids": "NKT",
+      "carbohydrates": "Węglowodany",
+      "sugar": "Cukier",
+      "protein": "Białko",
       "a": "Witamina A",
       "d": "Witamina D",
       "e": "Witamina E",

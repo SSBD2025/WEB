@@ -1,6 +1,12 @@
 export const nutrientKeys = [
   "averageRating",
-  "a",
+  "name",
+  "kcal",
+  "fat",
+  "saturatedFattyAcids",
+  "carbohydrates",
+  "sugar",
+  "protein",
   "potassium",
   "phosphorus",
   "magnesium",
@@ -9,6 +15,7 @@ export const nutrientKeys = [
   "selenium",
   "chromium",
   "fluorine",
+  "a",
   "c",
   "b3",
   "copper",
@@ -30,6 +37,11 @@ export const nutrientKeys = [
 
 export const nutrientUnits: Record<string, string> = {
   averageRating: "⭐",
+  fat: "g",
+  saturatedFattyAcids: "g",
+  carbohydrates: "g",
+  sugar: "g",
+  protein: "g",
   a: "μg",
   d: "μg",
   e: "mg",

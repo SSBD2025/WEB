@@ -41,6 +41,13 @@ export type ClientFoodPyramid = {
     id: string;
     version: number;
     averageRating: number;
+    name: string;
+    kcal: number;
+    fat: number;
+    saturatedFattyAcids: number;
+    carbohydrates: number;
+    sugar: number;
+    protein: number;
     a: number;
     potassium: number;
     phosphorus: number;
