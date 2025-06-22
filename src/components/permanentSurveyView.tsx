@@ -12,7 +12,7 @@ import { useCurrentUser } from "@/hooks/useCurrentUser"
 import { motion } from "framer-motion";
 
 const PermanentSurveyView = ({ survey }: { survey: PermanentSurvey }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [isEditing, setIsEditing] = useState(false)
   const { data: currentUser } = useCurrentUser()
   const canEdit = currentUser?.roles?.some((role) => role.roleName === "CLIENT" && role.active) || false
@@ -45,7 +45,17 @@ const PermanentSurveyView = ({ survey }: { survey: PermanentSurvey }) => {
       default:
         return level;
     }
-  };
+  }
+
+  const formatDateByLanguage = (date: string | Date) => {
+    const dateObj = new Date(date)
+
+    if (i18n.language === "pl") {
+      return dateObj.toLocaleDateString("pl-PL")
+    }
+
+    return dateObj.toLocaleDateString("en-US")
+  }
 
   if (isEditing && canEdit) {
     return <EditPermanentSurveyForm survey={survey} onSuccess={() => setIsEditing(false)} />
@@ -99,7 +109,7 @@ const PermanentSurveyView = ({ survey }: { survey: PermanentSurvey }) => {
                   </div>
                   <div className="space-y-2">
                     <p className="font-medium text-muted-foreground">{t("permanent_survey_form.date_of_birth")}</p>
-                    <p className="text-lg">{new Date(survey.dateOfBirth).toLocaleDateString()}</p>
+                    <p className="text-lg">{formatDateByLanguage(survey.dateOfBirth)}</p>
                   </div>
                   <div className="space-y-2">
                     <p className="font-medium text-muted-foreground">{t("permanent_survey_form.gender")}</p>
