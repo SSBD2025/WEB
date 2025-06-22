@@ -594,25 +594,25 @@
     "order_medical_examinations": "Order blood tests",
     "view_diet_profile_creator": "Go to Diet Profile Creator",
     "view_permanent_survey": "View permanent parameters survey",
-    "assign_food_pyramid": "Assign Food Pyramid"
+    "assign_food_pyramid": "Assign food pyramid"
   },
   "assign_food_pyramid": {
-    "title": "Assign Food Pyramid",
+    "title": "Assign food pyramid",
     "subtitle": "Select a food pyramid to assign to {{clientName}}",
-    "select_pyramid": "Select Food Pyramid",
+    "select_pyramid": "Select food pyramid",
     "select_placeholder": "Choose a pyramid...",
     "pyramid_details": "Pyramid nutritional information",
     "average_rating": "Average rating",
-    "assign": "Assign Pyramid",
+    "assign": "Assign pyramid",
     "assigning": "Assigning...",
     "success": "Food pyramid assigned successfully",
     "error": "Failed to assign food pyramid",
     "no_pyramids": "No food pyramids available",
     "loading": "Loading pyramids...",
     "confirm_dialog": {
-      "title": "Confirm Pyramid Assignment",
+      "title": "Confirm pyramid assignment",
       "description": "Are you sure you want to assign the pyramid \"{{pyramidName}}\" to {{clientName}}?",
-      "confirm": "Assign Pyramid"
+      "confirm": "Assign pyramid"
     }
 
   },
@@ -699,14 +699,14 @@
     "already_chosen": "Dietician already chosen"
   },
   "food_pyramids": {
-    "list_title": "Food Pyramids",
+    "list_title": "Food pyramids",
     "empty": {
-      "title": "No Food Pyramids Found",
+      "title": "No food pyramids found",
       "description": "There are no food pyramids available at the moment."
     }
   },
   "food_pyramids_table": {
-    "title": "Food Pyramids",
+    "title": "Food pyramids",
     "id": "ID",
     "rating": "Rating",
     "vitamins": "Vitamins",
@@ -955,7 +955,7 @@
     "gender": "Gender",
     "choose_gender": "Choose gender",
     "gender_name": {
-      "man": "Man",
+      "man": "Male",
       "female": "Female"
     },
     "food_preferences": "Food preferences",

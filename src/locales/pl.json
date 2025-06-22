@@ -594,16 +594,16 @@
     "order_medical_examinations": "Zleć badania krwi",
     "view_diet_profile_creator": "Przejdź do Kreatora Profili Dietetycznych",
     "view_permanent_survey": "Ankieta parametrów stałych",
-    "assign_food_pyramid": "Przypisz Piramidę Żywieniową"
+    "assign_food_pyramid": "Przypisz piramidę żywieniową"
   },
   "assign_food_pyramid": {
-    "title": "Przypisz Piramidę Żywieniową",
+    "title": "Przypisz piramidę żywieniową",
     "subtitle": "Wybierz piramidę żywieniową do przypisania dla {{clientName}}",
-    "select_pyramid": "Wybierz Piramidę Żywieniową",
+    "select_pyramid": "Wybierz piramidę żywieniową",
     "select_placeholder": "Wybierz piramidę...",
     "pyramid_details": "Informacje żywieniowe piramidy",
     "average_rating": "Średnia ocena",
-    "assign": "Przypisz Piramidę",
+    "assign": "Przypisz piramidę",
     "assigning": "Przypisywanie...",
     "success": "Piramida żywieniowa została przypisana pomyślnie",
     "error": "Nie udało się przypisać piramidy żywieniowej",

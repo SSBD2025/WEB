@@ -214,6 +214,16 @@ const EditPermanentSurveyForm = ({ survey, onSuccess }: EditPermanentSurveyFormP
 
   const mealsPerDay = form.watch("mealsPerDay")
 
+  const formatDateByLanguage = (date: string | Date) => {
+    const dateObj = new Date(date)
+
+    if (i18n.language === "pl") {
+      return dateObj.toLocaleDateString("pl-PL")
+    }
+
+    return dateObj.toLocaleDateString("en-US")
+  }
+
   useEffect(() => {
     if (mealsPerDay && mealsPerDay !== previousMealsPerDay.current) {
       const mealsCount = Number.parseInt(mealsPerDay)
@@ -345,11 +355,10 @@ const EditPermanentSurveyForm = ({ survey, onSuccess }: EditPermanentSurveyFormP
                         <Label>{t("permanent_survey_form.date_of_birth")}</Label>
                         <FormControl>
                           <div className="flex items-center h-10 px-3 text-sm border rounded-md bg-muted">
-                            {new Date(survey.dateOfBirth).toLocaleDateString()}
+                            {formatDateByLanguage(survey.dateOfBirth)}
                           </div>
                         </FormControl>
                       </FormItem>
-
 
                       <div>
                         <Label>{t("permanent_survey_form.gender")}</Label>
@@ -714,7 +723,11 @@ const EditPermanentSurveyForm = ({ survey, onSuccess }: EditPermanentSurveyFormP
                                 {t("permanent_survey_form.meal")} {index + 1}:
                               </Label>
                               <div className="flex-grow">
-                                <Input type="time" {...form.register(`mealTimes.${index}.time`)} className="flex-grow" />
+                                <Input
+                                  type="time"
+                                  {...form.register(`mealTimes.${index}.time`)}
+                                  className="flex-grow"
+                                />
                                 {i18n.language !== "pl" && (
                                   <div className="text-xs text-muted-foreground mt-1">
                                     {form.watch(`mealTimes.${index}.time`) &&
