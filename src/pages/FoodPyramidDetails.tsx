@@ -13,7 +13,15 @@ import ROUTES from "@/constants/routes";
 import { useGetFoodPyramid } from "@/hooks/useGetFoodPyramid";
 import { motion } from "framer-motion";
 import { t } from "i18next";
-import { ArrowLeft, MessageSquare, Pill, Star, User, Zap } from "lucide-react";
+import {
+  ArrowLeft,
+  MessageSquare,
+  Pill,
+  Star,
+  User,
+  Utensils,
+  Zap,
+} from "lucide-react";
 import { Link, useParams } from "react-router";
 import { useTranslation } from "react-i18next";
 
@@ -277,6 +285,67 @@ const FoodPyramidDetails = () => {
               </div>
             </CardContent>
           </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Utensils className="h-5 w-5 text-green-500" />
+                {t("food_pyramids_detail.macronutrients", "Macronutrients")}
+              </CardTitle>
+              <CardDescription>
+                {t(
+                  "food_pyramids_detail.macronutrients_description",
+                  "Essential macronutrients provided by this food pyramid"
+                )}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-2">
+                <NutrientBadge
+                  label={t("food_pyramids_detail.calories", "Calories")}
+                  value={data?.foodPyramid.kcal || 0}
+                  unit="kcal"
+                  color="destructive"
+                />
+                <NutrientBadge
+                  label={t("food_pyramids_detail.protein", "Protein")}
+                  value={data?.foodPyramid.protein || 0}
+                  unit="g"
+                  color="destructive"
+                />
+                <NutrientBadge
+                  label={t("food_pyramids_detail.fats", "Fats")}
+                  value={data?.foodPyramid.fat || 0}
+                  unit="g"
+                  color="default"
+                />
+                <NutrientBadge
+                  label={t(
+                    "food_pyramids_detail.saturated_fats",
+                    "Saturated Fats"
+                  )}
+                  value={data?.foodPyramid.saturatedFattyAcids || 0}
+                  unit="g"
+                  color="default"
+                />
+                <NutrientBadge
+                  label={t("food_pyramids_detail.sugar", "Sugar")}
+                  value={data?.foodPyramid.sugar || 0}
+                  unit="g"
+                  color="secondary"
+                />
+                <NutrientBadge
+                  label={t(
+                    "food_pyramids_detail.carbohydrates",
+                    "Carbohydrates"
+                  )}
+                  value={data?.foodPyramid.carbohydrates || 0}
+                  unit="g"
+                  color="secondary"
+                />
+              </div>
+            </CardContent>
+          </Card>
         </motion.div>
 
         <motion.div variants={itemVariants}>
@@ -402,9 +471,7 @@ const FoodPyramidDetails = () => {
                 </div>
               ) : (
                 <p className="text-center text-muted-foreground">
-                  {t(
-                    "food_pyramids_detail.no_clients_assigned",
-                  )}
+                  {t("food_pyramids_detail.no_clients_assigned")}
                 </p>
               )}
             </CardContent>

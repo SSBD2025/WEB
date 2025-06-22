@@ -310,7 +310,7 @@
           "title": "",
           "message": ""
         },
-        "periodic":{
+        "periodic": {
           "title": "",
           "message": ""
         },
@@ -318,7 +318,7 @@
           "title": "",
           "message": ""
         },
-        "pyramid":{
+        "pyramid": {
           "title": "",
           "message": ""
         }
@@ -595,7 +595,6 @@
     "view_diet_profile_creator": "Przejdź do Kreatora Profili Dietetycznych",
     "view_permanent_survey": "Ankieta parametrów stałych",
     "assign_food_pyramid": "Przypisz Piramidę Żywieniową"
-
   },
   "assign_food_pyramid": {
     "title": "Przypisz Piramidę Żywieniową",
@@ -723,7 +722,15 @@
     "go_back": "Powrót",
     "assigned_clients": "Klienci przypisani do piramidy",
     "name": "Nazwa piramidki:",
-    "no_clients_assigned": "Brak klientów przypisanych do tej piramidy"
+    "no_clients_assigned": "Brak klientów przypisanych do tej piramidy",
+    "macronutrients": "Makroskładniki",
+    "macronutrients_description": "Makroskładniki dostarczane przez tę piramidę żywieniową",
+    "calories": "Kalorie",
+    "protein": "Białko",
+    "carbohydrates": "Węglowodany",
+    "fats": "Tłuszcze",
+    "saturated_fats": "Tłuszcze nasycone",
+    "sugar": "Cukier"
   },
   "client_food_pyramid_list": {
     "title": "Lista piramid żywieniowych",
@@ -1097,9 +1104,9 @@
     "title": "Zlecenie badania krwi",
     "information": "To są podane parametry krwi, które zostały zlecone przez twojego dietetyka do badań. Możesz pobrać plik zawierający tą listę i przekazać go swojemu lekarzowi.",
     "orderDate": "Data zlecenia",
-    "description":  "Opis",
+    "description": "Opis",
     "parameters": "Parametry krwi do zbadania",
-    "exportcsv":  "Wyeksportuj do pliku",
+    "exportcsv": "Wyeksportuj do pliku",
     "noData": "Brak danych"
   },
   "blood_test_orders": {
@@ -1196,7 +1203,9 @@
     },
     "error": "Nie udało się utworzyć i przypisać planu żywieniowego.",
     "success": "Plan został przypisany do klienta.",
-    "no_data": "Brak danych"
-
+    "no_data": "Brak danych",
+    "no_blood_test_reports": "Klient nie wykonał jeszcze badań krwi",
+    "no_permanent_survey": "Klient nie wypełnił jeszcze ankiety parametrów stałych",
+    "no_periodic_survey": "Klient nie wypełnił jeszcze ankiety okresowej"
   }
 }
