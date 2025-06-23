@@ -638,6 +638,7 @@
     "update_error": "Wystąpił błąd podczas aktualizacji badań",
     "client_blood_test_report_not_found": "Nie znaleziono wyników.",
     "permanent_survey_not_found": "Nie znaleziono ankiety parametrów stałych.",
+    "must_be_positive": "Wynik {{field}} musi być wartością nieujemną",
     "insert": {
       "insert_title": "Wstaw raport z badania krwi klienta",
       "clear_all": "Wyczyść wszystko",
@@ -1180,7 +1181,10 @@
       "parameter_name": "Nazwa parametru",
       "existing": "Istniejący plan żywieniowy",
       "workspace": "Obszar roboczy",
-      "algorithm": "Wygenerowany przez algorytm"
+      "algorithm": "Wygenerowany przez algorytm",
+      "validation_errors": "Błędy walidacji:",
+      "empty_field_error": "Pole {{field}} nie może być puste.",
+      "smaller_than_zero_error": "Pole {{field}} musi mieć wartość większą od zera."
     },
     "blood_test_reports": {
       "table_name": "BADANIA KRWI",
@@ -1197,7 +1201,8 @@
       "description": "Podaj nazwę, pod którą chcesz zapisać nową piramidę.",
       "placeholder": "Nazwa piramidy",
       "cancel": "Anuluj",
-      "submit": "Zapisz"
+      "submit": "Zapisz",
+      "length_error": "Błąd długości"
     },
     "confirm_modal": {
       "title": "Potwierdź zapis",

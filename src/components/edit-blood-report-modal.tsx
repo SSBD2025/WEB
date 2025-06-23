@@ -41,18 +41,18 @@ interface EditBloodReportModalProps {
 }
 
 export default function EditBloodReportModal({
-  isOpen,
-  onClose,
-  report,
-  onSave,
-}: EditBloodReportModalProps) {
+                                               isOpen,
+                                               onClose,
+                                               report,
+                                               onSave,
+                                             }: EditBloodReportModalProps) {
   const { t } = useTranslation();
   const [editedResults, setEditedResults] = useState<Record<string, string>>(
-    {}
+      {}
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationError, setValidationError] = useState<string>("");
 
-  // Initialize edited results when report changes
   useEffect(() => {
     if (report) {
       const initialResults: Record<string, string> = {};
@@ -67,10 +67,12 @@ export default function EditBloodReportModal({
     const unitMap: Record<string, string> = {
       G_DL: "g/dL",
       PERCENT: "%",
-      X10_6_U_L: "x10⁶/µl",
-      X10_3_U_L: "x10³/µl",
+      X10_12_U_L: "×10¹²/µL",
+      X10_9_U_L: "×10⁹/µL",
+      X10_6_U_L: "×10⁶/µL",
+      X10_3_U_L: "×10³/µL",
       PG: "pg",
-      FL: "fl",
+      FL: "fL",
     };
     return unitMap[unit] || unit;
   };
@@ -113,19 +115,29 @@ export default function EditBloodReportModal({
       ...prev,
       [lockToken]: value,
     }));
+    if (validationError) {
+      setValidationError("");
+    }
   };
 
   const handleSave = async () => {
     if (!report) return;
 
+    for (const result of report.results) {
+      const value = editedResults[result.lockToken] || result.result;
+      const numericValue = Number.parseFloat(value);
+
+      if (!isNaN(numericValue) && numericValue < 0) {
+        setValidationError(t("blood_test_reports.must_be_positive", {field: result.bloodParameter.name}));
+        return;
+      }
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Prepare the payload according to your API structure
       const updatedPayload = {
         lockToken: report.lockToken,
-        // client: null,
-        // timestamp: null,
         results: report.results.map((result) => ({
           lockToken: result.lockToken,
           result: editedResults[result.lockToken] || result.result,
@@ -146,7 +158,7 @@ export default function EditBloodReportModal({
     if (!report) return false;
 
     return report.results.every((result) => {
-      const value = editedResults[result.lockToken];
+      const value = editedResults[result.lockToken] || result.result;
       return value && !isNaN(Number.parseFloat(value));
     });
   };
@@ -154,96 +166,102 @@ export default function EditBloodReportModal({
   if (!report) return null;
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <TestTube className="h-5 w-5" />
-            {t("blood_test_reports.edit_report")}
-          </DialogTitle>
-          <p className="text-sm text-muted-foreground">
-            {new Date(report.timestamp).toLocaleString()}
-          </p>
-        </DialogHeader>
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <TestTube className="h-5 w-5" />
+              {t("blood_test_reports.edit_report")}
+            </DialogTitle>
+            <p className="text-sm text-muted-foreground">
+              {new Date(report.timestamp).toLocaleString()}
+            </p>
+          </DialogHeader>
 
-        <div className="space-y-4 py-4">
-          {report.results.map((result) => {
-            const currentValue =
-              editedResults[result.lockToken] || result.result;
-            const status = getResultStatus(
-              currentValue,
-              result.bloodParameter.standardMin,
-              result.bloodParameter.standardMax
-            );
-
-            return (
-              <div
-                key={result.lockToken}
-                className="flex items-center justify-between p-4 border rounded-lg bg-card space-y-2"
-              >
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center gap-3">
-                    <h3 className="font-semibold text-lg">
-                      {result.bloodParameter.name}
-                    </h3>
-                    <Badge variant={getStatusColor(status)}>
-                      {getStatusText(status)}
-                    </Badge>
-                  </div>
-                  <p className="text-muted-foreground text-sm">
-                    {result.bloodParameter.description}
-                  </p>
-                  <p className="text-xs text-muted-foreground">
-                    {t("blood_test_reports.range")}{" "}
-                    {result.bloodParameter.standardMin} -{" "}
-                    {result.bloodParameter.standardMax}{" "}
-                    {formatUnit(result.bloodParameter.unit)}
-                  </p>
+          <div className="space-y-4 py-4">
+            {validationError && (
+                <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3">
+                  <p className="text-destructive text-sm">{validationError}</p>
                 </div>
+            )}
 
-                <div className="flex flex-col items-end space-y-2">
-                  <Label
-                    htmlFor={`result-${result.lockToken}`}
-                    className="text-sm"
+            {report.results.map((result) => {
+              const currentValue =
+                  editedResults[result.lockToken] || result.result;
+              const status = getResultStatus(
+                  currentValue,
+                  result.bloodParameter.standardMin,
+                  result.bloodParameter.standardMax
+              );
+
+              return (
+                  <div
+                      key={result.lockToken}
+                      className="flex items-center justify-between p-4 border rounded-lg bg-card space-y-2"
                   >
-                    {t("blood_test_reports.value")}
-                  </Label>
-                  <div className="flex items-center gap-2">
-                    <Input
-                      id={`result-${result.lockToken}`}
-                      type="number"
-                      step="0.1"
-                      value={currentValue}
-                      onChange={(e) =>
-                        handleResultChange(result.lockToken, e.target.value)
-                      }
-                      className="w-24 text-center"
-                      placeholder="0.0"
-                    />
-                    <span className="text-sm text-muted-foreground min-w-fit">
+                    <div className="flex-1 space-y-2">
+                      <div className="flex items-center gap-3">
+                        <h3 className="font-semibold text-lg">
+                          {result.bloodParameter.name}
+                        </h3>
+                        <Badge variant={getStatusColor(status)}>
+                          {getStatusText(status)}
+                        </Badge>
+                      </div>
+                      <p className="text-muted-foreground text-sm">
+                        {result.bloodParameter.description}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {t("blood_test_reports.range")}{" "}
+                        {result.bloodParameter.standardMin} -{" "}
+                        {result.bloodParameter.standardMax}{" "}
+                        {formatUnit(result.bloodParameter.unit)}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col items-end space-y-2">
+                      <Label
+                          htmlFor={`result-${result.lockToken}`}
+                          className="text-sm"
+                      >
+                        {t("blood_test_reports.value")}
+                      </Label>
+                      <div className="flex items-center gap-2">
+                        <Input
+                            id={`result-${result.lockToken}`}
+                            type="number"
+                            step="0.1"
+                            value={currentValue}
+                            onChange={(e) =>
+                                handleResultChange(result.lockToken, e.target.value)
+                            }
+                            className="w-24 text-center"
+                            placeholder="0.0"
+                        />
+                        <span className="text-sm text-muted-foreground min-w-fit">
                       {formatUnit(result.bloodParameter.unit)}
                     </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
 
-        <DialogFooter className="gap-2">
-          <Button variant="outline" onClick={onClose} disabled={isSubmitting}>
-            <X className="h-4 w-4 mr-2" />
-            {t("common.cancel")}
-          </Button>
-          <Button
-            onClick={handleSave}
-            disabled={!isFormValid() || isSubmitting}
-          >
-            <Save className="h-4 w-4 mr-2" />
-            {isSubmitting ? t("common.saving") : t("common.save")}
-          </Button>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
+          <DialogFooter className="gap-2">
+            <Button variant="outline" onClick={onClose} disabled={isSubmitting}>
+              <X className="h-4 w-4 mr-2" />
+              {t("common.cancel")}
+            </Button>
+            <Button
+                onClick={handleSave}
+                disabled={!isFormValid() || isSubmitting}
+            >
+              <Save className="h-4 w-4 mr-2" />
+              {isSubmitting ? t("common.saving") : t("common.save")}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
   );
 }

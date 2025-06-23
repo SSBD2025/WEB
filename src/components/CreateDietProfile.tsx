@@ -5,7 +5,7 @@ import {
   CardTitle,
 } from "@/components/ui/card.tsx";
 import { Separator } from "@radix-ui/react-select";
-import { ArrowLeft, ArrowRight, Pencil, Save, Star, X } from "lucide-react";
+import {AlertTriangle, ArrowLeft, ArrowRight, Pencil, Save, Star, X} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -42,6 +42,7 @@ import {
 } from "@/constants/states.ts";
 import { GetPeriodicSurvey } from "@/types/periodic_survey";
 import { useClientValidation } from "@/hooks/useOrderMedicalExaminations";
+import {Alert, AlertDescription, AlertTitle} from "@/components/ui/alert.tsx";
 
 export default function CreateDietProfile() {
   const { clientId } = useParams<{ clientId: string }>();
@@ -53,6 +54,9 @@ export default function CreateDietProfile() {
   const [pendingName, setPendingName] = useState("");
 
   const [isSurveyModalOpen, setIsSurveyModalOpen] = useState(false);
+
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
+
 
   const {
     data: clientData,
@@ -196,8 +200,30 @@ export default function CreateDietProfile() {
   };
 
   const handleSave = () => {
+    const errors: string[] = [];
+
+    nutrientRows.forEach((row) => {
+      const value = row.workspace.trim();
+
+      if (value === "") {
+        errors.push(t("create_diet_profile.algorithm_pane.empty_field_error", {field: row.name}));
+      } else {
+        const num = Number(value);
+        if (isNaN(num) || num <= 0) {
+          errors.push(t("create_diet_profile.algorithm_pane.smaller_than_zero_error", {field: row.name}));
+        }
+      }
+    });
+
+    if (errors.length > 0) {
+      setValidationErrors(errors);
+      return;
+    }
+
+    setValidationErrors([]);
     setIsDialogOpen(true);
   };
+
 
   const handleNameEntered = (name: string) => {
     setPendingName(name);
@@ -782,6 +808,19 @@ export default function CreateDietProfile() {
             </CardHeader>
             <CardContent className="space-y-2 h-155 overflow-y-auto">
               <div className="space-y-2 h-155 overflow-y-auto">
+                {validationErrors.length > 0 && (
+                    <Alert variant="destructive" className="mb-4">
+                      <AlertTriangle className="h-4 w-4" />
+                      <AlertTitle>{t("create_diet_profile.algorithm_pane.validation_errors")}</AlertTitle>
+                      <AlertDescription className="mt-2 space-y-1 text-sm">
+                        {validationErrors.map((err, idx) => (
+                            <p key={idx} className="leading-snug">
+                              • {err}
+                            </p>
+                        ))}
+                      </AlertDescription>
+                    </Alert>
+                )}
                 <Table className="table-fixed">
                   <TableHeader>
                     <TableRow>
@@ -838,12 +877,20 @@ export default function CreateDietProfile() {
                         <TableCell className="text-center w-24">
                           <div key={row.name} className="relative">
                             <Input
-                              value={row.workspace}
-                              onChange={(e) =>
-                                handleWorkspaceChange(row.name, e.target.value)
-                              }
-                              className="h-8 text-medium text-center w-full"
+                                type="text"
+                                inputMode="decimal"
+                                value={row.workspace}
+                                onChange={(e) => {
+                                  const val = e.target.value;
+
+                                  if (/^(\d+([.,]?\d*)?)?$/.test(val)) {
+                                    handleWorkspaceChange(row.name, val.replace(",", "."));
+                                  }
+                                }}
+                                className="h-8 text-medium text-center w-full"
+                                autoComplete="off"
                             />
+
                             {row.workspace && (
                               <Button
                                 variant="ghost"
