@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router";
+import { Route, Routes } from "react-router";
 import {
   Home,
   Login,
@@ -29,7 +29,7 @@ import {
   DieticianOrderMedicalExaminations,
   PermanentSurveyPage,
   DieticianViewAllBloodOrdersPage,
-  CreateDietProfilePage
+  CreateDietProfilePage,
 } from "./pages";
 import { Toaster } from "./components/ui/sonner";
 import ROUTES from "./constants/routes";
@@ -58,9 +58,19 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    if (user?.roles?.[0]?.roleName && !currentRole) {
-      const role = user.roles[0].roleName.toLowerCase() as AccessLevel;
-      setCurrentRole(role);
+    if (!user?.roles?.length) return;
+
+    const firstRoleName = user.roles[0].roleName.toLowerCase() as AccessLevel;
+
+    const roleNames = user.roles.map((r) =>
+      r.roleName.toLowerCase()
+    ) as AccessLevel[];
+
+    const currentIsValid = currentRole && roleNames.includes(currentRole);
+
+    if (!currentIsValid) {
+      console.log("Setting current role:", firstRoleName);
+      setCurrentRole(firstRoleName);
     }
   }, [user, currentRole, setCurrentRole]);
 
@@ -112,7 +122,10 @@ const Layout = () => {
               element={<ClientPeriodicSurveyListPage />}
             />
           </Route>
-          <Route path={ROUTES.CLIENT_PERMANENT_SURVEY} element={<PermanentSurveyPage />} />
+          <Route
+            path={ROUTES.CLIENT_PERMANENT_SURVEY}
+            element={<PermanentSurveyPage />}
+          />
           <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
             <Route
               path={ROUTES.ADMIN_USER_DETAILS}
@@ -148,14 +161,17 @@ const Layout = () => {
               element={<DieticianPeriodicSurveyListPage />}
             />
             <Route
-                path={ROUTES.DIETICIAN_MEDICAL_CHARTS}
-                element={<DieticianMedicalChartsPage />}
+              path={ROUTES.DIETICIAN_MEDICAL_CHARTS}
+              element={<DieticianMedicalChartsPage />}
             />
             <Route
-                path={ROUTES.DIETICIAN_ORDER_MEDICAL_EXAMINATIONS}
-                element={<DieticianOrderMedicalExaminations />}
+              path={ROUTES.DIETICIAN_ORDER_MEDICAL_EXAMINATIONS}
+              element={<DieticianOrderMedicalExaminations />}
             />
-              <Route path={ROUTES.DIETICIAN_CREATE_DIET_PROFILE} element={<CreateDietProfilePage/>}/>
+            <Route
+              path={ROUTES.DIETICIAN_CREATE_DIET_PROFILE}
+              element={<CreateDietProfilePage />}
+            />
           </Route>
           <Route
             path={ROUTES.DIETICIAN_PERMANENT_SURVEY}
@@ -163,8 +179,7 @@ const Layout = () => {
           />
           <Route
             path={ROUTES.DIETICIAN_MEDICAL_EXAMINATIONS_LIST}
-              element={ <DieticianViewAllBloodOrdersPage />}
-
+            element={<DieticianViewAllBloodOrdersPage />}
           />
           <Route element={<ProtectedRoute allowedRoles={["client"]} />}>
             <Route
@@ -176,8 +191,8 @@ const Layout = () => {
               element={<ClientPyramidsPage />}
             />
             <Route
-                path={ROUTES.CLIENT_MEDICAL_CHARTS}
-                element={<ClientMedicalChartsPage />}
+              path={ROUTES.CLIENT_MEDICAL_CHARTS}
+              element={<ClientMedicalChartsPage />}
             />
           </Route>
           <Route path="*" element={<NotFound />} />

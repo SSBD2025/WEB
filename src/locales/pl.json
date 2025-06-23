@@ -733,7 +733,8 @@
     "carbohydrates": "Węglowodany",
     "fats": "Tłuszcze",
     "saturated_fats": "Tłuszcze nasycone",
-    "sugar": "Cukier"
+    "sugar": "Cukier",
+    "error_loading": "Nie znaleziono piramidy żywieniowej"
   },
   "client_food_pyramid_list": {
     "title": "Lista piramid żywieniowych",
@@ -792,7 +793,8 @@
       "description_placeholder": "Podziel się swoimi uwagami na temat tej piramidy",
       "submit_button": "Prześlij opinię",
       "rating_required": "Ocena jest wymagana",
-      "description_required": "Komentarz jest wymagany"
+      "description_required": "Komentarz jest wymagany",
+      "description_toolong": "Komentarz musi mieć maksymalnie 255 znaków"
     },
     "feedback_success": "Twoja opinia została pomyślnie dodana.",
     "feedback_error": "Wystąpił błąd podczas dodawania opinii. Spróbuj ponownie później.",
@@ -814,7 +816,9 @@
         "add": "dodać",
         "edit": "edytować"
       }
-    }
+    },
+    "unknown_error": "Nieoczekiwany błąd",
+    "feedback_description_error": "Opis opinii musi mieć od 1 do 255 znaków."
   },
   "periodic_survey": {
     "form": {
