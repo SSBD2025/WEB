@@ -71,7 +71,7 @@ export default function EditPeriodicSurveyForm({ defaultValues, onSuccess }: Pro
                 )}
 
             </div>
-
+`
             <div>
                 <Label className="text-medium p-2">
                     {t("periodic_survey.form.label.blood_pressure")}

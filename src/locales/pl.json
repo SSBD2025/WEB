@@ -654,7 +654,9 @@
         "duplicate": "Formularz zawiera duplikaty, proszę je usunąć lub edytować.",
         "unexpected": "Wystąpił niespodziewany błąd, spróbuj ponownie później.",
         "invalid_result": "Nieprawidłowa wartość wyniku.",
-        "incomplete_entry": "Są niekompletne wpisy, proszę je usunąć lub uzupełnić."
+        "incomplete_entry": "Formularz zawiera niekompletne wpisy, proszę je usunąć lub uzupełnić.",
+        "empty_parameter": "To pole jest wymagane",
+        "empty_result": "To pole jest wymagane"
       }
     }
   },
@@ -849,12 +851,14 @@
         "head": {
           "measurement_date": "Data pomiaru",
           "weight": "Waga (kg)",
-          "blood_pressure": "Ciśnienie krwi (skurczowe/rozkurczowe)",
+          "blood_pressure": "Ciśnienie krwi (skur./roz.)",
           "blood_sugar_level": "Poziom cukru we krwi (mg/dL)"
         }
       }
     },
     "loading": "Ładowanie ankiet okresowych...",
+    "no_changes": "Brak zmian!",
+    "no_results": "Brak wyników. Spróbuj usunąć lub zmienić filtry.",
     "error": {
       "loading": "Błąd ładowania ankiet okresowych",
       "fetch": "Nie udało się pobrać ankiet okresowych",
