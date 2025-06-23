@@ -52,11 +52,6 @@ export const getClientStatus = async () => {
   return response.data;
 }
 
-export const getFeedbackByClientAndPyramid = async (clientId: string, pyramidId: string) => {
-    const response = await apiClient.get(`/mod/feedbacks/client/${clientId}/pyramid/${pyramidId}`);
-    return response.data;
-}
-
 export const getMyFeedbackForPyramid = async (pyramidId: string) => {
     const response = await apiClient.get(`/mod/feedbacks/my-pyramid/${pyramidId}`)
     return response.data
