@@ -9,10 +9,11 @@ export interface RoleLink {
 
 export const ROLE_LINKS: Record<Exclude<AccessLevel, null>, RoleLink[]> = {
 
-  admin: [{ label: "Dashboard", path: "/admin/dashboard" }],
+  admin: [{ label: "Dashboard", path: ROUTES.ADMIN_DASHBOARD }],
   dietician: [
-    { label: t("navbar.diet_profiles"), path: "/food-pyramids" },
-    { label: t("navbar.blood_test_order"), path:"/dietician/medical-examinations" },
+    { label: t("navbar.diet_profiles"), path: ROUTES.FOOD_PYRAMIDS },
+    { label: "Dashboard", path: ROUTES.DIETICIAN_DASHBOARD },
+    { label: t("navbar.blood_test_order"), path: ROUTES.DIETICIAN_MEDICAL_EXAMINATIONS_LIST }
   ],
   client: [
     {label: t("navbar.diet_profiles"), path: ROUTES.CLIENT_ALL_PYRAMIDS},

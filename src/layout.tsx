@@ -69,7 +69,6 @@ const Layout = () => {
     const currentIsValid = currentRole && roleNames.includes(currentRole);
 
     if (!currentIsValid) {
-      console.log("Setting current role:", firstRoleName);
       setCurrentRole(firstRoleName);
     }
   }, [user, currentRole, setCurrentRole]);

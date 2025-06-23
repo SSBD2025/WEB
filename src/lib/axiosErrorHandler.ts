@@ -21,7 +21,5 @@ export const axiosErrorHandler = (
       fallbackMessage;
 
     toast.error(i18n.t("exceptions." + message));
-  } else {
-    console.log("Unknown error:", error);
   }
 };
