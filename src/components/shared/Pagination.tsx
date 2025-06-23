@@ -2,6 +2,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { motion } from "framer-motion";
+import {useTranslation} from "react-i18next";
 
 interface Props {
   page?: number | string;
@@ -26,6 +27,7 @@ const formUrlQuery = ({
 const Pagination = ({ page = 1, isNext, containerClasses }: Props) => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const {t} = useTranslation();
 
   const handleNavigation = (direction: "prev" | "next") => {
     const currentPage = Number(page);
@@ -57,7 +59,7 @@ const Pagination = ({ page = 1, isNext, containerClasses }: Props) => {
           variant="secondary"
           className="flex min-h-[36px] items-center justify-center gap-2 border"
         >
-          <p>Prev</p>
+          <p>{t("pagination.previous")}</p>
         </Button>
       )}
 
@@ -71,7 +73,7 @@ const Pagination = ({ page = 1, isNext, containerClasses }: Props) => {
           variant="secondary"
           className="flex min-h-[36px] items-center justify-center gap-2 border"
         >
-          <p>Next</p>
+          <p>{t("pagination.next")}</p>
         </Button>
       )}
     </motion.div>

@@ -456,7 +456,7 @@
     "diet_profiles": "Profile dietetyczne",
     "periodic_survey_list": "Ankiety okresowe",
     "blood_test_reports": "Badania krwi",
-    "charts": "Wykresy danych medycznych",
+    "charts": "Statystyki",
     "permanent_survey": "Ankieta parametrów stałych",
     "blood_test_order": "Zlecenia badań krwi"
   },
@@ -522,7 +522,8 @@
     "blood_test_result_not_found": "Nie znaleziono wyników badań krwi",
     "invalid_blood_parameter_name": "Nieprawidłowa nazwa parametru krwi",
     "client_food_pyramid_not_found": "Nie znaleziono przypisanej piramidy żywieniowej dla tego klienta",
-    "client_not_assigned": "Klient nie jest przypisany do tego dietetyka"
+    "client_not_assigned": "Klient nie jest przypisany do tego dietetyka",
+    "food_pyramid_name_already_in_use": "Ta nazwa jest już w użyciu. Spróbuj użyć innej."
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"
@@ -1219,6 +1220,46 @@
     "no_data": "Brak danych",
     "no_blood_test_reports": "Klient nie wykonał jeszcze badań krwi",
     "no_permanent_survey": "Klient nie wypełnił jeszcze ankiety parametrów stałych",
-    "no_periodic_survey": "Klient nie wypełnił jeszcze ankiety okresowej"
+    "no_periodic_survey": "Klient nie wypełnił jeszcze ankiety okresowej",
+    "biomarker": {
+      "averageRating": "Średnia ocen",
+      "name": "Nazwa",
+      "kcal": "kcal",
+      "fat": "Tłuszcze",
+      "saturatedFattyAcids": "Nasycone kwasy tłuszczowe",
+      "carbohydrates": "Węglowodany",
+      "sugar": "Cukier",
+      "protein": "Białko",
+      "a": "Witamina A",
+      "c": "Witamina C",
+      "k": "Witamina K",
+      "calcium": "Wapno",
+      "iodine":	"Jod",
+      "e": "Witamina E",
+      "iron": "Żelazo",
+      "b1": "Witamina B1",
+      "b3": "Witamina B3",
+      "b9": "Witamina B9",
+      "d": "Witamina D",
+      "zinc": "Cynk",
+      "b12": "Witamina B12",
+      "b7": "Witamina B7",
+      "copper": "Miedź",
+      "b2": "Witamina B2",
+      "b5": "Witamina B5",
+      "b6": "Witamina B6",
+      "fluorine": "Fluor",
+      "manganese": "Mangan",
+      "phosphorus": "Fosfor",
+      "selenium": "Selen",
+      "molybdenum": "Molibden",
+      "potassium": "Potas",
+      "magnesium": "Magnez",
+      "chromium": "Chrom"
+    }
+  },
+  "pagination": {
+    "previous": "Poprzednia",
+    "next": "Następna"
   }
 }

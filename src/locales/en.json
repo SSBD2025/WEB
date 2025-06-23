@@ -456,7 +456,7 @@
     "diet_profiles": "Diet Profiles",
     "periodic_survey_list": "Periodic surveys",
     "blood_test_reports": "Blood test reports",
-    "charts": "Medical charts",
+    "charts": "Statistics",
     "permanent_survey": "Permanent parameters survey",
     "blood_test_order": "Blood test order"
   },
@@ -522,7 +522,8 @@
     "blood_test_result_not_found": "Blood test result not found",
     "invalid_blood_parameter_name": "Invalid blood parameter name",
     "client_food_pyramid_not_found": "Client food pyramid not found",
-    "client_not_assigned": "Client not assigned to this dietician"
+    "client_not_assigned": "Client not assigned to this dietician",
+    "food_pyramid_name_already_in_use": "This name is already in use. Try choosing another name."
   },
   "role_change": {
     "log_error": "Failed to log role change:"
@@ -1220,6 +1221,46 @@
     "no_data": "Brak danych",
     "no_blood_test_reports": "The client has not yet taken blood tests",
     "no_permanent_survey": "The client has not yet completed the permanent parameters survey",
-    "no_periodic_survey": "The client has not yet completed the periodic survey"
+    "no_periodic_survey": "The client has not yet completed the periodic survey",
+    "biomarker": {
+      "averageRating": "Average Rating",
+      "name": "Name",
+      "kcal": "Kcal",
+      "fat": "Fat",
+      "saturatedFattyAcids": "Saturated Fatty Acids",
+      "carbohydrates": "Carbohydrates",
+      "sugar": "Sugar",
+      "protein": "Protein",
+      "a": "A Vitamin",
+      "c": "C Vitamin",
+      "k": "K Vitamin",
+      "calcium": "Calcium",
+      "iodine":	"Iodine",
+      "e": "E Vitamin",
+      "iron": "Iron",
+      "b1": "B1 Vitamin",
+      "b3": "B3 Vitamin",
+      "b9": "B9 Vitamin",
+      "d": "D Vitamin",
+      "zinc": "Zinc",
+      "b12": "B12 Vitaminv",
+      "b7": "B7 Vitamin",
+      "copper": "Copper",
+      "b2": "B2 Vitamin",
+      "b5": "B5 Vitamin",
+      "b6": "B6 Vitamin",
+      "fluorine": "Fluorine",
+      "manganese": "Manganese",
+      "phosphorus": "Phosphorus",
+      "selenium": "Selenium",
+      "molybdenum": "Molybdenum",
+      "potassium": "Potassium",
+      "magnesium": "Magnesium",
+      "chromium": "Chromiumm"
+    }
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next"
   }
 }

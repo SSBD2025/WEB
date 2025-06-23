@@ -53,8 +53,6 @@ const FoodPyramidDetails = () => {
   const { data, isLoading, error } = useGetFoodPyramid(id ?? "");
   const { i18n } = useTranslation();
 
-  console.log(error);
-
   if (isLoading) {
     return (
       <main className="flex-grow flex justify-center items-center">

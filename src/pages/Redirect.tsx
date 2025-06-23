@@ -23,8 +23,6 @@ const Redirect = () => {
         } else if (type === "verify") {
           await verifyMail(token);
         }
-      } catch (err) {
-        console.log(err);
       } finally {
         navigate("/");
       }

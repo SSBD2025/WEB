@@ -70,7 +70,21 @@ export default function CreateDietProfile() {
   const sort = searchParams.get("sort") || "measurementDate,desc";
   const page = Number.parseInt(pageParam, 10);
   const pageSize = 50;
-  const { data: algorithm } = useGenerateDietProfileByAlgorithm(clientId!);
+  const { data: rawAlgorithm } = useGenerateDietProfileByAlgorithm(clientId!);
+
+  const algorithm = useMemo(() => {
+    if (!rawAlgorithm) return null;
+
+    return Object.fromEntries(
+        Object.entries(rawAlgorithm).map(([key, value]) => {
+          if (typeof value === "number") {
+            const rounded = parseFloat(value.toFixed(4));
+            return [key, rounded];
+          }
+          return [key, value];
+        })
+    );
+  }, [rawAlgorithm]);
   const {
     data: periodicSurveyList,
     error: periodicSurveyError,
@@ -860,7 +874,7 @@ export default function CreateDietProfile() {
                     {nutrientRows.map((row) => (
                       <TableRow key={row.name}>
                         <TableCell className="text-medium font-medium w-32">
-                          {row.name.toUpperCase()}
+                          {t(`create_diet_profile.biomarker.${row.name}`).toUpperCase()}
                         </TableCell>
                         <TableCell className="text-medium text-center w-24">
                           {row.existing}
@@ -883,14 +897,13 @@ export default function CreateDietProfile() {
                                 onChange={(e) => {
                                   const val = e.target.value;
 
-                                  if (/^(\d+([.,]?\d*)?)?$/.test(val)) {
+                                  if (/^\d+([.,]\d{0,4})?$/.test(val)) {
                                     handleWorkspaceChange(row.name, val.replace(",", "."));
                                   }
                                 }}
                                 className="h-8 text-medium text-center w-full"
                                 autoComplete="off"
                             />
-
                             {row.workspace && (
                               <Button
                                 variant="ghost"
