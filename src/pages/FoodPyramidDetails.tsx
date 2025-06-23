@@ -50,13 +50,25 @@ const FoodPyramidDetails = () => {
   const params = useParams<{ id: string }>();
   const id = params.id;
 
-  const { data, isLoading } = useGetFoodPyramid(id ?? "");
+  const { data, isLoading, error } = useGetFoodPyramid(id ?? "");
   const { i18n } = useTranslation();
+
+  console.log(error);
 
   if (isLoading) {
     return (
       <main className="flex-grow flex justify-center items-center">
         <Spinner />
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="flex-grow flex justify-center items-center">
+        <div className="text-red-500">
+          {t("food_pyramids_detail.error_loading", "Error loading food pyramid")}
+        </div>
       </main>
     );
   }

@@ -61,7 +61,8 @@ const RatePyramidModal = ({
       .min(
         1,
         t("client_food_pyramid_list.feedback_modal.description_required")
-      ),
+      )
+      .max(255, t("client_food_pyramid_list.feedback_modal.description_toolong"))
   });
 
   type PyramidFeedbackFormValues = z.infer<typeof pyramidFeedbackSchema>;

@@ -734,7 +734,8 @@
     "carbohydrates": "Carbohydrates",
     "fats": "Fats",
     "saturated_fats": "Saturated Fats",
-    "sugar": "Sugar"
+    "sugar": "Sugar",
+    "error_loading": "Error loading food pyramid details"
   },
   "client_food_pyramid_list": {
     "title": "List of food pyramids",
@@ -793,7 +794,8 @@
       "description_placeholder": "Share your thoughts about this pyramid",
       "submit_button": "Submit Feedback",
       "rating_required": "Rating is required",
-      "description_required": "Comment is required"
+      "description_required": "Comment is required",
+      "description_toolong": "Comment must be at most 255 characters long"
     },
     "feedback_success": "Your feedback has been successfully added.",
     "feedback_error": "An error occurred while adding feedback. Please try again later.",
@@ -815,7 +817,9 @@
         "add": "add",
         "edit": "edit"
       }
-    }
+    },
+    "unknown_error": "Unexpected error",
+    "feedback_description_error": "Feedback description must be at least 1 character and at most 255 characters long."
   },
   "periodic_survey": {
     "form": {

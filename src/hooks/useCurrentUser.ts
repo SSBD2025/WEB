@@ -12,6 +12,10 @@ export const useCurrentUser = () => {
     queryFn: getCurrentUser,
     enabled: !!token, 
     retry: false,
+    staleTime: 0,
+    refetchOnWindowFocus: true,
+    refetchOnReconnect: true,
+    refetchOnMount: true,
   });
 
   return {
