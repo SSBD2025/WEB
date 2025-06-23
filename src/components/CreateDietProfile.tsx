@@ -344,11 +344,6 @@ export default function CreateDietProfile() {
     }
   };
 
-  console.log(clientDataError);
-  console.log(clientBloodTestReportsError);
-  console.log(foodPyramidsError);
-  console.log(periodicSurveyError);
-
   if (
     clientDataStatus === "pending" ||
     clientBloodTestReportsStatus === "pending" ||

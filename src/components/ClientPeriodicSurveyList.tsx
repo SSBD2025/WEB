@@ -82,7 +82,7 @@ export default function ClientPeriodicSurveyList() {
         >
           <DataRenderer
             status={status}
-            error={error}
+            error={(error && ({title: error.title, details: t("periodic_survey.no_results")}))}
             data={data?.content}
             empty={PERIODIC_SURVEY_EMPTY}
             render={() => (

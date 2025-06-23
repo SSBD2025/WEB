@@ -655,7 +655,9 @@
         "duplicate": "Form has duplicates, please remove or edit them.",
         "unexpected": "An unexpected error has occurred, try again later.",
         "invalid_result": "Invalid result value.",
-        "incomplete_entry": "There are incomplete entries, please remove or fill them."
+        "incomplete_entry": "There are incomplete entries, please remove or fill them.",
+        "empty_parameter": "This field is required",
+        "empty_result": "This field is required"
       }
     }
   },
@@ -830,7 +832,7 @@
         "required": "This field is required"
       },
       "title": "Periodic Survey",
-      "description": "Periodic survey can be filled out once ecery 24hours,",
+      "description": "Periodic survey can be filled out once every 24hours,",
       "submit_button": "Submit Survey",
       "submit_alert_title": "Confirm Survey Submission",
       "submit_alert_description": "Are you sure you want to submit the survey? Please ensure that all data is correct before proceeding."
@@ -856,6 +858,8 @@
       }
     },
     "loading": "Loading periodic surveys...",
+    "no_changes": "Nothing changed!",
+    "no_results": "No results. Try removing or changing filters.",
     "error": {
       "loading": "Error loading periodic surveys",
       "fetch": "Failed to fetch periodic surveys",
