@@ -26,7 +26,6 @@ export default function HeroSectionOne({ onClick }: { onClick: () => void }) {
             asChild
           >
             <Link to={ROUTES.DIETICIAN_DASHBOARD}>{t("home.dietitian_dashboard")}</Link>
-            {/*<span>{t("home.dietitian_dashboard")}</span>*/}
           </Button>
         );
       case "client":
@@ -36,7 +35,6 @@ export default function HeroSectionOne({ onClick }: { onClick: () => void }) {
             asChild
           >
              <Link to={ROUTES.CLIENT_DASHBOARD}>{t("home.client_dashboard")}</Link>
-            {/*<span>{t("home.client_dashboard")}</span>*/}
           </Button>
         );
       default:
