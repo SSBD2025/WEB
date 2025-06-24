@@ -12,7 +12,7 @@ const GuestRoute = () => {
   const { t } = useTranslation();
   const [hasRefetchedManually, setHasRefetchedManually] = useState(false);
   const hasToken =
-    typeof window !== "undefined" && localStorage.getItem("accessToken");
+    typeof window !== "undefined" && localStorage.getItem("token");
 
   useEffect(() => {
     if (!hasToken && !hasRefetchedManually) {
