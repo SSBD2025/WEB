@@ -1,5 +1,5 @@
 import type React from "react";
-import {t} from "i18next";
+import { t } from "i18next";
 
 import {
   Apple,
@@ -24,9 +24,10 @@ import {
 } from "@/components/ui/card";
 
 import { motion } from "motion/react";
-import {Button} from "@/components/ui/button.tsx";
-import {Link} from "react-router";
+import { Button } from "@/components/ui/button.tsx";
+import { Link } from "react-router";
 import ROUTES from "@/constants/routes.ts";
+import { useCurrentUser } from "@/hooks/useCurrentUser";
 
 interface FeatureItemProps {
   icon: React.ReactNode;
@@ -49,6 +50,8 @@ function FeatureItem({ icon, title, description }: FeatureItemProps) {
 }
 
 export default function ClientDieticianComparison() {
+  const { data: user } = useCurrentUser();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -69,7 +72,9 @@ export default function ClientDieticianComparison() {
         >
           <Card className="overflow-hidden border-2 border-primary/20 transition-all hover:shadow-md">
             <CardHeader className="bg-primary/5 pb-4">
-              <CardTitle className="text-center text-2xl">{t("home.client")}</CardTitle>
+              <CardTitle className="text-center text-2xl">
+                {t("home.client")}
+              </CardTitle>
               <CardDescription className="text-center">
                 {t("home.client_description")}
               </CardDescription>
@@ -105,11 +110,13 @@ export default function ClientDieticianComparison() {
                 title={t("home.client_notifications")}
                 description={t("home.client_notifications_info")}
               />
-              <Link to={ROUTES.USER_REGISTER} className="w-full block">
-                <Button className="w-full cursor-pointer transform rounded-lg px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-                  {t("home.client_register")}
-                </Button>
-              </Link>
+              {!user && (
+                <Link to={ROUTES.USER_REGISTER} className="w-full block">
+                  <Button className="w-full cursor-pointer transform rounded-lg px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+                    {t("home.client_register")}
+                  </Button>
+                </Link>
+              )}
             </CardContent>
           </Card>
         </motion.div>
@@ -121,7 +128,9 @@ export default function ClientDieticianComparison() {
         >
           <Card className="overflow-hidden border-2 border-primary/20 transition-all hover:shadow-md">
             <CardHeader className="bg-primary/5 pb-4">
-              <CardTitle className="text-center text-2xl">{t("home.dietitian")}</CardTitle>
+              <CardTitle className="text-center text-2xl">
+                {t("home.dietitian")}
+              </CardTitle>
               <CardDescription className="text-center">
                 {t("home.dietitian_description")}
               </CardDescription>
@@ -157,11 +166,13 @@ export default function ClientDieticianComparison() {
                 title={t("home.dietitian_reminders")}
                 description={t("home.dietitian_reminders_info")}
               />
-              <Link to={ROUTES.DIETICIAN_REGISTER} className="w-full block">
-                <Button className="w-full cursor-pointer transform rounded-lg px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200">
-                  {t("home.dietitian_register")}
-                </Button>
-              </Link>
+              {!user && (
+                <Link to={ROUTES.DIETICIAN_REGISTER} className="w-full block">
+                  <Button className="w-full cursor-pointer transform rounded-lg px-6 py-2 font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:opacity-75 dark:bg-white dark:text-black dark:hover:bg-gray-200">
+                    {t("home.dietitian_register")}
+                  </Button>
+                </Link>
+              )}
             </CardContent>
           </Card>
         </motion.div>

@@ -34,7 +34,7 @@ export const useSessionTimeout = (thresholdSeconds: number = 300, onExpired?: ()
         const interval = setInterval(checkToken, 5000);
 
         return () => clearInterval(interval);
-    }, [thresholdSeconds]);
+    }, [thresholdSeconds, onExpired]);
 
     return {
         isExpiringSoon,
