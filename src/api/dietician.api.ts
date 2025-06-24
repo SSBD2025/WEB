@@ -34,3 +34,8 @@ export const getAllBloodTestOrders = async () => {
   const response = await apiClient.get("/mod/dieticians/orders");
   return response.data;
 }
+
+export const getLastBloodTestOrder = async (clientId: string) => {
+  const response = await apiClient.get(`/mod/dieticians/${clientId}/last-order`);
+  return response.data;
+}

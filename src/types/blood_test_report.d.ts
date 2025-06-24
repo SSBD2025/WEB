@@ -38,3 +38,10 @@ export interface ParameterWithResult {
     parameter: BloodParameter;
     result: string;
 }
+
+export interface BloodOrder {
+    clientId: string;
+    description: string;
+    orderDate?: string;
+    parameters: string[];
+}
