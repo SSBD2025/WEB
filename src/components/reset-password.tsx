@@ -40,7 +40,7 @@ export default function ForgetPasswordPreview() {
   }, [resendCooldown]);
 
   const formSchema = z.object({
-    email: z.string().email({ message: t("invalid_email") }),
+    email: z.string().email({ message: t("password_reset.invalid_email") }),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
