@@ -4,7 +4,7 @@ import { toast } from "sonner";
 
 export const axiosErrorHandler = (
   error: unknown,
-  fallbackMessage = "An unexpected error occurred"
+  fallbackMessage = "unexpected"
 ) => {
   if (axios.isAxiosError(error)) {
     const status = error.response?.status;
@@ -17,7 +17,6 @@ export const axiosErrorHandler = (
     const message =
       error.response?.data?.message ||
       error.response?.data?.error ||
-      error.message ||
       fallbackMessage;
 
     toast.error(i18n.t("exceptions." + message));

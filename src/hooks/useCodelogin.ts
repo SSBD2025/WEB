@@ -5,7 +5,7 @@ import {codelogin, codeloginRequest} from "@/api/codelogin.ts";
 export const useCodeloginRequest = () => {
     return useMutation({
         mutationFn: codeloginRequest,
-        onError: (error) => axiosErrorHandler(error, "Codelogin request failed"),
+        onError: (error) => axiosErrorHandler(error),
     })
 }
 

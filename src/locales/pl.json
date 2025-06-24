@@ -523,7 +523,10 @@
     "invalid_blood_parameter_name": "Nieprawidłowa nazwa parametru krwi",
     "client_food_pyramid_not_found": "Nie znaleziono przypisanej piramidy żywieniowej dla tego klienta",
     "client_not_assigned": "Klient nie jest przypisany do tego dietetyka",
-    "food_pyramid_name_already_in_use": "Ta nazwa jest już w użyciu. Spróbuj użyć innej."
+    "food_pyramid_name_already_in_use": "Ta nazwa jest już w użyciu. Spróbuj użyć innej.",
+    "login": {
+      "failed_to_login": "Nie udało się zalogować"
+    }
   },
   "role_change": {
     "log_error": "Nie udało się zalogować zmiany roli:"

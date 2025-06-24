@@ -26,6 +26,8 @@ export const useRegisterUser = (userType: "client" | "dietician" | "admin") => {
               data.message === "account_constraint_violation: login already in use"
           ) {
             toast.error(t("register.error.loginExist"));
+          } else {
+            axiosErrorHandler(error);
           }
         } else if (status === 403) {
           toast.error(t("register.error.accessDenied"));
