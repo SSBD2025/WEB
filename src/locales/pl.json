@@ -302,8 +302,8 @@
         "message": "Wygląda na to, że nie znaleźliśmy dla Ciebie ankiet okresowych."
       },
       "permanent": {
-        "title": "Permanent survey not found.",
-        "message": "Looks like this client has not filled their permanent survey yet."
+        "title": "Nie znaleziono ankiety parametrów stałych.",
+        "message": "Wygląda na to, że ten klient nie wypełnił jeszcze ankiety parametrów stałych."
       },
       "create_diet_profile": {
         "client": {
