@@ -5,34 +5,34 @@ import ROUTES from "@/constants/routes";
 import useRole from "@/store";
 import { useTranslation } from "react-i18next";
 import Unauthorized from "@/pages/Unauthorized";
-import { useEffect, useState } from "react";
-import { AccessLevel } from "@/types/user";
 
 const ProtectedRoute = ({ allowedRoles }: { allowedRoles?: string[] }) => {
   const { data: user, isLoading, isError } = useCurrentUser();
   const { currentRole, setCurrentRole } = useRole();
   const { t } = useTranslation();
-  const [redirectToLogin, setRedirectToLogin] = useState(false);
 
-  useEffect(() => {
-    if (!currentRole && user?.roles?.[0]?.roleName) {
-      setCurrentRole(user.roles[0].roleName.toLowerCase() as AccessLevel);
-    }
-  }, [user, currentRole, setCurrentRole]);
+  if (isLoading) {
+    return (
+      <div className="w-screen h-screen flex items-center justify-center flex-col">
+        <Spinner />
+        <p className="text-gray-500">{t("common.loading")}...</p>
+      </div>
+    );
+  }
 
-  useEffect(() => {
-    if (isError || (user && !user.account.active)) {
-      localStorage.removeItem("token");
-      setCurrentRole(null);
-      setRedirectToLogin(true);
-    }
-  }, [isError, user, setCurrentRole]);
-
-  if (redirectToLogin) {
+  if (isError) {
+    localStorage.removeItem("token");
+    setCurrentRole(null);
     return <Navigate to={ROUTES.LOGIN} replace />;
   }
 
-  if (isLoading) {
+  if (!user || !user.account.active) {
+    localStorage.removeItem("token");
+    setCurrentRole(null);
+    return <Navigate to={ROUTES.LOGIN} replace />;
+  }
+
+  if (!currentRole && user?.roles?.[0]?.roleName) {
     return (
       <div className="w-screen h-screen flex items-center justify-center flex-col">
         <Spinner />
