@@ -523,7 +523,10 @@
     "invalid_blood_parameter_name": "Invalid blood parameter name",
     "client_food_pyramid_not_found": "Client food pyramid not found",
     "client_not_assigned": "Client not assigned to this dietician",
-    "food_pyramid_name_already_in_use": "This name is already in use. Try choosing another name."
+    "food_pyramid_name_already_in_use": "This name is already in use. Try choosing another name.",
+    "login": {
+      "failed_to_login": "Failed to login"
+    }
   },
   "role_change": {
     "log_error": "Failed to log role change:"

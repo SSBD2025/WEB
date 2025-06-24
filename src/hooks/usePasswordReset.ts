@@ -6,7 +6,7 @@ import {PasswordReset} from "@/types/reset_password";
 export const usePasswordResetRequest = () => {
     return useMutation({
         mutationFn: resetPasswordRequest,
-        onError: (error) => axiosErrorHandler(error, "Reset Request Failed"),
+        onError: (error) => axiosErrorHandler(error),
     })
 }
 
