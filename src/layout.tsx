@@ -59,9 +59,18 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    if (user?.roles?.[0]?.roleName && !currentRole) {
-      const role = user.roles[0].roleName.toLowerCase() as AccessLevel;
-      setCurrentRole(role);
+    if (!user?.roles?.length) return;
+
+    const firstRoleName = user.roles[0].roleName.toLowerCase() as AccessLevel;
+
+    const roleNames = user.roles.map((r) =>
+        r.roleName.toLowerCase()
+    ) as AccessLevel[];
+
+    const currentIsValid = currentRole && roleNames.includes(currentRole);
+
+    if (!currentIsValid) {
+      setCurrentRole(firstRoleName);
     }
   }, [user, currentRole, setCurrentRole]);
 
