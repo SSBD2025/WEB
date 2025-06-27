@@ -34,12 +34,22 @@ export type AccountWithRoles = {
 export type AccessLevel = "admin" | "client" | "dietician";
 
 export type AllAccounts = {
-  content: AccountWithRoles[];
-  last: boolean;
-  first: boolean;
-  number: number;
-  totalPages: number;
-  totalElements: number;
+  _embedded: {
+    accountWithRolesDTOList: AccountWithRoles[];
+  };
+  _links: {
+    first?: { href: string };
+    self: { href: string };
+    next?: { href: string };
+    last?: { href: string };
+    prev?: { href: string };
+  };
+  page: {
+    size: number;
+    totalElements: number;
+    totalPages: number;
+    number: number;
+  };
 }
 
 export interface Client {
