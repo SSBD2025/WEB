@@ -27,6 +27,10 @@ export default defineConfig(({ mode }) => {
           secure: false,
         },
       },
+      headers: {
+        "Content-Security-Policy":
+            "script-src 'self' https://js.stripe.com 'unsafe-inline'; object-src 'none';",
+      },
     },
   };
 });

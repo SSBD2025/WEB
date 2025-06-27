@@ -1268,5 +1268,9 @@
     "next": "Next",
     "last": "Last",
     "itemsPerPage": "Items per page"
+  },
+  "stripe": {
+    "success": "Thank you for your purchase! Your payment was successful.",
+    "error": "Something went wrong. Try again later."
   }
 }

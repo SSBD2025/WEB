@@ -1267,5 +1267,9 @@
     "next": "Następna",
     "last": "Ostatnia",
     "itemsPerPage": "Wyników na stronę"
+  },
+  "stripe": {
+    "success": "Dziękujemy za dokonanie płatności!",
+    "error": "Ups coś poszło nie tak. Spróbuj ponownie później."
   }
 }
