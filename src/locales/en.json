@@ -1263,7 +1263,10 @@
     }
   },
   "pagination": {
+    "first": "First",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "last": "Last",
+    "itemsPerPage": "Items per page"
   }
 }
