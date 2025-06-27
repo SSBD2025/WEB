@@ -9,6 +9,7 @@ build_frontend:
   script:
     - rm -rf node_modules package-lock.json 
     - npm i
+    - export VITE_STRIPE_PUBLISHABLE_KEY="$VITE_STRIPE_PUBLISHABLE_KEY"
     - npm run build
   artifacts:
     paths:
