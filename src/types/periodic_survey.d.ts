@@ -14,12 +14,22 @@ export interface GetPeriodicSurvey {
 }
 
 export type AllPeriodicSurveys = {
-    content: GetPeriodicSurvey[];
-    last: boolean;
-    first: boolean;
-    number: number;
-    totalPages: number;
-    totalElements: number;
+    _embedded: {
+        periodicSurveyDTOList: GetPeriodicSurvey[];
+    };
+    _links: {
+        first?: { href: string };
+        self: { href: string };
+        next?: { href: string };
+        last?: { href: string };
+        prev?: { href: string };
+    };
+    page: {
+        size: number;
+        totalElements: number;
+        totalPages: number;
+        number: number;
+    };
 }
 
 export interface PeriodicSurveyQueryParams {
