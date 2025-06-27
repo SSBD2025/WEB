@@ -49,7 +49,7 @@ const AdminDashboard = () => {
   const handleSortChange = (newSortBy: string) => {
     setSettings((prev) => {
       const newSortOrder =
-        prev.sortBy === newSortBy && prev.sortOrder === "asc" ? "desc" : "asc";
+          prev.sortBy === newSortBy && prev.sortOrder === "asc" ? "desc" : "asc";
 
       return {
         ...prev,
@@ -60,47 +60,52 @@ const AdminDashboard = () => {
   };
 
   return (
-    <main className="flex-grow items-center justify-center flex flex-col">
-      <div className="w-full max-w-6xl px-4 py-6">
-        <div className="mb-4 relative">
-          <AccountSearchAutocomplete
-            accounts={data?.content}
-            onSearch={handleSearch}
-            searchPhrase={searchPhrase}
-            isLoading={isFetching}
-          />
-          {searchPhrase && (
-            <p className="text-sm text-muted-foreground mt-2">
-              {t("accountsTable.search.results", { count: data?.totalElements || 0 })}
-            </p>
-          )}
+      <main className="flex-grow items-center justify-center flex flex-col">
+        <div className="w-full max-w-6xl px-4 py-6">
+          <div className="mb-4 relative">
+            <AccountSearchAutocomplete
+                accounts={data?._embedded?.accountWithRolesDTOList}
+                onSearch={handleSearch}
+                searchPhrase={searchPhrase}
+                isLoading={isFetching}
+            />
+            {searchPhrase && (
+                <p className="text-sm text-muted-foreground mt-2">
+                  {t("accountsTable.search.results", { count: data?.page?.totalElements || 0 })}
+                </p>
+            )}
+          </div>
+
+          <motion.div
+              className="relative w-full overflow-auto"
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+          >
+            <DataRenderer
+                status={status}
+                error={error}
+                data={data?._embedded?.accountWithRolesDTOList}
+                empty={ACCOUNTS_EMPTY}
+                render={(accounts) => (
+                    <AccountsTable
+                        accounts={accounts}
+                        sortBy={sortBy}
+                        sortOrder={sortOrder}
+                        onSortChange={handleSortChange}
+                    />
+                )}
+            />
+          </motion.div>
         </div>
 
-        <motion.div
-          className="relative w-full overflow-auto"
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-        >
-          <DataRenderer
-            status={status}
-            error={error}
-            data={data?.content}
-            empty={ACCOUNTS_EMPTY}
-            render={(accounts) => (
-              <AccountsTable
-                accounts={accounts}
-                sortBy={sortBy}
-                sortOrder={sortOrder}
-                onSortChange={handleSortChange}
-              />
-            )}
-          />
-        </motion.div>
-      </div>
-
-      <Pagination page={page} isNext={!data?.last} containerClasses="p-6" />
-    </main>
+        <Pagination
+            page={page}
+            links={data?._links}
+            pageInfo={data?.page}
+            containerClasses="p-6"
+        />
+      </main>
   );
 };
 
