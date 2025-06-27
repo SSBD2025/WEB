@@ -269,27 +269,27 @@ export default function CreateDietProfile() {
     useState<GetPeriodicSurvey | null>(null);
   const currentSurvey =
     selectedSurveyFromModal ||
-    periodicSurveyList?.content?.[currentIndexSurvey];
-  const totalSurveys = periodicSurveyList?.content?.length || 0;
+    periodicSurveyList?._embedded?.periodicSurveyDTOList?.[currentIndexSurvey];
+  const totalSurveys = periodicSurveyList?._embedded?.periodicSurveyDTOList?.length || 0;
 
   const goToPreviousPeriodicSurvey = () => {
     setSelectedSurveyFromModal(null);
     setCurrentIndexSurvey((prev) =>
-      prev > 0 ? prev - 1 : (periodicSurveyList?.content?.length || 1) - 1
+      prev > 0 ? prev - 1 : (periodicSurveyList?._embedded?.periodicSurveyDTOList?.length || 1) - 1
     );
   };
 
   const goToNextPeriodicSurvey = () => {
     setSelectedSurveyFromModal(null);
     setCurrentIndexSurvey((prev) =>
-      prev < (periodicSurveyList?.content?.length || 1) - 1 ? prev + 1 : 0
+      prev < (periodicSurveyList?._embedded?.periodicSurveyDTOList?.length || 1) - 1 ? prev + 1 : 0
     );
   };
 
   const handleSurveySelection = (survey: GetPeriodicSurvey) => {
     setSelectedSurveyFromModal(survey);
     const index =
-      periodicSurveyList?.content?.findIndex((s) => s.id === survey.id) ?? 0;
+      periodicSurveyList?._embedded?.periodicSurveyDTOList?.findIndex((s) => s.id === survey.id) ?? 0;
     setCurrentIndexSurvey(index);
     setIsSurveyModalOpen(false);
   };
