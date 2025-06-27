@@ -1262,7 +1262,10 @@
     }
   },
   "pagination": {
+    "first": "Pierwsza",
     "previous": "Poprzednia",
-    "next": "Następna"
+    "next": "Następna",
+    "last": "Ostatnia",
+    "itemsPerPage": "Wyników na stronę"
   }
 }

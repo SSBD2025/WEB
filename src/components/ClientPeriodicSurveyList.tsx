@@ -15,6 +15,14 @@ import { useState } from "react";
 import { DateTimeRangePicker } from "@/components/DateTimePicker.tsx";
 import BackButton from "@/components/shared/BackButton.tsx";
 import ROUTES from "@/constants/routes.ts";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import usePeriodicSurveySettings from "@/hooks/usePeriodicSurveyStoredSettings.ts";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -32,10 +40,16 @@ export default function ClientPeriodicSurveyList() {
   const since = searchParams.get("since") || undefined;
   const before = searchParams.get("before") || undefined;
   const [showComparison, setShowComparison] = useState(false);
-  const sort = searchParams.get("sort") || "measurementDate,desc";
+
+  const { settings, setPageSize } = usePeriodicSurveySettings();
   const pageParam = searchParams.get("page") || "1";
   const page = Number.parseInt(pageParam, 10);
-  const pageSize = 10;
+
+  const pageSize = settings.pageSize || 5;
+  const sort =
+    searchParams.get("sort") ||
+    `${settings.sortBy || "measurementDate"},${settings.sortOrder || "desc"}`;
+
   const { status, error, data } = useGetAllClientPeriodicSurvey({
     page: page - 1,
     size: pageSize,
@@ -43,6 +57,15 @@ export default function ClientPeriodicSurveyList() {
     before,
     sort,
   });
+
+  const handlePageSizeChange = (newPageSize: number) => {
+    setPageSize(newPageSize);
+  };
+
+  const getSurveysData = () => {
+    if (!data) return [];
+    return data._embedded?.periodicSurveyDTOList || [];
+  };
 
   const handleDateFilter = (sinceISO?: string, beforeISO?: string) => {
     const params = new URLSearchParams(searchParams);
@@ -56,22 +79,47 @@ export default function ClientPeriodicSurveyList() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const latest = useGetLatestPeriodicSurvey();
 
+  const surveysData = getSurveysData();
+  const paginationData = data?.page;
+
   return (
     <main className="flex-grow items-center justify-center flex flex-col">
       {status === "pending" && t("periodic_survey.loading")}
       <div className="w-full max-w-6xl px-4 py-6">
-      <BackButton route={ROUTES.HOME}/>
-        {(data?.content?.length ?? 0) > 0 && !showComparison && (
-          <div className="flex flex-row w-full justify-between">
-            <h2 className="text-xl font-semibold mb-6">
+        <BackButton route={ROUTES.HOME} />
+        {surveysData.length > 0 && !showComparison && (
+          <div className="flex flex-row w-full justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold">
               {t("periodic_survey.client.header")}
             </h2>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-muted-foreground">
+                  {t("pagination.itemsPerPage")}
+                </span>
+                <Select
+                  value={pageSize.toString()}
+                  onValueChange={(value) => handlePageSizeChange(Number(value))}
+                >
+                  <SelectTrigger className="w-[80px]">
+                    <SelectValue placeholder={pageSize.toString()} />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {[3, 5, 10, 20, 50].map((size) => (
+                      <SelectItem key={size} value={size.toString()}>
+                        {size}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
           </div>
         )}
         {!showComparison && (
           <DateTimeRangePicker
             onApply={handleDateFilter}
-            hasResults={(data?.content?.length ?? 0) > 0}
+            hasResults={surveysData.length > 0}
           />
         )}
         <motion.div
@@ -82,14 +130,19 @@ export default function ClientPeriodicSurveyList() {
         >
           <DataRenderer
             status={status}
-            error={(error && ({title: error.title, details: t("periodic_survey.no_results")}))}
-            data={data?.content}
+            error={
+              error && {
+                title: error.title,
+                details: t("periodic_survey.no_results"),
+              }
+            }
+            data={surveysData}
             empty={PERIODIC_SURVEY_EMPTY}
             render={() => (
               <PeriodicSurveyList
+                surveys={surveysData}
                 showComparison={showComparison}
                 setShowComparison={setShowComparison}
-                surveys={data?.content}
               />
             )}
           />
@@ -99,16 +152,17 @@ export default function ClientPeriodicSurveyList() {
         <div className="grid grid-cols-3 items-center py-4">
           <div />
           <div className="flex justify-center">
-            {(data?.content?.length ?? 0) > 0 && !showComparison && (
+            {surveysData.length > 0 && !showComparison && paginationData && (
               <Pagination
                 page={page}
-                isNext={!data?.last}
+                links={data?._links}
+                pageInfo={paginationData}
                 containerClasses="p-6"
               />
             )}
           </div>
           <div className="flex justify-end">
-            {(data?.content?.length ?? 0) > 0 && latest.data && !showComparison && (
+            {surveysData.length > 0 && latest.data && !showComparison && (
               <>
                 <Button onClick={() => setIsModalOpen(true)}>
                   {t("periodic_survey.client.edit.button")}
