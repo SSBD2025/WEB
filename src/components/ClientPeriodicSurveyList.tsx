@@ -11,7 +11,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button.tsx";
 import EditSurveyModal from "./EditSurveyModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DateTimeRangePicker } from "@/components/DateTimePicker.tsx";
 import BackButton from "@/components/shared/BackButton.tsx";
 import ROUTES from "@/constants/routes.ts";
@@ -191,8 +191,10 @@ export default function ClientPeriodicSurveyList() {
           <div className="flex justify-end">
             {surveysData.length > 0 && latest.data && !showComparison && (
               <>
-                <Button onClick={() => setIsModalOpen(true)}>
-                  {t("periodic_survey.client.edit.button")}
+                <Button onClick={() => setIsModalOpen(true)} disabled={isLocked}>
+                  {isLocked
+                      ? t("periodic_survey.client.edit.locked")
+                      : `${t("periodic_survey.client.edit.button")} (${countdownLabel})`}
                 </Button>
                 <EditSurveyModal
                   isOpen={isModalOpen}
