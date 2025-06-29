@@ -1272,5 +1272,9 @@
   "stripe": {
     "success": "Thank you for your purchase! Your payment was successful.",
     "error": "Something went wrong. Try again later."
+  },
+  "notification": {
+    "account_blocked": "Your account has been blocked!",
+    "account_unblocked": "Your account has been unblocked!"
   }
 }

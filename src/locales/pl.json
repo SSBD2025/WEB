@@ -1271,5 +1271,9 @@
   "stripe": {
     "success": "Dziękujemy za dokonanie płatności!",
     "error": "Ups coś poszło nie tak. Spróbuj ponownie później."
+  },
+  "notification": {
+    "account_blocked": "Twoje konto zostało zablokowane!",
+    "account_unblocked": "Twoje konto zostało odblokowane!"
   }
 }
