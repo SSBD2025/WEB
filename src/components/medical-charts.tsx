@@ -86,7 +86,7 @@ export default function MedicalCharts({ userRole }: MedicalChartsProps) {
   const query = userRole === "client" ? clientQuery : dieticianQuery;
   const { data, isLoading } = query;
   const surveysRaw = useMemo(() => {
-    return data?.content ?? [];
+    return data?._embedded.periodicSurveyDTOList ?? [];
   }, [data]);
 
   const clientPyramidQuery = useGetCurrentPyramidClient(userRole === "client");
