@@ -11,6 +11,7 @@ export interface GetPeriodicSurvey {
     bloodSugarLevel: number;
     measurementDate: Date;
     lockToken: string;
+    createdAt: Date;
 }
 
 export type AllPeriodicSurveys = {
