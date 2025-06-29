@@ -82,6 +82,33 @@ export default function ClientPeriodicSurveyList() {
   const surveysData = getSurveysData();
   const paginationData = data?.page;
 
+  const unlockTime = latest.data?.createdAt
+      ? new Date(latest.data.createdAt).getTime() + 15 * 60 * 1000
+      : 0;
+  const remainingMs = useCountdown(unlockTime);
+  const isLocked = remainingMs <= 0;
+
+
+  function useCountdown(to: number) {
+    const [remaining, setRemaining] = useState(to - Date.now());
+
+    useEffect(() => {
+      const tick = () => {
+        const timeLeft = to - Date.now();
+        setRemaining(Math.max(0, timeLeft));
+      };
+      tick();
+      const interval = setInterval(tick, 1000);
+      return () => clearInterval(interval);
+    }, [to]);
+
+    return remaining;
+  }
+
+  const minutes = Math.floor((remainingMs / 1000 / 60) % 60);
+  const seconds = Math.floor((remainingMs / 1000) % 60);
+  const countdownLabel = `${minutes}:${seconds.toString().padStart(2, "0")}`;
+
   return (
     <main className="flex-grow items-center justify-center flex flex-col">
       {status === "pending" && t("periodic_survey.loading")}
