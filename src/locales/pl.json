@@ -524,6 +524,7 @@
     "client_food_pyramid_not_found": "Nie znaleziono przypisanej piramidy żywieniowej dla tego klienta",
     "client_not_assigned": "Klient nie jest przypisany do tego dietetyka",
     "food_pyramid_name_already_in_use": "Ta nazwa jest już w użyciu. Spróbuj użyć innej.",
+    "late_update": "Ten zasób nie jest już modyfikowalny.",
     "login": {
       "failed_to_login": "Nie udało się zalogować"
     }
@@ -852,7 +853,8 @@
       "edit": {
         "button": "Edytuj ostatnią ankietę",
         "success": "Ankieta okresowa zaktualizowana pomyślnie",
-        "title": "Edytuj ostatią ankietę okresową"
+        "title": "Edytuj ostatią ankietę okresową",
+        "locked": "Edycja niedostępna"
       }
     },
     "list": {
@@ -1177,7 +1179,8 @@
       "blood_sugar_level": "Poziom cukru we krwi",
       "weight": "Waga",
       "blood_pressure": "Ciśnienie krwi",
-      "measurement_date": "Data pomiaru:"
+      "measurement_date": "Data pomiaru:",
+      "select_survey": "Wybierz ankietę okresową"
     },
     "existing_profiles_list": {
       "table_name": "ISTNIEJĄCE PROFILE"
