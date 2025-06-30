@@ -48,9 +48,6 @@ import { useTheme } from "./hooks/useTheme.ts";
 import { SessionTimeout } from "./components/sessionTimeout";
 import DieticianPermanentSurvey from "./pages/DieticianPermanentSurvey.tsx";
 import { CheckoutForm, Return } from "./components/stripe-payment.tsx";
-import {useAccountBlockedSse} from "@/hooks/useAccountBlockedSse.ts";
-import {toast} from "sonner";
-import { t } from "i18next";
 
 const Layout = () => {
   const { data: user } = useCurrentUser();
@@ -81,16 +78,6 @@ const Layout = () => {
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     localStorage.setItem("timezone", tz);
   }, []);
-
-  useAccountBlockedSse(
-      user?.account.id ?? "",
-      () => {
-        toast.error(t("notification.account_blocked"), { duration: 10000 });
-      },
-      () => {
-        toast.success(t("notification.account_unblocked"), { duration: 10000 });
-      }
-  );
 
   return (
       <div className="min-h-screen flex flex-col relative">
