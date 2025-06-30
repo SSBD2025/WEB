@@ -524,6 +524,7 @@
     "client_food_pyramid_not_found": "Client food pyramid not found",
     "client_not_assigned": "Client not assigned to this dietician",
     "food_pyramid_name_already_in_use": "This name is already in use. Try choosing another name.",
+    "late_update": "This resource is no longer modifiable.",
     "login": {
       "failed_to_login": "Failed to login"
     }
@@ -853,7 +854,8 @@
       "edit": {
         "button": "Edit latest survey",
         "success": "Periodic survey updated successfully",
-        "title": "Edit latest periodic survey"
+        "title": "Edit latest periodic survey",
+        "locked": "Edit unavailable"
       }
     },
     "list": {
@@ -1178,7 +1180,8 @@
       "blood_sugar_level": "Level of sugar in blood",
       "weight": "Weight",
       "blood_pressure": "Blood Pressure",
-      "measurement_date": "Measurement date:"
+      "measurement_date": "Measurement date:",
+      "select_survey": "Select a periodic survey"
     },
     "existing_profiles_list": {
       "table_name": "EXISTING PROFILES"
